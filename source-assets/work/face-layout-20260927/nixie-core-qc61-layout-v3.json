@@ -1,0 +1,276 @@
+{
+  "format": 1,
+  "donor_plb_sha256": "a4553c036a2cc0b1f830aaca3e6ae460eba2fef2fc45a90fd85cd8524765fd9d",
+  "edits": [
+    {
+      "node_id": "BAT_VALUE",
+      "expected": [
+        78,
+        240,
+        52,
+        26
+      ],
+      "replacement": [
+        354,
+        356,
+        52,
+        26
+      ]
+    },
+    {
+      "node_id": "STEPS",
+      "expected": [
+        191,
+        373,
+        88,
+        26
+      ],
+      "replacement": [
+        91,
+        139,
+        88,
+        26
+      ]
+    },
+    {
+      "node_id": "HEART",
+      "expected": [
+        217,
+        121,
+        34,
+        21
+      ],
+      "replacement": [
+        216,
+        139,
+        34,
+        21
+      ]
+    },
+    {
+      "node_id": "DIS_LAB",
+      "expected": [
+        91,
+        347,
+        54,
+        21
+      ],
+      "replacement": [
+        319,
+        139,
+        54,
+        21
+      ]
+    },
+    {
+      "node_id": "H_S",
+      "expected": [
+        324,
+        193,
+        32,
+        44
+      ],
+      "replacement": [
+        43,
+        190,
+        40,
+        80
+      ]
+    },
+    {
+      "node_id": "H_G",
+      "expected": [
+        356,
+        193,
+        32,
+        44
+      ],
+      "replacement": [
+        101,
+        190,
+        40,
+        80
+      ]
+    },
+    {
+      "node_id": "M_S",
+      "expected": [
+        323,
+        253,
+        32,
+        44
+      ],
+      "replacement": [
+        182,
+        190,
+        40,
+        80
+      ]
+    },
+    {
+      "node_id": "M_G",
+      "expected": [
+        356,
+        253,
+        32,
+        44
+      ],
+      "replacement": [
+        241,
+        190,
+        40,
+        80
+      ]
+    },
+    {
+      "node_id": "S_S",
+      "expected": [
+        361,
+        325,
+        12,
+        16
+      ],
+      "replacement": [
+        321,
+        190,
+        40,
+        80
+      ]
+    },
+    {
+      "node_id": "S_G",
+      "expected": [
+        373,
+        325,
+        12,
+        16
+      ],
+      "replacement": [
+        380,
+        190,
+        40,
+        80
+      ]
+    },
+    {
+      "node_id": "MON_S",
+      "expected": [
+        326,
+        124,
+        12,
+        16
+      ],
+      "replacement": [
+        182,
+        311,
+        12,
+        16
+      ]
+    },
+    {
+      "node_id": "MON_G",
+      "expected": [
+        338,
+        124,
+        12,
+        16
+      ],
+      "replacement": [
+        194,
+        311,
+        12,
+        16
+      ]
+    },
+    {
+      "node_id": "GANG",
+      "expected": [
+        350,
+        124,
+        8,
+        16
+      ],
+      "replacement": [
+        206,
+        311,
+        8,
+        16
+      ]
+    },
+    {
+      "node_id": "DAY_S",
+      "expected": [
+        358,
+        124,
+        12,
+        16
+      ],
+      "replacement": [
+        214,
+        311,
+        12,
+        16
+      ]
+    },
+    {
+      "node_id": "DAY_G",
+      "expected": [
+        370,
+        124,
+        12,
+        16
+      ],
+      "replacement": [
+        226,
+        311,
+        12,
+        16
+      ]
+    },
+    {
+      "node_id": "WEATH_V",
+      "expected": [
+        90,
+        103,
+        55,
+        21
+      ],
+      "replacement": [
+        99,
+        357,
+        55,
+        21
+      ]
+    },
+    {
+      "node_id": "WEATHER_IMG",
+      "expected": [
+        103,
+        132,
+        31,
+        30
+      ],
+      "replacement": [
+        211,
+        355,
+        31,
+        30
+      ]
+    },
+    {
+      "node_id": "APM",
+      "expected": [
+        338,
+        162,
+        32,
+        16
+      ],
+      "replacement": [
+        259,
+        303,
+        32,
+        16
+      ]
+    }
+  ]
+}

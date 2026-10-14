@@ -1,0 +1,2552 @@
+{
+  "format": 2,
+  "coordinateSpace": {
+    "width": 466,
+    "height": 466,
+    "origin": "top-left",
+    "unit": "pixel",
+    "rect": "x,y,width,height"
+  },
+  "note": "Exact PLB rectangles. Labels, lines, character and ticks are background pixels.",
+  "variants": {
+    "base": {
+      "packageSha256": "39907fc7f284862f9591a63415dd48e7e4b5c7e3956b0670de1055b4279ac676",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0,
+          "backgroundPath": "images/background.png"
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            55,
+            52,
+            110,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 20,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            190,
+            52,
+            90,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 20,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "HOUR",
+          "type": "text",
+          "rect": [
+            105,
+            110,
+            80,
+            58
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 32,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "MIN",
+          "type": "text",
+          "rect": [
+            225,
+            110,
+            80,
+            58
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 32,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            115,
+            50,
+            39
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 18,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "AM_PM",
+          "type": "text",
+          "rect": [
+            337,
+            165,
+            55,
+            25
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 14,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            72,
+            222,
+            126,
+            36
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 21,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            260,
+            222,
+            100,
+            36
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 21,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            72,
+            292,
+            100,
+            36
+          ],
+          "serializationOrder": 9,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            260,
+            292,
+            100,
+            36
+          ],
+          "serializationOrder": 10,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            176,
+            365,
+            120,
+            36
+          ],
+          "serializationOrder": 11,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A",
+          "fontPath": "/system/fonts/defaultFont"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000_phosphor": {
+      "packageSha256": "477f052f3aedc54a31eacc2f4f8c19ec4175ec70bad52252114762de75869228",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000_amber": {
+      "packageSha256": "f5e48935cd7189404e980f4f4103abead26d430a91efd69873a1d363a1566bfd",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000_cyan": {
+      "packageSha256": "813c91da15cbbfdf336ce7fbd40a4bf1fdefaffa37b78842fd8f4021b9c48bdf",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000_white": {
+      "packageSha256": "faf90680a713de06d4851d33af461829cb609eb18cf570ac80745a1cde23785e",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000_red": {
+      "packageSha256": "3339b968c9df39812e5dbe5809491a8247a5ab9a7f20efc266b451e5de2c38d7",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000_violet": {
+      "packageSha256": "c3296a696a2e8dc6cc0bd63e41d9151ef3e113fa8ac10cd6defd591cb1bf8e45",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000walk_phosphor": {
+      "packageSha256": "4dac0ce8155dd275d7c72b8dfde61110e73fcc0e4dd3ec8fbb86260088fbd052",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FF32FF9A"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "animatedImage1",
+          "type": "image",
+          "rect": [
+            184,
+            138,
+            84,
+            171
+          ],
+          "serializationOrder": 14,
+          "frameCount": 4,
+          "valueSource": "main.js current frame path; emqDialTime channel 0 advances one frame"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000walk_amber": {
+      "packageSha256": "b8fef094728400c637829a3f433e7c98b0c815810ffde85dfbe80b99822d97bf",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FFFFB02E"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "animatedImage1",
+          "type": "image",
+          "rect": [
+            184,
+            138,
+            84,
+            171
+          ],
+          "serializationOrder": 14,
+          "frameCount": 4,
+          "valueSource": "main.js current frame path; emqDialTime channel 0 advances one frame"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000walk_cyan": {
+      "packageSha256": "d99767cea3f752f1a70254fc661505861fa9f8d6ad128b19b59cfed3631c0288",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FF46E8FF"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "animatedImage1",
+          "type": "image",
+          "rect": [
+            184,
+            138,
+            84,
+            171
+          ],
+          "serializationOrder": 14,
+          "frameCount": 4,
+          "valueSource": "main.js current frame path; emqDialTime channel 0 advances one frame"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000walk_white": {
+      "packageSha256": "e8da713a8a3cdf21375ae9c0be24c662eb730b733e8e2feb057ccdc8822de4a5",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FFF2F5ED"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "animatedImage1",
+          "type": "image",
+          "rect": [
+            184,
+            138,
+            84,
+            171
+          ],
+          "serializationOrder": 14,
+          "frameCount": 4,
+          "valueSource": "main.js current frame path; emqDialTime channel 0 advances one frame"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000walk_red": {
+      "packageSha256": "7f60115334933f1cf699f29bea5109457367f360191a1854b24842fc8c0da544",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FFFF4C47"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "animatedImage1",
+          "type": "image",
+          "rect": [
+            184,
+            138,
+            84,
+            171
+          ],
+          "serializationOrder": 14,
+          "frameCount": 4,
+          "valueSource": "main.js current frame path; emqDialTime channel 0 advances one frame"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    },
+    "dial3000walk_violet": {
+      "packageSha256": "aefa75b55e1b43de3f9d2d7593f5613e6e327606dd07e13d650f73829ea5d789",
+      "rootAndChildren": [
+        {
+          "id": "main",
+          "type": "root",
+          "rect": [
+            0,
+            0,
+            466,
+            466
+          ],
+          "serializationOrder": 0
+        },
+        {
+          "id": "TIME_M_D",
+          "type": "text",
+          "rect": [
+            140,
+            105,
+            118,
+            34
+          ],
+          "serializationOrder": 1,
+          "fontPixels": 16,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "TIME_W",
+          "type": "text",
+          "rect": [
+            269,
+            105,
+            36,
+            34
+          ],
+          "serializationOrder": 2,
+          "fontPixels": 16,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "TIME_S",
+          "type": "text",
+          "rect": [
+            323,
+            334,
+            42,
+            29
+          ],
+          "serializationOrder": 3,
+          "fontPixels": 21,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "STEPS",
+          "type": "text",
+          "rect": [
+            83,
+            270,
+            101,
+            34
+          ],
+          "serializationOrder": 4,
+          "fontPixels": 21,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "KCAL",
+          "type": "text",
+          "rect": [
+            84,
+            166,
+            66,
+            34
+          ],
+          "serializationOrder": 5,
+          "fontPixels": 21,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "HEART",
+          "type": "text",
+          "rect": [
+            84,
+            218,
+            46,
+            32
+          ],
+          "serializationOrder": 6,
+          "fontPixels": 19,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "BATTERY",
+          "type": "text",
+          "rect": [
+            88,
+            335,
+            60,
+            29
+          ],
+          "serializationOrder": 7,
+          "fontPixels": 19,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "DISTAN",
+          "type": "text",
+          "rect": [
+            190,
+            344,
+            59,
+            29
+          ],
+          "serializationOrder": 8,
+          "fontPixels": 19,
+          "argb": "#FFD97BFF"
+        },
+        {
+          "id": "H10",
+          "type": "image",
+          "rect": [
+            299,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 9,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "H01",
+          "type": "image",
+          "rect": [
+            345,
+            156,
+            40,
+            76
+          ],
+          "serializationOrder": 10,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M10",
+          "type": "image",
+          "rect": [
+            299,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 11,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "M01",
+          "type": "image",
+          "rect": [
+            345,
+            253,
+            40,
+            76
+          ],
+          "serializationOrder": 12,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "HUD",
+          "type": "image",
+          "rect": [
+            69,
+            323,
+            84,
+            10
+          ],
+          "serializationOrder": 13,
+          "valueSource": "main.js value path"
+        },
+        {
+          "id": "animatedImage1",
+          "type": "image",
+          "rect": [
+            184,
+            138,
+            84,
+            171
+          ],
+          "serializationOrder": 14,
+          "frameCount": 4,
+          "valueSource": "main.js current frame path; emqDialTime channel 0 advances one frame"
+        }
+      ],
+      "backgroundRaster": {
+        "resourceIndex": 60,
+        "rect": [
+          0,
+          0,
+          466,
+          466
+        ],
+        "semanticParts": "raster pixels; not independent nodes"
+      }
+    }
+  }
+}

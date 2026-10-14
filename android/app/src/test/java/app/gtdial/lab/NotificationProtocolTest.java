@@ -1,0 +1,7 @@
+package app.gtdial.lab;
+import org.junit.Test; import java.nio.charset.StandardCharsets; import java.util.*; import static org.junit.Assert.*;
+public class NotificationProtocolTest {
+ @Test public void encodesOfficialFfiArgumentsWithNulUtf8(){byte[] x=NotificationProtocol.request(new NotificationRequest("org.telegram.messenger","Ж","т",7));String s=new String(x,StandardCharsets.UTF_8);assertTrue(s.contains("telegram\0"));assertTrue(s.contains("TextMsg\0"));assertTrue(s.contains("NoPrompt\0"));assertEquals(4,x[x.length-5]);}
+ @Test public void filtersOwnOngoingSummaryAndDisallowed(){NotificationRequest r=new NotificationRequest("a","t","x",1);Set<String>a=new HashSet<>(Collections.singletonList("a"));assertTrue(NotificationForwardingPolicy.accepts(true,a,"me",false,false,r));assertFalse(NotificationForwardingPolicy.accepts(true,a,"a",false,false,r));assertFalse(NotificationForwardingPolicy.accepts(true,a,"me",true,false,r));assertFalse(NotificationForwardingPolicy.accepts(true,a,"me",false,true,r));}
+ @Test public void ffiFunctionNameMatchesExistingWatchEncoding(){byte[] x=NotificationProtocol.request(new NotificationRequest("org.telegram.messenger","A","B",7));byte[] name="svc_notification_push".getBytes(StandardCharsets.UTF_8);assertEquals(0x81,x[0]&255);assertEquals(name.length,x[1]&255);for(int i=0;i<name.length;i++)assertEquals(name[i],x[i+3]);assertEquals(0x81,x[name.length+3]&255);}
+}

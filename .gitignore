@@ -1,0 +1,14 @@
+**/.gradle/
+**/build/
+**/__pycache__/
+**/local.properties
+**/signing.properties
+*.jks
+*.keystore
+*.p12
+*.pem
+*.db
+*.db-*
+*.log
+diagnostics*/
+.env*

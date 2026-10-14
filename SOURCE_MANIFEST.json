@@ -1,0 +1,3382 @@
+[
+  {
+    "path": ".gitignore",
+    "size": 161,
+    "sha256": "c16b69a413c1624727fc63e0a5342673f9bad3228a54cb00e0ded578dd9b9d5a"
+  },
+  {
+    "path": "android/.gitignore",
+    "size": 49,
+    "sha256": "97ab2f0d30478a4c78a8b28d7f9a702156fc9b6a2d0ade0d5bf57960e6239a09"
+  },
+  {
+    "path": "android/app/build.gradle.kts",
+    "size": 2356,
+    "sha256": "d7f064bb018b4281d74400aa762025f3f0efa04cf248542774a0578f649afb8a"
+  },
+  {
+    "path": "android/app/src/main/AndroidManifest.xml",
+    "size": 3236,
+    "sha256": "e22659b8526d55a146361a807f0857304528a14ea4698f43fb2da29d881cd224"
+  },
+  {
+    "path": "android/app/src/main/assets/dial_editor/backgrounds/eclipse-v1.png",
+    "size": 1552711,
+    "sha256": "5fd108accd4f553c161f8e1e1d6f75851663e2806c2b18c36527b81523f14d73"
+  },
+  {
+    "path": "android/app/src/main/assets/dial_editor/gt01-text11-v1/app.js",
+    "size": 142,
+    "sha256": "ab29e2c90444c809014bdc8de95a2465f5dc254b84f0070507d3692138207f3c"
+  },
+  {
+    "path": "android/app/src/main/assets/dial_editor/gt01-text11-v1/main.js",
+    "size": 7514,
+    "sha256": "93129836ba3a2b6e700e7096c680a46d50a9120d739f3c8f7c06ae9267621afb"
+  },
+  {
+    "path": "android/app/src/main/assets/dial_editor/gt01-text11-v1/profile.json",
+    "size": 2805,
+    "sha256": "c81bfcf5749b0e0e5b1428b8c5ff55791a20d50c6eb132610929d14e0deccee6"
+  },
+  {
+    "path": "android/app/src/main/assets/dial_editor/gt01-text11-v1/template.dial",
+    "size": 485421,
+    "sha256": "71c6c18f914f8b0caee64faf9f3cad26faddd059a2308846e3431a6265713326"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/base3000/phosphor/face.dial",
+    "size": 485349,
+    "sha256": "39907fc7f284862f9591a63415dd48e7e4b5c7e3956b0670de1055b4279ac676"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/base3000/preview.png",
+    "size": 6134,
+    "sha256": "3b3741c8e20a3afd41ce152d46dad1b3d9ee23807f4c31da36949e4546df091d"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/base3000/render-spec.json",
+    "size": 530,
+    "sha256": "5c3e2fd809afb3361e48114a78fa4eb42c9557ab4a8b66994488237257b44dc4"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/amber/face.dial",
+    "size": 475867,
+    "sha256": "3c2669147ae51b909b5f611494e4a6eb2b523c4e3996405c03d899e058bc14f9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/copper/face.dial",
+    "size": 475867,
+    "sha256": "2880c2516522212afd1bd5442f1de960959a19817a5e5fcc92ce0c7415f960f3"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/gold/face.dial",
+    "size": 475867,
+    "sha256": "5d2f79a262c17b03454b645badb4f4f07f6f2cfe2b19a9131706e8e35239e151"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/green/face.dial",
+    "size": 475867,
+    "sha256": "ff154a9eeced2e79ed4b44819802d6d2b4adc50715a3c7d05ec672d56f93bc1f"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/ice/face.dial",
+    "size": 475867,
+    "sha256": "7418f1e999dc55626af3b281d6dc0adb0638219be9d264c98651eb7834ad94f9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/preview-single-battery.png",
+    "size": 33779,
+    "sha256": "79f3976a7a5d7db3dc197c019b366a7a778048522c122c8e3bf6e51446d3e95b"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/preview.png",
+    "size": 33779,
+    "sha256": "79f3976a7a5d7db3dc197c019b366a7a778048522c122c8e3bf6e51446d3e95b"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/redorange/face.dial",
+    "size": 475867,
+    "sha256": "1fc1e527385b5576f1f4bfb200b7c5bcc4b7f06c99ee20b76b7aae9bf0deec3e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/bitax/render-spec.json",
+    "size": 493,
+    "sha256": "1b17bfa9bd5708ddbf2d728cd7fbdb0d04f24aace2dadbef830aa9e4a205c3f0"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/catalog.json",
+    "size": 31863,
+    "sha256": "bdc1c6bac11f118b33fdfd71029afa910744cbe22a4b84ce1de42824e34e73ff"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/amber/face.dial",
+    "size": 491933,
+    "sha256": "f5e48935cd7189404e980f4f4103abead26d430a91efd69873a1d363a1566bfd"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/amber/preview.png",
+    "size": 28286,
+    "sha256": "781735350e35f63e9b77d638518bbf40127bab2e680d4a02cda9606989677469"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/cyan/face.dial",
+    "size": 491931,
+    "sha256": "813c91da15cbbfdf336ce7fbd40a4bf1fdefaffa37b78842fd8f4021b9c48bdf"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/cyan/preview.png",
+    "size": 28411,
+    "sha256": "0f26e0d163b02f38389643bc2beeda40f547bf1c37482d272d33b4bab3696102"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/phosphor/face.dial",
+    "size": 491835,
+    "sha256": "477f052f3aedc54a31eacc2f4f8c19ec4175ec70bad52252114762de75869228"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/phosphor/preview.png",
+    "size": 27002,
+    "sha256": "ea9741dd7f7d78b6eac95f23ffdff9574ddee42fff55c4743b20ed90606eeae5"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/preview.png",
+    "size": 151155,
+    "sha256": "d3da9d597e06cc913b9991a4103bcf9b27fa46a1f7465337b0ec26bc11d220df"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/red/face.dial",
+    "size": 491853,
+    "sha256": "3339b968c9df39812e5dbe5809491a8247a5ab9a7f20efc266b451e5de2c38d7"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/red/preview.png",
+    "size": 27355,
+    "sha256": "afa83ca2a2c08dab8856badea00d4f785dce58408d4f9d6372578f881fdb6ef6"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/render-spec.json",
+    "size": 530,
+    "sha256": "3c7f28035e8347677220f4989b106f7c264d66a53824df2e9e35199908552a34"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/violet/face.dial",
+    "size": 491927,
+    "sha256": "c3296a696a2e8dc6cc0bd63e41d9151ef3e113fa8ac10cd6defd591cb1bf8e45"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/violet/preview.png",
+    "size": 28327,
+    "sha256": "a2212297a86e67e43f0e75357e3cd6d718b7905f72071fd3d6ce6817ba8e2a3d"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/white/face.dial",
+    "size": 491993,
+    "sha256": "faf90680a713de06d4851d33af461829cb609eb18cf570ac80745a1cde23785e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000/white/preview.png",
+    "size": 25028,
+    "sha256": "21e4bd0c02a9190184175169f37e025736618616f1596e03ead1048d66cda363"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/amber/face.dial",
+    "size": 547741,
+    "sha256": "b8fef094728400c637829a3f433e7c98b0c815810ffde85dfbe80b99822d97bf"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/amber/preview.png",
+    "size": 40567,
+    "sha256": "0922577e53bb6afe08d0c58b05e56590cbaf53439047d5a73fd61f1590b3f2dd"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/cyan/face.dial",
+    "size": 547739,
+    "sha256": "d99767cea3f752f1a70254fc661505861fa9f8d6ad128b19b59cfed3631c0288"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/cyan/preview.png",
+    "size": 40829,
+    "sha256": "cb99225a8195751442e6c247b669101c90322697ba8e231d92977d5192e8363e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/phosphor/face.dial",
+    "size": 547611,
+    "sha256": "4dac0ce8155dd275d7c72b8dfde61110e73fcc0e4dd3ec8fbb86260088fbd052"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/phosphor/preview.png",
+    "size": 39457,
+    "sha256": "7917465c7984b55e692d5f6e91c95d157c188d5c3c17474a40a62af2b5af1602"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/red/face.dial",
+    "size": 547629,
+    "sha256": "7f60115334933f1cf699f29bea5109457367f360191a1854b24842fc8c0da544"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/red/preview.png",
+    "size": 39078,
+    "sha256": "918f2badcc85f23a7316f8aeb20e17240dd0b122930ca12354a51f2616f276d5"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/render-spec.json",
+    "size": 1090,
+    "sha256": "91791221c968a27ac69029f975abf89baa0d353022715800df1eb32ea033655e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/violet/face.dial",
+    "size": 547735,
+    "sha256": "aefa75b55e1b43de3f9d2d7593f5613e6e327606dd07e13d650f73829ea5d789"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/violet/preview.png",
+    "size": 41481,
+    "sha256": "0b1fa8d5d8f9b90cd87ec0bd36b5d57920469f4dc857284f0933648298b90fc9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/white/face.dial",
+    "size": 547865,
+    "sha256": "e8da713a8a3cdf21375ae9c0be24c662eb730b733e8e2feb057ccdc8822de4a5"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/dial3000walk/white/preview.png",
+    "size": 37971,
+    "sha256": "921b1df21903ec63f49f08d50d529ad786967440385fac0f7c481e4f092e5726"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/offline-package-registry.json",
+    "size": 29236,
+    "sha256": "19ed85dad6c61446edd617c46811bb3b2599da8bfe6a3faba7984e77c3b26a0a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/amber/face.dial",
+    "size": 548577,
+    "sha256": "0272b0259ae0249a201ea9013305b8ed2ffd2c0b1831bacef0ed3c011b5659fc"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/amber/preview.png",
+    "size": 33948,
+    "sha256": "4da16e49d12f6d8b31992fab116d653d5f41cf381f7cf012e1dc5ac7f38f4668"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/cyan/face.dial",
+    "size": 548575,
+    "sha256": "29ca7c9fdd5cbad69e259d9c9f94bd398caf552c81623372451127097b651b4a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/cyan/preview.png",
+    "size": 33845,
+    "sha256": "ff25f99413ef4bee78c19407dc8c16bad1295fa751ad58e05805d71cbbde42ad"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/phosphor/face.dial",
+    "size": 548447,
+    "sha256": "60f94a41de6ec7afb39738623b7949a09a1be75721b4019399989eec1be1835a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/phosphor/preview.png",
+    "size": 32888,
+    "sha256": "ea69c4501b55cb92864241ae2c743de7681d0457a3b66389b9a4dc9ebcd8cadb"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/red/face.dial",
+    "size": 548465,
+    "sha256": "2768f5b1eee288e054fcfe4252ac08e40b63202bc1f035259dec67b88b4f10de"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/red/preview.png",
+    "size": 32874,
+    "sha256": "89e4b7cc284999ab4f0a178472946ea1f50797498fe56584ce21cd5e62034da9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/render-spec.json",
+    "size": 1085,
+    "sha256": "191daedaea731e0957f0228e478410b1896fb98c4cac7689868e50f338ed514a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/violet/face.dial",
+    "size": 548571,
+    "sha256": "ee6e79622e789c2b6911338058a856cb9e120af21899db55762b20ced845c3fa"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/violet/preview.png",
+    "size": 34423,
+    "sha256": "e39f8bfc1ab608890cdf107735ee925c6ddab72472dd97c9246106a02cdb3784"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/white/face.dial",
+    "size": 548701,
+    "sha256": "8dbba5afc6364e09fe07da8ad689e95553eebabe989f1bd8f6f0a06b4f0a8ce7"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipauto/white/preview.png",
+    "size": 31843,
+    "sha256": "f81680cd0acbccda01605bff885ed7473c3bbd06641f5c6d642802dc6fe3475c"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/amber/face.dial",
+    "size": 605254,
+    "sha256": "dfe63d49334d75453c05da1abf701116fb57880a93ce4b597c094530d116f13e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/amber/preview.png",
+    "size": 37737,
+    "sha256": "ecadd696d90f0b4c8b12a02d37a151fc9e7e51f8e4fa6d5a8da47f5e16a41ac5"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/cyan/face.dial",
+    "size": 605252,
+    "sha256": "ae9b46daf49fd61656222c92d9201a1969d65cb16a9bb0893ad0fc0489883514"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/cyan/preview.png",
+    "size": 38027,
+    "sha256": "066aca539c131fcb1a997cb8eb6522e4aba9ac1a47ab8635b50134a95d38b3dd"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/phosphor/face.dial",
+    "size": 605092,
+    "sha256": "d40885bf42683905993da13917f4fc1c6e738e955eef21eb22833f8a6c7da8ce"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/phosphor/preview.png",
+    "size": 36758,
+    "sha256": "7da4c170e9cc5f7448de0dafdf42b5689a167c9124df6422b1d09a36fdb8b60e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/red/face.dial",
+    "size": 605110,
+    "sha256": "9f520a4efd024ec82c840cc4bec598a2e8cd221fbd6f7cec061bf123e1c022c5"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/red/preview.png",
+    "size": 36873,
+    "sha256": "9c860949b2b30aa5eaa8fc20b7ebbabcb7943a8866f09c8759e53f1867956fb7"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/render-spec.json",
+    "size": 1087,
+    "sha256": "ed9e82b3d6d71dd64171870cc892815795b49688c6d80759f15ee3ce90c087a5"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/violet/face.dial",
+    "size": 605248,
+    "sha256": "f1e4b89e97645c6f0ea2149cfdac7731b70f8f542126619594a8ec5d12269e91"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/violet/preview.png",
+    "size": 38643,
+    "sha256": "89656e1c205aef7dc6a22603335b791876a04f74a5b1b0d1ff7534c71bcd081e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/white/face.dial",
+    "size": 605442,
+    "sha256": "e73849d32329c9bd17e8f35162e992bab7ae1a406195a1c270d328214cfb75c3"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipbottle/white/preview.png",
+    "size": 35597,
+    "sha256": "5eb389f426db2e85b8d3c4c666748b15ae23a4cfff59c4744cced8e555ed9188"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy-qc176-offline-v1/face.dial",
+    "size": 552685,
+    "sha256": "38bae5973c5b99ec3299b60a4c5fa63e9ef2f7c2feb5b94e4b5073c5de1931de"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy-qc176-offline-v1/preview.png",
+    "size": 168018,
+    "sha256": "9bb9abddc063cb6cc531a0f4292c6aa3ab5094c018132ff25a75192ca1089338"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy01/face.dial",
+    "size": 536153,
+    "sha256": "928f548c744539c751f20c2d11771f21c052923beab258056d3f6ff21f219e3e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy01/preview.png",
+    "size": 168018,
+    "sha256": "9bb9abddc063cb6cc531a0f4292c6aa3ab5094c018132ff25a75192ca1089338"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy01/render-spec.json",
+    "size": 227,
+    "sha256": "0f86f551e640ac3421043ee65b14a0740b44d65bb5cb2224e8a5518f2426a9e0"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy3000/amber/face.dial",
+    "size": 614053,
+    "sha256": "f6e5fa2bb116df8d6f69873068307d3547b25352eb915f0fefff54da4de1b08d"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy3000/cyan/face.dial",
+    "size": 614053,
+    "sha256": "641f42210d95cc8e271f7077c537ea68be202538d6122c8f081a33490b17df63"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy3000/phosphor/face.dial",
+    "size": 335897,
+    "sha256": "2154c496a8fb7176d25847418a332d8e67cdd493013753e4d009dd64558544d9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy3000/preview.png",
+    "size": 22039,
+    "sha256": "42a3c41e72c327ce18c4e88859a9298cf7ac1eea4689d9125c129b72b51e0634"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy3000/red/face.dial",
+    "size": 614045,
+    "sha256": "ae24e6eb4a5fc7687f32d9ef872d1262e4788614cdc819aa28be3d8a89494203"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy3000/render-spec.json",
+    "size": 717,
+    "sha256": "59f659164827db6bb6e1cadfa39bb47c6cc2f1fc5caf7d53aef1e9c20d990673"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy3000/violet/face.dial",
+    "size": 614053,
+    "sha256": "946ded483f61b33bb43e4a30df6ef355480225a33e7b1f8a086d9977aab88fb2"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipboy3000/white/face.dial",
+    "size": 614073,
+    "sha256": "fc4f0fa2855b6b1dd89f74c875c87a215c53f24014fa80d93d7e01ffb5688348"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/amber/face.dial",
+    "size": 548575,
+    "sha256": "bb197c7146cac3c0b8dff6c823a3569758e44d9a4082984b5aff0d4aa0150fde"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/amber/preview.png",
+    "size": 33824,
+    "sha256": "b289edbae76ee59cbc070373b1c00ea55d346e84a0585b9985d37400a55c866f"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/cyan/face.dial",
+    "size": 548573,
+    "sha256": "a3f4434f07994b44d284665d003550fdf0d09b3b3c2dc516868bc0f758bf5472"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/cyan/preview.png",
+    "size": 33839,
+    "sha256": "be0fe33ccf7f508b9b613024f4975a5c124926d7228155707bdb2bac2cb9145b"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/phosphor/face.dial",
+    "size": 548445,
+    "sha256": "a47fe2bc0c107a88d07e3bcbf81cba0649a88f01c880d5a4b38956bff1db5e5c"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/phosphor/preview.png",
+    "size": 32819,
+    "sha256": "6b767ca61c89780c99174b15f06d7b4ebb1b0dd66bbf6e16f513657aeca76339"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/red/face.dial",
+    "size": 548463,
+    "sha256": "57487e7e9a20936d61e5dc70f11abe83d6d7f9fe299e75f8267b4d09a929d691"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/red/preview.png",
+    "size": 32947,
+    "sha256": "02b7e37c9f5155e32c450d064ab1bd6afa8a73649a848c25b167b9b5817be177"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/render-spec.json",
+    "size": 1084,
+    "sha256": "a949c66768fb10b85e37141dacaf4271439dee0999e041162b94ebb7a734f749"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/violet/face.dial",
+    "size": 548569,
+    "sha256": "1f24579cf538406fb77149257faf21c84b92837890c959a8b6d6792a22d50ab2"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/violet/preview.png",
+    "size": 34412,
+    "sha256": "2d62bdce968bc98e9a2c5221236fae2ec14baef9a0e35e9a297db6e7592fa2d8"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/white/face.dial",
+    "size": 548699,
+    "sha256": "2df36e3f18139d689c1ad5e47afdbe479c04d385b6321f290c97f104a53a1f91"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/piprpg/white/preview.png",
+    "size": 31867,
+    "sha256": "4febe19c012c9df1301f160960d98941c6e218b623d9294bc5e9030f0e893bce"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/amber/face.dial",
+    "size": 548581,
+    "sha256": "3b27bf28a979a8bd804fe593c4ff895339c821ec1f9b144884d7340c743b6ab6"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/amber/preview.png",
+    "size": 39613,
+    "sha256": "3579b9bcef782abd018e7ecc07dc0b9ca433d06d19131797b871c5918df0bf6c"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/cyan/face.dial",
+    "size": 548579,
+    "sha256": "49180ca4e589c2d03254897c60c4c31468160c2f8ee49fdebc247faec0d226d7"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/cyan/preview.png",
+    "size": 39543,
+    "sha256": "7c2656dddd4c2d3703d93bcc44f5538e661b857ac538b25a0e0f67b7bf49b715"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/phosphor/face.dial",
+    "size": 548451,
+    "sha256": "0187c04e6d7009b9a437455884cadeeeffc332873951e04370eb5679e52e6b27"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/phosphor/preview.png",
+    "size": 38563,
+    "sha256": "b46aec0acfdb43c6084b224571997a4c9ee69ab17d37b642f6b0a4898c459c34"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/red/face.dial",
+    "size": 548469,
+    "sha256": "ebb8e2c9e09426e363853c0327bf3856f21ee7a2dd1b0c2f78b29d4dc35fbc28"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/red/preview.png",
+    "size": 38414,
+    "sha256": "d43722ce770b69ea0c6076c81425d92cb6f8d5df46f54679611f1f82c9a52654"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/render-spec.json",
+    "size": 1087,
+    "sha256": "66c57ce12746c98b95ec56d7e2c00f69e466c485a88a235b40a4d9baba282e85"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/violet/face.dial",
+    "size": 548575,
+    "sha256": "ea09a96931994d344e8f1cc30c916edd52ebc6386ec757c2614243b785139e53"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/violet/preview.png",
+    "size": 40328,
+    "sha256": "18e3f0f06ab99315b116cae2b4083b90b16197a6cc0e8504bee329c416daef6f"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/white/face.dial",
+    "size": 548705,
+    "sha256": "870f943002bf0d26af6c73bcf47346a2ba0317d504cc2fcd01b545eebd4a1e79"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipsavant/white/preview.png",
+    "size": 37572,
+    "sha256": "b98489af70d6f9a67890255388a73a646682bf1e169a81c97869df63a9c3fe9e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/amber/face.dial",
+    "size": 548585,
+    "sha256": "2d66d8233df9f83feca8ee23742eb222db2d827ecbaf7b907ad49438ecc6bf71"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/amber/preview.png",
+    "size": 38297,
+    "sha256": "75db307c5d98cc23df030a2d8e4a3ba99b5d723f5ebc827a7c049375b9d9bb7f"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/cyan/face.dial",
+    "size": 548583,
+    "sha256": "84635abd58efbaa916f6a775578ab5f94d3f5cff206d1b07215b7e596a54d1ff"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/cyan/preview.png",
+    "size": 38353,
+    "sha256": "d6e96c2235e7b9acf21f1bc7e8421eb0fb1c30b7378bdfa960d008505e4d1f78"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/phosphor/face.dial",
+    "size": 548455,
+    "sha256": "6d366f8cf9227c9ce814668ee4b12892de3f8a6c9c90b3944d8259858f7eb11a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/phosphor/preview.png",
+    "size": 37234,
+    "sha256": "d08d7cf143f0b16fba7c1fd0ce4fc66fdd9ea22e884930394afed8fdbdc42c8c"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/red/face.dial",
+    "size": 548473,
+    "sha256": "abc58e6d0c6ac98734a914d0f7552e3cf8ef9ff85a9c938225a52ce267296a30"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/red/preview.png",
+    "size": 37158,
+    "sha256": "1f52df3724fa87c2e021d830694659d5394f11ae560d34ede783fee3f4510613"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/render-spec.json",
+    "size": 1089,
+    "sha256": "9b0b7029307d8aae7515e3f85c8ff7169720cba7d162a66fb33b0d6660ed05f9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/violet/face.dial",
+    "size": 548579,
+    "sha256": "cbc1a01a1016aeea4fb7d74a2e45f051dee309a39aae39597282801dec69db7f"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/violet/preview.png",
+    "size": 39193,
+    "sha256": "14c7e02e269fe6c3550c8ece74e6ad256a60f24fb6e1d05ba7e662a684a65e7a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/white/face.dial",
+    "size": 548709,
+    "sha256": "4089419aa92672dc4642a1f7c4f28f3e32e70c999f9f83502594ef337fac7eff"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipstranger/white/preview.png",
+    "size": 36495,
+    "sha256": "1890d991e4c249d9ac4a4cd1f7b2ee3a79adb6187c3a12d124cffbd32a384d27"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/amber/face.dial",
+    "size": 548579,
+    "sha256": "697240e3b29f5ff3f78a0a929428b5b5bf66a8b55ef4e26e7c38ba251a02d556"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/amber/preview.png",
+    "size": 37851,
+    "sha256": "2d64b68b7f6f104693ff24ace60a72d83082915514149944db583e1b9d241fcf"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/cyan/face.dial",
+    "size": 548577,
+    "sha256": "5ee6199286e8d8ddbc12a899501138e6df491d3c17c5d274c0019149d6fd3204"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/cyan/preview.png",
+    "size": 37800,
+    "sha256": "458ea2234428ec4869c3bbfa76e51089e5a217bda7e9eaec75e866b18dfed3d5"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/phosphor/face.dial",
+    "size": 548449,
+    "sha256": "194f24296c9fedc8c7856c258d7a83ef632439af2cfadd14793284deabc6887d"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/phosphor/preview.png",
+    "size": 36862,
+    "sha256": "8fe0147880bbb592d529e56f194dc213b6bffde54e241ec50e977110cd045eef"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/red/face.dial",
+    "size": 548467,
+    "sha256": "0b924c9d23704c4855af487d26242e71c5845ff8eca273843264c05a7584fa01"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/red/preview.png",
+    "size": 36748,
+    "sha256": "b43009113911b2ad38e13cc39e0c0b12fce73f3c7e7311103a402e696d7e6d5f"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/render-spec.json",
+    "size": 1086,
+    "sha256": "2a338403dbd017d9e6879623598ea5df4232f50ba32c5809a76229348ec9f3bd"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/violet/face.dial",
+    "size": 548573,
+    "sha256": "c495baddf2b1af83fffda08d7cd501949446fb354bd7a276a81d8ecc9c1d47a9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/violet/preview.png",
+    "size": 38555,
+    "sha256": "4fcfe7dbedad18ddcdb9c744e63bb311efa95e759c17ef47d2478d0c94a74513"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/white/face.dial",
+    "size": 548703,
+    "sha256": "ec5022131b41d159715160f951b5fcee046642a3b3ae1468d8a67950993b306a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipthumb/white/preview.png",
+    "size": 35759,
+    "sha256": "1f7d845cafae9dbf89a8954160b124e3b2707743ccf4051b3c6dd5a2a2e79d3c"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/amber/face.dial",
+    "size": 548577,
+    "sha256": "dc9bed2ff8076bfa4ef8a2c05fdbba717fd03ee98051c36f18a51f4bc1233a44"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/amber/preview.png",
+    "size": 37921,
+    "sha256": "3856ec2cdced26cdb6a0df130ff83f37acc4cada7386445257dbc1a008417322"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/cyan/face.dial",
+    "size": 548575,
+    "sha256": "0341817554f8080cf3a466e81aeefeb160d633599a1fdadc01196f05b52bb2f2"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/cyan/preview.png",
+    "size": 37922,
+    "sha256": "db9e5b79ffa7566c4053a642ac2283ffdec18a8afee5a8503a27120d196a93e0"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/phosphor/face.dial",
+    "size": 548447,
+    "sha256": "b377bd80b2cbbd509c4737d53cf04e7b16086b1b03cbb4ae11de4859cbd3331e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/phosphor/preview.png",
+    "size": 36939,
+    "sha256": "86cb2837f9b08caf08017aadc2c09675b69e13d0d6682179934607a6bd6e46ac"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/red/face.dial",
+    "size": 548465,
+    "sha256": "29900e32a933b69a6ea89e4302c785ccbae696abc18ded9bbb14e04438740e67"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/red/preview.png",
+    "size": 36859,
+    "sha256": "ddbe6f72955b500f7369a174c9c6501b9f3760b8d6b89aa8aaa8fe72baef1b32"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/render-spec.json",
+    "size": 1085,
+    "sha256": "0a9cfb38e9fea94fb0696e81fff1a5d889033bf91af4d2f3f9d118377cd5f483"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/violet/face.dial",
+    "size": 548571,
+    "sha256": "b0a72521f8e620d058b4eb4c03ed1c120227311ddf097f1a173443f333ba597a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/violet/preview.png",
+    "size": 38486,
+    "sha256": "4d8c3109557e25f215861ec0884a9f71f2d69d068cfee01514440fe77f09c3fe"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/white/face.dial",
+    "size": 548701,
+    "sha256": "5bf4554ff28fb4a1a80898c396dc6bc0702c190fab49d291354ed766b9579a3e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pipwalk/white/preview.png",
+    "size": 35854,
+    "sha256": "760e9e367b7a4eb9aca2834cf4665b1d84e055067ee4151cc6b387e89e3fdaf1"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/amber/face.dial",
+    "size": 465663,
+    "sha256": "8c08ba2f1afd0c8292a0826184675d0f99718f56db6a2cd47f3793aed3fbc55a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/ice/face.dial",
+    "size": 465667,
+    "sha256": "f1f7fa0dbf6c8171ff6212ba4ebd0ae217f0fcf93bf4e29e6d30d2203a53be0b"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/preview-single-battery.png",
+    "size": 68569,
+    "sha256": "e01cb5aa42efc9c793fad9bba62f7786681f158b77a8d6d4fd090859c0d03ded"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/preview.png",
+    "size": 190911,
+    "sha256": "17831efb78e739fb7e05ece5ccfcfc25a7b72e5740e68f3ad003327732840208"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/red/face.dial",
+    "size": 465655,
+    "sha256": "dddc201051a92ca8cd6fab57327edd83cb644e8d1a47b3bc2e7a7eb19fa5e14f"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/render-spec.json",
+    "size": 491,
+    "sha256": "86229790d13715b4d7a5f809a5791ae70b5f7de6b22b7d6b61d4e5134f491667"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/vfd/face.dial",
+    "size": 465663,
+    "sha256": "f0870946b5d7b5eed037d2b67a4b8bc9721d70b05d65a582a5dc4dcba6131ddb"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/violet/face.dial",
+    "size": 465667,
+    "sha256": "b2b9527a425b7b104bf029538ae70687f3055b24b44a6616adb6ab760b1ebc7a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/pixbot/white/face.dial",
+    "size": 465655,
+    "sha256": "1b0afd5f2b17cd5fdd829acb8056847402b860b4d89da0d4a1bc5eef68fa90ac"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/amber.dial",
+    "size": 807091,
+    "sha256": "9eafc80385262a8bfbf49ae6aa68c9f3a8f550791a096ccb4b8536c0756d52b3"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/cyan.dial",
+    "size": 807091,
+    "sha256": "e86b6f75a61aaac187cfa4349034acc6169fe108ad4a082c1c3e734b5b999c56"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/phosphor.dial",
+    "size": 807083,
+    "sha256": "6d519314696b31d2714886ec5ee8271f9ebf82c131d0670112e3f71514f0d58d"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/red.dial",
+    "size": 807083,
+    "sha256": "57d1f13a952424679897752df0cf21a1dce57f6b1b683ebe138d3ae0b58625c3"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/violet.dial",
+    "size": 807091,
+    "sha256": "d995e7534a6ac5dd32e6e0bb1cb3270da87b90aff6d440824c1c424bcb61fec1"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/white.dial",
+    "size": 807107,
+    "sha256": "00bd83d81b40983e0cd5d52622213813b2cbd7b0c7869e14c701811442d02a52"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v10/dial3000walk/amber.dial",
+    "size": 547676,
+    "sha256": "be46f8fb6036b3b8af97b9b193f3fa7a00ac651e5ffcb6260144d7dec27064d9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v10/dial3000walk/cyan.dial",
+    "size": 547674,
+    "sha256": "fa8db763ac1a4ab4184ccc38a0a9417081afc972f6ea139e04cdf95cb4dc8f30"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v10/dial3000walk/phosphor.dial",
+    "size": 547546,
+    "sha256": "2085d89ddff09ed00216061d169273edc1e52af353a926ee34596e85df4e8d27"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v10/dial3000walk/red.dial",
+    "size": 547564,
+    "sha256": "44e583ec753c8ccefa13c40ebf9ead25510877485bfef8b4663fee8f58e65e3c"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v10/dial3000walk/violet-preview.png",
+    "size": 40959,
+    "sha256": "98eee5e3e64052368ef2c1d9cedb73f2bd43e5bc48300f47f21ad5883ec41d97"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v10/dial3000walk/violet.dial",
+    "size": 547670,
+    "sha256": "ae57c97378485a158015486832c94cd287dd1bca3663a38f2c91ac84f0497655"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v10/dial3000walk/white.dial",
+    "size": 547800,
+    "sha256": "ff0d9942100b0c68b28121a4cc683e045071aef848c4b11a1ee8188039aafed8"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v11/bitax/amber.dial",
+    "size": 475847,
+    "sha256": "5aea65c92bbcaa56f78d49771a04a10d3433afb4da674ceb82520c3b342e2dfb"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v11/bitax/copper.dial",
+    "size": 475851,
+    "sha256": "3ad5290b6c4e7a3fff59d81058d200a5b18512211580214f1a5c002504bac5c8"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v11/bitax/gold.dial",
+    "size": 475863,
+    "sha256": "2f075c7bc3912097b83692871181d6e913b981fd23c000dbdcdde549c5839e3b"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v11/bitax/green.dial",
+    "size": 475851,
+    "sha256": "1a14dac44a1f3ebe3bc2355520d985972b44968ac5ee76cedd2e4432198b4e0e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v11/bitax/ice.dial",
+    "size": 475859,
+    "sha256": "c709ff9ccc24c4a16a40c330f1631a4391840112bc0128ce87e128a07ec33ded"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v11/bitax/redorange.dial",
+    "size": 475843,
+    "sha256": "05489457ae41f375a5e3f01e7334c8880e6b9ced75f686447213df083dd56bc3"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v4/pipboy3000/amber.dial",
+    "size": 807091,
+    "sha256": "d7eb741f831ade380cc5c94cb3591d9af525c932695ce793c5e163ad99ae74f7"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v4/pipboy3000/cyan.dial",
+    "size": 807091,
+    "sha256": "1299c74ccded0f0efc93813345969ab8ee19245f426fd80670bc7a47e563a506"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v4/pipboy3000/phosphor.dial",
+    "size": 807083,
+    "sha256": "f83977fb3048f99f478ba5e86aca7c7c20639f5ab2b31536fc6788cca8f21db4"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v4/pipboy3000/red.dial",
+    "size": 807083,
+    "sha256": "819fa49a521897132b2e363def61429b2aec9c5521ac40669356f49fa7b4765e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v4/pipboy3000/violet.dial",
+    "size": 807091,
+    "sha256": "4dc1f1fea9b469bac8626fe6e86f20755dd91effb4a99074f5d4328ff993188e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v4/pipboy3000/white.dial",
+    "size": 807107,
+    "sha256": "8b5ef0064423e32e3ed073b58d08ad0562f046d8dc6d4194469dbe25046c6b8b"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/bitax/amber.dial",
+    "size": 475847,
+    "sha256": "b98a2dfd83ef479250a71f9ba833c9d0e1eed8d8643723c55a00861db7bbbbd6"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/bitax/copper.dial",
+    "size": 475851,
+    "sha256": "8caac6f4b65e6133f0b0c963c6d1e49bd872eb122643e489470eb3ee4a0fe914"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/bitax/gold.dial",
+    "size": 475863,
+    "sha256": "cabcb97086581e7e13225d105bc2721b865592528de7ab576aad9ff834917d62"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/bitax/green.dial",
+    "size": 475851,
+    "sha256": "42793d9ce94ba042e29d8873ece7a6418b512cff7d4204ac85e05cfcff56b9ed"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/bitax/ice.dial",
+    "size": 475859,
+    "sha256": "8fdb52a0ba4619fa0da0308ffe6d7680b35125ad1d8fcf9cd31633b6123de11a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/bitax/redorange.dial",
+    "size": 475843,
+    "sha256": "0bb796caab214a5fb376e4b745d0a5db1589156ab15881f7660baa9e3ef33c73"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pipboy3000/amber.dial",
+    "size": 807091,
+    "sha256": "6000ea5fcce688b68a4a38eb3fce8742be5a6dadaf1113f51f6f849b12eac13a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pipboy3000/cyan.dial",
+    "size": 807091,
+    "sha256": "b440d970a94ca5133f29fe058a3d2d370292523e9157cf5185abf7ff6a03f9fc"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pipboy3000/phosphor.dial",
+    "size": 807083,
+    "sha256": "d63c3adf5f075a06b55cd4eea2b190d323b49c7586a7e5f09f184c40c477fa8a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pipboy3000/red.dial",
+    "size": 807083,
+    "sha256": "1d6005ce49c6cd404445e69e658a4bbe4973cbf933e8289ff02a791256b499ba"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pipboy3000/violet.dial",
+    "size": 807091,
+    "sha256": "f054ffc4e7e7995733a28351483d8786c69b2ce52a0bce680ace5cf3d48d00f4"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pipboy3000/white.dial",
+    "size": 807107,
+    "sha256": "ab9e96f554077d73a787d6b840f1f3a227261f9899512f67b40d7f17abe2bf47"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pixbot/amber.dial",
+    "size": 465663,
+    "sha256": "4813c60ea84db48b5744464073964c0400b98791ee912184e85fc03a6f63aa43"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pixbot/ice.dial",
+    "size": 465667,
+    "sha256": "14c0030532c7e791832880a1ec4fab4f472aabee8a4beaa2feeb0edc2979908a"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pixbot/red.dial",
+    "size": 465655,
+    "sha256": "d1cdbc97daca371fa034c5eaa7f18c40374311047e40b5aafb25c681df64b7d3"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pixbot/vfd.dial",
+    "size": 465663,
+    "sha256": "9313483c20ef0120983586ef5df8b0210a30a25059e483f7b6bb742e303d67cd"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pixbot/violet.dial",
+    "size": 465667,
+    "sha256": "ab979538ae382a81e4e21525480385fe26f599f29002490b8496e2948459163b"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v5/pixbot/white.dial",
+    "size": 465655,
+    "sha256": "e40f2c4fa5098aff7434f80852db271d2abf90b36b233289e0ff7138a63cc97c"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v6/pipboy3000/phosphor.dial",
+    "size": 614045,
+    "sha256": "92e1c761eab9275d818a903064a59fbf815e8875a7cad3af6fcd05e789545e67"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v7/dial3000/phosphor.dial",
+    "size": 485421,
+    "sha256": "71c6c18f914f8b0caee64faf9f3cad26faddd059a2308846e3431a6265713326"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v8/dial3000/amber.dial",
+    "size": 491933,
+    "sha256": "b39468e6fa94cabf95db928b8812e8ecd16bcf8433a57196d21be5ca99211324"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v8/dial3000/cyan.dial",
+    "size": 491931,
+    "sha256": "f6beb38286f2c8356d9a7d9d17d8a4426252c94477922429e8506d935be389d9"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v8/dial3000/phosphor.dial",
+    "size": 491835,
+    "sha256": "f227f65b1a516bc44e79a68823ca4bcaee4ffa02f4269bfbc2a3bbe01edf0b5c"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v8/dial3000/red.dial",
+    "size": 491853,
+    "sha256": "eb4a0fa658d3e5e0b104932dbacfe6e141b7ac8f1113e039cebe3d56c7d01fcb"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v8/dial3000/violet.dial",
+    "size": 491927,
+    "sha256": "67276a726ce2eb0323a98e653c61c9547898c1d2d4d54a9f300a06f83496ad24"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v8/dial3000/white.dial",
+    "size": 491993,
+    "sha256": "3f07a5ee71c5f187bc4042e64ee333936d11351e7726fdb1567416f7f70f2c42"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v9/dial3000/amber.dial",
+    "size": 491933,
+    "sha256": "f5e48935cd7189404e980f4f4103abead26d430a91efd69873a1d363a1566bfd"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v9/dial3000/cyan.dial",
+    "size": 491931,
+    "sha256": "813c91da15cbbfdf336ce7fbd40a4bf1fdefaffa37b78842fd8f4021b9c48bdf"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v9/dial3000/phosphor.dial",
+    "size": 491835,
+    "sha256": "477f052f3aedc54a31eacc2f4f8c19ec4175ec70bad52252114762de75869228"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v9/dial3000/red.dial",
+    "size": 491853,
+    "sha256": "3339b968c9df39812e5dbe5809491a8247a5ab9a7f20efc266b451e5de2c38d7"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v9/dial3000/violet.dial",
+    "size": 491927,
+    "sha256": "c3296a696a2e8dc6cc0bd63e41d9151ef3e113fa8ac10cd6defd591cb1bf8e45"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous-v9/dial3000/white.dial",
+    "size": 491993,
+    "sha256": "faf90680a713de06d4851d33af461829cb609eb18cf570ac80745a1cde23785e"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/shared-base-coordinate-map.json",
+    "size": 53611,
+    "sha256": "426704a20a68e3973cd02f0f3aa748679a54447756c2090208a4efbae68d8bf7"
+  },
+  {
+    "path": "android/app/src/main/assets/exercise_illustrations/atlas-0.png",
+    "size": 2076856,
+    "sha256": "d2fea6ed1381a7a8b4e12fd97cb521a608099964247def7e202c8e4aca55e85f"
+  },
+  {
+    "path": "android/app/src/main/assets/exercise_illustrations/atlas-1.png",
+    "size": 2070726,
+    "sha256": "a1c429ad2062ffe9cc8c85f7325fa776f321e5856f101a374323aee87b4dacd3"
+  },
+  {
+    "path": "android/app/src/main/assets/exercise_illustrations/atlas-2.png",
+    "size": 2076078,
+    "sha256": "bcbb59d298b9096e0430473ec7f0cec2b90121cf49ffd8e0ed3b9f10cf8877d0"
+  },
+  {
+    "path": "android/app/src/main/assets/exercise_illustrations/atlas-3.png",
+    "size": 1564605,
+    "sha256": "9981c74ed6dfe73cd5e61d6408307ee5da70c4dd21c7673787ce2c765680b1d4"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ActivityHistoryChartView.java",
+    "size": 4449,
+    "sha256": "a475110df1fd971d65915ff27a2a78243af15f52e170723c86f58de0d06fbefd"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ActivityHistoryEntry.java",
+    "size": 724,
+    "sha256": "01cd93d9596b9924236d64c4b714ede87f7e54de5584961ef5530616a10aa537"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ActivityHistoryStore.java",
+    "size": 7595,
+    "sha256": "8f1842f781f0b659fdc056c9692982e764b4db60268717f9dea7ed4f9048f1b9"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ActivityPollController.java",
+    "size": 899,
+    "sha256": "f09749c9bdfab641ed722b87c51d93772e9e63b366d296ddf548a01b1c044a0c"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ActivitySnapshot.java",
+    "size": 1484,
+    "sha256": "67e30dcb3095e6be242b1dba1a6bab1a3ec0ba3bc5b58c00942d52a501b5328e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AlarmEditorUi.java",
+    "size": 8388,
+    "sha256": "6afb1c6bc23ec36e4fff635e056d774278f57a8d8bc9f77e16982203589179ba"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AlarmProtocol.java",
+    "size": 24988,
+    "sha256": "bcf4d01fafc19ae7469080c8649d4e9a1c1a22f5a369fe624f2cdb1530c263ef"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AlarmTransferPlan.java",
+    "size": 9321,
+    "sha256": "ca758e22f3df55b661a4d94089011495372bd51242238496d15d3aa33e861ca8"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AlbumConfiguration.java",
+    "size": 5534,
+    "sha256": "03684f8cf1f70d6eed66cdfafd97ececf453c39518e355b8d043c3b691412b9e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AlbumImageTransfer.java",
+    "size": 6608,
+    "sha256": "03d64ededc12cebaa3fbc146ed757c7e085edc27862fce1d4811509d91719adb"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AlbumStageProtocol.java",
+    "size": 99575,
+    "sha256": "7acdb54d5667f39bf2a7aaaa67f3f4068104fc79156d8ac0c66d89521294ee71"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AnalysisController.java",
+    "size": 4823,
+    "sha256": "44fb1126c843cf62b52a47b3d892f36e34daf4d619f2ccdba599321b9ba1118b"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AnalysisHealthSummary.java",
+    "size": 18304,
+    "sha256": "f69d7874c61e310d888b55e4d00d1c38a47e362c26e7fd9c7b760363bbe04e3f"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AnalysisResponseValidator.java",
+    "size": 9254,
+    "sha256": "b03720ca28cfa7500788faadb226fd2c6d6d1c7a6d376cfc73c1767c3a65ce82"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AnalysisSnapshot.java",
+    "size": 32233,
+    "sha256": "34921c80cea171e2ae68705b9556c710439bd4ea0e7be66fe719e1e7b640532f"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AnalysisStrengthSummary.java",
+    "size": 9934,
+    "sha256": "fe99277c46d1961014ded17ab547c9345f064216f1489198a09091fb809e8707"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AnalysisUiController.java",
+    "size": 50252,
+    "sha256": "f8bf667c66c4249298ee6cebae237da034428f27a436a2bbe1c91abcfa0a8bf7"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AndroidAlarmBridge.java",
+    "size": 3246,
+    "sha256": "1872dbebdc0042bef534ce99e912586ee96bf8c5197c97d1bd9bafd9886d7c59"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/AppPreferences.java",
+    "size": 5111,
+    "sha256": "9baa925947ecccd30f7e13abb706f28bf52aeab27852410f7fadfb4d9c39aafd"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/BleWatchSession.java",
+    "size": 146095,
+    "sha256": "e709ee401f6ff9dfee322f04f68d444b30caaaaf938dcb21b451001bcd936f85"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/BundledDynamicDial.java",
+    "size": 7227,
+    "sha256": "383f20a87d775b8ca5af70fae3d3126e64d3605300d7b832b480028bee7544c5"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/BundledDynamicDialRepository.java",
+    "size": 49721,
+    "sha256": "9ac6a569db55eb5c1aec6f26d8b843a2616364d96347f74b22ff868b5c5079c6"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/CompiledDialArtifactStore.java",
+    "size": 18466,
+    "sha256": "5d4e3b728d4156d3e5c07eabd18b1faa66e29529d0f597c0361165f4da0b9e34"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ConnectionSnapshot.java",
+    "size": 1561,
+    "sha256": "dcbc372286ea3894a09972b721abe1ecb090ae6b44e4ad7caff97fd07505e2e0"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/CurrentDialRefreshController.java",
+    "size": 458,
+    "sha256": "5a6e31b8374c1d5713285382d369e329dc3e08be54405624499a6b0310b8655c"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/CurrentDialSnapshot.java",
+    "size": 1713,
+    "sha256": "2172a92f285ba9fdf5cd88b649fe0b4d1add4119c9f18fb9db1995e041c00fa8"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DeviceFeatureGate.java",
+    "size": 1175,
+    "sha256": "1d3724ed29f08697102662f46140ba2e8636a9c839ee1e6b75c5e84785f9d969"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DiagnosticFiles.java",
+    "size": 2026,
+    "sha256": "031674c1296a856e220b3ee573dd5e0f476a069ea1450d66eae25f9670e091a8"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DiagnosticLog.java",
+    "size": 5488,
+    "sha256": "d3c00579a31cdd1849a754e5ff6b5bf487b3bee2e27c3939018ca70afa35fbbd"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialCanvasTransform.java",
+    "size": 476,
+    "sha256": "30bb9ddfddb5573dfb8cf91d21a0e56666895fcac546bfd55652585c5ac01e48"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialEditorController.java",
+    "size": 36138,
+    "sha256": "95211505b2124052d53fc0ebd44656c8ef16c9cea2f96f33509928c4c19520d5"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialEditorGeometry.java",
+    "size": 2645,
+    "sha256": "dd1e9b1ddb0ac7083847e6afc2887cb9d03953c340834fb1c9ffb39e1b56e2ac"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialEditorView.java",
+    "size": 6244,
+    "sha256": "88fddd30606e795244f5c6ec08ade9561410fadffddf489f8bb6597e90aa4f3e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialImageNormalizer.java",
+    "size": 7905,
+    "sha256": "2b0280460a1d97be214e0b3fb0039d23efd83486deb121fd8a66b79a28c4c6c4"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialInstallJournal.java",
+    "size": 10803,
+    "sha256": "73bd1be3cf79c7fd4769e890462f585915d150acc791fb917b25a6851ceadda8"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialInstallProgress.java",
+    "size": 14848,
+    "sha256": "a683ef9285e7269c37e20707f82d5379a285016f394bce6664ab46992316902c"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialProject.java",
+    "size": 7546,
+    "sha256": "08b43f5e59be271d45b5e16bd028fbb01238fe550ab6a85fab6e5c535dfd9073"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialProjectArchive.java",
+    "size": 15486,
+    "sha256": "7aa75c6c5857aec44c10cca94a30668e71c5526fde7b94312cedd25ed2bbaaad"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialProjectRepository.java",
+    "size": 16065,
+    "sha256": "e1e8d84c8cca24b2b95903aa47e18d9345e7c89170daa7ad5713afa138f5240b"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialRepository.java",
+    "size": 3714,
+    "sha256": "d07512ddfef50deeba9ef79e3893e58d736fc6fa354805914ec9ebdd97063d21"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DialRuntimeProfile.java",
+    "size": 1943,
+    "sha256": "c2edec0fa9c66cacdeef411b5b85f471acae69db088fe321575c53fed0e304ee"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialAuthorization.java",
+    "size": 10274,
+    "sha256": "e7bf5c60083cf2eecce1ac09b010a2da22ec947ae94ff776968252e2f35bf9f9"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialBackupStore.java",
+    "size": 5717,
+    "sha256": "4f413c210af6148ea15dbe1be24b6ae23556ddb0b350646a533340d890214339"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialInstallProtocol.java",
+    "size": 3310,
+    "sha256": "7c90a196080e41ed4d747b16ee0f129179d49b7a10a264b3db20191a078c7f66"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialInstallRequest.java",
+    "size": 896,
+    "sha256": "51fd8f192cfc5b9a72b145dae0bdac1808c84dff84c45cecd980c6693d163f05"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialOwnershipStore.java",
+    "size": 35166,
+    "sha256": "70a22acd214189a8902587e7f741b0bfe9a5dfe0eeb0653f27c1fdd99c2e715e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialPackage.java",
+    "size": 2134,
+    "sha256": "795a26297527adb3382cdc3512cdee978aa1b425baf01b39c74bc7e00aff8838"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ExerciseIllustrationView.java",
+    "size": 5311,
+    "sha256": "22eff6415ec6d7538740c783acfd0cdc17c30922cd904563fd18c4bec4b3c6bc"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ExpansionModels.java",
+    "size": 4239,
+    "sha256": "4636bed87124b0429322a426ecc2a8d0d3b775900b8fa045d28e3a6917a5fc15"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ExpansionStore.java",
+    "size": 52429,
+    "sha256": "62236b935344b3aa145c5ab1c973433a38451fabbe0faf947f34e47e21bcb59a"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ExpansionUiController.java",
+    "size": 97489,
+    "sha256": "605e01503208dea801825a0a5e7b89c0cc22d17c4e4333a5009f7d4834bb2d3e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/FoodSearchController.java",
+    "size": 1580,
+    "sha256": "f947f610b0275a3377f39ef57fd7de641679d1c12b40c0a3b2e5bab039ec4c50"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/Gt01DialCompiler.java",
+    "size": 12764,
+    "sha256": "b81a1dcfcc99bedbb70430bf3072e7946ab4e96b22be75e15da2ea0bae0efb41"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/Gt01DialContainerCodec.java",
+    "size": 8224,
+    "sha256": "8d1801a19a86edd7a090bc3d9d459164ee1e5815abc6846ffcf54e1a9959d38f"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/Gt01DialValidator.java",
+    "size": 4383,
+    "sha256": "239f442245d04e6ab5297126cf7b277956408ef407be9540241a15bcfa626db3"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/Gt01PgfCodec.java",
+    "size": 6622,
+    "sha256": "7bf01c6359b0429ea2923ed25672c25e14c30271e35c40df7b8a3a051212836e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/Gt01PlbCodec.java",
+    "size": 6655,
+    "sha256": "e6f407ab4d58caaa29674448bdc741809ad442d68b77db2a83cd244eb52dde14"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/HealthChartView.java",
+    "size": 13298,
+    "sha256": "9571d7417b8df8164dbf4ec6ded9e7d79605d1ecf602578707a8599519f8bb7c"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/HealthDatasetParser.java",
+    "size": 9457,
+    "sha256": "d638d308bcabb13f9a26d73475cb476959235516792f09b4c8e8529563c2bf7e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/HealthEvidenceImporter.java",
+    "size": 17436,
+    "sha256": "4e0783223e626c331d54b19ef936c6f8e5cfabe5f48b2b5c81d0e6f1af51b29f"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/HealthHistoryParser.java",
+    "size": 3765,
+    "sha256": "0e8c0197fd193292065aeadd590ced2497b98ae9a047795b3abe0ee1b812f0bb"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/HealthHistoryRecord.java",
+    "size": 578,
+    "sha256": "4665b9f37b036f22c1b72e3cd2d837c5e5044d1fd1c694c9135fc59c464ad622"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/InsightEngine.java",
+    "size": 8683,
+    "sha256": "0fbd1556106f3674e15d6547c038be7de2f66b247186e478546ffe4cdf80d636"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/LauncherEnvelopeCodec.java",
+    "size": 5237,
+    "sha256": "d067ae23d74575d66a16dffd3421056728844c44570326c170a0e57e571e43dc"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/LocalDialPreviewIndex.java",
+    "size": 1817,
+    "sha256": "7b808c28a08de509013593c306b91527b87f13096060c30835f7b27d44f61e11"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/MainActivity.java",
+    "size": 200060,
+    "sha256": "d9844839a596ae57c17c5b163bd3b142a847b16113e9a665b71e5a87615e5b50"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/McfProtocolProbe.java",
+    "size": 29724,
+    "sha256": "e5f90ee66be9f0f5a5e90073edb7170c5d19d3357733774cd9e34cdf19c9315f"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/MetNoWeatherProvider.java",
+    "size": 14106,
+    "sha256": "2a1992a4ea858f1f418dc09a47a8ea01446dd690784214b78895fc7a818af257"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NotificationForwardingPolicy.java",
+    "size": 2343,
+    "sha256": "e8a913b12da8652b585eb91a829515c3bf9083d2fbc9b8c3b00b096e8aa633ac"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NotificationForwardingService.java",
+    "size": 1832,
+    "sha256": "6f1e05c683ce4e7307b0acc78f8b7dbe29239f5da1636d2d5aaaa3a45e56de6e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NotificationProtocol.java",
+    "size": 2522,
+    "sha256": "72524dc812c6f7b4d2e1c391c94ff078fb7c77e723f5d85e0a00ed4d16c8fd08"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NotificationRequest.java",
+    "size": 307,
+    "sha256": "1468112cc049c9bdcfe03d23a6127a6e0dd01921c21ce636aa0908287186363f"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NotificationSessionBridge.java",
+    "size": 639,
+    "sha256": "d37a3d364baa25c2db979925209a7cd51bd7bd33d1c9a04491dda5f60ff702d3"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NotificationSessionProtocol.java",
+    "size": 7422,
+    "sha256": "489f66ea27da035abb5b1137b2c9469922f98e840fbcab9c741d6123226133a1"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NutritionArchive.java",
+    "size": 2806,
+    "sha256": "3bc7d72585046375533a341ac8fc66dc00ce6f5937944f48bae5ea4185d32c69"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NutritionDiary.java",
+    "size": 3553,
+    "sha256": "9cb4bf840b6a21a54a29e811b322f6356c28b328fff2ff44fc28739febaa68d1"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NutritionImagePreparer.java",
+    "size": 5254,
+    "sha256": "1c2ac7ccff1a857dcc65b1caa43811aaa5ae61fbf93676cc7edf0edf2e6fb0dc"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NutritionModels.java",
+    "size": 12348,
+    "sha256": "cb0f1ecea0a94e8a172e2929faac51acbd77308d9a8cf5f9968bfc59d184c3ef"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NutritionPhotoController.java",
+    "size": 4997,
+    "sha256": "5d0188c31ce32d93a5bae6aee1b328b4bb0de6bb561ee5cd3f38fa0b51b8bc51"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NutritionSummary.java",
+    "size": 1664,
+    "sha256": "ec14867fd13e77d9d4f8ed6018df6c9706e2dad136250e2f4101cd5e64102fbf"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/NutritionUiController.java",
+    "size": 49324,
+    "sha256": "18409616f9940eb9d6c2bfa2f3abf6234978794cd801657047b3d29af5ed4262"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/OpenMeteoCityResolver.java",
+    "size": 2665,
+    "sha256": "3edf1cf46e6cd5a35b1845b8b4efad94c09739d4b9f517452fbc2381a8bb49b1"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/OpenMeteoWeatherProvider.java",
+    "size": 4966,
+    "sha256": "47c768b0ede69d72a59b4ba657514b1259aa19dbcd24fafceb233663088ca57a"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/OpenRouterClient.java",
+    "size": 23539,
+    "sha256": "521e2dfdab32654c0126cc57820cd56d769769e8beffa31d0be0c3d46e0e76b9"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/OpenRouterCredentialStore.java",
+    "size": 4963,
+    "sha256": "6dcabbab73ed428c23b20b5886016a41031ed82ba26506ef36051dd26f36983d"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/OpenRouterModelCatalog.java",
+    "size": 6128,
+    "sha256": "78eaf83b3d9f7560e92ff7dffbe5aaac58429e3160fb8f64e78d68d81e625f59"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/OperationJournal.java",
+    "size": 10964,
+    "sha256": "b65dd0a04a73a8f82e6b9e6f108c63e1dc3d4e39f04e735cc00a0b3b4592853e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/OrdinarySyncController.java",
+    "size": 1420,
+    "sha256": "31c1e74cc7672bd79575c8e368d084fa4db3a58c3eb93a3605e97834eb162029"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/PalettePixelMapper.java",
+    "size": 740,
+    "sha256": "cd3db5476616ecf4dffc2bd961363aa1edf9678dc59485198297d083c6358695"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/PhoneCityLocator.java",
+    "size": 4417,
+    "sha256": "09cb1622b41054186c962b8d56b2d18d6cc3b3e8235574e11b28a2df3eb4bf2a"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/PhoneWeatherController.java",
+    "size": 8570,
+    "sha256": "f708882f79421c0503c32f4b2719c1b8fe42dbef5da2b4e0d99449d741de81d2"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/PhoneWorkoutService.java",
+    "size": 9240,
+    "sha256": "e9d518fbc3c486c839610da38cd86c3fce61a0a86e90ec0cb3e3138dcc1a8e13"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/PngInspector.java",
+    "size": 1831,
+    "sha256": "9deb6be8e6ab6929e7b8e4c048417decd2b7078a60297f9e6270f4311dbf0cf9"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/PngPreviewLoader.java",
+    "size": 1516,
+    "sha256": "471a36e080a3a2b30ba5c81725ea94b52d51a8e1d3d0ecd554670c529b084731"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/ReportExporter.java",
+    "size": 41530,
+    "sha256": "293b5b3c2493db116e8f122b314f66231f1c81f6363aaf66972d6031a0eccf2c"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/SessionRecoveryPolicy.java",
+    "size": 1346,
+    "sha256": "21050e9d5d88f859ad90d7dd66392df340f26a0115e7a2d36485e6a04b808388"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/StrengthCatalog.java",
+    "size": 5715,
+    "sha256": "4c186927a0104e65a9cb93ffda934a0da8079a261da2a11df0c244a78373a9af"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/StrengthDiary.java",
+    "size": 13402,
+    "sha256": "6cd818ab4dfd58e77902d9cad2a8f8729823e29c7f6197b57d7af5a5f3cac01f"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/StrengthProgress.java",
+    "size": 5973,
+    "sha256": "6fea8a0a43adc2dbe3f9184d4419d8affb4d2c3ee70872d19c56f8684f2aeec6"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/StrengthUiController.java",
+    "size": 28098,
+    "sha256": "549cd4c73edf54389b0c77b8f230b12c976c407f54423cd4836ba541e0f78241"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/TsdbReadProtocol.java",
+    "size": 19083,
+    "sha256": "f6e8c84ab84709e33fe5389d2f492eb8c008b9105638b188e141cce6226e4c6a"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/UbjsonCodec.java",
+    "size": 4833,
+    "sha256": "056c10ffdf927bcea9213cac6c67eb7fa098261165db04253aceb031d1112482"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/UiIcons.java",
+    "size": 7256,
+    "sha256": "eafd64f9e83012ad26ff951556a5e97b592ebb1972fe3fcbcd2f97988a1c956a"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/UiKit.java",
+    "size": 19465,
+    "sha256": "fe6b7dc401b0be4bcea67121a75020d520dd2922fb579fbf7759a9c7f4f4c950"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/UiText.java",
+    "size": 54284,
+    "sha256": "d96308cb504d4091f7ca4b4f02404df8861ddc476780846c1a482e956a7100ff"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WatchBackup.java",
+    "size": 3775,
+    "sha256": "7409a099c2f84261161422be2d6ee3604d61ae204d2859923ef02544c3c76fc7"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WatchFacePreviewView.java",
+    "size": 1242,
+    "sha256": "229d85fa5326a5b833629fdd3687512a604a72df93efecc4f9a7dbd36c5a4d0e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WatchSessionService.java",
+    "size": 27224,
+    "sha256": "2f9ca75e125778aa08f3200f1a4f7242fac8b8ea6f6cc189049d782ecd0dbef6"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherCodeMapper.java",
+    "size": 793,
+    "sha256": "9f00fc44c9551068f5036819834a82b99090913ddffd5c5002f803609fa467e1"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherCredentialStore.java",
+    "size": 4900,
+    "sha256": "442d55dc2e0e770ac7802f349a0847aaa72dd395ce8db0ee8b0f17e0dfb11bcc"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherDeliveryController.java",
+    "size": 23207,
+    "sha256": "ac177473ab61c9487cffa113d66cf150a4027ae4e8c7634d7c9f8a30a47d4eb0"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherFrameWriter.java",
+    "size": 3553,
+    "sha256": "6eeebc0f195f994245ef9befa2026cb3c50ae242d1f8599ec58b9cef5f45a8d9"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherPayload.java",
+    "size": 7260,
+    "sha256": "6be595edf0dc3b4fd08ac71f1d05acc6e0edf059d77e94146360196a61535e7a"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherReadProtocol.java",
+    "size": 10565,
+    "sha256": "46675cbb2f5a781c812be38dc13d0d416dc901431f3f3f05efbbfec4d82b902e"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherRefreshController.java",
+    "size": 447,
+    "sha256": "46bdde0e24d98e81f1ca3d41267c883d5cecb2c8ba6d789b41e89e69f96a2acd"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherSessionProtocol.java",
+    "size": 32168,
+    "sha256": "905f50b16fcc08ff7f65a1d04c690378eb500f92201de59e75b642f54f561b7d"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WeatherSnapshot.java",
+    "size": 4201,
+    "sha256": "daeb197eede04d5bd8675ba84613f6d206289f6350c12095aabcaa130e5987dd"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WorkoutCatalog.java",
+    "size": 3739,
+    "sha256": "8d7d9570e9af71560d8e2b079e6af04044e4ea101dbea42155ab6b704472f2b5"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WorkoutRecorder.java",
+    "size": 24625,
+    "sha256": "3635c71d08ed0ed9fbfb6df4f32d058e336af20045bec9dbdab136c759864c5f"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WorkoutTypeDictionary.java",
+    "size": 7160,
+    "sha256": "f7cf756419aa30c5faf0323af47e41a15d00753aa5fc49396498f3ab5e076d34"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WttrWeatherProvider.java",
+    "size": 4649,
+    "sha256": "ea1259ae2e54b205d39525c0d88b255a6bf317be1fdfef252b2f210c6d5f7917"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/YandexWeatherProvider.java",
+    "size": 4842,
+    "sha256": "831b7cfa825b7e676516569db8de683a8cc6228aba583e7d5204a03320f7f39c"
+  },
+  {
+    "path": "android/app/src/main/res/drawable/app_icon.xml",
+    "size": 662,
+    "sha256": "dc3ec1980e7e5124e612a3701ab87673a47d7be034f1c971b166424dcff59ea1"
+  },
+  {
+    "path": "android/app/src/main/res/drawable/brand_eye.xml",
+    "size": 965,
+    "sha256": "58308954ff8cff44199a3c09dfe95dcd0ec6adf6ead85c05b4f371a8ed8d1186"
+  },
+  {
+    "path": "android/app/src/main/res/drawable/launch_background.xml",
+    "size": 267,
+    "sha256": "ed383985d2de5a1f506aae0c87b4a3e12e989a92769afaaa85be10e07867d9fe"
+  },
+  {
+    "path": "android/app/src/main/res/drawable/launcher_eye.xml",
+    "size": 1074,
+    "sha256": "b30745fe381ab6775972b7e416be513d22096fa88ff8fc45584a5fcba0ca7855"
+  },
+  {
+    "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+    "size": 218,
+    "sha256": "2c8df542a50cd07f39ae8914e9bd80abc857d5ee8665a41f489f1ff5215b6f76"
+  },
+  {
+    "path": "android/app/src/main/res/values/brand.xml",
+    "size": 685,
+    "sha256": "35b19456fd09ce635541ab789c6f322528f3d0eac9b0c47a7080823a8a5c7f70"
+  },
+  {
+    "path": "android/app/src/main/res/values/strings.xml",
+    "size": 377,
+    "sha256": "494ad43e1d7ed0560220d205f2fef79d59acafe585c6ec1be5aa8bbdc5f78d61"
+  },
+  {
+    "path": "android/app/src/main/res/values/styles.xml",
+    "size": 2778,
+    "sha256": "51c709d26f5517c3bc2e3891ed015c5079928986a78c2127f9e0859ebc2a84fb"
+  },
+  {
+    "path": "android/app/src/main/res/values-en/strings.xml",
+    "size": 298,
+    "sha256": "004a517aab31b01f6c452d8001a11c21d12f857c3dcf1676d7c9dd774ea1f485"
+  },
+  {
+    "path": "android/app/src/main/res/values-v31/styles.xml",
+    "size": 771,
+    "sha256": "41edbff6f0e899aba579b06d87bee472944bde0af9e869d7fcb322949ebed74e"
+  },
+  {
+    "path": "android/app/src/main/res/xml/data_extraction_rules.xml",
+    "size": 258,
+    "sha256": "9ccf53e8c648736adbf95a27d70ace297c7e3b56d6e48e878194f98c51b36b21"
+  },
+  {
+    "path": "android/app/src/main/res/xml/file_paths.xml",
+    "size": 383,
+    "sha256": "bd57e3d219f1c56ca4b62e15180856c8833af8e6a10d3a2c21baa02f55abc79d"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/ActivityPollControllerTest.java",
+    "size": 805,
+    "sha256": "9e3ab72c4c7be77aa21ffacc0fabe92c77879fc2427df65e8b5462840bacb048"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/AlbumConfigurationTest.java",
+    "size": 3624,
+    "sha256": "c81f077a9b8c1e7593a39684af1fbf88867448c030ce1b5a92fbeac5e2d67861"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/AlbumImageTransferTest.java",
+    "size": 1293,
+    "sha256": "983f0f40dfdeee2688e9320b022b957482c3b5981d938cc1eaed20637cc277d3"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/AlbumStageProtocolTest.java",
+    "size": 13534,
+    "sha256": "fb4fb966ac28ea02fabcf188f43e73d73739b3afda33005a9123e40bde3581b5"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/BundledDynamicDialTest.java",
+    "size": 1556,
+    "sha256": "ca8521d956e54ba1a0618e2b7576eaea935be04603ea92ddbb3e8737b121e1a8"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/ConnectionSnapshotTest.java",
+    "size": 1212,
+    "sha256": "c27921950101bc9cbe0ac91f7a3b9703b80eab148dce3504294bd708106136da"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/CurrentDialRefreshControllerTest.java",
+    "size": 869,
+    "sha256": "d64aac58f6a76eef9e1a81cfca0cc7d72b559e6a40765bc225aad34122103faa"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/CurrentDialSnapshotTest.java",
+    "size": 723,
+    "sha256": "13a7d10f804656de6853ec7bdf390d3ab3432b928e0f7066974d0636eb02c1c4"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/DynamicDialInstallProtocolTest.java",
+    "size": 1368,
+    "sha256": "884b6a099e136a39a94eff971e5f20690c9ed554310bb4885941392499dfb794"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/DynamicDialInstallRequestTest.java",
+    "size": 940,
+    "sha256": "6145c65fb10e5215b0e25a37564585f0bdf5e469b02c773d02dd6f6d044ddf79"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/DynamicDialOwnershipStoreTest.java",
+    "size": 4313,
+    "sha256": "6966739d28e96e87f924d9636b4d0aa2a60e323770a5224ae323b9dd719a0c91"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/LauncherEnvelopeCodecTest.java",
+    "size": 3583,
+    "sha256": "f1c21678fb6bd6b2d4e251b4c767e7f7629127909fe6418dd28e9f39d101009c"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/McfProtocolProbeTest.java",
+    "size": 6350,
+    "sha256": "931218b8677054302f6ed2ec79923c7fdd436df80acfb902c1eacc1935faa242"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/NotificationForwardingPolicyTest.java",
+    "size": 1054,
+    "sha256": "c73b7bdb42062913a7a369c87d29e4c5c1dabd1cd28313909dba5e4f1534d26c"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/NotificationProtocolTest.java",
+    "size": 1416,
+    "sha256": "7d844e860a204d334965c4e536653e23876682bfef9ba36e554953d4ee673779"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/NotificationSessionBridgeTest.java",
+    "size": 1034,
+    "sha256": "f605cf8c7d7ddf9de1003b596df1e38ef3d8296fb24767d8ace539064eae4b33"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/NotificationSessionProtocolTest.java",
+    "size": 4326,
+    "sha256": "a02c50a69661f7e0ae1c7171da6783ab98ef1f9a1a8be476ec1d4e4dd8c505a4"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/PalettePixelMapperTest.java",
+    "size": 705,
+    "sha256": "0a3e3979b3974ca7f83648ab12f857cf0f6cc491f5ebf073eca2ca6add44271a"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/SessionRecoveryPolicyTest.java",
+    "size": 1681,
+    "sha256": "dd3d91f1cb4373dd2fcd5de493d61c18da98dc877c69c16ff1b09ebcff1a441f"
+  },
+  {
+    "path": "android/app/src/test/java/app/gtdial/lab/WeatherPayloadTest.java",
+    "size": 1323,
+    "sha256": "910ee5462c271a0338bf96f56b74bb93e081ec49ac2aecd09703c1710c2ca0ee"
+  },
+  {
+    "path": "android/build-offline.ps1",
+    "size": 3571,
+    "sha256": "a67ae8662a6d05362b62c8e870efce3942bf39c1a5add071ce83efcca57b66ed"
+  },
+  {
+    "path": "android/build.gradle.kts",
+    "size": 75,
+    "sha256": "e7ac932094ff450d1010619f2d9efd06b9822779f031cabdb9c5d917a17ba02b"
+  },
+  {
+    "path": "android/gradle/wrapper/gradle-wrapper.jar",
+    "size": 45457,
+    "sha256": "76805e32c009c0cf0dd5d206bddc9fb22ea42e84db904b764f3047de095493f3"
+  },
+  {
+    "path": "android/gradle/wrapper/gradle-wrapper.properties",
+    "size": 252,
+    "sha256": "6009cea91ce8dbcc62cb2ea6dec6ddd4c87b65fc326872f5abfc7e77fd24aa36"
+  },
+  {
+    "path": "android/gradle.properties",
+    "size": 84,
+    "sha256": "d1b3dd00b14cb1f730b10ee25b2e17a442edeea13364f28c3895f674ea11bed9"
+  },
+  {
+    "path": "android/gradlew",
+    "size": 8618,
+    "sha256": "fb68debc1b1acf8ec55dc0d5e5495e1dedd0bd6b61f304bee61613eeb2bd9b92"
+  },
+  {
+    "path": "android/gradlew.bat",
+    "size": 2896,
+    "sha256": "fedad02c18e266ec094995a5751b7fe1eb6e74f66bf75db64fae2e50eb22c234"
+  },
+  {
+    "path": "android/README.md",
+    "size": 287,
+    "sha256": "0ae739c51e6fb9cf589d627bc4046c3b36c3aa88f63297c881148d42b7b70256"
+  },
+  {
+    "path": "android/settings.gradle.kts",
+    "size": 330,
+    "sha256": "17ba0f40c8395750ef031048675ee7ca35cca338cbbda389aca07618be55ba4d"
+  },
+  {
+    "path": "ASSET_MANIFEST.json",
+    "size": 37852,
+    "sha256": "6e5e8fda2d6562f47899cf6bc628bc4139b3ecf4ff33f57548e290b678d4bcb0"
+  },
+  {
+    "path": "BUILDING.md",
+    "size": 13547,
+    "sha256": "3d4784aa85935aa41900f0bfe9dddba376ce3ee5d8e78ecc206395ea7a1b8278"
+  },
+  {
+    "path": "CONTRIBUTING.md",
+    "size": 7810,
+    "sha256": "c533e592f4850089b360891351a7fd5516b6b1ddcba4f7c068d5ce715337386d"
+  },
+  {
+    "path": "DEVELOPER_GUIDE.md",
+    "size": 33244,
+    "sha256": "22a16bb34a73b665d7703983cb13576458248ff0a90475e5085cf6407862b7cd"
+  },
+  {
+    "path": "docs/images/user-guide/editor-add-field.png",
+    "size": 224224,
+    "sha256": "873749d459a9496afae9c80dcf08cd665f23d739d231fe0f23dadd8626de45c9"
+  },
+  {
+    "path": "docs/images/user-guide/editor-field-properties.png",
+    "size": 269320,
+    "sha256": "7e7873531a803ddd9a16083efb7d611d075acfe8d5cf8cf9ce4ec0fe3b8a7f4b"
+  },
+  {
+    "path": "docs/images/user-guide/editor-overview.png",
+    "size": 257420,
+    "sha256": "4ff04cb44a5cfaf1cab6701975463da5cfc393b99e3da320b1cd877fc170a555"
+  },
+  {
+    "path": "docs/images/user-guide/editor-save-preview.png",
+    "size": 215431,
+    "sha256": "f25e68b4cf137b95fca7769f2e31e5d627cef7075a19695bddda9ab527443b36"
+  },
+  {
+    "path": "docs/images/user-guide/face-palette.png",
+    "size": 282622,
+    "sha256": "3d5fccd5b9976602afe37848e9fc3e5abc16bda112fe8585f7b373c1a2367390"
+  },
+  {
+    "path": "KNOWN_LIMITATIONS.md",
+    "size": 8578,
+    "sha256": "21ecbbec54d45673825dcc2bc87d67467331ad4e0d7465750e8a25f313a989e7"
+  },
+  {
+    "path": "LICENSE",
+    "size": 4563,
+    "sha256": "c0ea4a896d2c8c394b29f9427589996db826cd501c512279ff0ed3ef48fabbe5"
+  },
+  {
+    "path": "NOTICE",
+    "size": 314,
+    "sha256": "c96446d474b56a3e19d0078245e2c335cadb55a48c8458f08e10406919cce3a3"
+  },
+  {
+    "path": "PRIVACY.md",
+    "size": 12396,
+    "sha256": "462494e99f5a66429cfadacbad5660771eb43b1489e0d10886411244f5d57409"
+  },
+  {
+    "path": "README.md",
+    "size": 7521,
+    "sha256": "6d02d7b7e6c3744945694722a78e0c5bc4a609c541a59015ad9365d55684f329"
+  },
+  {
+    "path": "RELEASE_NOTES.md",
+    "size": 3831,
+    "sha256": "66111376e2ba3bcbd9089cbe8a527bd5dacd789f600b15d7f39e4a1bd4293346"
+  },
+  {
+    "path": "releases/Chasovoy-1.0.0-release.apk",
+    "size": 28779312,
+    "sha256": "1cef119632d60a2c82522b04da9ef3d2f2399340ed2dd61c6c283a9a2d2e11f6"
+  },
+  {
+    "path": "releases/SHA256SUMS.txt",
+    "size": 94,
+    "sha256": "8cef53a8a5bebc7fb1d9b06f8fe41bf1cb414bb9345072e1460234b84f9ca94b"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/cadence-20261010/main.js",
+    "size": 8899,
+    "sha256": "30cff466b266e84db17337943388a9edede56a910db764809fc8f6c7a817b84e"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/amber/00.png",
+    "size": 14413,
+    "sha256": "703ce2862e834be50e9f4ee0af2d363897874d9bea2022681b4e63a85e506f8b"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/amber/01.png",
+    "size": 13841,
+    "sha256": "0ec4de3785a86140f7ce03c43ad04a1ec73b36fe88482d86e462c2db17da66ce"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/amber/02.png",
+    "size": 14578,
+    "sha256": "efa6b466881c3449d8c32e9c9879738543f4b34f7f103596521bc0d4473d383d"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/amber/03.png",
+    "size": 13728,
+    "sha256": "aafa28bf770d602b836176336a607b3004065a56e4016f3573a789504e109d42"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/cyan/00.png",
+    "size": 14521,
+    "sha256": "de7212b8ae8c10e4851d9261a08aa4b5b32b7269d0cc0f0fb433c38e74add856"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/cyan/01.png",
+    "size": 13962,
+    "sha256": "8ab465d408591648e47a17f45e94d0d497e13f0cfd33d2e6ddbaa4d0d0f9d66c"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/cyan/02.png",
+    "size": 14911,
+    "sha256": "481d8f1a092eb06bbac4e29eff8ea99880121c4f00065c1b040b2f0e22b4bb00"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/cyan/03.png",
+    "size": 13797,
+    "sha256": "1205e17250fb717bb4376f4373f6dc0b08be1c14a997a1eb3d7d5f74d751287a"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/phosphor/00.png",
+    "size": 14266,
+    "sha256": "1796661a73255c71c64910c23726303d9f3aa32448890c9076222efc5054bfbd"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/phosphor/01.png",
+    "size": 13705,
+    "sha256": "38da181a7b7791982e152baedde45050d802047844b9918f432488fd32740883"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/phosphor/02.png",
+    "size": 14619,
+    "sha256": "aef4bc65cc1bde8367255057c2564a97acc2929388fa03aafd046a9b83c3ff01"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/phosphor/03.png",
+    "size": 13571,
+    "sha256": "689741222b743b61f0fa408297624c697e9e5f2fcee38b1ebd09a60cd7cbe26c"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/red/00.png",
+    "size": 13754,
+    "sha256": "2af03ad3826cd17cc7ebbfa2292dcaebb36d03bd9913cb4996f84b73f2a76082"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/red/01.png",
+    "size": 13124,
+    "sha256": "bbb07f2300e723eac1d0bd2df7bbb835adfb11d387a865cea9e5f962c5ccbc9e"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/red/02.png",
+    "size": 14105,
+    "sha256": "084d1aa5c68a0ffb6440c6748744aacbd988f3dc007e9ab84ad295643403d671"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/red/03.png",
+    "size": 12990,
+    "sha256": "ab64c36dba08f3933ae94298e78281b932b11e98e50dbc21ab76e856872222e6"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/violet/00.png",
+    "size": 14951,
+    "sha256": "464d278961ddbd5a4dc360130cd5235b7313d45e03d7f58143dfed3569536747"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/violet/01.png",
+    "size": 14295,
+    "sha256": "d8e4c9aa3df76dbd1dd2a1236e0deacc3caf6c3f2caa88a3b063390f6fbfb1fb"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/violet/02.png",
+    "size": 15077,
+    "sha256": "249416cb66356f5961abfd1d03063a0bbbb702c20e798934e0449f98bd8bb8b9"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/violet/03.png",
+    "size": 14248,
+    "sha256": "f7c4bde5267060ea2a810b24861c56918ab47f4189ed96ea2a8fbf9994fe82b9"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/white/00.png",
+    "size": 14420,
+    "sha256": "ee50c12e89890f081aa9d7380cb00055184d430422ea1140ecf08728022a3c4c"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/white/01.png",
+    "size": 13916,
+    "sha256": "fac156196e87221f8d8769b4343dc05c5a3f2c010cbd2ec8f4ac1c4bf28c0b39"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/white/02.png",
+    "size": 14746,
+    "sha256": "18858e795af3063b14bb26839aba9b9470a1b3540cd36a3d689c466dbaa395d4"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/white/03.png",
+    "size": 13756,
+    "sha256": "9c2e2f19c477e6272aa77e9e3ca61f01995d5e4b8d88f7aafbf32972f0546361"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/src/main.js",
+    "size": 8024,
+    "sha256": "62215a5c2ee368417a9c9d55fb7e2e9be1d99d1cfe7fc1c0eab8a35bf4ef3785"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/background.png",
+    "size": 123488,
+    "sha256": "d9e7328a76893129c40d412cb657c1931ba97f3eb183e8799564a3ad5e3a9cfa"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_1.png",
+    "size": 111,
+    "sha256": "706121c9212528a56f422794b277fa2b1e70b4d3f75beff9216932132a166a9f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_10.png",
+    "size": 102,
+    "sha256": "57b7ec614f5b76d48d6339db3140c792a556517a97aa9c6dfc120cc46de5cb59"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_2.png",
+    "size": 111,
+    "sha256": "94ca499766b85dec36734abae0088fc2a9eb9e4f4096df35096e35a0a44efcd4"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_3.png",
+    "size": 111,
+    "sha256": "887bb28fb442f9674db18f919765a85baf038f8d92a6e5d71427f5cffb00842c"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_4.png",
+    "size": 110,
+    "sha256": "b46696baed6ea32fea204fd4fa62de9aaa816b77e2f741dabefe32df126fadf4"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_5.png",
+    "size": 109,
+    "sha256": "d05a72ee26cf72dbda50fa75090f895353033b667babb6e2625d2537e4a5a35c"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_6.png",
+    "size": 111,
+    "sha256": "2ad66fb34e03c01fa4c65af3184dc1969a75a442fb2560402b8d3992daeaf7c1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_7.png",
+    "size": 112,
+    "sha256": "b071dceb91232f501c29d2af746fef8ba3bad06b0228259b5ce0e777fea3a8aa"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_8.png",
+    "size": 112,
+    "sha256": "f4d3b16be4532451cf42e6f7795f50a1cfc257bd2c46cd8bebcacb3c5a6e9cce"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_9.png",
+    "size": 112,
+    "sha256": "6fc5cbc2be48c16a9042aea9eb7a80c38a0362f1a83da9d6ddc9b3e8fce657de"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_0.png",
+    "size": 1322,
+    "sha256": "cccf83769ca474345e84c86dd83ac712359d461ff4b478b74c4717b8edcc93b1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_1.png",
+    "size": 486,
+    "sha256": "96f07dbb67f1ae91fe264911e46bb415b42652887df3fa964f4ec20512d1098e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_2.png",
+    "size": 1184,
+    "sha256": "74066bb89e8544c528bf297a80b79a1a748e6b5d8affffcb7a6b954454d6c1d1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_3.png",
+    "size": 1538,
+    "sha256": "279d73132d77992411c8f0127ad78555f3049cbbeff9dd72fd2ca2db8b6261a5"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_4.png",
+    "size": 704,
+    "sha256": "1d8658dac53e678d9a3d9856178b6d88a9c4145bd30a41257e893c0388071833"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_5.png",
+    "size": 1249,
+    "sha256": "3e8843acc50f2913bf4e1793f8036a849a67688c98c32e1abf4f0ad7a201e2f2"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_6.png",
+    "size": 1567,
+    "sha256": "742b39307b51ee9451a5a5bf893bd69830f67ece922efee92ec45bfadb0341b1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_7.png",
+    "size": 819,
+    "sha256": "be1cf04f09c7734f61d0e36f1ecf73f6a04b667f69c439e42513db56bdfea90d"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_8.png",
+    "size": 1657,
+    "sha256": "2b167f747ae57cc2a93e8b4442571968d037246f246141ba84a9a92f6de9b7a6"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_9.png",
+    "size": 1558,
+    "sha256": "e8eb58db07ec38cc1d8b2a8523fc46b949c4b17a1ed0dade5acc507a108ce3d2"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/background.png",
+    "size": 122378,
+    "sha256": "b6928c5aaeee363391749cdb1acd4442648c54dbd49160771bf659ce0c527f98"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_1.png",
+    "size": 111,
+    "sha256": "b2cde31def92cba132b799c2737633321b6186e159f106e1315babd33a1f614f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_10.png",
+    "size": 103,
+    "sha256": "70572941b271ef4a140e6c89f9818f474888f0041467d50d90d1c4c86ba5a9b2"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_2.png",
+    "size": 111,
+    "sha256": "909f33bb0f535477beb8c384357c416c4859a84c47d2d2783d146babf82fffb8"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_3.png",
+    "size": 111,
+    "sha256": "49a608cb4d41adaa499e4e97d840e4dc336ceba654402d53fc8c0963b24a7f72"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_4.png",
+    "size": 110,
+    "sha256": "213e5f137b0080925fc1e14aed8f4a1e17cb66b4220234046ea52688fb7494f7"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_5.png",
+    "size": 109,
+    "sha256": "5deba397bdbda3665901eebe519c155729f8fcc25f9059414ca293ae33fffcb0"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_6.png",
+    "size": 111,
+    "sha256": "b65db8b364b3280d35a843796ebe57ba2989105128f3ca17f21e17dadae984ed"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_7.png",
+    "size": 112,
+    "sha256": "bcab7017e21c93421fc2feb1e4846f5e95fc453384cbe30c1e2e06c38f3aae60"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_8.png",
+    "size": 112,
+    "sha256": "6e585f25a5358dc35253e797e5167ee7488e00db9d18e181936bd8ed65acebaf"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_9.png",
+    "size": 112,
+    "sha256": "67ae80e877fb35818034bf65935602cb0db9541862773ced16622e9a682b9485"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_0.png",
+    "size": 1341,
+    "sha256": "100a42f66f064aa8e4f5c592ccf92d0dc49a72ab7dd43f024c88115af9ab7681"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_1.png",
+    "size": 490,
+    "sha256": "56f7c73a2bbb0b80110249bcf74c261f4c0bc45b02cfe51a766fde1fe4c5c6ad"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_2.png",
+    "size": 1196,
+    "sha256": "27b85974258e5a2193e1a3bf7de6255577bbb5343051510a6a28974558e4501e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_3.png",
+    "size": 1537,
+    "sha256": "d390299b96e7d26065bbe9275c024a8f0ef2ce32996b5d53d74fdfe87a7aedd8"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_4.png",
+    "size": 708,
+    "sha256": "6bf7efa94e8bd5a5a413aa2d47432d42351b3659913bd8f2b262453217f0a11c"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_5.png",
+    "size": 1244,
+    "sha256": "57597ca8e5789a83bb931d8f86e45063ced0c303315649e7dc4eb54b01561e48"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_6.png",
+    "size": 1581,
+    "sha256": "6b86149c7635525c6cc8870d4107e4140d4c3fd37a7b88cf5b0f9354d24aecbb"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_7.png",
+    "size": 817,
+    "sha256": "f833221258e95f7290c3fffaf566a22bc4951dd242d27da65ff8bed17a3fedc7"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_8.png",
+    "size": 1655,
+    "sha256": "0922ea14385bb11e5d79c48d5bc2471bc25a202b884c4796e4392e24d391ef70"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_9.png",
+    "size": 1559,
+    "sha256": "798c64ae5ce9e8e205c3ca9c8c81edcb16ba729f5bee2acfc101bee271d41316"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/background.png",
+    "size": 123945,
+    "sha256": "897c51e133eee314b1dfc8a49e5d9ff725d9af295db6d0d4853019261c6e03ca"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_1.png",
+    "size": 111,
+    "sha256": "467cfc6f7de433c43c9aaa249e98fc7458e45b9afb1f668f2e5714f20b08ec47"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_10.png",
+    "size": 102,
+    "sha256": "c509fae3d19d48b1b3a57c09c06b1bf25a11114eb27ee19e107c9e5fc69e2c99"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_2.png",
+    "size": 111,
+    "sha256": "bc0509d3b9af99b16a09a96735f8b3b8253dd946679b78bf70076771180141d1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_3.png",
+    "size": 111,
+    "sha256": "63b8b1c9db32847bf8fb7f7bc5a4ad3049fc444cd572dd66d3a68c44375d12ba"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_4.png",
+    "size": 110,
+    "sha256": "18b546a4e2c3615d0f956625e2d3d9991b39a63cb4f301903cbb45407a6ff571"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_5.png",
+    "size": 109,
+    "sha256": "4c40fd22851a544253be1364868bf4918dadfd7d197e0e8a2f576d8a7494a7b1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_6.png",
+    "size": 111,
+    "sha256": "d07bbeb742c8808e158e2ee7b31211359c23b8fb060465e127b4e41813b722e1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_7.png",
+    "size": 112,
+    "sha256": "13a04333b41064d1ce28ba9f7b5374bce5e712f6be7460b75afdfd0141470f9d"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_8.png",
+    "size": 112,
+    "sha256": "77821cddc8dce71a47a052cb08f6841d2afd4769fe602130382ec4cd0c7ca3d8"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_9.png",
+    "size": 112,
+    "sha256": "fe20acb7f140ba4275c9fc4aaeb5a767e24ad0d7374fc572f0bc2911321ce449"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_0.png",
+    "size": 1329,
+    "sha256": "e171edb55bb4ddbbbaa221c5374db78bac6f30b60971823eccee590957f1cfad"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_1.png",
+    "size": 488,
+    "sha256": "79cf992ae0bf1e66dc12767f35f7581a4724b7109d665e68b1f3c8b1bc08c89e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_2.png",
+    "size": 1163,
+    "sha256": "06acd324acf7877959082502dce3c8090ff70408b2006bdf88bb9aabf147bb1f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_3.png",
+    "size": 1520,
+    "sha256": "695bfadfb4167b9654b7b34f69c258df6b600b65f0ad9b53b38e78aadef086fe"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_4.png",
+    "size": 707,
+    "sha256": "2f7a0ea8d641593b2d780ade55667b6eea584cd672715b37c44fb43252445a2a"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_5.png",
+    "size": 1219,
+    "sha256": "2860f1c95341e164033a57a5b2a138d09adf784bcb7872571ecb0bc57cac19a1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_6.png",
+    "size": 1567,
+    "sha256": "7f9f2a7845b5211f56113655a00f16a6d6797fa109aa9b4c4b79d08f36fe621d"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_7.png",
+    "size": 810,
+    "sha256": "26a90248b77600d61644e91fd6248924d61eab390b4db0ac3c36b2d2a40e9213"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_8.png",
+    "size": 1621,
+    "sha256": "24c0dfc9aaeef6096fd02e53ecef7df1b8d19b7e97e09f21cf655baa7a900d81"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_9.png",
+    "size": 1549,
+    "sha256": "e077f06d7fc870dc27a616841d5931a73f1d6f4c57945241374fbe52a966e1cd"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/background.png",
+    "size": 122883,
+    "sha256": "acd900498bf373a38fbd94dda28544fb4c336fb0b5a0e2b62a1b8b6d8257697f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_1.png",
+    "size": 110,
+    "sha256": "e06feefe889fdb64b511f55309e39b38f1eb5c82abd655fb6a69f534bc334ef7"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_10.png",
+    "size": 103,
+    "sha256": "5cefc157b7dc23aa153a3ab59caf27fa436c619b7625406797070dab9c2410c4"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_2.png",
+    "size": 110,
+    "sha256": "35dcc8d522f4725369e5a47bcbc4593b9e4129872aecd24efc2c5b18bfa25ee1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_3.png",
+    "size": 111,
+    "sha256": "a1d54030eecf8a9206c92d723c0a7da7d5ec06ff18de36a81aa0a3887e93907b"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_4.png",
+    "size": 110,
+    "sha256": "3ec01518aaf7452b548c708f6204355130556fbd5e30d77a25f3d6f564b0b6bc"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_5.png",
+    "size": 109,
+    "sha256": "5c034d1f1733ab377d0cf6584c967d34b2e93b58af195272d5b5b1494badc3a3"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_6.png",
+    "size": 111,
+    "sha256": "fc32de61681f246ca8695d64c9d01475fd4cc4b82bc535585f7014c84b851e0e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_7.png",
+    "size": 112,
+    "sha256": "43a3823f4a76edd9f5a0d8a550c56d0349f99027eaee1d18b20ef78ab68cda1e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_8.png",
+    "size": 112,
+    "sha256": "63fa3de1f835b1151e070485be3472955079b9b9439bdcebd96c7346f6b37195"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_9.png",
+    "size": 111,
+    "sha256": "df29f13442c6cfc8c0ceae3f92f5cb9dd1c671106da544814f593883e7c28c8b"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_0.png",
+    "size": 1303,
+    "sha256": "13eda94b61020824203cc8cdc0ccf3667b9dd7410c48f037bc0d22bbee76cfcf"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_1.png",
+    "size": 484,
+    "sha256": "95c95c72618fd3225ff92e401b2ae81f8994e5f08a090da58d688ccaae35352f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_2.png",
+    "size": 1160,
+    "sha256": "74fdb7e54ed8093f1e97e34d27e95f6618e2e55e5a05d3261ee3518f709e6a0c"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_3.png",
+    "size": 1495,
+    "sha256": "e8af938fc07c4ff9c6fabd9fcae09040f7bc227c5ea1958f314f9f2cd922a4b1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_4.png",
+    "size": 704,
+    "sha256": "90624e257063ad093ed09b8a5e4b9fb807d7590f54dd905b6e91169e008656c7"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_5.png",
+    "size": 1212,
+    "sha256": "df999884db995d067760f713702bfe26958a0b15df591d007e2eb764be177016"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_6.png",
+    "size": 1546,
+    "sha256": "af7322a6d193d02c1c326dc6e51611865881340128350c116a4b0f429f6f8d22"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_7.png",
+    "size": 804,
+    "sha256": "4a66023052c054e1684cc0ee7d7973805c5a27b96c330d1cd2218b5ab0048c0e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_8.png",
+    "size": 1616,
+    "sha256": "f0c8f2ed511b0e340a4ce4f41a419c241157564b8791b075bd61c5cca21293c1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_9.png",
+    "size": 1538,
+    "sha256": "45b8e6bf2fa87c0f17f441dc539d673f198a8055bcddfdf54512881786c693da"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/background.png",
+    "size": 125885,
+    "sha256": "81ab527c04cb0b88a19f0067c3bbc873dc7ff49b40bbbe95ecaf5fcc8c4013d6"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_1.png",
+    "size": 111,
+    "sha256": "52958b0dc8b98627f344cc654a22e372873100b7c0c88aa14660c6f7c7268f50"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_10.png",
+    "size": 102,
+    "sha256": "fcdb91ead6fcaffe2e6db7fd1ddbaf41d04377d7688be15a50bc642b273a59aa"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_2.png",
+    "size": 111,
+    "sha256": "03325d1ffad7aeeb0203c35026c08aa812ac8174c2775a9148e47d0467a44c9c"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_3.png",
+    "size": 111,
+    "sha256": "56c7595493326b24672f157c5f1f15cd3df7544960dcd251200c3c9954d54958"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_4.png",
+    "size": 110,
+    "sha256": "c8578d40105ebdae89b854463d4470a8c3c9eb908f86c0a2b7e52c9360e8bfb4"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_5.png",
+    "size": 109,
+    "sha256": "59f09f99af1883b4d5367ff8c0cfa3986b7fd47ac854750212ada4b32a42b438"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_6.png",
+    "size": 111,
+    "sha256": "27e1d05bdf29e0a70b4362ccdfb35672987535b0806954c44df3c794324266b4"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_7.png",
+    "size": 112,
+    "sha256": "ea305990e16b06c33aad842cb390e4d56a53f0f8b89633331f1a4f71cafd8553"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_8.png",
+    "size": 112,
+    "sha256": "6a9755f57196b5430ae548f55f1d0b7cd5d97a4086bda9d4538d22eee22e615c"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_9.png",
+    "size": 112,
+    "sha256": "a8c83d30dbb7d09d514655f2dc506ccda5b36ddecb8a7984b18e5b321d6040a1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_0.png",
+    "size": 1365,
+    "sha256": "dfbdb359bc2d0fb79f32fb9c854a54005f1cdc98799388d6b0b67e2e7a65fcfb"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_1.png",
+    "size": 493,
+    "sha256": "731f48e2b91666eb481e025c01e57d2e3ea75f8080af8e6570d78dac570bcf54"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_2.png",
+    "size": 1202,
+    "sha256": "43da5b9492b96debbb7f2d27f6ede0a9cdb37d7a4da6ea40cca9ee8a74f52223"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_3.png",
+    "size": 1561,
+    "sha256": "c5fe28e364de839ae8d07fd83d4731fb00668aaf4466af69cb5520d1fe8c1a50"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_4.png",
+    "size": 712,
+    "sha256": "c753dc87815c03456097289d07e39c1154bce710a15fb52f46428905388a26b2"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_5.png",
+    "size": 1253,
+    "sha256": "254cecd43341022e67251d6780d5a9fa1663811912c4075c715d5bd127e0c4b7"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_6.png",
+    "size": 1590,
+    "sha256": "efa6dda3ee717f690b43ae5afa858872a5248dcbebe56deaaede5994542226f4"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_7.png",
+    "size": 828,
+    "sha256": "90ec2c51dc0b060402abfec4427486415dbadc9bfeb86194df43a8e42e9e816f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_8.png",
+    "size": 1675,
+    "sha256": "89c3d3aeca2c9431d7ec51dafc983ffe8a1ff6dc432c68fd9b5e6253ec53945e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_9.png",
+    "size": 1585,
+    "sha256": "ef0e0f9d5933043c5596da1fc48248bb52636bce9c3abb1fa8c2e9ca5c49bf75"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/background.png",
+    "size": 117752,
+    "sha256": "5a6138c571f262c119bb05adfba796200197334ac1b3da01d8b4e9b2be8ea295"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_1.png",
+    "size": 112,
+    "sha256": "7fd6b142c03c13da8ed79211467924c0803114e6ab40fd558e13716910cf0193"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_10.png",
+    "size": 103,
+    "sha256": "5c19a40e774b93a3d767494cf329f32f95fab5e8f94179a6355706d562431f9e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_2.png",
+    "size": 112,
+    "sha256": "0d7d4a81a85279fd01fcf3fdab8737193ce1e576007142276fb1f1b602dd7496"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_3.png",
+    "size": 112,
+    "sha256": "7f1aa3900f3518542079c3cfb961bc5c5c83837fed4a3cdef7e06432b8c10ce3"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_4.png",
+    "size": 112,
+    "sha256": "26fb5f1e87a5cc75450fae3cee54502f7ad367cd944a6c80a50cfb4bb01dd9b1"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_5.png",
+    "size": 111,
+    "sha256": "a72ae2a6ea718cf1a0b4675b66bfe2b948533672ad86bdb394819d6fd6c0b8fe"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_6.png",
+    "size": 113,
+    "sha256": "4af54187504cdaa06d4daa05a4c5f688babfd85764eb36f6824f4313172db732"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_7.png",
+    "size": 113,
+    "sha256": "4e4a1abf90aaa8ebfbe7e1a6dc11c9967dc53fda68abcf22b118d1e3bccd109d"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_8.png",
+    "size": 113,
+    "sha256": "feac9062fb0f5eff05ff96f157d3f74f18e5d6f958418845190cdced2c900c70"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_9.png",
+    "size": 113,
+    "sha256": "20beb1383b4f6c1e9b638bdb9e4a2f460f4012d06a56f4f0c7ce1577abd22f28"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_0.png",
+    "size": 1377,
+    "sha256": "2ef90b5ab84d71b28f49fa214da0b930ba1b4984d735b0bcc61e9a3f27251290"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_1.png",
+    "size": 486,
+    "sha256": "0bfdf47b4f5d24c0333606ca3c736976e5c90cf26cd4eaa9d09a95e2dfc87d1a"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_2.png",
+    "size": 1113,
+    "sha256": "2a5115179f19085a74a2a6984b0c586a9b995a8781012e4049441161c56886a4"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_3.png",
+    "size": 1555,
+    "sha256": "2b300bdab9d2ce085d7bef99f37aece90eee362585d963addb3a82beb44898de"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_4.png",
+    "size": 698,
+    "sha256": "76cd662309774b510579718aeb51f832a8c4d525a30afaf4b9727d361011100a"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_5.png",
+    "size": 1254,
+    "sha256": "f974b1ca4beefc38fe8b4c5ec28e807b30da39c705b62fc142c74fc33759352e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_6.png",
+    "size": 1579,
+    "sha256": "d135e5b53aaf413e655aa9bef8df001c80e297b0af7bf78ffe47bc5e54254be6"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_7.png",
+    "size": 789,
+    "sha256": "ec26221f41491d97377d5fa2f67d8394281d33d0bc3cad548cfd7c420cb7997c"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_8.png",
+    "size": 1668,
+    "sha256": "2880a0b9db14e7a2d9fe47d1c9c1e51829f676f4f964d7f9973f9454721f999e"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_9.png",
+    "size": 1590,
+    "sha256": "3f0d32d9a94790561df6607204d399017a2ac989f33186723f00bf1bd2e266ab"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/src/app.js",
+    "size": 142,
+    "sha256": "ab29e2c90444c809014bdc8de95a2465f5dc254b84f0070507d3692138207f3c"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/src/main.js",
+    "size": 7567,
+    "sha256": "706ba3271f13c3b7fe050ddf8508ecb23bd30ada13ed6adff6e45272a1981ac0"
+  },
+  {
+    "path": "source-assets/work/face-layout-20260927/nixie-core-qc61-layout-v3.json",
+    "size": 3938,
+    "sha256": "bc109fed10699cf7f30ce1f7f7f890165c611e025531a41a81dabffe922a2859"
+  },
+  {
+    "path": "source-assets/work/nixie-repair-20261013/background-empty-466.png",
+    "size": 135535,
+    "sha256": "0a4c126b35f61964f4c713113fd0f506e1311a98f45e5dd2e99d9ef4c77309c4"
+  },
+  {
+    "path": "source-assets/work/nixie-repair-20261013/background-empty-candidate.png",
+    "size": 865365,
+    "sha256": "4c41759fd5e06ef55a3673f2715ae784245ea29281b9755ba6848b70fa6782eb"
+  },
+  {
+    "path": "source-assets/work/nixie-repair-20261013/digits.svg",
+    "size": 1112,
+    "sha256": "d23a74fa977cb7ddc8431fb8c07e294d2f6fbadc9720753695a43f79b5374de9"
+  },
+  {
+    "path": "source-assets/work/nixie-repair-20261013/layout-y180.json",
+    "size": 3936,
+    "sha256": "ea6bff3316bd3169e43f49c5e1e78d1d7b11a320fa41ace35e2c1c683d356a54"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/auto.png",
+    "size": 1081177,
+    "sha256": "794a7442e1a514c5783d9c9e0c7581eb773498fe00914ce6f39e0abc480438f6"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/bottle.png",
+    "size": 1168936,
+    "sha256": "bf8f90282cecd1d40c7561578a07df5959543ca64d052d19f756e96edfd14ff9"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/rpg.png",
+    "size": 1208552,
+    "sha256": "c97d65b7cf66400d23ddf5830bd60254c8f9fe2b89de31db8c36a9eac6f32bee"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/savant.png",
+    "size": 1276031,
+    "sha256": "b8c9dc4347fb680d6740605fabda365e1f14920eac7d4de55ef80450c9eaadd8"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/stranger.png",
+    "size": 1374246,
+    "sha256": "9cff694ab7ede53f4f48d8a390c91c8fc0d5bd0d9d554ad90025b6339ab2b366"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/thumb.png",
+    "size": 1219761,
+    "sha256": "3591c0fac50b267d5ebaa2b3585692266fa386c03b572ac3f605ec9780501e1c"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/walk.png",
+    "size": 1176755,
+    "sha256": "123b89788631fb3b1f7418647ae670cde11412adde6506d535cbde5f2f15d7de"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/manifest.json",
+    "size": 9610,
+    "sha256": "40785c1b1c323ed076d81a1f0600dac2f18a1ad91571b43cf164a8a6a41d2f10"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_0.pgf",
+    "size": 3974,
+    "sha256": "95c1494d3bdf0f2c0e93c6c221e1b295d7660e266e6962b9b4f43f5431261b96"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_1.pgf",
+    "size": 3955,
+    "sha256": "597c928cfa3b08525570a4d747a877b4a6bc2bcdd248745c11654984f16b83b4"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_2.pgf",
+    "size": 3966,
+    "sha256": "55a055ffba258f8d30340dcfd5e4f5f889f275a2a8c16a32e92118fe3cc57b59"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_3.pgf",
+    "size": 3974,
+    "sha256": "c0acea7005b2358604a9e6e01002e987128bddf1459bdd434b9202f2ec8b9c6e"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_4.pgf",
+    "size": 3963,
+    "sha256": "ab873b9d61924354477545c83e8fd15e888f539c693d9c56e60e11fcb56f2f07"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_5.pgf",
+    "size": 3966,
+    "sha256": "ec26530454b9020f220990c9ee9beea7867ca5abed930e85936d646980b20cd9"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_6.pgf",
+    "size": 3978,
+    "sha256": "a13f733b7cac883e0a50754fb6a7610f0cb94942a8897ab61b7a2e3f73f2ec7a"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_7.pgf",
+    "size": 3962,
+    "sha256": "57624721af9e23f29afd67f14b76cdd6bd1757e630a1e098ee7741e475c4aee4"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_8.pgf",
+    "size": 3986,
+    "sha256": "57c034ca4ab2506fe66047fa1e60f30ae01f9ec9440626de58b25cba16b8e8ca"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_9.pgf",
+    "size": 3970,
+    "sha256": "fe94150e843bfe7d3d30fd08c1d8d76a9a99faa132459e7efe110054543762e9"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_0.pgf",
+    "size": 3991,
+    "sha256": "b58bae009d82b79bde8e059df7b973de78be7046e6db45a733c0b5e59ca17d15"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_1.pgf",
+    "size": 3963,
+    "sha256": "0ad9a3bffda98ba91f59de3b8987589263f993d971b707ac56724d5ad32838be"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_2.pgf",
+    "size": 3999,
+    "sha256": "d258945e279c8c8977f895417a6b2d6a14b2351d88ba0302a88d87b30ab966a5"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_3.pgf",
+    "size": 4003,
+    "sha256": "bbb67ebe54606b7c42b1b3f3ee306f8faee5df97faf8fddfdd3c6830809672e8"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_4.pgf",
+    "size": 3975,
+    "sha256": "151b695a5a8a3cfa16c8dca632d9660b67ceb54bd7fd472f0eabb019b49a4ebc"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_5.pgf",
+    "size": 3995,
+    "sha256": "1725a5d41c53f27449bf880ebecbce810fb1e7ac515372b4a31faf2755f9ccb6"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_6.pgf",
+    "size": 3987,
+    "sha256": "81fc32e010bccdeb91bbaed0a9029219d84bf702db846db3d514dd8f6a9053dc"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_7.pgf",
+    "size": 3971,
+    "sha256": "fc152b26003ade92490671db05313068bc5fe8764f5f051f8d65d9b23af489cf"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_8.pgf",
+    "size": 3999,
+    "sha256": "9fde6aff74c439dfe6d222ea941527b5766642d8bd9a07280feb473961f42470"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_9.pgf",
+    "size": 3995,
+    "sha256": "9930adaa48c2d334288934f04ae85c7b7329efdf036d52f71f88482f3f3a4662"
+  },
+  {
+    "path": "source-assets/work/shared-dial-base/src/app.js",
+    "size": 142,
+    "sha256": "ab29e2c90444c809014bdc8de95a2465f5dc254b84f0070507d3692138207f3c"
+  },
+  {
+    "path": "source-assets/work/shared-dial-base/src/main.js",
+    "size": 7209,
+    "sha256": "d3e27227823cda1bfe5909a1dee247546f8ed327f35d30bfefb5b9c92aea5089"
+  },
+  {
+    "path": "SOURCE_ASSETS_MANIFEST.json",
+    "size": 53901,
+    "sha256": "1ce671c9275c89290323df2c385eb16c9a9f88455ea647b76c2243614c0a8dd4"
+  },
+  {
+    "path": "START_HERE.md",
+    "size": 1409,
+    "sha256": "0fcdba310ab3dbd49f71d597d1ed4cc8889e4e04577214865388c905d33b1c35"
+  },
+  {
+    "path": "THIRD_PARTY_NOTICES.md",
+    "size": 3365,
+    "sha256": "4c39d8374b23f71a7a6b2f723c3698cc22dafbfb8f39d643eba775e29e643186"
+  },
+  {
+    "path": "tools/analyze_dial_features.py",
+    "size": 10301,
+    "sha256": "f95610eaca2eb81d9200dbd7e85e52fb3303d528c7c2d736753f1202f2aa3fc6"
+  },
+  {
+    "path": "tools/analyze_face_bindings.py",
+    "size": 4927,
+    "sha256": "765a499332918d88a800f3d8da73038052206b9a0fba3ae327f8f660e1a63bd7"
+  },
+  {
+    "path": "tools/analyze_pgf_color.py",
+    "size": 3753,
+    "sha256": "8e0b37f45575aad340cf9360b53a1d70e3df3a208295763beb4c4d28bb7beaa1"
+  },
+  {
+    "path": "tools/analyze_qc61_bindings.py",
+    "size": 5080,
+    "sha256": "ad3c1b413a914aa776023bb2d6d43ed9260ab89e519c7536bd952cdafc207f22"
+  },
+  {
+    "path": "tools/build_dial3000_animation_candidate.py",
+    "size": 8374,
+    "sha256": "ed03ff6c446f5368049bd709825821a85f75f10a1fedc1eb6ecd2d7adc38d7e0"
+  },
+  {
+    "path": "tools/build_dial3000_v2.py",
+    "size": 11247,
+    "sha256": "b8e8257b7e889f7ed3407d738b2bf4a8b64027904e29a60438ae9c1147acdaf0"
+  },
+  {
+    "path": "tools/build_dynamic_dial.py",
+    "size": 5537,
+    "sha256": "27daf8a502bcd07971d37c1fc0e89359266cc2b7f9ee1e384cef80fa7a04d53e"
+  },
+  {
+    "path": "tools/build_face_palette_set.py",
+    "size": 1725,
+    "sha256": "7a18c168a87407f1024785836932fbac63ef82583f8d305ea295b4b19ba562b6"
+  },
+  {
+    "path": "tools/build_final_face_palettes.py",
+    "size": 7411,
+    "sha256": "53f8f5d8cd03c0299604e8981106d584abec50ff917e48f024744c07ff201f33"
+  },
+  {
+    "path": "tools/build_layout_revision_20260927.py",
+    "size": 3395,
+    "sha256": "5b3edc9fb7e8dc8436543ac80e70ef4806a47e9c8d1fe20cc486336c17700fa7"
+  },
+  {
+    "path": "tools/build_nixie_repair_20261013.py",
+    "size": 6811,
+    "sha256": "ce95e3f3b61c1dfcd25581f7a84ede0b084992d7946c5efcbb7c2be54d085f62"
+  },
+  {
+    "path": "tools/build_pipboy_animations.py",
+    "size": 11999,
+    "sha256": "60e28bc136ffd3bf48bdf491b11eea105e757cd2cdb2d69739d7db7d49d61297"
+  },
+  {
+    "path": "tools/build_qc176_palette_variant.py",
+    "size": 18217,
+    "sha256": "c90ad7d46b170fa65ad87bf78796cff0b55a1fb2eec3a17efbb355ebc6b1da1a"
+  },
+  {
+    "path": "tools/build_qc35_template_candidate.py",
+    "size": 8964,
+    "sha256": "60a42ccc4770d8e22a009f6a7dc52a0b8cfb9ff43080ad217718f112d7629bc0"
+  },
+  {
+    "path": "tools/build_qc35_zero_bgra_candidate.py",
+    "size": 2711,
+    "sha256": "a9cf0ca725684d371f0303a4fb8dbd85b613c9b6381a45bec42f4dfdbfd73937"
+  },
+  {
+    "path": "tools/build_qc61_face_variant.py",
+    "size": 14317,
+    "sha256": "51390c6752c94bbd32b93abb95f48662b4153bc35cb31dce516626b1b48c276e"
+  },
+  {
+    "path": "tools/build_shared_dial_base.py",
+    "size": 11104,
+    "sha256": "9b85770be722d9bee5b1756c95042a3a1a45216b3c25cda2497a805fc3253e64"
+  },
+  {
+    "path": "tools/colorize_dial3000_walk_frames.py",
+    "size": 2210,
+    "sha256": "b66638be2a53c155ca778e32f8bcc252b5c31dd16c5b82b30cd77cb57a331d56"
+  },
+  {
+    "path": "tools/derive_qc35_project_identity.py",
+    "size": 4038,
+    "sha256": "db5bb4deb73531835527f2773bd26c5e40336645325845167f66eb233cb10ceb"
+  },
+  {
+    "path": "tools/dial_closure_report.py",
+    "size": 4788,
+    "sha256": "f5836cb65e973c0c459011bb1c23ce6c7a0d6fdb6e1a316c87c1e3a47d7700ce"
+  },
+  {
+    "path": "tools/dial_roundtrip.py",
+    "size": 5037,
+    "sha256": "29c51ccd53f377a4af62c86d1393917c00080dffda26324f1abcef9aa16dddc1"
+  },
+  {
+    "path": "tools/index_dial_corpus.py",
+    "size": 7755,
+    "sha256": "40e582fe1aecb7c3bb53120b07dc6cf325837f4ff3a8b5f57b43968687a771cd"
+  },
+  {
+    "path": "tools/inspect_dial.py",
+    "size": 7065,
+    "sha256": "a6f1603b0dfd0d73cb6c63cf78c959181cb2515b13dc42f4df99ac8d6700ab74"
+  },
+  {
+    "path": "tools/inspect_face_runtime_layout.py",
+    "size": 4281,
+    "sha256": "de75a9323c7ae815d726da51f320b3265f006f0957d3256a73718fa8e335461c"
+  },
+  {
+    "path": "tools/inspect_gt01_jrry_functions.py",
+    "size": 10275,
+    "sha256": "3b462c096d9f8aadd83cbe25988fca1d23957f592ffeb0cda5819cf13952e8f2"
+  },
+  {
+    "path": "tools/inspect_jrry.py",
+    "size": 4882,
+    "sha256": "54687aeeb4c639cdd6e0e3c767fface911f7e1bccb00c2228df59f0b49edf489"
+  },
+  {
+    "path": "tools/inspect_qc35_template_candidate.py",
+    "size": 12151,
+    "sha256": "63a599d1028e90bdd8d0cb419d5c924d2f0f41253e9b96fbc8544d3efaad96c9"
+  },
+  {
+    "path": "tools/integrate_layout_revision_20260927.py",
+    "size": 5493,
+    "sha256": "d48fb93e047853cdd8c3d3f65d560a0bbe6b4722d8b046d998e657ff337fea92"
+  },
+  {
+    "path": "tools/link_dial_resources.py",
+    "size": 5745,
+    "sha256": "ea6369e684338df9ada8412e91b290bca552d18ebedf2d537a43bdd71ed67745"
+  },
+  {
+    "path": "tools/patch_face_layout.py",
+    "size": 5400,
+    "sha256": "8983c32b1ecf5f1caf6216e5e77ec7f989fc89228b274a52d44ba2e04a9985c3"
+  },
+  {
+    "path": "tools/patch_qc61_text_colors.py",
+    "size": 1720,
+    "sha256": "e5ce689ddeceb55d0d67fe5bf583990cff1266471c9238f83ed661b496301ac5"
+  },
+  {
+    "path": "tools/pgf_codec.py",
+    "size": 8558,
+    "sha256": "23e6440594ec2ecfc3440580c870c2047e03d10688330ac2a8ead9762baccc78"
+  },
+  {
+    "path": "tools/plan_dial_replacement.py",
+    "size": 4781,
+    "sha256": "b7cbb81ab97bd8f2d81350432861cf373adacc7f31e0f69be9cd477ec1058e11"
+  },
+  {
+    "path": "tools/plb_geometry.py",
+    "size": 2142,
+    "sha256": "eaafc0c203aac32f9ccc22688762d4fb36fbd5acceae38f9fa8e9f61d5fd3a8a"
+  },
+  {
+    "path": "tools/plb_inspect.py",
+    "size": 6519,
+    "sha256": "4e6a4f97b86dc749515997a1a2a385219c37c11e4ec51c3eb293b15c994096cb"
+  },
+  {
+    "path": "tools/prepare_dial3000_walk_frames.py",
+    "size": 2482,
+    "sha256": "0c5caa35c53adf06f1c57348a9d834ced5dd724dcf1dd08408b69ca3fdcb0355"
+  },
+  {
+    "path": "tools/prepare_dial3000_walk_frames_v2.py",
+    "size": 1424,
+    "sha256": "4531a9efaf50b14ef6df5d93477c183f4857e7e003e505f0789e65e96d23aa37"
+  },
+  {
+    "path": "tools/README.md",
+    "size": 1819,
+    "sha256": "73d2073939cb7fd21120f0c4dcc62566e5612b472b4d886e4aed2eacd7c596b3"
+  },
+  {
+    "path": "tools/rebuild_diallab_v4.py",
+    "size": 3099,
+    "sha256": "cb586371066e0ace3912a8e6903110245be79c279b78cfdb5cd253a9db0a6dee"
+  },
+  {
+    "path": "tools/rebuild_diallab_v5.py",
+    "size": 2785,
+    "sha256": "8e12b070806c31ce34733b5502458825dd90405bcb235781e19d61275295b8a0"
+  },
+  {
+    "path": "tools/register_dial3000_animation.py",
+    "size": 7285,
+    "sha256": "9a76ef41ba8d24424e6ce8eb336212e584e2a9bafe41788cb70838b409eec745"
+  },
+  {
+    "path": "tools/register_dial3000_v2.py",
+    "size": 2643,
+    "sha256": "2bf9fd8ca05009cbe93e355e319e7f0e7c18edfa8514db63850120a36c4cbcd5"
+  },
+  {
+    "path": "tools/register_dial3000_v3.py",
+    "size": 4841,
+    "sha256": "f703f5a6af18a1c5ef509bc77701095a5bb6cb4b6e228142eca34d85beea9833"
+  },
+  {
+    "path": "tools/render_dial3000_next_mockup.py",
+    "size": 4138,
+    "sha256": "02ba6b6d75465a03d99357606b253f1349f5d3ab81faa00fa0a8a550d4f86102"
+  },
+  {
+    "path": "tools/render_dial3000_v2_package.py",
+    "size": 2624,
+    "sha256": "7d79d8288427b6e46530d106a50b054b04056583554dcc3f26b98bc83efa34eb"
+  },
+  {
+    "path": "tools/render_shared_dial_mockups.ps1",
+    "size": 4925,
+    "sha256": "f8a06666539d52a8f76db378c9974245b01a24edd581ecb0d81ccf8f2b1517de"
+  },
+  {
+    "path": "tools/resize_qc61_glyphs.py",
+    "size": 3983,
+    "sha256": "7a06e03455d367315d8454fbf7a367d2fbc77d8dc90203bcbb55c10b64888ca2"
+  },
+  {
+    "path": "tools/stage_dial3000_animation_v3.py",
+    "size": 6671,
+    "sha256": "ded1e0a7a8901ef0513bfd40e9b3e471a0b96d96499a22e733647d2feb1f51ad"
+  },
+  {
+    "path": "tools/stage_dial3000_stable_and_walk.py",
+    "size": 8477,
+    "sha256": "8aff997d4e6d27820297b2d01203b2099200eeba0998aecad6f359f13e1aaa93"
+  },
+  {
+    "path": "tools/survey_qc61_pgf.py",
+    "size": 707,
+    "sha256": "d3f8820a9b6df0778cbacaf4bd734c0debf15f9437723812156c636abedd1131"
+  },
+  {
+    "path": "tools/tests/test_dynamic_dial_build.py",
+    "size": 1839,
+    "sha256": "24ace548720a0879187e162c49cef536b4a70e52f02c6a98c4ad987a89f905a9"
+  },
+  {
+    "path": "tools/tests/test_face_layout.py",
+    "size": 3205,
+    "sha256": "b64d668e98ea0ce4ac2d78ba353b265b69e5087a922efdce6ba9f4e374a9390d"
+  },
+  {
+    "path": "tools/tests/test_pgf_encode.py",
+    "size": 1349,
+    "sha256": "20be0a50974a13c16b71892fb6921f05e45d325547fdaead00589755201266b9"
+  },
+  {
+    "path": "tools/tests/test_qc176_palette_variant.py",
+    "size": 5847,
+    "sha256": "4f5e45f2a43defdd724a47581ba7b4482822dac0ddc666da86ce1b1c8d0f8281"
+  },
+  {
+    "path": "tools/tests/test_qc61_bindings.py",
+    "size": 748,
+    "sha256": "0dcc2c6d9ec072ac0834af8fd7b33efa629d0f44ff2c5cd1a3e2436926c97fa1"
+  },
+  {
+    "path": "tools/tests/test_qc61_face_variant.py",
+    "size": 5584,
+    "sha256": "755f84e00ead118969f845e8dfc8dbc0f946fd6a51362078aa4efa8eb87abeb7"
+  },
+  {
+    "path": "tools/tests/test_qc61_glyphs.py",
+    "size": 2524,
+    "sha256": "9807c167d97a28611937fb26ef281cede567d35d16f5ea569f035598c21710e4"
+  },
+  {
+    "path": "tools/tests/test_qc61_text_colors.py",
+    "size": 732,
+    "sha256": "b26d38c42dd07b95f8c3af7e93cdd93148a9843e144fe3a2c4bf89bbfd48c1ff"
+  },
+  {
+    "path": "tools/verify_dial3000_animation_candidate.py",
+    "size": 4506,
+    "sha256": "791e2585be05793ff0b4373d00950abf3e401364ad2f8c0b8b64c68ca03ddb13"
+  },
+  {
+    "path": "tools/verify_dial3000_v2_offline.py",
+    "size": 5232,
+    "sha256": "dd8d339191d1f284c802093bc29aca1c54d783bbc8405d0c00d053b9963e26f8"
+  },
+  {
+    "path": "tools/verify_diallab_readability.py",
+    "size": 3388,
+    "sha256": "5a89a40224b6d003f1a18912f4a12bc7da33e966fbedb0faf46f617f595afa19"
+  },
+  {
+    "path": "tools/verify_dynamic_dial.py",
+    "size": 2583,
+    "sha256": "d8f41b3367e71f80d4b8b3307335d4f12b7dbeac6001e4465d807d60312e423f"
+  },
+  {
+    "path": "tools/verify_face_layout.py",
+    "size": 3663,
+    "sha256": "8ea70f5bce3c275d9dfb8baf66db5501049a80bb4065a1827c9e440592f8afb5"
+  },
+  {
+    "path": "tools/verify_final_face_palettes.py",
+    "size": 7776,
+    "sha256": "21ed2508798f241559ee81f1ea294627e9b0a39de1c2ab89ff88551ab6604d13"
+  },
+  {
+    "path": "tools/verify_public_assets.py",
+    "size": 9714,
+    "sha256": "dbcd88661d2e552838b58786243c4545479a74db1a8d3c29a70f245bb5366b8a"
+  },
+  {
+    "path": "tools/verify_qc176_palette_variant.py",
+    "size": 10157,
+    "sha256": "5b9b6b44abfb3cb9f942e859134fd3f5ab36a9807772cdaddde29977d35ebaae"
+  },
+  {
+    "path": "tools/verify_qc35_project_identity.py",
+    "size": 5947,
+    "sha256": "18e7cbe457b46dbe43816a2ff768537c8ea55c23a65e48b5fec0892e224635f8"
+  },
+  {
+    "path": "tools/verify_qc35_template_candidate.py",
+    "size": 5897,
+    "sha256": "7484caa8811a7c937ca70d78e0a8efe331acd3f2e1c6df3885811f0f4d6b104c"
+  },
+  {
+    "path": "tools/verify_qc61_face_variant.py",
+    "size": 12199,
+    "sha256": "fbb75df27ccf8c1e0b19cb3c634c6b2da7d41dc9bb0a84a2b2d0b7175e005588"
+  },
+  {
+    "path": "tools/verify_qc61_glyphs.py",
+    "size": 3231,
+    "sha256": "5ac29ca8cdc28bfd654bf9eeec4a73a944c31249bbcf773f73e58f1531d9769c"
+  },
+  {
+    "path": "tools/verify_qc61_text_colors.py",
+    "size": 1584,
+    "sha256": "a72dac92434b8dcaaa5dd715fa2d8d0ec7e0211c1cea62b67810dff76cff8e87"
+  },
+  {
+    "path": "USER_GUIDE.md",
+    "size": 25718,
+    "sha256": "407a5fd08c4912bdeb5d3484ad53efa065b88a0ec47889a25e4fd7079f8e89ed"
+  },
+  {
+    "path": "WATCHFACE_AUTHORING.md",
+    "size": 17550,
+    "sha256": "e8cbd007ad2f6fd65f99cdffd5b75cb5e0da67361aceaaeaea8ed6a7f34464aa"
+  }
+]

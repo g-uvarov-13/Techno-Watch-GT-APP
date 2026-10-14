@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#E53935</item>
+        <item name="android:navigationBarColor">#101114</item>
+        <item name="android:statusBarColor">#101114</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="brandInk">#FFF0D0</item>
+        <item name="brandAccent">#249F68</item>
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <style name="ChasovoyDialogDark" parent="android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">#E53944</item>
+        <item name="android:colorControlActivated">#E53944</item>
+        <item name="android:colorControlNormal">#A9AEB8</item>
+        <item name="android:colorBackground">#17191E</item>
+        <item name="android:textColorPrimary">#F5F6F8</item>
+        <item name="android:textColorSecondary">#A9AEB8</item>
+        <item name="android:fontFamily">sans</item>
+    </style>
+    <style name="ChasovoyDialogBlue" parent="android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">#E73E4D</item>
+        <item name="android:colorControlActivated">#E73E4D</item>
+        <item name="android:colorControlNormal">#8FA5BE</item>
+        <item name="android:colorBackground">#0B1829</item>
+        <item name="android:textColorPrimary">#EEF5FF</item>
+        <item name="android:textColorSecondary">#8FA5BE</item>
+        <item name="android:fontFamily">sans</item>
+    </style>
+    <style name="ChasovoyDialogOlive" parent="android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">#E1434B</item>
+        <item name="android:colorControlActivated">#E1434B</item>
+        <item name="android:colorControlNormal">#ACB797</item>
+        <item name="android:colorBackground">#1D2317</item>
+        <item name="android:textColorPrimary">#EEF1E0</item>
+        <item name="android:textColorSecondary">#ACB797</item>
+        <item name="android:fontFamily">sans</item>
+    </style>
+    <style name="ChasovoyDialogArctic" parent="android:style/Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorAccent">#BE2635</item>
+        <item name="android:colorControlActivated">#BE2635</item>
+        <item name="android:colorControlNormal">#50646C</item>
+        <item name="android:colorBackground">#F6F9FA</item>
+        <item name="android:textColorPrimary">#152228</item>
+        <item name="android:textColorSecondary">#50646C</item>
+        <item name="android:fontFamily">sans</item>
+    </style>
+</resources>

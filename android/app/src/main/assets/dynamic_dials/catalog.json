@@ -1,0 +1,1165 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    {
+      "id": "pipboy01",
+      "name": "Человечек · классический",
+      "previewAsset": "dynamic_dials/pipboy01/preview.png",
+      "renderSpecAsset": "dynamic_dials/pipboy01/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance",
+        "weather"
+      ],
+      "verificationScope": "physical-gt01-2026-09-21",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "packageAsset": "dynamic_dials/pipboy01/face.dial",
+      "packageSha256": "928f548c744539c751f20c2d11771f21c052923beab258056d3f6ff21f219e3e",
+      "packageSize": 536153,
+      "basePackageSha256": "dfaac700817e3d363c7a03e8f6b053c1e7daf8b869e2a6c800fdcd782123edad",
+      "internalPackageId": "com.gtdial.pipboy01",
+      "alias": "1909202601",
+      "physicalInstallAllowed": true,
+      "installablePaletteId": "phosphor"
+    },
+    {
+      "id": "pixbot",
+      "name": "Pixel Deck",
+      "previewAsset": "dynamic_dials/pixbot/preview-single-battery.png",
+      "renderSpecAsset": "dynamic_dials/pixbot/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "heartRate",
+        "battery",
+        "distance",
+        "weather",
+        "temperature"
+      ],
+      "verificationScope": "local-preview",
+      "defaultPaletteId": "ice",
+      "palettes": [
+        {
+          "id": "ice",
+          "name": "Ледяной",
+          "colors": {
+            "background": "#FF010708",
+            "primary": "#FF72FFF4",
+            "secondary": "#FF2BBDB8",
+            "accent": "#FFC8FFFA",
+            "muted": "#FF185858"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB43B",
+            "secondary": "#FFB86A18",
+            "accent": "#FFFFE0A0",
+            "muted": "#FF5B360E"
+          }
+        },
+        {
+          "id": "vfd",
+          "name": "VFD-зелёный",
+          "colors": {
+            "background": "#FF010806",
+            "primary": "#FF62FFB5",
+            "secondary": "#FF22A56B",
+            "accent": "#FFBCFFE0",
+            "muted": "#FF15523A"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF5954",
+            "secondary": "#FFA92826",
+            "accent": "#FFFFBBB5",
+            "muted": "#FF541514"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF070209",
+            "primary": "#FFD985FF",
+            "secondary": "#FF7B3CA1",
+            "accent": "#FFF1C9FF",
+            "muted": "#FF3D2050"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF4F4EC",
+            "secondary": "#FFA6A69E",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4D4D49"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "bitax",
+      "name": "Nixie Core",
+      "previewAsset": "dynamic_dials/bitax/preview-single-battery.png",
+      "renderSpecAsset": "dynamic_dials/bitax/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "heartRate",
+        "battery",
+        "distance",
+        "weather",
+        "temperature"
+      ],
+      "verificationScope": "local-preview",
+      "defaultPaletteId": "amber",
+      "palettes": [
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF080300",
+            "primary": "#FFFF7A16",
+            "secondary": "#FFB83E0A",
+            "accent": "#FFFFC06A",
+            "muted": "#FF5A2108"
+          }
+        },
+        {
+          "id": "copper",
+          "name": "Медный",
+          "colors": {
+            "background": "#FF080402",
+            "primary": "#FFE9854C",
+            "secondary": "#FF97502D",
+            "accent": "#FFFFC39C",
+            "muted": "#FF4C291B"
+          }
+        },
+        {
+          "id": "redorange",
+          "name": "Красно-оранжевый",
+          "colors": {
+            "background": "#FF090100",
+            "primary": "#FFFF481E",
+            "secondary": "#FFAA240D",
+            "accent": "#FFFFA384",
+            "muted": "#FF551307"
+          }
+        },
+        {
+          "id": "gold",
+          "name": "Золотой",
+          "colors": {
+            "background": "#FF080600",
+            "primary": "#FFFFD247",
+            "secondary": "#FFB58A19",
+            "accent": "#FFFFEE9B",
+            "muted": "#FF59470F"
+          }
+        },
+        {
+          "id": "ice",
+          "name": "Ледяной",
+          "colors": {
+            "background": "#FF000709",
+            "primary": "#FF6EEBFF",
+            "secondary": "#FF278CA4",
+            "accent": "#FFC5F8FF",
+            "muted": "#FF164653"
+          }
+        },
+        {
+          "id": "green",
+          "name": "Зелёный",
+          "colors": {
+            "background": "#FF010802",
+            "primary": "#FF6BFF75",
+            "secondary": "#FF2C9E40",
+            "accent": "#FFC4FFC8",
+            "muted": "#FF195026"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "pipboy3000",
+      "name": "Dial Lab 3000",
+      "previewAsset": "dynamic_dials/pipboy3000/preview.png",
+      "renderSpecAsset": "dynamic_dials/pipboy3000/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance",
+        "weather"
+      ],
+      "verificationScope": "local-preview-animation-candidate",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "base3000",
+      "name": "Чистая основа 3000",
+      "previewAsset": "dynamic_dials/base3000/preview.png",
+      "renderSpecAsset": "dynamic_dials/base3000/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-unverified-2026-09-28",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF000000",
+            "primary": "#FFFFFFFF",
+            "secondary": "#FF86FFBD",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF36624A"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "dial3000",
+      "name": "Человечек · без анимации",
+      "previewAsset": "dynamic_dials/dial3000/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/dial3000/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "physical-user-confirmed-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "dial3000walk",
+      "name": "Шагающий человечек · прежняя версия",
+      "previewAsset": "dynamic_dials/dial3000walk/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/dial3000walk/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-animation-unverified-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "pipwalk",
+      "name": "Шагающий человечек",
+      "previewAsset": "dynamic_dials/pipwalk/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/pipwalk/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-animation-unverified-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "piprpg",
+      "name": "Человечек, стреляющий из РПГ",
+      "previewAsset": "dynamic_dials/piprpg/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/piprpg/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-animation-unverified-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "pipauto",
+      "name": "Человечек, стреляющий из автомата",
+      "previewAsset": "dynamic_dials/pipauto/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/pipauto/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-animation-unverified-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "pipstranger",
+      "name": "Таинственный незнакомец",
+      "previewAsset": "dynamic_dials/pipstranger/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/pipstranger/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-animation-unverified-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "pipbottle",
+      "name": "Пьющий человечек",
+      "previewAsset": "dynamic_dials/pipbottle/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/pipbottle/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-animation-unverified-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "pipsavant",
+      "name": "Человечек с озарением",
+      "previewAsset": "dynamic_dials/pipsavant/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/pipsavant/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-animation-unverified-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    },
+    {
+      "id": "pipthumb",
+      "name": "Человечек под ядерным взрывом",
+      "previewAsset": "dynamic_dials/pipthumb/phosphor/preview.png",
+      "renderSpecAsset": "dynamic_dials/pipthumb/render-spec.json",
+      "displayFields": [
+        "time",
+        "date",
+        "steps",
+        "calories",
+        "heartRate",
+        "battery",
+        "distance"
+      ],
+      "verificationScope": "offline-animation-unverified-2026-09-29",
+      "defaultPaletteId": "phosphor",
+      "palettes": [
+        {
+          "id": "phosphor",
+          "name": "Фосфор",
+          "colors": {
+            "background": "#FF020805",
+            "primary": "#FF32FF9A",
+            "secondary": "#FF17A96A",
+            "accent": "#FF8BFFD0",
+            "muted": "#FF145438"
+          }
+        },
+        {
+          "id": "amber",
+          "name": "Янтарный",
+          "colors": {
+            "background": "#FF090500",
+            "primary": "#FFFFB02E",
+            "secondary": "#FFB86614",
+            "accent": "#FFFFDC88",
+            "muted": "#FF5C350C"
+          }
+        },
+        {
+          "id": "cyan",
+          "name": "Голубой",
+          "colors": {
+            "background": "#FF00070A",
+            "primary": "#FF46E8FF",
+            "secondary": "#FF168CA8",
+            "accent": "#FFB1F7FF",
+            "muted": "#FF124754"
+          }
+        },
+        {
+          "id": "white",
+          "name": "Белый",
+          "colors": {
+            "background": "#FF050505",
+            "primary": "#FFF2F5ED",
+            "secondary": "#FF9DA69A",
+            "accent": "#FFFFFFFF",
+            "muted": "#FF4A5048"
+          }
+        },
+        {
+          "id": "red",
+          "name": "Красный",
+          "colors": {
+            "background": "#FF090101",
+            "primary": "#FFFF4C47",
+            "secondary": "#FFAA211F",
+            "accent": "#FFFFB0A8",
+            "muted": "#FF541311"
+          }
+        },
+        {
+          "id": "violet",
+          "name": "Фиолетовый",
+          "colors": {
+            "background": "#FF07020A",
+            "primary": "#FFD97BFF",
+            "secondary": "#FF8036A4",
+            "accent": "#FFF1C5FF",
+            "muted": "#FF3E1B50"
+          }
+        }
+      ],
+      "physicalInstallAllowed": false
+    }
+  ]
+}

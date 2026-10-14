@@ -1,0 +1,1107 @@
+[
+  {
+    "path": "dial_editor/backgrounds/eclipse-v1.png",
+    "size": 1552711,
+    "sha256": "5fd108accd4f553c161f8e1e1d6f75851663e2806c2b18c36527b81523f14d73"
+  },
+  {
+    "path": "dial_editor/gt01-text11-v1/app.js",
+    "size": 142,
+    "sha256": "ab29e2c90444c809014bdc8de95a2465f5dc254b84f0070507d3692138207f3c"
+  },
+  {
+    "path": "dial_editor/gt01-text11-v1/main.js",
+    "size": 7514,
+    "sha256": "93129836ba3a2b6e700e7096c680a46d50a9120d739f3c8f7c06ae9267621afb"
+  },
+  {
+    "path": "dial_editor/gt01-text11-v1/profile.json",
+    "size": 2805,
+    "sha256": "c81bfcf5749b0e0e5b1428b8c5ff55791a20d50c6eb132610929d14e0deccee6"
+  },
+  {
+    "path": "dial_editor/gt01-text11-v1/template.dial",
+    "size": 485421,
+    "sha256": "71c6c18f914f8b0caee64faf9f3cad26faddd059a2308846e3431a6265713326"
+  },
+  {
+    "path": "dynamic_dials/base3000/phosphor/face.dial",
+    "size": 485349,
+    "sha256": "39907fc7f284862f9591a63415dd48e7e4b5c7e3956b0670de1055b4279ac676"
+  },
+  {
+    "path": "dynamic_dials/base3000/preview.png",
+    "size": 6134,
+    "sha256": "3b3741c8e20a3afd41ce152d46dad1b3d9ee23807f4c31da36949e4546df091d"
+  },
+  {
+    "path": "dynamic_dials/base3000/render-spec.json",
+    "size": 530,
+    "sha256": "5c3e2fd809afb3361e48114a78fa4eb42c9557ab4a8b66994488237257b44dc4"
+  },
+  {
+    "path": "dynamic_dials/bitax/amber/face.dial",
+    "size": 475867,
+    "sha256": "3c2669147ae51b909b5f611494e4a6eb2b523c4e3996405c03d899e058bc14f9"
+  },
+  {
+    "path": "dynamic_dials/bitax/copper/face.dial",
+    "size": 475867,
+    "sha256": "2880c2516522212afd1bd5442f1de960959a19817a5e5fcc92ce0c7415f960f3"
+  },
+  {
+    "path": "dynamic_dials/bitax/gold/face.dial",
+    "size": 475867,
+    "sha256": "5d2f79a262c17b03454b645badb4f4f07f6f2cfe2b19a9131706e8e35239e151"
+  },
+  {
+    "path": "dynamic_dials/bitax/green/face.dial",
+    "size": 475867,
+    "sha256": "ff154a9eeced2e79ed4b44819802d6d2b4adc50715a3c7d05ec672d56f93bc1f"
+  },
+  {
+    "path": "dynamic_dials/bitax/ice/face.dial",
+    "size": 475867,
+    "sha256": "7418f1e999dc55626af3b281d6dc0adb0638219be9d264c98651eb7834ad94f9"
+  },
+  {
+    "path": "dynamic_dials/bitax/preview-single-battery.png",
+    "size": 33779,
+    "sha256": "79f3976a7a5d7db3dc197c019b366a7a778048522c122c8e3bf6e51446d3e95b"
+  },
+  {
+    "path": "dynamic_dials/bitax/preview.png",
+    "size": 33779,
+    "sha256": "79f3976a7a5d7db3dc197c019b366a7a778048522c122c8e3bf6e51446d3e95b"
+  },
+  {
+    "path": "dynamic_dials/bitax/redorange/face.dial",
+    "size": 475867,
+    "sha256": "1fc1e527385b5576f1f4bfb200b7c5bcc4b7f06c99ee20b76b7aae9bf0deec3e"
+  },
+  {
+    "path": "dynamic_dials/bitax/render-spec.json",
+    "size": 493,
+    "sha256": "1b17bfa9bd5708ddbf2d728cd7fbdb0d04f24aace2dadbef830aa9e4a205c3f0"
+  },
+  {
+    "path": "dynamic_dials/catalog.json",
+    "size": 31863,
+    "sha256": "bdc1c6bac11f118b33fdfd71029afa910744cbe22a4b84ce1de42824e34e73ff"
+  },
+  {
+    "path": "dynamic_dials/dial3000/amber/face.dial",
+    "size": 491933,
+    "sha256": "f5e48935cd7189404e980f4f4103abead26d430a91efd69873a1d363a1566bfd"
+  },
+  {
+    "path": "dynamic_dials/dial3000/amber/preview.png",
+    "size": 28286,
+    "sha256": "781735350e35f63e9b77d638518bbf40127bab2e680d4a02cda9606989677469"
+  },
+  {
+    "path": "dynamic_dials/dial3000/cyan/face.dial",
+    "size": 491931,
+    "sha256": "813c91da15cbbfdf336ce7fbd40a4bf1fdefaffa37b78842fd8f4021b9c48bdf"
+  },
+  {
+    "path": "dynamic_dials/dial3000/cyan/preview.png",
+    "size": 28411,
+    "sha256": "0f26e0d163b02f38389643bc2beeda40f547bf1c37482d272d33b4bab3696102"
+  },
+  {
+    "path": "dynamic_dials/dial3000/phosphor/face.dial",
+    "size": 491835,
+    "sha256": "477f052f3aedc54a31eacc2f4f8c19ec4175ec70bad52252114762de75869228"
+  },
+  {
+    "path": "dynamic_dials/dial3000/phosphor/preview.png",
+    "size": 27002,
+    "sha256": "ea9741dd7f7d78b6eac95f23ffdff9574ddee42fff55c4743b20ed90606eeae5"
+  },
+  {
+    "path": "dynamic_dials/dial3000/preview.png",
+    "size": 151155,
+    "sha256": "d3da9d597e06cc913b9991a4103bcf9b27fa46a1f7465337b0ec26bc11d220df"
+  },
+  {
+    "path": "dynamic_dials/dial3000/red/face.dial",
+    "size": 491853,
+    "sha256": "3339b968c9df39812e5dbe5809491a8247a5ab9a7f20efc266b451e5de2c38d7"
+  },
+  {
+    "path": "dynamic_dials/dial3000/red/preview.png",
+    "size": 27355,
+    "sha256": "afa83ca2a2c08dab8856badea00d4f785dce58408d4f9d6372578f881fdb6ef6"
+  },
+  {
+    "path": "dynamic_dials/dial3000/render-spec.json",
+    "size": 530,
+    "sha256": "3c7f28035e8347677220f4989b106f7c264d66a53824df2e9e35199908552a34"
+  },
+  {
+    "path": "dynamic_dials/dial3000/violet/face.dial",
+    "size": 491927,
+    "sha256": "c3296a696a2e8dc6cc0bd63e41d9151ef3e113fa8ac10cd6defd591cb1bf8e45"
+  },
+  {
+    "path": "dynamic_dials/dial3000/violet/preview.png",
+    "size": 28327,
+    "sha256": "a2212297a86e67e43f0e75357e3cd6d718b7905f72071fd3d6ce6817ba8e2a3d"
+  },
+  {
+    "path": "dynamic_dials/dial3000/white/face.dial",
+    "size": 491993,
+    "sha256": "faf90680a713de06d4851d33af461829cb609eb18cf570ac80745a1cde23785e"
+  },
+  {
+    "path": "dynamic_dials/dial3000/white/preview.png",
+    "size": 25028,
+    "sha256": "21e4bd0c02a9190184175169f37e025736618616f1596e03ead1048d66cda363"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/amber/face.dial",
+    "size": 547741,
+    "sha256": "b8fef094728400c637829a3f433e7c98b0c815810ffde85dfbe80b99822d97bf"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/amber/preview.png",
+    "size": 40567,
+    "sha256": "0922577e53bb6afe08d0c58b05e56590cbaf53439047d5a73fd61f1590b3f2dd"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/cyan/face.dial",
+    "size": 547739,
+    "sha256": "d99767cea3f752f1a70254fc661505861fa9f8d6ad128b19b59cfed3631c0288"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/cyan/preview.png",
+    "size": 40829,
+    "sha256": "cb99225a8195751442e6c247b669101c90322697ba8e231d92977d5192e8363e"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/phosphor/face.dial",
+    "size": 547611,
+    "sha256": "4dac0ce8155dd275d7c72b8dfde61110e73fcc0e4dd3ec8fbb86260088fbd052"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/phosphor/preview.png",
+    "size": 39457,
+    "sha256": "7917465c7984b55e692d5f6e91c95d157c188d5c3c17474a40a62af2b5af1602"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/red/face.dial",
+    "size": 547629,
+    "sha256": "7f60115334933f1cf699f29bea5109457367f360191a1854b24842fc8c0da544"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/red/preview.png",
+    "size": 39078,
+    "sha256": "918f2badcc85f23a7316f8aeb20e17240dd0b122930ca12354a51f2616f276d5"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/render-spec.json",
+    "size": 1090,
+    "sha256": "91791221c968a27ac69029f975abf89baa0d353022715800df1eb32ea033655e"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/violet/face.dial",
+    "size": 547735,
+    "sha256": "aefa75b55e1b43de3f9d2d7593f5613e6e327606dd07e13d650f73829ea5d789"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/violet/preview.png",
+    "size": 41481,
+    "sha256": "0b1fa8d5d8f9b90cd87ec0bd36b5d57920469f4dc857284f0933648298b90fc9"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/white/face.dial",
+    "size": 547865,
+    "sha256": "e8da713a8a3cdf21375ae9c0be24c662eb730b733e8e2feb057ccdc8822de4a5"
+  },
+  {
+    "path": "dynamic_dials/dial3000walk/white/preview.png",
+    "size": 37971,
+    "sha256": "921b1df21903ec63f49f08d50d529ad786967440385fac0f7c481e4f092e5726"
+  },
+  {
+    "path": "dynamic_dials/offline-package-registry.json",
+    "size": 29236,
+    "sha256": "19ed85dad6c61446edd617c46811bb3b2599da8bfe6a3faba7984e77c3b26a0a"
+  },
+  {
+    "path": "dynamic_dials/pipauto/amber/face.dial",
+    "size": 548577,
+    "sha256": "0272b0259ae0249a201ea9013305b8ed2ffd2c0b1831bacef0ed3c011b5659fc"
+  },
+  {
+    "path": "dynamic_dials/pipauto/amber/preview.png",
+    "size": 33948,
+    "sha256": "4da16e49d12f6d8b31992fab116d653d5f41cf381f7cf012e1dc5ac7f38f4668"
+  },
+  {
+    "path": "dynamic_dials/pipauto/cyan/face.dial",
+    "size": 548575,
+    "sha256": "29ca7c9fdd5cbad69e259d9c9f94bd398caf552c81623372451127097b651b4a"
+  },
+  {
+    "path": "dynamic_dials/pipauto/cyan/preview.png",
+    "size": 33845,
+    "sha256": "ff25f99413ef4bee78c19407dc8c16bad1295fa751ad58e05805d71cbbde42ad"
+  },
+  {
+    "path": "dynamic_dials/pipauto/phosphor/face.dial",
+    "size": 548447,
+    "sha256": "60f94a41de6ec7afb39738623b7949a09a1be75721b4019399989eec1be1835a"
+  },
+  {
+    "path": "dynamic_dials/pipauto/phosphor/preview.png",
+    "size": 32888,
+    "sha256": "ea69c4501b55cb92864241ae2c743de7681d0457a3b66389b9a4dc9ebcd8cadb"
+  },
+  {
+    "path": "dynamic_dials/pipauto/red/face.dial",
+    "size": 548465,
+    "sha256": "2768f5b1eee288e054fcfe4252ac08e40b63202bc1f035259dec67b88b4f10de"
+  },
+  {
+    "path": "dynamic_dials/pipauto/red/preview.png",
+    "size": 32874,
+    "sha256": "89e4b7cc284999ab4f0a178472946ea1f50797498fe56584ce21cd5e62034da9"
+  },
+  {
+    "path": "dynamic_dials/pipauto/render-spec.json",
+    "size": 1085,
+    "sha256": "191daedaea731e0957f0228e478410b1896fb98c4cac7689868e50f338ed514a"
+  },
+  {
+    "path": "dynamic_dials/pipauto/violet/face.dial",
+    "size": 548571,
+    "sha256": "ee6e79622e789c2b6911338058a856cb9e120af21899db55762b20ced845c3fa"
+  },
+  {
+    "path": "dynamic_dials/pipauto/violet/preview.png",
+    "size": 34423,
+    "sha256": "e39f8bfc1ab608890cdf107735ee925c6ddab72472dd97c9246106a02cdb3784"
+  },
+  {
+    "path": "dynamic_dials/pipauto/white/face.dial",
+    "size": 548701,
+    "sha256": "8dbba5afc6364e09fe07da8ad689e95553eebabe989f1bd8f6f0a06b4f0a8ce7"
+  },
+  {
+    "path": "dynamic_dials/pipauto/white/preview.png",
+    "size": 31843,
+    "sha256": "f81680cd0acbccda01605bff885ed7473c3bbd06641f5c6d642802dc6fe3475c"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/amber/face.dial",
+    "size": 605254,
+    "sha256": "dfe63d49334d75453c05da1abf701116fb57880a93ce4b597c094530d116f13e"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/amber/preview.png",
+    "size": 37737,
+    "sha256": "ecadd696d90f0b4c8b12a02d37a151fc9e7e51f8e4fa6d5a8da47f5e16a41ac5"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/cyan/face.dial",
+    "size": 605252,
+    "sha256": "ae9b46daf49fd61656222c92d9201a1969d65cb16a9bb0893ad0fc0489883514"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/cyan/preview.png",
+    "size": 38027,
+    "sha256": "066aca539c131fcb1a997cb8eb6522e4aba9ac1a47ab8635b50134a95d38b3dd"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/phosphor/face.dial",
+    "size": 605092,
+    "sha256": "d40885bf42683905993da13917f4fc1c6e738e955eef21eb22833f8a6c7da8ce"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/phosphor/preview.png",
+    "size": 36758,
+    "sha256": "7da4c170e9cc5f7448de0dafdf42b5689a167c9124df6422b1d09a36fdb8b60e"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/red/face.dial",
+    "size": 605110,
+    "sha256": "9f520a4efd024ec82c840cc4bec598a2e8cd221fbd6f7cec061bf123e1c022c5"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/red/preview.png",
+    "size": 36873,
+    "sha256": "9c860949b2b30aa5eaa8fc20b7ebbabcb7943a8866f09c8759e53f1867956fb7"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/render-spec.json",
+    "size": 1087,
+    "sha256": "ed9e82b3d6d71dd64171870cc892815795b49688c6d80759f15ee3ce90c087a5"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/violet/face.dial",
+    "size": 605248,
+    "sha256": "f1e4b89e97645c6f0ea2149cfdac7731b70f8f542126619594a8ec5d12269e91"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/violet/preview.png",
+    "size": 38643,
+    "sha256": "89656e1c205aef7dc6a22603335b791876a04f74a5b1b0d1ff7534c71bcd081e"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/white/face.dial",
+    "size": 605442,
+    "sha256": "e73849d32329c9bd17e8f35162e992bab7ae1a406195a1c270d328214cfb75c3"
+  },
+  {
+    "path": "dynamic_dials/pipbottle/white/preview.png",
+    "size": 35597,
+    "sha256": "5eb389f426db2e85b8d3c4c666748b15ae23a4cfff59c4744cced8e555ed9188"
+  },
+  {
+    "path": "dynamic_dials/pipboy-qc176-offline-v1/face.dial",
+    "size": 552685,
+    "sha256": "38bae5973c5b99ec3299b60a4c5fa63e9ef2f7c2feb5b94e4b5073c5de1931de"
+  },
+  {
+    "path": "dynamic_dials/pipboy-qc176-offline-v1/preview.png",
+    "size": 168018,
+    "sha256": "9bb9abddc063cb6cc531a0f4292c6aa3ab5094c018132ff25a75192ca1089338"
+  },
+  {
+    "path": "dynamic_dials/pipboy01/face.dial",
+    "size": 536153,
+    "sha256": "928f548c744539c751f20c2d11771f21c052923beab258056d3f6ff21f219e3e"
+  },
+  {
+    "path": "dynamic_dials/pipboy01/preview.png",
+    "size": 168018,
+    "sha256": "9bb9abddc063cb6cc531a0f4292c6aa3ab5094c018132ff25a75192ca1089338"
+  },
+  {
+    "path": "dynamic_dials/pipboy01/render-spec.json",
+    "size": 227,
+    "sha256": "0f86f551e640ac3421043ee65b14a0740b44d65bb5cb2224e8a5518f2426a9e0"
+  },
+  {
+    "path": "dynamic_dials/pipboy3000/amber/face.dial",
+    "size": 614053,
+    "sha256": "f6e5fa2bb116df8d6f69873068307d3547b25352eb915f0fefff54da4de1b08d"
+  },
+  {
+    "path": "dynamic_dials/pipboy3000/cyan/face.dial",
+    "size": 614053,
+    "sha256": "641f42210d95cc8e271f7077c537ea68be202538d6122c8f081a33490b17df63"
+  },
+  {
+    "path": "dynamic_dials/pipboy3000/phosphor/face.dial",
+    "size": 335897,
+    "sha256": "2154c496a8fb7176d25847418a332d8e67cdd493013753e4d009dd64558544d9"
+  },
+  {
+    "path": "dynamic_dials/pipboy3000/preview.png",
+    "size": 22039,
+    "sha256": "42a3c41e72c327ce18c4e88859a9298cf7ac1eea4689d9125c129b72b51e0634"
+  },
+  {
+    "path": "dynamic_dials/pipboy3000/red/face.dial",
+    "size": 614045,
+    "sha256": "ae24e6eb4a5fc7687f32d9ef872d1262e4788614cdc819aa28be3d8a89494203"
+  },
+  {
+    "path": "dynamic_dials/pipboy3000/render-spec.json",
+    "size": 717,
+    "sha256": "59f659164827db6bb6e1cadfa39bb47c6cc2f1fc5caf7d53aef1e9c20d990673"
+  },
+  {
+    "path": "dynamic_dials/pipboy3000/violet/face.dial",
+    "size": 614053,
+    "sha256": "946ded483f61b33bb43e4a30df6ef355480225a33e7b1f8a086d9977aab88fb2"
+  },
+  {
+    "path": "dynamic_dials/pipboy3000/white/face.dial",
+    "size": 614073,
+    "sha256": "fc4f0fa2855b6b1dd89f74c875c87a215c53f24014fa80d93d7e01ffb5688348"
+  },
+  {
+    "path": "dynamic_dials/piprpg/amber/face.dial",
+    "size": 548575,
+    "sha256": "bb197c7146cac3c0b8dff6c823a3569758e44d9a4082984b5aff0d4aa0150fde"
+  },
+  {
+    "path": "dynamic_dials/piprpg/amber/preview.png",
+    "size": 33824,
+    "sha256": "b289edbae76ee59cbc070373b1c00ea55d346e84a0585b9985d37400a55c866f"
+  },
+  {
+    "path": "dynamic_dials/piprpg/cyan/face.dial",
+    "size": 548573,
+    "sha256": "a3f4434f07994b44d284665d003550fdf0d09b3b3c2dc516868bc0f758bf5472"
+  },
+  {
+    "path": "dynamic_dials/piprpg/cyan/preview.png",
+    "size": 33839,
+    "sha256": "be0fe33ccf7f508b9b613024f4975a5c124926d7228155707bdb2bac2cb9145b"
+  },
+  {
+    "path": "dynamic_dials/piprpg/phosphor/face.dial",
+    "size": 548445,
+    "sha256": "a47fe2bc0c107a88d07e3bcbf81cba0649a88f01c880d5a4b38956bff1db5e5c"
+  },
+  {
+    "path": "dynamic_dials/piprpg/phosphor/preview.png",
+    "size": 32819,
+    "sha256": "6b767ca61c89780c99174b15f06d7b4ebb1b0dd66bbf6e16f513657aeca76339"
+  },
+  {
+    "path": "dynamic_dials/piprpg/red/face.dial",
+    "size": 548463,
+    "sha256": "57487e7e9a20936d61e5dc70f11abe83d6d7f9fe299e75f8267b4d09a929d691"
+  },
+  {
+    "path": "dynamic_dials/piprpg/red/preview.png",
+    "size": 32947,
+    "sha256": "02b7e37c9f5155e32c450d064ab1bd6afa8a73649a848c25b167b9b5817be177"
+  },
+  {
+    "path": "dynamic_dials/piprpg/render-spec.json",
+    "size": 1084,
+    "sha256": "a949c66768fb10b85e37141dacaf4271439dee0999e041162b94ebb7a734f749"
+  },
+  {
+    "path": "dynamic_dials/piprpg/violet/face.dial",
+    "size": 548569,
+    "sha256": "1f24579cf538406fb77149257faf21c84b92837890c959a8b6d6792a22d50ab2"
+  },
+  {
+    "path": "dynamic_dials/piprpg/violet/preview.png",
+    "size": 34412,
+    "sha256": "2d62bdce968bc98e9a2c5221236fae2ec14baef9a0e35e9a297db6e7592fa2d8"
+  },
+  {
+    "path": "dynamic_dials/piprpg/white/face.dial",
+    "size": 548699,
+    "sha256": "2df36e3f18139d689c1ad5e47afdbe479c04d385b6321f290c97f104a53a1f91"
+  },
+  {
+    "path": "dynamic_dials/piprpg/white/preview.png",
+    "size": 31867,
+    "sha256": "4febe19c012c9df1301f160960d98941c6e218b623d9294bc5e9030f0e893bce"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/amber/face.dial",
+    "size": 548581,
+    "sha256": "3b27bf28a979a8bd804fe593c4ff895339c821ec1f9b144884d7340c743b6ab6"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/amber/preview.png",
+    "size": 39613,
+    "sha256": "3579b9bcef782abd018e7ecc07dc0b9ca433d06d19131797b871c5918df0bf6c"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/cyan/face.dial",
+    "size": 548579,
+    "sha256": "49180ca4e589c2d03254897c60c4c31468160c2f8ee49fdebc247faec0d226d7"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/cyan/preview.png",
+    "size": 39543,
+    "sha256": "7c2656dddd4c2d3703d93bcc44f5538e661b857ac538b25a0e0f67b7bf49b715"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/phosphor/face.dial",
+    "size": 548451,
+    "sha256": "0187c04e6d7009b9a437455884cadeeeffc332873951e04370eb5679e52e6b27"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/phosphor/preview.png",
+    "size": 38563,
+    "sha256": "b46aec0acfdb43c6084b224571997a4c9ee69ab17d37b642f6b0a4898c459c34"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/red/face.dial",
+    "size": 548469,
+    "sha256": "ebb8e2c9e09426e363853c0327bf3856f21ee7a2dd1b0c2f78b29d4dc35fbc28"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/red/preview.png",
+    "size": 38414,
+    "sha256": "d43722ce770b69ea0c6076c81425d92cb6f8d5df46f54679611f1f82c9a52654"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/render-spec.json",
+    "size": 1087,
+    "sha256": "66c57ce12746c98b95ec56d7e2c00f69e466c485a88a235b40a4d9baba282e85"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/violet/face.dial",
+    "size": 548575,
+    "sha256": "ea09a96931994d344e8f1cc30c916edd52ebc6386ec757c2614243b785139e53"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/violet/preview.png",
+    "size": 40328,
+    "sha256": "18e3f0f06ab99315b116cae2b4083b90b16197a6cc0e8504bee329c416daef6f"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/white/face.dial",
+    "size": 548705,
+    "sha256": "870f943002bf0d26af6c73bcf47346a2ba0317d504cc2fcd01b545eebd4a1e79"
+  },
+  {
+    "path": "dynamic_dials/pipsavant/white/preview.png",
+    "size": 37572,
+    "sha256": "b98489af70d6f9a67890255388a73a646682bf1e169a81c97869df63a9c3fe9e"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/amber/face.dial",
+    "size": 548585,
+    "sha256": "2d66d8233df9f83feca8ee23742eb222db2d827ecbaf7b907ad49438ecc6bf71"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/amber/preview.png",
+    "size": 38297,
+    "sha256": "75db307c5d98cc23df030a2d8e4a3ba99b5d723f5ebc827a7c049375b9d9bb7f"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/cyan/face.dial",
+    "size": 548583,
+    "sha256": "84635abd58efbaa916f6a775578ab5f94d3f5cff206d1b07215b7e596a54d1ff"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/cyan/preview.png",
+    "size": 38353,
+    "sha256": "d6e96c2235e7b9acf21f1bc7e8421eb0fb1c30b7378bdfa960d008505e4d1f78"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/phosphor/face.dial",
+    "size": 548455,
+    "sha256": "6d366f8cf9227c9ce814668ee4b12892de3f8a6c9c90b3944d8259858f7eb11a"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/phosphor/preview.png",
+    "size": 37234,
+    "sha256": "d08d7cf143f0b16fba7c1fd0ce4fc66fdd9ea22e884930394afed8fdbdc42c8c"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/red/face.dial",
+    "size": 548473,
+    "sha256": "abc58e6d0c6ac98734a914d0f7552e3cf8ef9ff85a9c938225a52ce267296a30"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/red/preview.png",
+    "size": 37158,
+    "sha256": "1f52df3724fa87c2e021d830694659d5394f11ae560d34ede783fee3f4510613"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/render-spec.json",
+    "size": 1089,
+    "sha256": "9b0b7029307d8aae7515e3f85c8ff7169720cba7d162a66fb33b0d6660ed05f9"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/violet/face.dial",
+    "size": 548579,
+    "sha256": "cbc1a01a1016aeea4fb7d74a2e45f051dee309a39aae39597282801dec69db7f"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/violet/preview.png",
+    "size": 39193,
+    "sha256": "14c7e02e269fe6c3550c8ece74e6ad256a60f24fb6e1d05ba7e662a684a65e7a"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/white/face.dial",
+    "size": 548709,
+    "sha256": "4089419aa92672dc4642a1f7c4f28f3e32e70c999f9f83502594ef337fac7eff"
+  },
+  {
+    "path": "dynamic_dials/pipstranger/white/preview.png",
+    "size": 36495,
+    "sha256": "1890d991e4c249d9ac4a4cd1f7b2ee3a79adb6187c3a12d124cffbd32a384d27"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/amber/face.dial",
+    "size": 548579,
+    "sha256": "697240e3b29f5ff3f78a0a929428b5b5bf66a8b55ef4e26e7c38ba251a02d556"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/amber/preview.png",
+    "size": 37851,
+    "sha256": "2d64b68b7f6f104693ff24ace60a72d83082915514149944db583e1b9d241fcf"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/cyan/face.dial",
+    "size": 548577,
+    "sha256": "5ee6199286e8d8ddbc12a899501138e6df491d3c17c5d274c0019149d6fd3204"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/cyan/preview.png",
+    "size": 37800,
+    "sha256": "458ea2234428ec4869c3bbfa76e51089e5a217bda7e9eaec75e866b18dfed3d5"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/phosphor/face.dial",
+    "size": 548449,
+    "sha256": "194f24296c9fedc8c7856c258d7a83ef632439af2cfadd14793284deabc6887d"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/phosphor/preview.png",
+    "size": 36862,
+    "sha256": "8fe0147880bbb592d529e56f194dc213b6bffde54e241ec50e977110cd045eef"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/red/face.dial",
+    "size": 548467,
+    "sha256": "0b924c9d23704c4855af487d26242e71c5845ff8eca273843264c05a7584fa01"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/red/preview.png",
+    "size": 36748,
+    "sha256": "b43009113911b2ad38e13cc39e0c0b12fce73f3c7e7311103a402e696d7e6d5f"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/render-spec.json",
+    "size": 1086,
+    "sha256": "2a338403dbd017d9e6879623598ea5df4232f50ba32c5809a76229348ec9f3bd"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/violet/face.dial",
+    "size": 548573,
+    "sha256": "c495baddf2b1af83fffda08d7cd501949446fb354bd7a276a81d8ecc9c1d47a9"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/violet/preview.png",
+    "size": 38555,
+    "sha256": "4fcfe7dbedad18ddcdb9c744e63bb311efa95e759c17ef47d2478d0c94a74513"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/white/face.dial",
+    "size": 548703,
+    "sha256": "ec5022131b41d159715160f951b5fcee046642a3b3ae1468d8a67950993b306a"
+  },
+  {
+    "path": "dynamic_dials/pipthumb/white/preview.png",
+    "size": 35759,
+    "sha256": "1f7d845cafae9dbf89a8954160b124e3b2707743ccf4051b3c6dd5a2a2e79d3c"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/amber/face.dial",
+    "size": 548577,
+    "sha256": "dc9bed2ff8076bfa4ef8a2c05fdbba717fd03ee98051c36f18a51f4bc1233a44"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/amber/preview.png",
+    "size": 37921,
+    "sha256": "3856ec2cdced26cdb6a0df130ff83f37acc4cada7386445257dbc1a008417322"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/cyan/face.dial",
+    "size": 548575,
+    "sha256": "0341817554f8080cf3a466e81aeefeb160d633599a1fdadc01196f05b52bb2f2"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/cyan/preview.png",
+    "size": 37922,
+    "sha256": "db9e5b79ffa7566c4053a642ac2283ffdec18a8afee5a8503a27120d196a93e0"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/phosphor/face.dial",
+    "size": 548447,
+    "sha256": "b377bd80b2cbbd509c4737d53cf04e7b16086b1b03cbb4ae11de4859cbd3331e"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/phosphor/preview.png",
+    "size": 36939,
+    "sha256": "86cb2837f9b08caf08017aadc2c09675b69e13d0d6682179934607a6bd6e46ac"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/red/face.dial",
+    "size": 548465,
+    "sha256": "29900e32a933b69a6ea89e4302c785ccbae696abc18ded9bbb14e04438740e67"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/red/preview.png",
+    "size": 36859,
+    "sha256": "ddbe6f72955b500f7369a174c9c6501b9f3760b8d6b89aa8aaa8fe72baef1b32"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/render-spec.json",
+    "size": 1085,
+    "sha256": "0a9cfb38e9fea94fb0696e81fff1a5d889033bf91af4d2f3f9d118377cd5f483"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/violet/face.dial",
+    "size": 548571,
+    "sha256": "b0a72521f8e620d058b4eb4c03ed1c120227311ddf097f1a173443f333ba597a"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/violet/preview.png",
+    "size": 38486,
+    "sha256": "4d8c3109557e25f215861ec0884a9f71f2d69d068cfee01514440fe77f09c3fe"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/white/face.dial",
+    "size": 548701,
+    "sha256": "5bf4554ff28fb4a1a80898c396dc6bc0702c190fab49d291354ed766b9579a3e"
+  },
+  {
+    "path": "dynamic_dials/pipwalk/white/preview.png",
+    "size": 35854,
+    "sha256": "760e9e367b7a4eb9aca2834cf4665b1d84e055067ee4151cc6b387e89e3fdaf1"
+  },
+  {
+    "path": "dynamic_dials/pixbot/amber/face.dial",
+    "size": 465663,
+    "sha256": "8c08ba2f1afd0c8292a0826184675d0f99718f56db6a2cd47f3793aed3fbc55a"
+  },
+  {
+    "path": "dynamic_dials/pixbot/ice/face.dial",
+    "size": 465667,
+    "sha256": "f1f7fa0dbf6c8171ff6212ba4ebd0ae217f0fcf93bf4e29e6d30d2203a53be0b"
+  },
+  {
+    "path": "dynamic_dials/pixbot/preview-single-battery.png",
+    "size": 68569,
+    "sha256": "e01cb5aa42efc9c793fad9bba62f7786681f158b77a8d6d4fd090859c0d03ded"
+  },
+  {
+    "path": "dynamic_dials/pixbot/preview.png",
+    "size": 190911,
+    "sha256": "17831efb78e739fb7e05ece5ccfcfc25a7b72e5740e68f3ad003327732840208"
+  },
+  {
+    "path": "dynamic_dials/pixbot/red/face.dial",
+    "size": 465655,
+    "sha256": "dddc201051a92ca8cd6fab57327edd83cb644e8d1a47b3bc2e7a7eb19fa5e14f"
+  },
+  {
+    "path": "dynamic_dials/pixbot/render-spec.json",
+    "size": 491,
+    "sha256": "86229790d13715b4d7a5f809a5791ae70b5f7de6b22b7d6b61d4e5134f491667"
+  },
+  {
+    "path": "dynamic_dials/pixbot/vfd/face.dial",
+    "size": 465663,
+    "sha256": "f0870946b5d7b5eed037d2b67a4b8bc9721d70b05d65a582a5dc4dcba6131ddb"
+  },
+  {
+    "path": "dynamic_dials/pixbot/violet/face.dial",
+    "size": 465667,
+    "sha256": "b2b9527a425b7b104bf029538ae70687f3055b24b44a6616adb6ab760b1ebc7a"
+  },
+  {
+    "path": "dynamic_dials/pixbot/white/face.dial",
+    "size": 465655,
+    "sha256": "1b0afd5f2b17cd5fdd829acb8056847402b860b4d89da0d4a1bc5eef68fa90ac"
+  },
+  {
+    "path": "dynamic_dials/previous/pipboy3000/amber.dial",
+    "size": 807091,
+    "sha256": "9eafc80385262a8bfbf49ae6aa68c9f3a8f550791a096ccb4b8536c0756d52b3"
+  },
+  {
+    "path": "dynamic_dials/previous/pipboy3000/cyan.dial",
+    "size": 807091,
+    "sha256": "e86b6f75a61aaac187cfa4349034acc6169fe108ad4a082c1c3e734b5b999c56"
+  },
+  {
+    "path": "dynamic_dials/previous/pipboy3000/phosphor.dial",
+    "size": 807083,
+    "sha256": "6d519314696b31d2714886ec5ee8271f9ebf82c131d0670112e3f71514f0d58d"
+  },
+  {
+    "path": "dynamic_dials/previous/pipboy3000/red.dial",
+    "size": 807083,
+    "sha256": "57d1f13a952424679897752df0cf21a1dce57f6b1b683ebe138d3ae0b58625c3"
+  },
+  {
+    "path": "dynamic_dials/previous/pipboy3000/violet.dial",
+    "size": 807091,
+    "sha256": "d995e7534a6ac5dd32e6e0bb1cb3270da87b90aff6d440824c1c424bcb61fec1"
+  },
+  {
+    "path": "dynamic_dials/previous/pipboy3000/white.dial",
+    "size": 807107,
+    "sha256": "00bd83d81b40983e0cd5d52622213813b2cbd7b0c7869e14c701811442d02a52"
+  },
+  {
+    "path": "dynamic_dials/previous-v10/dial3000walk/amber.dial",
+    "size": 547676,
+    "sha256": "be46f8fb6036b3b8af97b9b193f3fa7a00ac651e5ffcb6260144d7dec27064d9"
+  },
+  {
+    "path": "dynamic_dials/previous-v10/dial3000walk/cyan.dial",
+    "size": 547674,
+    "sha256": "fa8db763ac1a4ab4184ccc38a0a9417081afc972f6ea139e04cdf95cb4dc8f30"
+  },
+  {
+    "path": "dynamic_dials/previous-v10/dial3000walk/phosphor.dial",
+    "size": 547546,
+    "sha256": "2085d89ddff09ed00216061d169273edc1e52af353a926ee34596e85df4e8d27"
+  },
+  {
+    "path": "dynamic_dials/previous-v10/dial3000walk/red.dial",
+    "size": 547564,
+    "sha256": "44e583ec753c8ccefa13c40ebf9ead25510877485bfef8b4663fee8f58e65e3c"
+  },
+  {
+    "path": "dynamic_dials/previous-v10/dial3000walk/violet-preview.png",
+    "size": 40959,
+    "sha256": "98eee5e3e64052368ef2c1d9cedb73f2bd43e5bc48300f47f21ad5883ec41d97"
+  },
+  {
+    "path": "dynamic_dials/previous-v10/dial3000walk/violet.dial",
+    "size": 547670,
+    "sha256": "ae57c97378485a158015486832c94cd287dd1bca3663a38f2c91ac84f0497655"
+  },
+  {
+    "path": "dynamic_dials/previous-v10/dial3000walk/white.dial",
+    "size": 547800,
+    "sha256": "ff0d9942100b0c68b28121a4cc683e045071aef848c4b11a1ee8188039aafed8"
+  },
+  {
+    "path": "dynamic_dials/previous-v11/bitax/amber.dial",
+    "size": 475847,
+    "sha256": "5aea65c92bbcaa56f78d49771a04a10d3433afb4da674ceb82520c3b342e2dfb"
+  },
+  {
+    "path": "dynamic_dials/previous-v11/bitax/copper.dial",
+    "size": 475851,
+    "sha256": "3ad5290b6c4e7a3fff59d81058d200a5b18512211580214f1a5c002504bac5c8"
+  },
+  {
+    "path": "dynamic_dials/previous-v11/bitax/gold.dial",
+    "size": 475863,
+    "sha256": "2f075c7bc3912097b83692871181d6e913b981fd23c000dbdcdde549c5839e3b"
+  },
+  {
+    "path": "dynamic_dials/previous-v11/bitax/green.dial",
+    "size": 475851,
+    "sha256": "1a14dac44a1f3ebe3bc2355520d985972b44968ac5ee76cedd2e4432198b4e0e"
+  },
+  {
+    "path": "dynamic_dials/previous-v11/bitax/ice.dial",
+    "size": 475859,
+    "sha256": "c709ff9ccc24c4a16a40c330f1631a4391840112bc0128ce87e128a07ec33ded"
+  },
+  {
+    "path": "dynamic_dials/previous-v11/bitax/redorange.dial",
+    "size": 475843,
+    "sha256": "05489457ae41f375a5e3f01e7334c8880e6b9ced75f686447213df083dd56bc3"
+  },
+  {
+    "path": "dynamic_dials/previous-v4/pipboy3000/amber.dial",
+    "size": 807091,
+    "sha256": "d7eb741f831ade380cc5c94cb3591d9af525c932695ce793c5e163ad99ae74f7"
+  },
+  {
+    "path": "dynamic_dials/previous-v4/pipboy3000/cyan.dial",
+    "size": 807091,
+    "sha256": "1299c74ccded0f0efc93813345969ab8ee19245f426fd80670bc7a47e563a506"
+  },
+  {
+    "path": "dynamic_dials/previous-v4/pipboy3000/phosphor.dial",
+    "size": 807083,
+    "sha256": "f83977fb3048f99f478ba5e86aca7c7c20639f5ab2b31536fc6788cca8f21db4"
+  },
+  {
+    "path": "dynamic_dials/previous-v4/pipboy3000/red.dial",
+    "size": 807083,
+    "sha256": "819fa49a521897132b2e363def61429b2aec9c5521ac40669356f49fa7b4765e"
+  },
+  {
+    "path": "dynamic_dials/previous-v4/pipboy3000/violet.dial",
+    "size": 807091,
+    "sha256": "4dc1f1fea9b469bac8626fe6e86f20755dd91effb4a99074f5d4328ff993188e"
+  },
+  {
+    "path": "dynamic_dials/previous-v4/pipboy3000/white.dial",
+    "size": 807107,
+    "sha256": "8b5ef0064423e32e3ed073b58d08ad0562f046d8dc6d4194469dbe25046c6b8b"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/bitax/amber.dial",
+    "size": 475847,
+    "sha256": "b98a2dfd83ef479250a71f9ba833c9d0e1eed8d8643723c55a00861db7bbbbd6"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/bitax/copper.dial",
+    "size": 475851,
+    "sha256": "8caac6f4b65e6133f0b0c963c6d1e49bd872eb122643e489470eb3ee4a0fe914"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/bitax/gold.dial",
+    "size": 475863,
+    "sha256": "cabcb97086581e7e13225d105bc2721b865592528de7ab576aad9ff834917d62"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/bitax/green.dial",
+    "size": 475851,
+    "sha256": "42793d9ce94ba042e29d8873ece7a6418b512cff7d4204ac85e05cfcff56b9ed"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/bitax/ice.dial",
+    "size": 475859,
+    "sha256": "8fdb52a0ba4619fa0da0308ffe6d7680b35125ad1d8fcf9cd31633b6123de11a"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/bitax/redorange.dial",
+    "size": 475843,
+    "sha256": "0bb796caab214a5fb376e4b745d0a5db1589156ab15881f7660baa9e3ef33c73"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pipboy3000/amber.dial",
+    "size": 807091,
+    "sha256": "6000ea5fcce688b68a4a38eb3fce8742be5a6dadaf1113f51f6f849b12eac13a"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pipboy3000/cyan.dial",
+    "size": 807091,
+    "sha256": "b440d970a94ca5133f29fe058a3d2d370292523e9157cf5185abf7ff6a03f9fc"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pipboy3000/phosphor.dial",
+    "size": 807083,
+    "sha256": "d63c3adf5f075a06b55cd4eea2b190d323b49c7586a7e5f09f184c40c477fa8a"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pipboy3000/red.dial",
+    "size": 807083,
+    "sha256": "1d6005ce49c6cd404445e69e658a4bbe4973cbf933e8289ff02a791256b499ba"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pipboy3000/violet.dial",
+    "size": 807091,
+    "sha256": "f054ffc4e7e7995733a28351483d8786c69b2ce52a0bce680ace5cf3d48d00f4"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pipboy3000/white.dial",
+    "size": 807107,
+    "sha256": "ab9e96f554077d73a787d6b840f1f3a227261f9899512f67b40d7f17abe2bf47"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pixbot/amber.dial",
+    "size": 465663,
+    "sha256": "4813c60ea84db48b5744464073964c0400b98791ee912184e85fc03a6f63aa43"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pixbot/ice.dial",
+    "size": 465667,
+    "sha256": "14c0030532c7e791832880a1ec4fab4f472aabee8a4beaa2feeb0edc2979908a"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pixbot/red.dial",
+    "size": 465655,
+    "sha256": "d1cdbc97daca371fa034c5eaa7f18c40374311047e40b5aafb25c681df64b7d3"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pixbot/vfd.dial",
+    "size": 465663,
+    "sha256": "9313483c20ef0120983586ef5df8b0210a30a25059e483f7b6bb742e303d67cd"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pixbot/violet.dial",
+    "size": 465667,
+    "sha256": "ab979538ae382a81e4e21525480385fe26f599f29002490b8496e2948459163b"
+  },
+  {
+    "path": "dynamic_dials/previous-v5/pixbot/white.dial",
+    "size": 465655,
+    "sha256": "e40f2c4fa5098aff7434f80852db271d2abf90b36b233289e0ff7138a63cc97c"
+  },
+  {
+    "path": "dynamic_dials/previous-v6/pipboy3000/phosphor.dial",
+    "size": 614045,
+    "sha256": "92e1c761eab9275d818a903064a59fbf815e8875a7cad3af6fcd05e789545e67"
+  },
+  {
+    "path": "dynamic_dials/previous-v7/dial3000/phosphor.dial",
+    "size": 485421,
+    "sha256": "71c6c18f914f8b0caee64faf9f3cad26faddd059a2308846e3431a6265713326"
+  },
+  {
+    "path": "dynamic_dials/previous-v8/dial3000/amber.dial",
+    "size": 491933,
+    "sha256": "b39468e6fa94cabf95db928b8812e8ecd16bcf8433a57196d21be5ca99211324"
+  },
+  {
+    "path": "dynamic_dials/previous-v8/dial3000/cyan.dial",
+    "size": 491931,
+    "sha256": "f6beb38286f2c8356d9a7d9d17d8a4426252c94477922429e8506d935be389d9"
+  },
+  {
+    "path": "dynamic_dials/previous-v8/dial3000/phosphor.dial",
+    "size": 491835,
+    "sha256": "f227f65b1a516bc44e79a68823ca4bcaee4ffa02f4269bfbc2a3bbe01edf0b5c"
+  },
+  {
+    "path": "dynamic_dials/previous-v8/dial3000/red.dial",
+    "size": 491853,
+    "sha256": "eb4a0fa658d3e5e0b104932dbacfe6e141b7ac8f1113e039cebe3d56c7d01fcb"
+  },
+  {
+    "path": "dynamic_dials/previous-v8/dial3000/violet.dial",
+    "size": 491927,
+    "sha256": "67276a726ce2eb0323a98e653c61c9547898c1d2d4d54a9f300a06f83496ad24"
+  },
+  {
+    "path": "dynamic_dials/previous-v8/dial3000/white.dial",
+    "size": 491993,
+    "sha256": "3f07a5ee71c5f187bc4042e64ee333936d11351e7726fdb1567416f7f70f2c42"
+  },
+  {
+    "path": "dynamic_dials/previous-v9/dial3000/amber.dial",
+    "size": 491933,
+    "sha256": "f5e48935cd7189404e980f4f4103abead26d430a91efd69873a1d363a1566bfd"
+  },
+  {
+    "path": "dynamic_dials/previous-v9/dial3000/cyan.dial",
+    "size": 491931,
+    "sha256": "813c91da15cbbfdf336ce7fbd40a4bf1fdefaffa37b78842fd8f4021b9c48bdf"
+  },
+  {
+    "path": "dynamic_dials/previous-v9/dial3000/phosphor.dial",
+    "size": 491835,
+    "sha256": "477f052f3aedc54a31eacc2f4f8c19ec4175ec70bad52252114762de75869228"
+  },
+  {
+    "path": "dynamic_dials/previous-v9/dial3000/red.dial",
+    "size": 491853,
+    "sha256": "3339b968c9df39812e5dbe5809491a8247a5ab9a7f20efc266b451e5de2c38d7"
+  },
+  {
+    "path": "dynamic_dials/previous-v9/dial3000/violet.dial",
+    "size": 491927,
+    "sha256": "c3296a696a2e8dc6cc0bd63e41d9151ef3e113fa8ac10cd6defd591cb1bf8e45"
+  },
+  {
+    "path": "dynamic_dials/previous-v9/dial3000/white.dial",
+    "size": 491993,
+    "sha256": "faf90680a713de06d4851d33af461829cb609eb18cf570ac80745a1cde23785e"
+  },
+  {
+    "path": "dynamic_dials/shared-base-coordinate-map.json",
+    "size": 53611,
+    "sha256": "426704a20a68e3973cd02f0f3aa748679a54447756c2090208a4efbae68d8bf7"
+  },
+  {
+    "path": "exercise_illustrations/atlas-0.png",
+    "size": 2076856,
+    "sha256": "d2fea6ed1381a7a8b4e12fd97cb521a608099964247def7e202c8e4aca55e85f"
+  },
+  {
+    "path": "exercise_illustrations/atlas-1.png",
+    "size": 2070726,
+    "sha256": "a1c429ad2062ffe9cc8c85f7325fa776f321e5856f101a374323aee87b4dacd3"
+  },
+  {
+    "path": "exercise_illustrations/atlas-2.png",
+    "size": 2076078,
+    "sha256": "bcbb59d298b9096e0430473ec7f0cec2b90121cf49ffd8e0ed3b9f10cf8877d0"
+  },
+  {
+    "path": "exercise_illustrations/atlas-3.png",
+    "size": 1564605,
+    "sha256": "9981c74ed6dfe73cd5e61d6408307ee5da70c4dd21c7673787ce2c765680b1d4"
+  }
+]

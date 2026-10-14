@@ -1,0 +1,1172 @@
+[
+  {
+    "path": "source-assets/work/shared-dial-base/src/app.js",
+    "size": 142,
+    "sha256": "ab29e2c90444c809014bdc8de95a2465f5dc254b84f0070507d3692138207f3c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/shared-dial-base/src/main.js",
+    "size": 7209,
+    "sha256": "d3e27227823cda1bfe5909a1dee247546f8ed327f35d30bfefb5b9c92aea5089",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/src/app.js",
+    "size": 142,
+    "sha256": "ab29e2c90444c809014bdc8de95a2465f5dc254b84f0070507d3692138207f3c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/src/main.js",
+    "size": 7567,
+    "sha256": "706ba3271f13c3b7fe050ddf8508ecb23bd30ada13ed6adff6e45272a1981ac0",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/background.png",
+    "size": 123488,
+    "sha256": "d9e7328a76893129c40d412cb657c1931ba97f3eb183e8799564a3ad5e3a9cfa",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_1.png",
+    "size": 111,
+    "sha256": "706121c9212528a56f422794b277fa2b1e70b4d3f75beff9216932132a166a9f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_10.png",
+    "size": 102,
+    "sha256": "57b7ec614f5b76d48d6339db3140c792a556517a97aa9c6dfc120cc46de5cb59",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_2.png",
+    "size": 111,
+    "sha256": "94ca499766b85dec36734abae0088fc2a9eb9e4f4096df35096e35a0a44efcd4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_3.png",
+    "size": 111,
+    "sha256": "887bb28fb442f9674db18f919765a85baf038f8d92a6e5d71427f5cffb00842c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_4.png",
+    "size": 110,
+    "sha256": "b46696baed6ea32fea204fd4fa62de9aaa816b77e2f741dabefe32df126fadf4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_5.png",
+    "size": 109,
+    "sha256": "d05a72ee26cf72dbda50fa75090f895353033b667babb6e2625d2537e4a5a35c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_6.png",
+    "size": 111,
+    "sha256": "2ad66fb34e03c01fa4c65af3184dc1969a75a442fb2560402b8d3992daeaf7c1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_7.png",
+    "size": 112,
+    "sha256": "b071dceb91232f501c29d2af746fef8ba3bad06b0228259b5ce0e777fea3a8aa",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_8.png",
+    "size": 112,
+    "sha256": "f4d3b16be4532451cf42e6f7795f50a1cfc257bd2c46cd8bebcacb3c5a6e9cce",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/bat_9.png",
+    "size": 112,
+    "sha256": "6fc5cbc2be48c16a9042aea9eb7a80c38a0362f1a83da9d6ddc9b3e8fce657de",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_0.png",
+    "size": 1322,
+    "sha256": "cccf83769ca474345e84c86dd83ac712359d461ff4b478b74c4717b8edcc93b1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_1.png",
+    "size": 486,
+    "sha256": "96f07dbb67f1ae91fe264911e46bb415b42652887df3fa964f4ec20512d1098e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_2.png",
+    "size": 1184,
+    "sha256": "74066bb89e8544c528bf297a80b79a1a748e6b5d8affffcb7a6b954454d6c1d1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_3.png",
+    "size": 1538,
+    "sha256": "279d73132d77992411c8f0127ad78555f3049cbbeff9dd72fd2ca2db8b6261a5",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_4.png",
+    "size": 704,
+    "sha256": "1d8658dac53e678d9a3d9856178b6d88a9c4145bd30a41257e893c0388071833",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_5.png",
+    "size": 1249,
+    "sha256": "3e8843acc50f2913bf4e1793f8036a849a67688c98c32e1abf4f0ad7a201e2f2",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_6.png",
+    "size": 1567,
+    "sha256": "742b39307b51ee9451a5a5bf893bd69830f67ece922efee92ec45bfadb0341b1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_7.png",
+    "size": 819,
+    "sha256": "be1cf04f09c7734f61d0e36f1ecf73f6a04b667f69c439e42513db56bdfea90d",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_8.png",
+    "size": 1657,
+    "sha256": "2b167f747ae57cc2a93e8b4442571968d037246f246141ba84a9a92f6de9b7a6",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/amber/digit_9.png",
+    "size": 1558,
+    "sha256": "e8eb58db07ec38cc1d8b2a8523fc46b949c4b17a1ed0dade5acc507a108ce3d2",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/background.png",
+    "size": 122378,
+    "sha256": "b6928c5aaeee363391749cdb1acd4442648c54dbd49160771bf659ce0c527f98",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_1.png",
+    "size": 111,
+    "sha256": "b2cde31def92cba132b799c2737633321b6186e159f106e1315babd33a1f614f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_10.png",
+    "size": 103,
+    "sha256": "70572941b271ef4a140e6c89f9818f474888f0041467d50d90d1c4c86ba5a9b2",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_2.png",
+    "size": 111,
+    "sha256": "909f33bb0f535477beb8c384357c416c4859a84c47d2d2783d146babf82fffb8",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_3.png",
+    "size": 111,
+    "sha256": "49a608cb4d41adaa499e4e97d840e4dc336ceba654402d53fc8c0963b24a7f72",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_4.png",
+    "size": 110,
+    "sha256": "213e5f137b0080925fc1e14aed8f4a1e17cb66b4220234046ea52688fb7494f7",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_5.png",
+    "size": 109,
+    "sha256": "5deba397bdbda3665901eebe519c155729f8fcc25f9059414ca293ae33fffcb0",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_6.png",
+    "size": 111,
+    "sha256": "b65db8b364b3280d35a843796ebe57ba2989105128f3ca17f21e17dadae984ed",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_7.png",
+    "size": 112,
+    "sha256": "bcab7017e21c93421fc2feb1e4846f5e95fc453384cbe30c1e2e06c38f3aae60",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_8.png",
+    "size": 112,
+    "sha256": "6e585f25a5358dc35253e797e5167ee7488e00db9d18e181936bd8ed65acebaf",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/bat_9.png",
+    "size": 112,
+    "sha256": "67ae80e877fb35818034bf65935602cb0db9541862773ced16622e9a682b9485",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_0.png",
+    "size": 1341,
+    "sha256": "100a42f66f064aa8e4f5c592ccf92d0dc49a72ab7dd43f024c88115af9ab7681",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_1.png",
+    "size": 490,
+    "sha256": "56f7c73a2bbb0b80110249bcf74c261f4c0bc45b02cfe51a766fde1fe4c5c6ad",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_2.png",
+    "size": 1196,
+    "sha256": "27b85974258e5a2193e1a3bf7de6255577bbb5343051510a6a28974558e4501e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_3.png",
+    "size": 1537,
+    "sha256": "d390299b96e7d26065bbe9275c024a8f0ef2ce32996b5d53d74fdfe87a7aedd8",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_4.png",
+    "size": 708,
+    "sha256": "6bf7efa94e8bd5a5a413aa2d47432d42351b3659913bd8f2b262453217f0a11c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_5.png",
+    "size": 1244,
+    "sha256": "57597ca8e5789a83bb931d8f86e45063ced0c303315649e7dc4eb54b01561e48",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_6.png",
+    "size": 1581,
+    "sha256": "6b86149c7635525c6cc8870d4107e4140d4c3fd37a7b88cf5b0f9354d24aecbb",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_7.png",
+    "size": 817,
+    "sha256": "f833221258e95f7290c3fffaf566a22bc4951dd242d27da65ff8bed17a3fedc7",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_8.png",
+    "size": 1655,
+    "sha256": "0922ea14385bb11e5d79c48d5bc2471bc25a202b884c4796e4392e24d391ef70",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/cyan/digit_9.png",
+    "size": 1559,
+    "sha256": "798c64ae5ce9e8e205c3ca9c8c81edcb16ba729f5bee2acfc101bee271d41316",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/background.png",
+    "size": 123945,
+    "sha256": "897c51e133eee314b1dfc8a49e5d9ff725d9af295db6d0d4853019261c6e03ca",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_1.png",
+    "size": 111,
+    "sha256": "467cfc6f7de433c43c9aaa249e98fc7458e45b9afb1f668f2e5714f20b08ec47",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_10.png",
+    "size": 102,
+    "sha256": "c509fae3d19d48b1b3a57c09c06b1bf25a11114eb27ee19e107c9e5fc69e2c99",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_2.png",
+    "size": 111,
+    "sha256": "bc0509d3b9af99b16a09a96735f8b3b8253dd946679b78bf70076771180141d1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_3.png",
+    "size": 111,
+    "sha256": "63b8b1c9db32847bf8fb7f7bc5a4ad3049fc444cd572dd66d3a68c44375d12ba",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_4.png",
+    "size": 110,
+    "sha256": "18b546a4e2c3615d0f956625e2d3d9991b39a63cb4f301903cbb45407a6ff571",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_5.png",
+    "size": 109,
+    "sha256": "4c40fd22851a544253be1364868bf4918dadfd7d197e0e8a2f576d8a7494a7b1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_6.png",
+    "size": 111,
+    "sha256": "d07bbeb742c8808e158e2ee7b31211359c23b8fb060465e127b4e41813b722e1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_7.png",
+    "size": 112,
+    "sha256": "13a04333b41064d1ce28ba9f7b5374bce5e712f6be7460b75afdfd0141470f9d",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_8.png",
+    "size": 112,
+    "sha256": "77821cddc8dce71a47a052cb08f6841d2afd4769fe602130382ec4cd0c7ca3d8",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/bat_9.png",
+    "size": 112,
+    "sha256": "fe20acb7f140ba4275c9fc4aaeb5a767e24ad0d7374fc572f0bc2911321ce449",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_0.png",
+    "size": 1329,
+    "sha256": "e171edb55bb4ddbbbaa221c5374db78bac6f30b60971823eccee590957f1cfad",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_1.png",
+    "size": 488,
+    "sha256": "79cf992ae0bf1e66dc12767f35f7581a4724b7109d665e68b1f3c8b1bc08c89e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_2.png",
+    "size": 1163,
+    "sha256": "06acd324acf7877959082502dce3c8090ff70408b2006bdf88bb9aabf147bb1f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_3.png",
+    "size": 1520,
+    "sha256": "695bfadfb4167b9654b7b34f69c258df6b600b65f0ad9b53b38e78aadef086fe",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_4.png",
+    "size": 707,
+    "sha256": "2f7a0ea8d641593b2d780ade55667b6eea584cd672715b37c44fb43252445a2a",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_5.png",
+    "size": 1219,
+    "sha256": "2860f1c95341e164033a57a5b2a138d09adf784bcb7872571ecb0bc57cac19a1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_6.png",
+    "size": 1567,
+    "sha256": "7f9f2a7845b5211f56113655a00f16a6d6797fa109aa9b4c4b79d08f36fe621d",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_7.png",
+    "size": 810,
+    "sha256": "26a90248b77600d61644e91fd6248924d61eab390b4db0ac3c36b2d2a40e9213",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_8.png",
+    "size": 1621,
+    "sha256": "24c0dfc9aaeef6096fd02e53ecef7df1b8d19b7e97e09f21cf655baa7a900d81",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/phosphor/digit_9.png",
+    "size": 1549,
+    "sha256": "e077f06d7fc870dc27a616841d5931a73f1d6f4c57945241374fbe52a966e1cd",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/background.png",
+    "size": 122883,
+    "sha256": "acd900498bf373a38fbd94dda28544fb4c336fb0b5a0e2b62a1b8b6d8257697f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_1.png",
+    "size": 110,
+    "sha256": "e06feefe889fdb64b511f55309e39b38f1eb5c82abd655fb6a69f534bc334ef7",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_10.png",
+    "size": 103,
+    "sha256": "5cefc157b7dc23aa153a3ab59caf27fa436c619b7625406797070dab9c2410c4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_2.png",
+    "size": 110,
+    "sha256": "35dcc8d522f4725369e5a47bcbc4593b9e4129872aecd24efc2c5b18bfa25ee1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_3.png",
+    "size": 111,
+    "sha256": "a1d54030eecf8a9206c92d723c0a7da7d5ec06ff18de36a81aa0a3887e93907b",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_4.png",
+    "size": 110,
+    "sha256": "3ec01518aaf7452b548c708f6204355130556fbd5e30d77a25f3d6f564b0b6bc",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_5.png",
+    "size": 109,
+    "sha256": "5c034d1f1733ab377d0cf6584c967d34b2e93b58af195272d5b5b1494badc3a3",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_6.png",
+    "size": 111,
+    "sha256": "fc32de61681f246ca8695d64c9d01475fd4cc4b82bc535585f7014c84b851e0e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_7.png",
+    "size": 112,
+    "sha256": "43a3823f4a76edd9f5a0d8a550c56d0349f99027eaee1d18b20ef78ab68cda1e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_8.png",
+    "size": 112,
+    "sha256": "63fa3de1f835b1151e070485be3472955079b9b9439bdcebd96c7346f6b37195",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/bat_9.png",
+    "size": 111,
+    "sha256": "df29f13442c6cfc8c0ceae3f92f5cb9dd1c671106da544814f593883e7c28c8b",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_0.png",
+    "size": 1303,
+    "sha256": "13eda94b61020824203cc8cdc0ccf3667b9dd7410c48f037bc0d22bbee76cfcf",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_1.png",
+    "size": 484,
+    "sha256": "95c95c72618fd3225ff92e401b2ae81f8994e5f08a090da58d688ccaae35352f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_2.png",
+    "size": 1160,
+    "sha256": "74fdb7e54ed8093f1e97e34d27e95f6618e2e55e5a05d3261ee3518f709e6a0c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_3.png",
+    "size": 1495,
+    "sha256": "e8af938fc07c4ff9c6fabd9fcae09040f7bc227c5ea1958f314f9f2cd922a4b1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_4.png",
+    "size": 704,
+    "sha256": "90624e257063ad093ed09b8a5e4b9fb807d7590f54dd905b6e91169e008656c7",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_5.png",
+    "size": 1212,
+    "sha256": "df999884db995d067760f713702bfe26958a0b15df591d007e2eb764be177016",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_6.png",
+    "size": 1546,
+    "sha256": "af7322a6d193d02c1c326dc6e51611865881340128350c116a4b0f429f6f8d22",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_7.png",
+    "size": 804,
+    "sha256": "4a66023052c054e1684cc0ee7d7973805c5a27b96c330d1cd2218b5ab0048c0e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_8.png",
+    "size": 1616,
+    "sha256": "f0c8f2ed511b0e340a4ce4f41a419c241157564b8791b075bd61c5cca21293c1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/red/digit_9.png",
+    "size": 1538,
+    "sha256": "45b8e6bf2fa87c0f17f441dc539d673f198a8055bcddfdf54512881786c693da",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/background.png",
+    "size": 125885,
+    "sha256": "81ab527c04cb0b88a19f0067c3bbc873dc7ff49b40bbbe95ecaf5fcc8c4013d6",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_1.png",
+    "size": 111,
+    "sha256": "52958b0dc8b98627f344cc654a22e372873100b7c0c88aa14660c6f7c7268f50",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_10.png",
+    "size": 102,
+    "sha256": "fcdb91ead6fcaffe2e6db7fd1ddbaf41d04377d7688be15a50bc642b273a59aa",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_2.png",
+    "size": 111,
+    "sha256": "03325d1ffad7aeeb0203c35026c08aa812ac8174c2775a9148e47d0467a44c9c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_3.png",
+    "size": 111,
+    "sha256": "56c7595493326b24672f157c5f1f15cd3df7544960dcd251200c3c9954d54958",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_4.png",
+    "size": 110,
+    "sha256": "c8578d40105ebdae89b854463d4470a8c3c9eb908f86c0a2b7e52c9360e8bfb4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_5.png",
+    "size": 109,
+    "sha256": "59f09f99af1883b4d5367ff8c0cfa3986b7fd47ac854750212ada4b32a42b438",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_6.png",
+    "size": 111,
+    "sha256": "27e1d05bdf29e0a70b4362ccdfb35672987535b0806954c44df3c794324266b4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_7.png",
+    "size": 112,
+    "sha256": "ea305990e16b06c33aad842cb390e4d56a53f0f8b89633331f1a4f71cafd8553",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_8.png",
+    "size": 112,
+    "sha256": "6a9755f57196b5430ae548f55f1d0b7cd5d97a4086bda9d4538d22eee22e615c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/bat_9.png",
+    "size": 112,
+    "sha256": "a8c83d30dbb7d09d514655f2dc506ccda5b36ddecb8a7984b18e5b321d6040a1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_0.png",
+    "size": 1365,
+    "sha256": "dfbdb359bc2d0fb79f32fb9c854a54005f1cdc98799388d6b0b67e2e7a65fcfb",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_1.png",
+    "size": 493,
+    "sha256": "731f48e2b91666eb481e025c01e57d2e3ea75f8080af8e6570d78dac570bcf54",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_2.png",
+    "size": 1202,
+    "sha256": "43da5b9492b96debbb7f2d27f6ede0a9cdb37d7a4da6ea40cca9ee8a74f52223",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_3.png",
+    "size": 1561,
+    "sha256": "c5fe28e364de839ae8d07fd83d4731fb00668aaf4466af69cb5520d1fe8c1a50",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_4.png",
+    "size": 712,
+    "sha256": "c753dc87815c03456097289d07e39c1154bce710a15fb52f46428905388a26b2",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_5.png",
+    "size": 1253,
+    "sha256": "254cecd43341022e67251d6780d5a9fa1663811912c4075c715d5bd127e0c4b7",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_6.png",
+    "size": 1590,
+    "sha256": "efa6dda3ee717f690b43ae5afa858872a5248dcbebe56deaaede5994542226f4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_7.png",
+    "size": 828,
+    "sha256": "90ec2c51dc0b060402abfec4427486415dbadc9bfeb86194df43a8e42e9e816f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_8.png",
+    "size": 1675,
+    "sha256": "89c3d3aeca2c9431d7ec51dafc983ffe8a1ff6dc432c68fd9b5e6253ec53945e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/violet/digit_9.png",
+    "size": 1585,
+    "sha256": "ef0e0f9d5933043c5596da1fc48248bb52636bce9c3abb1fa8c2e9ca5c49bf75",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/background.png",
+    "size": 117752,
+    "sha256": "5a6138c571f262c119bb05adfba796200197334ac1b3da01d8b4e9b2be8ea295",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_0.png",
+    "size": 82,
+    "sha256": "e2e5ff85819a2728ac0ad859025dcf8b9b93bf9ed92f234e3e4103a825b5dd1f",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_1.png",
+    "size": 112,
+    "sha256": "7fd6b142c03c13da8ed79211467924c0803114e6ab40fd558e13716910cf0193",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_10.png",
+    "size": 103,
+    "sha256": "5c19a40e774b93a3d767494cf329f32f95fab5e8f94179a6355706d562431f9e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_2.png",
+    "size": 112,
+    "sha256": "0d7d4a81a85279fd01fcf3fdab8737193ce1e576007142276fb1f1b602dd7496",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_3.png",
+    "size": 112,
+    "sha256": "7f1aa3900f3518542079c3cfb961bc5c5c83837fed4a3cdef7e06432b8c10ce3",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_4.png",
+    "size": 112,
+    "sha256": "26fb5f1e87a5cc75450fae3cee54502f7ad367cd944a6c80a50cfb4bb01dd9b1",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_5.png",
+    "size": 111,
+    "sha256": "a72ae2a6ea718cf1a0b4675b66bfe2b948533672ad86bdb394819d6fd6c0b8fe",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_6.png",
+    "size": 113,
+    "sha256": "4af54187504cdaa06d4daa05a4c5f688babfd85764eb36f6824f4313172db732",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_7.png",
+    "size": 113,
+    "sha256": "4e4a1abf90aaa8ebfbe7e1a6dc11c9967dc53fda68abcf22b118d1e3bccd109d",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_8.png",
+    "size": 113,
+    "sha256": "feac9062fb0f5eff05ff96f157d3f74f18e5d6f958418845190cdced2c900c70",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/bat_9.png",
+    "size": 113,
+    "sha256": "20beb1383b4f6c1e9b638bdb9e4a2f460f4012d06a56f4f0c7ce1577abd22f28",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_0.png",
+    "size": 1377,
+    "sha256": "2ef90b5ab84d71b28f49fa214da0b930ba1b4984d735b0bcc61e9a3f27251290",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_1.png",
+    "size": 486,
+    "sha256": "0bfdf47b4f5d24c0333606ca3c736976e5c90cf26cd4eaa9d09a95e2dfc87d1a",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_2.png",
+    "size": 1113,
+    "sha256": "2a5115179f19085a74a2a6984b0c586a9b995a8781012e4049441161c56886a4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_3.png",
+    "size": 1555,
+    "sha256": "2b300bdab9d2ce085d7bef99f37aece90eee362585d963addb3a82beb44898de",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_4.png",
+    "size": 698,
+    "sha256": "76cd662309774b510579718aeb51f832a8c4d525a30afaf4b9727d361011100a",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_5.png",
+    "size": 1254,
+    "sha256": "f974b1ca4beefc38fe8b4c5ec28e807b30da39c705b62fc142c74fc33759352e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_6.png",
+    "size": 1579,
+    "sha256": "d135e5b53aaf413e655aa9bef8df001c80e297b0af7bf78ffe47bc5e54254be6",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_7.png",
+    "size": 789,
+    "sha256": "ec26221f41491d97377d5fa2f67d8394281d33d0bc3cad548cfd7c420cb7997c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_8.png",
+    "size": 1668,
+    "sha256": "2880a0b9db14e7a2d9fe47d1c9c1e51829f676f4f964d7f9973f9454721f999e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-v2/assets/white/digit_9.png",
+    "size": 1590,
+    "sha256": "3f0d32d9a94790561df6607204d399017a2ac989f33186723f00bf1bd2e266ab",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/src/main.js",
+    "size": 8024,
+    "sha256": "62215a5c2ee368417a9c9d55fb7e2e9be1d99d1cfe7fc1c0eab8a35bf4ef3785",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/cadence-20261010/main.js",
+    "size": 8899,
+    "sha256": "30cff466b266e84db17337943388a9edede56a910db764809fc8f6c7a817b84e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/amber/00.png",
+    "size": 14413,
+    "sha256": "703ce2862e834be50e9f4ee0af2d363897874d9bea2022681b4e63a85e506f8b",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/amber/01.png",
+    "size": 13841,
+    "sha256": "0ec4de3785a86140f7ce03c43ad04a1ec73b36fe88482d86e462c2db17da66ce",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/amber/02.png",
+    "size": 14578,
+    "sha256": "efa6b466881c3449d8c32e9c9879738543f4b34f7f103596521bc0d4473d383d",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/amber/03.png",
+    "size": 13728,
+    "sha256": "aafa28bf770d602b836176336a607b3004065a56e4016f3573a789504e109d42",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/cyan/00.png",
+    "size": 14521,
+    "sha256": "de7212b8ae8c10e4851d9261a08aa4b5b32b7269d0cc0f0fb433c38e74add856",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/cyan/01.png",
+    "size": 13962,
+    "sha256": "8ab465d408591648e47a17f45e94d0d497e13f0cfd33d2e6ddbaa4d0d0f9d66c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/cyan/02.png",
+    "size": 14911,
+    "sha256": "481d8f1a092eb06bbac4e29eff8ea99880121c4f00065c1b040b2f0e22b4bb00",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/cyan/03.png",
+    "size": 13797,
+    "sha256": "1205e17250fb717bb4376f4373f6dc0b08be1c14a997a1eb3d7d5f74d751287a",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/phosphor/00.png",
+    "size": 14266,
+    "sha256": "1796661a73255c71c64910c23726303d9f3aa32448890c9076222efc5054bfbd",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/phosphor/01.png",
+    "size": 13705,
+    "sha256": "38da181a7b7791982e152baedde45050d802047844b9918f432488fd32740883",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/phosphor/02.png",
+    "size": 14619,
+    "sha256": "aef4bc65cc1bde8367255057c2564a97acc2929388fa03aafd046a9b83c3ff01",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/phosphor/03.png",
+    "size": 13571,
+    "sha256": "689741222b743b61f0fa408297624c697e9e5f2fcee38b1ebd09a60cd7cbe26c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/red/00.png",
+    "size": 13754,
+    "sha256": "2af03ad3826cd17cc7ebbfa2292dcaebb36d03bd9913cb4996f84b73f2a76082",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/red/01.png",
+    "size": 13124,
+    "sha256": "bbb07f2300e723eac1d0bd2df7bbb835adfb11d387a865cea9e5f962c5ccbc9e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/red/02.png",
+    "size": 14105,
+    "sha256": "084d1aa5c68a0ffb6440c6748744aacbd988f3dc007e9ab84ad295643403d671",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/red/03.png",
+    "size": 12990,
+    "sha256": "ab64c36dba08f3933ae94298e78281b932b11e98e50dbc21ab76e856872222e6",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/violet/00.png",
+    "size": 14951,
+    "sha256": "464d278961ddbd5a4dc360130cd5235b7313d45e03d7f58143dfed3569536747",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/violet/01.png",
+    "size": 14295,
+    "sha256": "d8e4c9aa3df76dbd1dd2a1236e0deacc3caf6c3f2caa88a3b063390f6fbfb1fb",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/violet/02.png",
+    "size": 15077,
+    "sha256": "249416cb66356f5961abfd1d03063a0bbbb702c20e798934e0449f98bd8bb8b9",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/violet/03.png",
+    "size": 14248,
+    "sha256": "f7c4bde5267060ea2a810b24861c56918ab47f4189ed96ea2a8fbf9994fe82b9",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/white/00.png",
+    "size": 14420,
+    "sha256": "ee50c12e89890f081aa9d7380cb00055184d430422ea1140ecf08728022a3c4c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/white/01.png",
+    "size": 13916,
+    "sha256": "fac156196e87221f8d8769b4343dc05c5a3f2c010cbd2ec8f4ac1c4bf28c0b39",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/white/02.png",
+    "size": 14746,
+    "sha256": "18858e795af3063b14bb26839aba9b9470a1b3540cd36a3d689c466dbaa395d4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/dial3000-animation/frames-v2-by-theme/white/03.png",
+    "size": 13756,
+    "sha256": "9c2e2f19c477e6272aa77e9e3ca61f01995d5e4b8d88f7aafbf32972f0546361",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/auto.png",
+    "size": 1081177,
+    "sha256": "794a7442e1a514c5783d9c9e0c7581eb773498fe00914ce6f39e0abc480438f6",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/bottle.png",
+    "size": 1168936,
+    "sha256": "bf8f90282cecd1d40c7561578a07df5959543ca64d052d19f756e96edfd14ff9",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/rpg.png",
+    "size": 1208552,
+    "sha256": "c97d65b7cf66400d23ddf5830bd60254c8f9fe2b89de31db8c36a9eac6f32bee",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/savant.png",
+    "size": 1276031,
+    "sha256": "b8c9dc4347fb680d6740605fabda365e1f14920eac7d4de55ef80450c9eaadd8",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/stranger.png",
+    "size": 1374246,
+    "sha256": "9cff694ab7ede53f4f48d8a390c91c8fc0d5bd0d9d554ad90025b6339ab2b366",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/thumb.png",
+    "size": 1219761,
+    "sha256": "3591c0fac50b267d5ebaa2b3585692266fa386c03b572ac3f605ec9780501e1c",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/pipboy-animations-20261010/sheets/walk.png",
+    "size": 1176755,
+    "sha256": "123b89788631fb3b1f7418647ae670cde11412adde6506d535cbde5f2f15d7de",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/nixie-repair-20261013/digits.svg",
+    "size": 1112,
+    "sha256": "d23a74fa977cb7ddc8431fb8c07e294d2f6fbadc9720753695a43f79b5374de9",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/nixie-repair-20261013/background-empty-candidate.png",
+    "size": 865365,
+    "sha256": "4c41759fd5e06ef55a3673f2715ae784245ea29281b9755ba6848b70fa6782eb",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/nixie-repair-20261013/background-empty-466.png",
+    "size": 135535,
+    "sha256": "0a4c126b35f61964f4c713113fd0f506e1311a98f45e5dd2e99d9ef4c77309c4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/nixie-repair-20261013/layout-y180.json",
+    "size": 3936,
+    "sha256": "ea6bff3316bd3169e43f49c5e1e78d1d7b11a320fa41ace35e2c1c683d356a54",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/face-layout-20260927/nixie-core-qc61-layout-v3.json",
+    "size": 3938,
+    "sha256": "bc109fed10699cf7f30ce1f7f7f890165c611e025531a41a81dabffe922a2859",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/manifest.json",
+    "size": 9610,
+    "sha256": "40785c1b1c323ed076d81a1f0600dac2f18a1ad91571b43cf164a8a6a41d2f10",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_0.pgf",
+    "size": 3974,
+    "sha256": "95c1494d3bdf0f2c0e93c6c221e1b295d7660e266e6962b9b4f43f5431261b96",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_1.pgf",
+    "size": 3955,
+    "sha256": "597c928cfa3b08525570a4d747a877b4a6bc2bcdd248745c11654984f16b83b4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_2.pgf",
+    "size": 3966,
+    "sha256": "55a055ffba258f8d30340dcfd5e4f5f889f275a2a8c16a32e92118fe3cc57b59",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_3.pgf",
+    "size": 3974,
+    "sha256": "c0acea7005b2358604a9e6e01002e987128bddf1459bdd434b9202f2ec8b9c6e",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_4.pgf",
+    "size": 3963,
+    "sha256": "ab873b9d61924354477545c83e8fd15e888f539c693d9c56e60e11fcb56f2f07",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_5.pgf",
+    "size": 3966,
+    "sha256": "ec26530454b9020f220990c9ee9beea7867ca5abed930e85936d646980b20cd9",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_6.pgf",
+    "size": 3978,
+    "sha256": "a13f733b7cac883e0a50754fb6a7610f0cb94942a8897ab61b7a2e3f73f2ec7a",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_7.pgf",
+    "size": 3962,
+    "sha256": "57624721af9e23f29afd67f14b76cdd6bd1757e630a1e098ee7741e475c4aee4",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_8.pgf",
+    "size": 3986,
+    "sha256": "57c034ca4ab2506fe66047fa1e60f30ae01f9ec9440626de58b25cba16b8e8ca",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_9.pgf",
+    "size": 3970,
+    "sha256": "fe94150e843bfe7d3d30fd08c1d8d76a9a99faa132459e7efe110054543762e9",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_0.pgf",
+    "size": 3991,
+    "sha256": "b58bae009d82b79bde8e059df7b973de78be7046e6db45a733c0b5e59ca17d15",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_1.pgf",
+    "size": 3963,
+    "sha256": "0ad9a3bffda98ba91f59de3b8987589263f993d971b707ac56724d5ad32838be",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_2.pgf",
+    "size": 3999,
+    "sha256": "d258945e279c8c8977f895417a6b2d6a14b2351d88ba0302a88d87b30ab966a5",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_3.pgf",
+    "size": 4003,
+    "sha256": "bbb67ebe54606b7c42b1b3f3ee306f8faee5df97faf8fddfdd3c6830809672e8",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_4.pgf",
+    "size": 3975,
+    "sha256": "151b695a5a8a3cfa16c8dca632d9660b67ceb54bd7fd472f0eabb019b49a4ebc",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_5.pgf",
+    "size": 3995,
+    "sha256": "1725a5d41c53f27449bf880ebecbce810fb1e7ac515372b4a31faf2755f9ccb6",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_6.pgf",
+    "size": 3987,
+    "sha256": "81fc32e010bccdeb91bbaed0a9029219d84bf702db846db3d514dd8f6a9053dc",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_7.pgf",
+    "size": 3971,
+    "sha256": "fc152b26003ade92490671db05313068bc5fe8764f5f051f8d65d9b23af489cf",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_8.pgf",
+    "size": 3999,
+    "sha256": "9fde6aff74c439dfe6d222ea941527b5766642d8bd9a07280feb473961f42470",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  },
+  {
+    "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/time_9.pgf",
+    "size": 3995,
+    "sha256": "9930adaa48c2d334288934f04ae85c7b7329efdf036d52f71f88482f3f3a4662",
+    "rights": "See THIRD_PARTY_NOTICES.md; resource provenance is not a license grant"
+  }
+]

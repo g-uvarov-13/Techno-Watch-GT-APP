@@ -1,0 +1,724 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "faceId": "pipboy3000",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/pipboy3000/phosphor/face.dial",
+      "packageSha256": "2154c496a8fb7176d25847418a332d8e67cdd493013753e4d009dd64558544d9",
+      "packageSize": 335897,
+      "internalPackageId": "com.gtdial.dl3000",
+      "alias": "2309202601",
+      "backgroundSha256": "38a294df4b2f6df9fc33dc218e02d275ca30362ffec2d8bd3cc226b3075b0871",
+      "primary": "#FF32FF9A"
+    },
+    {
+      "faceId": "pipboy3000",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/pipboy3000/amber/face.dial",
+      "packageSha256": "f6e5fa2bb116df8d6f69873068307d3547b25352eb915f0fefff54da4de1b08d",
+      "packageSize": 614053,
+      "internalPackageId": "com.gtdial.dl.amber",
+      "alias": "2309202604",
+      "backgroundSha256": "292c272f4747eefbbc9e6b5ebf2b05b0b0ade681163f7c66ee30ede0a8062a32",
+      "primary": "#FFFFB02E"
+    },
+    {
+      "faceId": "pipboy3000",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/pipboy3000/cyan/face.dial",
+      "packageSha256": "641f42210d95cc8e271f7077c537ea68be202538d6122c8f081a33490b17df63",
+      "packageSize": 614053,
+      "internalPackageId": "com.gtdial.dl.cyan",
+      "alias": "2309202605",
+      "backgroundSha256": "b669e4545b236ddf9cdde714615e50b0c5050b653f8e9935243db19c1f9f4507",
+      "primary": "#FF46E8FF"
+    },
+    {
+      "faceId": "pipboy3000",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/pipboy3000/white/face.dial",
+      "packageSha256": "fc4f0fa2855b6b1dd89f74c875c87a215c53f24014fa80d93d7e01ffb5688348",
+      "packageSize": 614073,
+      "internalPackageId": "com.gtdial.dl.white",
+      "alias": "2309202606",
+      "backgroundSha256": "198736282ef5a9b0c67f3831ccdf0b8f575a440ccf9a7056cca64bbcb1a06a23",
+      "primary": "#FFF2F5ED"
+    },
+    {
+      "faceId": "pipboy3000",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/pipboy3000/red/face.dial",
+      "packageSha256": "ae24e6eb4a5fc7687f32d9ef872d1262e4788614cdc819aa28be3d8a89494203",
+      "packageSize": 614045,
+      "internalPackageId": "com.gtdial.dl.red",
+      "alias": "2309202607",
+      "backgroundSha256": "78d92e820c769035839f18f6b1ef6802979ff26ef5c828940d1d15d35ed38628",
+      "primary": "#FFFF4C47"
+    },
+    {
+      "faceId": "pipboy3000",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/pipboy3000/violet/face.dial",
+      "packageSha256": "946ded483f61b33bb43e4a30df6ef355480225a33e7b1f8a086d9977aab88fb2",
+      "packageSize": 614053,
+      "internalPackageId": "com.gtdial.dl.violet",
+      "alias": "2309202608",
+      "backgroundSha256": "1529b0305d351c8f72826d4c68e90726f8c6d6d63ff6ca557bdad643356ab4c0",
+      "primary": "#FFD97BFF"
+    },
+    {
+      "faceId": "bitax",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/bitax/amber/face.dial",
+      "packageSha256": "3c2669147ae51b909b5f611494e4a6eb2b523c4e3996405c03d899e058bc14f9",
+      "packageSize": 475867,
+      "internalPackageId": "com.gtdial.nixiecore",
+      "alias": "2309202602",
+      "backgroundSha256": "0a4c126b35f61964f4c713113fd0f506e1311a98f45e5dd2e99d9ef4c77309c4",
+      "primary": "#FFFF7A16"
+    },
+    {
+      "faceId": "bitax",
+      "paletteId": "copper",
+      "packageAsset": "dynamic_dials/bitax/copper/face.dial",
+      "packageSha256": "2880c2516522212afd1bd5442f1de960959a19817a5e5fcc92ce0c7415f960f3",
+      "packageSize": 475867,
+      "internalPackageId": "com.gtdial.nx.copper",
+      "alias": "2309202609",
+      "backgroundSha256": "0a4c126b35f61964f4c713113fd0f506e1311a98f45e5dd2e99d9ef4c77309c4",
+      "primary": "#FFE9854C"
+    },
+    {
+      "faceId": "bitax",
+      "paletteId": "redorange",
+      "packageAsset": "dynamic_dials/bitax/redorange/face.dial",
+      "packageSha256": "1fc1e527385b5576f1f4bfb200b7c5bcc4b7f06c99ee20b76b7aae9bf0deec3e",
+      "packageSize": 475867,
+      "internalPackageId": "com.gtdial.nx.redorange",
+      "alias": "2309202610",
+      "backgroundSha256": "0a4c126b35f61964f4c713113fd0f506e1311a98f45e5dd2e99d9ef4c77309c4",
+      "primary": "#FFFF481E"
+    },
+    {
+      "faceId": "bitax",
+      "paletteId": "gold",
+      "packageAsset": "dynamic_dials/bitax/gold/face.dial",
+      "packageSha256": "5d2f79a262c17b03454b645badb4f4f07f6f2cfe2b19a9131706e8e35239e151",
+      "packageSize": 475867,
+      "internalPackageId": "com.gtdial.nx.gold",
+      "alias": "2309202611",
+      "backgroundSha256": "0a4c126b35f61964f4c713113fd0f506e1311a98f45e5dd2e99d9ef4c77309c4",
+      "primary": "#FFFFD247"
+    },
+    {
+      "faceId": "bitax",
+      "paletteId": "ice",
+      "packageAsset": "dynamic_dials/bitax/ice/face.dial",
+      "packageSha256": "7418f1e999dc55626af3b281d6dc0adb0638219be9d264c98651eb7834ad94f9",
+      "packageSize": 475867,
+      "internalPackageId": "com.gtdial.nx.ice",
+      "alias": "2309202612",
+      "backgroundSha256": "0a4c126b35f61964f4c713113fd0f506e1311a98f45e5dd2e99d9ef4c77309c4",
+      "primary": "#FF6EEBFF"
+    },
+    {
+      "faceId": "bitax",
+      "paletteId": "green",
+      "packageAsset": "dynamic_dials/bitax/green/face.dial",
+      "packageSha256": "ff154a9eeced2e79ed4b44819802d6d2b4adc50715a3c7d05ec672d56f93bc1f",
+      "packageSize": 475867,
+      "internalPackageId": "com.gtdial.nx.green",
+      "alias": "2309202613",
+      "backgroundSha256": "0a4c126b35f61964f4c713113fd0f506e1311a98f45e5dd2e99d9ef4c77309c4",
+      "primary": "#FF6BFF75"
+    },
+    {
+      "faceId": "pixbot",
+      "paletteId": "ice",
+      "packageAsset": "dynamic_dials/pixbot/ice/face.dial",
+      "packageSha256": "f1f7fa0dbf6c8171ff6212ba4ebd0ae217f0fcf93bf4e29e6d30d2203a53be0b",
+      "packageSize": 465667,
+      "internalPackageId": "com.gtdial.pixeldeck",
+      "alias": "2309202603",
+      "backgroundSha256": "33d52bb08f94b9ed5efc5d69620bbc9ad21673b5325f5c21e311e9e720ffac30",
+      "primary": "#FF72FFF4"
+    },
+    {
+      "faceId": "pixbot",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/pixbot/amber/face.dial",
+      "packageSha256": "8c08ba2f1afd0c8292a0826184675d0f99718f56db6a2cd47f3793aed3fbc55a",
+      "packageSize": 465663,
+      "internalPackageId": "com.gtdial.px.amber",
+      "alias": "2309202614",
+      "backgroundSha256": "7e67dcfc78a0a74fe3baeaf6cf28547e293d4b404e093fee6ea7cb86fb3e4b56",
+      "primary": "#FFFFB43B"
+    },
+    {
+      "faceId": "pixbot",
+      "paletteId": "vfd",
+      "packageAsset": "dynamic_dials/pixbot/vfd/face.dial",
+      "packageSha256": "f0870946b5d7b5eed037d2b67a4b8bc9721d70b05d65a582a5dc4dcba6131ddb",
+      "packageSize": 465663,
+      "internalPackageId": "com.gtdial.px.vfd",
+      "alias": "2309202615",
+      "backgroundSha256": "75b23e2ae9cef5e7df162e569254aa2feb9f77b2d543b4044c94d3a96add5789",
+      "primary": "#FF62FFB5"
+    },
+    {
+      "faceId": "pixbot",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/pixbot/red/face.dial",
+      "packageSha256": "dddc201051a92ca8cd6fab57327edd83cb644e8d1a47b3bc2e7a7eb19fa5e14f",
+      "packageSize": 465655,
+      "internalPackageId": "com.gtdial.px.red",
+      "alias": "2309202616",
+      "backgroundSha256": "75fd79cd835c68b2cb0012764b0a66fdda5de6bdceba8b58dcc89cb7f964a562",
+      "primary": "#FFFF5954"
+    },
+    {
+      "faceId": "pixbot",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/pixbot/violet/face.dial",
+      "packageSha256": "b2b9527a425b7b104bf029538ae70687f3055b24b44a6616adb6ab760b1ebc7a",
+      "packageSize": 465667,
+      "internalPackageId": "com.gtdial.px.violet",
+      "alias": "2309202617",
+      "backgroundSha256": "f7c87075879e3149acdc703921dd78e3d20e7e70f2c8f6a5a149ba657d5fc492",
+      "primary": "#FFD985FF"
+    },
+    {
+      "faceId": "pixbot",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/pixbot/white/face.dial",
+      "packageSha256": "1b0afd5f2b17cd5fdd829acb8056847402b860b4d89da0d4a1bc5eef68fa90ac",
+      "packageSize": 465655,
+      "internalPackageId": "com.gtdial.px.white",
+      "alias": "2309202618",
+      "backgroundSha256": "ad4371eb6b84cef7129e599ede330a7c553bdd8e6407497f0b08520a088db371",
+      "primary": "#FFF4F4EC"
+    },
+    {
+      "faceId": "base3000",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/base3000/phosphor/face.dial",
+      "packageSha256": "39907fc7f284862f9591a63415dd48e7e4b5c7e3956b0670de1055b4279ac676",
+      "packageSize": 485349,
+      "internalPackageId": "com.gtdial.base3000",
+      "alias": "2809202601",
+      "backgroundSha256": "5b279fb38eefe0e1a716072b4f55f8ff0b7da338632a7ac40342749272362a6c",
+      "primary": "#FFFFFFFF"
+    },
+    {
+      "faceId": "dial3000",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/dial3000/phosphor/face.dial",
+      "packageSha256": "477f052f3aedc54a31eacc2f4f8c19ec4175ec70bad52252114762de75869228",
+      "packageSize": 491835,
+      "internalPackageId": "com.gtdial.dial3000v3.phosphor",
+      "alias": "2909202611",
+      "backgroundSha256": "527deed58440b524add992aaf77230c235c59e5da1dae97b03634f1734fc7aa0",
+      "primary": "#FF32FF9A"
+    },
+    {
+      "faceId": "dial3000",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/dial3000/amber/face.dial",
+      "packageSha256": "f5e48935cd7189404e980f4f4103abead26d430a91efd69873a1d363a1566bfd",
+      "packageSize": 491933,
+      "internalPackageId": "com.gtdial.dial3000v3.amber",
+      "alias": "2909202612",
+      "backgroundSha256": "e865897eb22a40c0a43bd8f0c0360572f72456b5e40a7f878449b7cb0a545fb2",
+      "primary": "#FFFFB02E"
+    },
+    {
+      "faceId": "dial3000",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/dial3000/cyan/face.dial",
+      "packageSha256": "813c91da15cbbfdf336ce7fbd40a4bf1fdefaffa37b78842fd8f4021b9c48bdf",
+      "packageSize": 491931,
+      "internalPackageId": "com.gtdial.dial3000v3.cyan",
+      "alias": "2909202613",
+      "backgroundSha256": "a2ba7f498c1d11aa6aeaa90366f3d9582ece9be02aef281fa30ecc326d3c2abb",
+      "primary": "#FF46E8FF"
+    },
+    {
+      "faceId": "dial3000",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/dial3000/white/face.dial",
+      "packageSha256": "faf90680a713de06d4851d33af461829cb609eb18cf570ac80745a1cde23785e",
+      "packageSize": 491993,
+      "internalPackageId": "com.gtdial.dial3000v3.white",
+      "alias": "2909202614",
+      "backgroundSha256": "bead2d4d84d30f1ceff1b3a92718c5e46098d7ea7bf1c561682b527929e5bace",
+      "primary": "#FFF2F5ED"
+    },
+    {
+      "faceId": "dial3000",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/dial3000/red/face.dial",
+      "packageSha256": "3339b968c9df39812e5dbe5809491a8247a5ab9a7f20efc266b451e5de2c38d7",
+      "packageSize": 491853,
+      "internalPackageId": "com.gtdial.dial3000v3.red",
+      "alias": "2909202615",
+      "backgroundSha256": "b2ee82af197c3fc9e4190e2d54aa5ab0a01071c5a2d0e9aea4da2d755c753c6f",
+      "primary": "#FFFF4C47"
+    },
+    {
+      "faceId": "dial3000",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/dial3000/violet/face.dial",
+      "packageSha256": "c3296a696a2e8dc6cc0bd63e41d9151ef3e113fa8ac10cd6defd591cb1bf8e45",
+      "packageSize": 491927,
+      "internalPackageId": "com.gtdial.dial3000v3.violet",
+      "alias": "2909202616",
+      "backgroundSha256": "9b4f41ef10181f906250dc39ec282691c5372c74ac37c01d1c0657bae566c5a3",
+      "primary": "#FFD97BFF"
+    },
+    {
+      "faceId": "dial3000walk",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/dial3000walk/phosphor/face.dial",
+      "packageSha256": "4dac0ce8155dd275d7c72b8dfde61110e73fcc0e4dd3ec8fbb86260088fbd052",
+      "packageSize": 547611,
+      "internalPackageId": "com.gtdial.dial3000anim2.phosphor",
+      "alias": "2909202631",
+      "backgroundSha256": "527deed58440b524add992aaf77230c235c59e5da1dae97b03634f1734fc7aa0",
+      "primary": "#FF32FF9A"
+    },
+    {
+      "faceId": "dial3000walk",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/dial3000walk/amber/face.dial",
+      "packageSha256": "b8fef094728400c637829a3f433e7c98b0c815810ffde85dfbe80b99822d97bf",
+      "packageSize": 547741,
+      "internalPackageId": "com.gtdial.dial3000anim2.amber",
+      "alias": "2909202632",
+      "backgroundSha256": "e865897eb22a40c0a43bd8f0c0360572f72456b5e40a7f878449b7cb0a545fb2",
+      "primary": "#FFFFB02E"
+    },
+    {
+      "faceId": "dial3000walk",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/dial3000walk/cyan/face.dial",
+      "packageSha256": "d99767cea3f752f1a70254fc661505861fa9f8d6ad128b19b59cfed3631c0288",
+      "packageSize": 547739,
+      "internalPackageId": "com.gtdial.dial3000anim2.cyan",
+      "alias": "2909202633",
+      "backgroundSha256": "a2ba7f498c1d11aa6aeaa90366f3d9582ece9be02aef281fa30ecc326d3c2abb",
+      "primary": "#FF46E8FF"
+    },
+    {
+      "faceId": "dial3000walk",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/dial3000walk/white/face.dial",
+      "packageSha256": "e8da713a8a3cdf21375ae9c0be24c662eb730b733e8e2feb057ccdc8822de4a5",
+      "packageSize": 547865,
+      "internalPackageId": "com.gtdial.dial3000anim2.white",
+      "alias": "2909202634",
+      "backgroundSha256": "bead2d4d84d30f1ceff1b3a92718c5e46098d7ea7bf1c561682b527929e5bace",
+      "primary": "#FFF2F5ED"
+    },
+    {
+      "faceId": "dial3000walk",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/dial3000walk/red/face.dial",
+      "packageSha256": "7f60115334933f1cf699f29bea5109457367f360191a1854b24842fc8c0da544",
+      "packageSize": 547629,
+      "internalPackageId": "com.gtdial.dial3000anim2.red",
+      "alias": "2909202635",
+      "backgroundSha256": "b2ee82af197c3fc9e4190e2d54aa5ab0a01071c5a2d0e9aea4da2d755c753c6f",
+      "primary": "#FFFF4C47"
+    },
+    {
+      "faceId": "dial3000walk",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/dial3000walk/violet/face.dial",
+      "packageSha256": "aefa75b55e1b43de3f9d2d7593f5613e6e327606dd07e13d650f73829ea5d789",
+      "packageSize": 547735,
+      "internalPackageId": "com.gtdial.dial3000anim2.violet",
+      "alias": "2909202636",
+      "backgroundSha256": "9b4f41ef10181f906250dc39ec282691c5372c74ac37c01d1c0657bae566c5a3",
+      "primary": "#FFD97BFF"
+    },
+    {
+      "faceId": "pipwalk",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/pipwalk/phosphor/face.dial",
+      "packageSha256": "b377bd80b2cbbd509c4737d53cf04e7b16086b1b03cbb4ae11de4859cbd3331e",
+      "packageSize": 548447,
+      "internalPackageId": "com.gtdial.pip.walk.phosphor",
+      "alias": "1010202601"
+    },
+    {
+      "faceId": "pipwalk",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/pipwalk/amber/face.dial",
+      "packageSha256": "dc9bed2ff8076bfa4ef8a2c05fdbba717fd03ee98051c36f18a51f4bc1233a44",
+      "packageSize": 548577,
+      "internalPackageId": "com.gtdial.pip.walk.amber",
+      "alias": "1010202602"
+    },
+    {
+      "faceId": "pipwalk",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/pipwalk/cyan/face.dial",
+      "packageSha256": "0341817554f8080cf3a466e81aeefeb160d633599a1fdadc01196f05b52bb2f2",
+      "packageSize": 548575,
+      "internalPackageId": "com.gtdial.pip.walk.cyan",
+      "alias": "1010202603"
+    },
+    {
+      "faceId": "pipwalk",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/pipwalk/white/face.dial",
+      "packageSha256": "5bf4554ff28fb4a1a80898c396dc6bc0702c190fab49d291354ed766b9579a3e",
+      "packageSize": 548701,
+      "internalPackageId": "com.gtdial.pip.walk.white",
+      "alias": "1010202604"
+    },
+    {
+      "faceId": "pipwalk",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/pipwalk/red/face.dial",
+      "packageSha256": "29900e32a933b69a6ea89e4302c785ccbae696abc18ded9bbb14e04438740e67",
+      "packageSize": 548465,
+      "internalPackageId": "com.gtdial.pip.walk.red",
+      "alias": "1010202605"
+    },
+    {
+      "faceId": "pipwalk",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/pipwalk/violet/face.dial",
+      "packageSha256": "b0a72521f8e620d058b4eb4c03ed1c120227311ddf097f1a173443f333ba597a",
+      "packageSize": 548571,
+      "internalPackageId": "com.gtdial.pip.walk.violet",
+      "alias": "1010202606"
+    },
+    {
+      "faceId": "piprpg",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/piprpg/phosphor/face.dial",
+      "packageSha256": "a47fe2bc0c107a88d07e3bcbf81cba0649a88f01c880d5a4b38956bff1db5e5c",
+      "packageSize": 548445,
+      "internalPackageId": "com.gtdial.pip.rpg.phosphor",
+      "alias": "1010202611"
+    },
+    {
+      "faceId": "piprpg",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/piprpg/amber/face.dial",
+      "packageSha256": "bb197c7146cac3c0b8dff6c823a3569758e44d9a4082984b5aff0d4aa0150fde",
+      "packageSize": 548575,
+      "internalPackageId": "com.gtdial.pip.rpg.amber",
+      "alias": "1010202612"
+    },
+    {
+      "faceId": "piprpg",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/piprpg/cyan/face.dial",
+      "packageSha256": "a3f4434f07994b44d284665d003550fdf0d09b3b3c2dc516868bc0f758bf5472",
+      "packageSize": 548573,
+      "internalPackageId": "com.gtdial.pip.rpg.cyan",
+      "alias": "1010202613"
+    },
+    {
+      "faceId": "piprpg",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/piprpg/white/face.dial",
+      "packageSha256": "2df36e3f18139d689c1ad5e47afdbe479c04d385b6321f290c97f104a53a1f91",
+      "packageSize": 548699,
+      "internalPackageId": "com.gtdial.pip.rpg.white",
+      "alias": "1010202614"
+    },
+    {
+      "faceId": "piprpg",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/piprpg/red/face.dial",
+      "packageSha256": "57487e7e9a20936d61e5dc70f11abe83d6d7f9fe299e75f8267b4d09a929d691",
+      "packageSize": 548463,
+      "internalPackageId": "com.gtdial.pip.rpg.red",
+      "alias": "1010202615"
+    },
+    {
+      "faceId": "piprpg",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/piprpg/violet/face.dial",
+      "packageSha256": "1f24579cf538406fb77149257faf21c84b92837890c959a8b6d6792a22d50ab2",
+      "packageSize": 548569,
+      "internalPackageId": "com.gtdial.pip.rpg.violet",
+      "alias": "1010202616"
+    },
+    {
+      "faceId": "pipauto",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/pipauto/phosphor/face.dial",
+      "packageSha256": "60f94a41de6ec7afb39738623b7949a09a1be75721b4019399989eec1be1835a",
+      "packageSize": 548447,
+      "internalPackageId": "com.gtdial.pip.auto.phosphor",
+      "alias": "1010202621"
+    },
+    {
+      "faceId": "pipauto",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/pipauto/amber/face.dial",
+      "packageSha256": "0272b0259ae0249a201ea9013305b8ed2ffd2c0b1831bacef0ed3c011b5659fc",
+      "packageSize": 548577,
+      "internalPackageId": "com.gtdial.pip.auto.amber",
+      "alias": "1010202622"
+    },
+    {
+      "faceId": "pipauto",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/pipauto/cyan/face.dial",
+      "packageSha256": "29ca7c9fdd5cbad69e259d9c9f94bd398caf552c81623372451127097b651b4a",
+      "packageSize": 548575,
+      "internalPackageId": "com.gtdial.pip.auto.cyan",
+      "alias": "1010202623"
+    },
+    {
+      "faceId": "pipauto",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/pipauto/white/face.dial",
+      "packageSha256": "8dbba5afc6364e09fe07da8ad689e95553eebabe989f1bd8f6f0a06b4f0a8ce7",
+      "packageSize": 548701,
+      "internalPackageId": "com.gtdial.pip.auto.white",
+      "alias": "1010202624"
+    },
+    {
+      "faceId": "pipauto",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/pipauto/red/face.dial",
+      "packageSha256": "2768f5b1eee288e054fcfe4252ac08e40b63202bc1f035259dec67b88b4f10de",
+      "packageSize": 548465,
+      "internalPackageId": "com.gtdial.pip.auto.red",
+      "alias": "1010202625"
+    },
+    {
+      "faceId": "pipauto",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/pipauto/violet/face.dial",
+      "packageSha256": "ee6e79622e789c2b6911338058a856cb9e120af21899db55762b20ced845c3fa",
+      "packageSize": 548571,
+      "internalPackageId": "com.gtdial.pip.auto.violet",
+      "alias": "1010202626"
+    },
+    {
+      "faceId": "pipstranger",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/pipstranger/phosphor/face.dial",
+      "packageSha256": "6d366f8cf9227c9ce814668ee4b12892de3f8a6c9c90b3944d8259858f7eb11a",
+      "packageSize": 548455,
+      "internalPackageId": "com.gtdial.pip.stranger.phosphor",
+      "alias": "1010202631"
+    },
+    {
+      "faceId": "pipstranger",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/pipstranger/amber/face.dial",
+      "packageSha256": "2d66d8233df9f83feca8ee23742eb222db2d827ecbaf7b907ad49438ecc6bf71",
+      "packageSize": 548585,
+      "internalPackageId": "com.gtdial.pip.stranger.amber",
+      "alias": "1010202632"
+    },
+    {
+      "faceId": "pipstranger",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/pipstranger/cyan/face.dial",
+      "packageSha256": "84635abd58efbaa916f6a775578ab5f94d3f5cff206d1b07215b7e596a54d1ff",
+      "packageSize": 548583,
+      "internalPackageId": "com.gtdial.pip.stranger.cyan",
+      "alias": "1010202633"
+    },
+    {
+      "faceId": "pipstranger",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/pipstranger/white/face.dial",
+      "packageSha256": "4089419aa92672dc4642a1f7c4f28f3e32e70c999f9f83502594ef337fac7eff",
+      "packageSize": 548709,
+      "internalPackageId": "com.gtdial.pip.stranger.white",
+      "alias": "1010202634"
+    },
+    {
+      "faceId": "pipstranger",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/pipstranger/red/face.dial",
+      "packageSha256": "abc58e6d0c6ac98734a914d0f7552e3cf8ef9ff85a9c938225a52ce267296a30",
+      "packageSize": 548473,
+      "internalPackageId": "com.gtdial.pip.stranger.red",
+      "alias": "1010202635"
+    },
+    {
+      "faceId": "pipstranger",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/pipstranger/violet/face.dial",
+      "packageSha256": "cbc1a01a1016aeea4fb7d74a2e45f051dee309a39aae39597282801dec69db7f",
+      "packageSize": 548579,
+      "internalPackageId": "com.gtdial.pip.stranger.violet",
+      "alias": "1010202636"
+    },
+    {
+      "faceId": "pipbottle",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/pipbottle/phosphor/face.dial",
+      "packageSha256": "d40885bf42683905993da13917f4fc1c6e738e955eef21eb22833f8a6c7da8ce",
+      "packageSize": 605092,
+      "internalPackageId": "com.gtdial.pip.bottle.phosphor",
+      "alias": "1010202641"
+    },
+    {
+      "faceId": "pipbottle",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/pipbottle/amber/face.dial",
+      "packageSha256": "dfe63d49334d75453c05da1abf701116fb57880a93ce4b597c094530d116f13e",
+      "packageSize": 605254,
+      "internalPackageId": "com.gtdial.pip.bottle.amber",
+      "alias": "1010202642"
+    },
+    {
+      "faceId": "pipbottle",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/pipbottle/cyan/face.dial",
+      "packageSha256": "ae9b46daf49fd61656222c92d9201a1969d65cb16a9bb0893ad0fc0489883514",
+      "packageSize": 605252,
+      "internalPackageId": "com.gtdial.pip.bottle.cyan",
+      "alias": "1010202643"
+    },
+    {
+      "faceId": "pipbottle",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/pipbottle/white/face.dial",
+      "packageSha256": "e73849d32329c9bd17e8f35162e992bab7ae1a406195a1c270d328214cfb75c3",
+      "packageSize": 605442,
+      "internalPackageId": "com.gtdial.pip.bottle.white",
+      "alias": "1010202644"
+    },
+    {
+      "faceId": "pipbottle",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/pipbottle/red/face.dial",
+      "packageSha256": "9f520a4efd024ec82c840cc4bec598a2e8cd221fbd6f7cec061bf123e1c022c5",
+      "packageSize": 605110,
+      "internalPackageId": "com.gtdial.pip.bottle.red",
+      "alias": "1010202645"
+    },
+    {
+      "faceId": "pipbottle",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/pipbottle/violet/face.dial",
+      "packageSha256": "f1e4b89e97645c6f0ea2149cfdac7731b70f8f542126619594a8ec5d12269e91",
+      "packageSize": 605248,
+      "internalPackageId": "com.gtdial.pip.bottle.violet",
+      "alias": "1010202646"
+    },
+    {
+      "faceId": "pipsavant",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/pipsavant/phosphor/face.dial",
+      "packageSha256": "0187c04e6d7009b9a437455884cadeeeffc332873951e04370eb5679e52e6b27",
+      "packageSize": 548451,
+      "internalPackageId": "com.gtdial.pip.savant.phosphor",
+      "alias": "1010202651"
+    },
+    {
+      "faceId": "pipsavant",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/pipsavant/amber/face.dial",
+      "packageSha256": "3b27bf28a979a8bd804fe593c4ff895339c821ec1f9b144884d7340c743b6ab6",
+      "packageSize": 548581,
+      "internalPackageId": "com.gtdial.pip.savant.amber",
+      "alias": "1010202652"
+    },
+    {
+      "faceId": "pipsavant",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/pipsavant/cyan/face.dial",
+      "packageSha256": "49180ca4e589c2d03254897c60c4c31468160c2f8ee49fdebc247faec0d226d7",
+      "packageSize": 548579,
+      "internalPackageId": "com.gtdial.pip.savant.cyan",
+      "alias": "1010202653"
+    },
+    {
+      "faceId": "pipsavant",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/pipsavant/white/face.dial",
+      "packageSha256": "870f943002bf0d26af6c73bcf47346a2ba0317d504cc2fcd01b545eebd4a1e79",
+      "packageSize": 548705,
+      "internalPackageId": "com.gtdial.pip.savant.white",
+      "alias": "1010202654"
+    },
+    {
+      "faceId": "pipsavant",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/pipsavant/red/face.dial",
+      "packageSha256": "ebb8e2c9e09426e363853c0327bf3856f21ee7a2dd1b0c2f78b29d4dc35fbc28",
+      "packageSize": 548469,
+      "internalPackageId": "com.gtdial.pip.savant.red",
+      "alias": "1010202655"
+    },
+    {
+      "faceId": "pipsavant",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/pipsavant/violet/face.dial",
+      "packageSha256": "ea09a96931994d344e8f1cc30c916edd52ebc6386ec757c2614243b785139e53",
+      "packageSize": 548575,
+      "internalPackageId": "com.gtdial.pip.savant.violet",
+      "alias": "1010202656"
+    },
+    {
+      "faceId": "pipthumb",
+      "paletteId": "phosphor",
+      "packageAsset": "dynamic_dials/pipthumb/phosphor/face.dial",
+      "packageSha256": "194f24296c9fedc8c7856c258d7a83ef632439af2cfadd14793284deabc6887d",
+      "packageSize": 548449,
+      "internalPackageId": "com.gtdial.pip.thumb.phosphor",
+      "alias": "1010202661"
+    },
+    {
+      "faceId": "pipthumb",
+      "paletteId": "amber",
+      "packageAsset": "dynamic_dials/pipthumb/amber/face.dial",
+      "packageSha256": "697240e3b29f5ff3f78a0a929428b5b5bf66a8b55ef4e26e7c38ba251a02d556",
+      "packageSize": 548579,
+      "internalPackageId": "com.gtdial.pip.thumb.amber",
+      "alias": "1010202662"
+    },
+    {
+      "faceId": "pipthumb",
+      "paletteId": "cyan",
+      "packageAsset": "dynamic_dials/pipthumb/cyan/face.dial",
+      "packageSha256": "5ee6199286e8d8ddbc12a899501138e6df491d3c17c5d274c0019149d6fd3204",
+      "packageSize": 548577,
+      "internalPackageId": "com.gtdial.pip.thumb.cyan",
+      "alias": "1010202663"
+    },
+    {
+      "faceId": "pipthumb",
+      "paletteId": "white",
+      "packageAsset": "dynamic_dials/pipthumb/white/face.dial",
+      "packageSha256": "ec5022131b41d159715160f951b5fcee046642a3b3ae1468d8a67950993b306a",
+      "packageSize": 548703,
+      "internalPackageId": "com.gtdial.pip.thumb.white",
+      "alias": "1010202664"
+    },
+    {
+      "faceId": "pipthumb",
+      "paletteId": "red",
+      "packageAsset": "dynamic_dials/pipthumb/red/face.dial",
+      "packageSha256": "0b924c9d23704c4855af487d26242e71c5845ff8eca273843264c05a7584fa01",
+      "packageSize": 548467,
+      "internalPackageId": "com.gtdial.pip.thumb.red",
+      "alias": "1010202665"
+    },
+    {
+      "faceId": "pipthumb",
+      "paletteId": "violet",
+      "packageAsset": "dynamic_dials/pipthumb/violet/face.dial",
+      "packageSha256": "c495baddf2b1af83fffda08d7cd501949446fb354bd7a276a81d8ecc9c1d47a9",
+      "packageSize": 548573,
+      "internalPackageId": "com.gtdial.pip.thumb.violet",
+      "alias": "1010202666"
+    }
+  ]
+}

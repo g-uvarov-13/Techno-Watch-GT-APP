@@ -1,0 +1,61 @@
+package app.gtdial.lab;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+/** Fixed-point nutrition contract. Unknown nutrients remain null throughout storage and export. */
+final class NutritionModels {
+    static final long MAX_KCAL=20_000_000L, MAX_QUANTITY=10_000_000L;
+    static final String[] NUTRIENTS={"kcalMilli","proteinMg","fatMg","carbohydrateMg"};
+    static void put(JSONObject o,String k,Object v){ExpansionModels.put(o,k,v);}
+    static JSONObject copy(JSONObject o){return ExpansionStore.parse(o.toString());}
+    static JSONObject parseObject(String text){try{org.json.JSONTokener tokener=new org.json.JSONTokener(text);Object value=tokener.nextValue();if(!(value instanceof JSONObject)||tokener.nextClean()!=0||tokener.more())throw new IllegalArgumentException("JSON_FULL_INPUT_REQUIRED");return (JSONObject)value;}catch(org.json.JSONException e){throw new IllegalArgumentException("JSON_INVALID");}}
+    static JSONObject object(Object... pairs){JSONObject o=new JSONObject();for(int i=0;i<pairs.length;i+=2)put(o,(String)pairs[i],pairs[i+1]);return o;}
+    static String uuid(){return UUID.randomUUID().toString();}
+    static void id(String s){try{if(!UUID.fromString(s).toString().equals(s))throw new IllegalArgumentException();}catch(RuntimeException e){throw new IllegalArgumentException("NUTRITION_ID");}}
+    static Set<String> fieldNames(JSONObject o){Set<String> names=new java.util.LinkedHashSet<>();java.util.Iterator<String> iterator=o.keys();while(iterator.hasNext())names.add(iterator.next());return names;}
+    static void keys(JSONObject o,String... names){Set<String> allowed=new HashSet<>(Arrays.asList(names));for(String k:fieldNames(o))if(!allowed.contains(k))throw new IllegalArgumentException("UNKNOWN_FIELD");}
+    static String text(JSONObject o,String k,int max,boolean empty){Object v=o.opt(k);if(!(v instanceof String)||((String)v).length()>max||(!empty&&((String)v).trim().isEmpty()))throw new IllegalArgumentException("TEXT_"+k);return (String)v;}
+    static long integer(JSONObject o,String k,long min,long max){Object v=o.opt(k);if(!(v instanceof Integer)&&!(v instanceof Long))throw new IllegalArgumentException("INTEGER_"+k);long n=((Number)v).longValue();if(n<min||n>max)throw new IllegalArgumentException("BOUND_"+k);return n;}
+    static Long optional(JSONObject o,String k,long min,long max){if(!o.has(k))throw new IllegalArgumentException("MISSING_"+k);return o.isNull(k)?null:integer(o,k,min,max);}
+    static boolean bool(JSONObject o,String k){Object v=o.opt(k);if(!(v instanceof Boolean))throw new IllegalArgumentException("BOOLEAN_"+k);return (Boolean)v;}
+    static String choice(JSONObject o,String k,String... values){String s=text(o,k,80,false);if(!Arrays.asList(values).contains(s))throw new IllegalArgumentException("CHOICE_"+k);return s;}
+    static JSONArray array(JSONObject o,String k,int min,int max){Object v=o.opt(k);if(!(v instanceof JSONArray))throw new IllegalArgumentException("ARRAY_"+k);JSONArray a=(JSONArray)v;if(a.length()<min||a.length()>max)throw new IllegalArgumentException("COUNT_"+k);return a;}
+    static JSONObject child(JSONArray a,int i){JSONObject o=a.optJSONObject(i);if(o==null)throw new IllegalArgumentException("OBJECT_EXPECTED");return o;}
+    static JSONObject item(){return object("id",uuid(),"name","Продукт","quantityMilli",null,"unit","g","calculation","DIRECT","basisQuantityMilli",null,"basisKcalMilli",null,"basisProteinMg",null,"basisFatMg",null,"basisCarbohydrateMg",null,"kcalMilli",null,"proteinMg",null,"fatMg",null,"carbohydrateMg",null,"inputMethod","MANUAL","provenance",object("kind","MANUAL_ESTIMATE"),"originalEstimate",null,"correctedFields",new JSONArray());}
+    static JSONObject draft(LocalDate day){ZoneId zone=ZoneId.systemDefault();long at=day.equals(LocalDate.now(zone))?System.currentTimeMillis():day.atTime(12,0).atZone(zone).toInstant().toEpochMilli();return object("schemaVersion",1,"id",uuid(),"revision",1L,"consumedAt",at,"localDay",day.toString(),"zoneId",zone.getId(),"meal","OTHER","state","DRAFT","removedFrom",null,"note","","items",new JSONArray().put(item()));}
+    static JSONObject day(LocalDate d){return object("schemaVersion",1,"localDay",d.toString(),"revision",1L,"goalKcalMilli",null,"completeDayDeclared",false);}
+    static long calculated(long quantity,long basis,long denominator){return BigDecimal.valueOf(quantity).multiply(BigDecimal.valueOf(basis)).divide(BigDecimal.valueOf(denominator),0,RoundingMode.HALF_UP).longValueExact();}
+    static void recalculate(JSONObject item){if(!"BASIS".equals(item.optString("calculation")))return;long quantity=integer(item,"quantityMilli",1,MAX_QUANTITY),denominator=integer(item,"basisQuantityMilli",1,MAX_QUANTITY);for(String key:NUTRIENTS){String base="basis"+Character.toUpperCase(key.charAt(0))+key.substring(1);Long value=optional(item,base,0,MAX_KCAL);put(item,key,value==null?null:calculated(quantity,value,denominator));}}
+    static void validateItem(JSONObject o){
+        keys(o,"id","name","quantityMilli","unit","calculation","basisQuantityMilli","basisKcalMilli","basisProteinMg","basisFatMg","basisCarbohydrateMg","kcalMilli","proteinMg","fatMg","carbohydrateMg","inputMethod","provenance","originalEstimate","correctedFields");
+        id(text(o,"id",36,false));text(o,"name",160,false);choice(o,"unit","g","ml","portion","piece");String mode=choice(o,"calculation","DIRECT","BASIS");optional(o,"quantityMilli",1,MAX_QUANTITY);optional(o,"basisQuantityMilli",1,MAX_QUANTITY);
+        optional(o,"kcalMilli",0,MAX_KCAL);for(String k:new String[]{"proteinMg","fatMg","carbohydrateMg","basisKcalMilli","basisProteinMg","basisFatMg","basisCarbohydrateMg"})optional(o,k,0,MAX_KCAL);
+        if("BASIS".equals(mode)){integer(o,"quantityMilli",1,MAX_QUANTITY);integer(o,"basisQuantityMilli",1,MAX_QUANTITY);integer(o,"basisKcalMilli",0,MAX_KCAL);JSONObject calculated=copy(o);recalculate(calculated);for(String k:NUTRIENTS)if(!java.util.Objects.equals(o.opt(k),calculated.opt(k))) {if(o.isNull(k)&&calculated.isNull(k))continue;if(o.opt(k) instanceof Number&&calculated.opt(k) instanceof Number&&((Number)o.opt(k)).longValue()==((Number)calculated.opt(k)).longValue())continue;throw new IllegalArgumentException("CALCULATION_MISMATCH");}}
+        String input=choice(o,"inputMethod","MANUAL","CATALOG","PHOTO");JSONObject p=o.optJSONObject("provenance");if(p==null)throw new IllegalArgumentException("PROVENANCE");String kind=choice(p,"kind","MANUAL_ESTIMATE","LABEL","CATALOG","PHOTO_ESTIMATE");
+        if("CATALOG".equals(kind)){keys(p,"kind","provider","productId","version","retrievedAt","sourceUrl");text(p,"provider",80,false);text(p,"productId",160,false);text(p,"version",80,true);integer(p,"retrievedAt",1,253402300799999L);String url=text(p,"sourceUrl",512,true);if(!url.isEmpty()&&!url.startsWith("https://"))throw new IllegalArgumentException("SOURCE_URL");}
+        else if("PHOTO_ESTIMATE".equals(kind)){keys(p,"kind","model","estimatedAt","assumptions","kcalLowMilli","kcalHighMilli");text(p,"model",200,false);integer(p,"estimatedAt",1,253402300799999L);JSONArray assumptions=array(p,"assumptions",0,8);for(int i=0;i<assumptions.length();i++)if(!(assumptions.opt(i) instanceof String)||assumptions.optString(i).length()>240)throw new IllegalArgumentException("ASSUMPTION");Long low=optional(p,"kcalLowMilli",0,MAX_KCAL),high=optional(p,"kcalHighMilli",0,MAX_KCAL);if(low!=null&&high!=null&&low>high)throw new IllegalArgumentException("ESTIMATE_RANGE");}
+        else keys(p,"kind");
+        if("PHOTO".equals(input)&&!"PHOTO_ESTIMATE".equals(kind))throw new IllegalArgumentException("PHOTO_PROVENANCE");
+        if(!o.has("originalEstimate"))throw new IllegalArgumentException("ORIGINAL_ESTIMATE");if(!o.isNull("originalEstimate")){JSONObject original=o.optJSONObject("originalEstimate");if(original==null)throw new IllegalArgumentException("ORIGINAL_ESTIMATE");keys(original,"quantityMilli","kcalMilli","proteinMg","fatMg","carbohydrateMg");optional(original,"quantityMilli",1,MAX_QUANTITY);optional(original,"kcalMilli",0,MAX_KCAL);for(String k:new String[]{"proteinMg","fatMg","carbohydrateMg"})optional(original,k,0,MAX_KCAL);}
+        JSONArray corrected=array(o,"correctedFields",0,13);Set<String> seen=new HashSet<>();for(int i=0;i<corrected.length();i++){Object field=corrected.opt(i);if(!(field instanceof String)||!Arrays.asList("name","quantityMilli","unit","calculation","basisQuantityMilli","basisKcalMilli","basisProteinMg","basisFatMg","basisCarbohydrateMg","kcalMilli","proteinMg","fatMg","carbohydrateMg").contains(field)||!seen.add((String)field))throw new IllegalArgumentException("CORRECTED_FIELD");}
+    }
+    static void validateEntry(JSONObject o){keys(o,"schemaVersion","id","revision","consumedAt","localDay","zoneId","meal","state","removedFrom","note","items");integer(o,"schemaVersion",1,1);id(text(o,"id",36,false));integer(o,"revision",1,Long.MAX_VALUE-1);long at=integer(o,"consumedAt",1,253402300799999L);LocalDate d=LocalDate.parse(text(o,"localDay",10,false));ZoneId z=ZoneId.of(text(o,"zoneId",80,false));if(!Instant.ofEpochMilli(at).atZone(z).toLocalDate().equals(d))throw new IllegalArgumentException("DAY_TIME_MISMATCH");choice(o,"meal","BREAKFAST","LUNCH","DINNER","SNACK","OTHER");String state=choice(o,"state","DRAFT","CONFIRMED","REMOVED");if("REMOVED".equals(state))choice(o,"removedFrom","DRAFT","CONFIRMED");else if(!o.has("removedFrom")||!o.isNull("removedFrom"))throw new IllegalArgumentException("REMOVED_STATE");text(o,"note",1000,true);JSONArray items=array(o,"items",1,32);Set<String> ids=new HashSet<>();long total=0;for(int i=0;i<items.length();i++){JSONObject item=child(items,i);validateItem(item);if(!ids.add(item.optString("id")))throw new IllegalArgumentException("DUPLICATE_ITEM");if(item.isNull("kcalMilli")&&("CONFIRMED".equals(state)||"CONFIRMED".equals(o.optString("removedFrom"))))throw new IllegalArgumentException("CONFIRM_CALORIES_REQUIRED");if(!item.isNull("kcalMilli"))total=Math.addExact(total,item.optLong("kcalMilli"));}if(total>MAX_KCAL)throw new IllegalArgumentException("ENTRY_CALORIE_LIMIT");if(o.toString().length()>65536)throw new IllegalArgumentException("ENTRY_SIZE");}
+    static void validateFood(JSONObject o){keys(o,"schemaVersion","id","revision","state","item");integer(o,"schemaVersion",1,1);id(text(o,"id",36,false));integer(o,"revision",1,Long.MAX_VALUE-1);choice(o,"state","ACTIVE","REMOVED");JSONObject item=o.optJSONObject("item");if(item==null)throw new IllegalArgumentException("FOOD_ITEM");validateItem(item);}
+    static void validateDay(JSONObject o){keys(o,"schemaVersion","localDay","revision","goalKcalMilli","completeDayDeclared");integer(o,"schemaVersion",1,1);LocalDate.parse(text(o,"localDay",10,false));integer(o,"revision",1,Long.MAX_VALUE-1);optional(o,"goalKcalMilli",1,MAX_KCAL);bool(o,"completeDayDeclared");}
+    static String canonical(Object v){if(v instanceof JSONObject){JSONObject o=(JSONObject)v;StringBuilder b=new StringBuilder("{");for(String k:new java.util.TreeSet<>(fieldNames(o))){if(b.length()>1)b.append(',');b.append(JSONObject.quote(k)).append(':').append(canonical(o.opt(k)));}return b.append('}').toString();}if(v instanceof JSONArray){JSONArray a=(JSONArray)v;StringBuilder b=new StringBuilder("[");for(int i=0;i<a.length();i++){if(i>0)b.append(',');b.append(canonical(a.opt(i)));}return b.append(']').toString();}if(v==null||v==JSONObject.NULL)return "null";return v instanceof String?JSONObject.quote((String)v):v.toString();}
+    static String decimal(Long milli){return milli==null?"":BigDecimal.valueOf(milli,3).stripTrailingZeros().toPlainString();}
+    static Long parseDecimal(String input,long maximum,boolean optional){String s=input.trim().replace(',','.');if(s.isEmpty()&&optional)return null;BigDecimal value=new BigDecimal(s);if(value.scale()>3||value.signum()<0)throw new IllegalArgumentException("DECIMAL");long n=value.movePointRight(3).longValueExact();if(n>maximum)throw new IllegalArgumentException("DECIMAL_BOUND");return n;}
+    private NutritionModels(){}
+}
+
+

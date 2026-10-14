@@ -1,0 +1,17 @@
+<resources>
+    <attr name="brandInk" format="color" />
+    <attr name="brandAccent" format="color" />
+    <color name="launcher_background">#0E0F12</color>
+    <style name="BrandGraphite">
+        <item name="brandInk">#F5F6F8</item><item name="brandAccent">#E53944</item>
+    </style>
+    <style name="BrandMidnight">
+        <item name="brandInk">#EEF5FF</item><item name="brandAccent">#E73E4D</item>
+    </style>
+    <style name="BrandArctic">
+        <item name="brandInk">#152228</item><item name="brandAccent">#BE2635</item>
+    </style>
+    <style name="BrandOlive">
+        <item name="brandInk">#EEF1E0</item><item name="brandAccent">#E1434B</item>
+    </style>
+</resources>

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "canvas": {
+    "width": 466,
+    "height": 466,
+    "shape": "circle"
+  },
+  "style": "shared-digital-base",
+  "layers": [
+    {
+      "type": "image",
+      "asset": "dynamic_dials/pipbottle/phosphor/preview.png"
+    },
+    {
+      "type": "data",
+      "field": "time",
+      "role": "primary"
+    },
+    {
+      "type": "data",
+      "field": "date",
+      "role": "primary"
+    },
+    {
+      "type": "data",
+      "field": "steps",
+      "role": "primary"
+    },
+    {
+      "type": "data",
+      "field": "calories",
+      "role": "primary"
+    },
+    {
+      "type": "data",
+      "field": "heartRate",
+      "role": "primary"
+    },
+    {
+      "type": "data",
+      "field": "battery",
+      "role": "primary"
+    },
+    {
+      "type": "data",
+      "field": "distance",
+      "role": "primary"
+    }
+  ],
+  "animation": {
+    "node": "animatedImage1",
+    "frameCount": 8,
+    "watchRuntimeVerified": false,
+    "nodeType": "image",
+    "source": "emqDialTime",
+    "channel": 0,
+    "advancement": "one event advances one frame; no catch-up"
+  }
+}

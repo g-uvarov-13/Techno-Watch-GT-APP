@@ -1,0 +1,26 @@
+package app.gtdial.lab;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
+import android.net.Uri;
+import java.io.InputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.nio.file.Files;
+
+/** Bounds are checked before decode. Re-encoding discards metadata; only this private JPEG is sent. */
+final class NutritionImagePreparer {
+    static final int INPUT_LIMIT=12*1024*1024,OUTPUT_LIMIT=1024*1024;
+    private final Context context;private final File directory;
+    NutritionImagePreparer(Context context){this.context=context.getApplicationContext();directory=new File(this.context.getNoBackupFilesDir(),"nutrition-photo-temp");}
+    File prepare(Uri uri)throws Exception{cleanup();byte[] bytes;try(InputStream input=context.getContentResolver().openInputStream(uri)){if(input==null)throw new IllegalArgumentException("PHOTO_READ");ByteArrayOutputStream out=new ByteArrayOutputStream();byte[] buffer=new byte[8192];int n;while((n=input.read(buffer))!=-1){if(out.size()+n>INPUT_LIMIT)throw new IllegalArgumentException("PHOTO_INPUT_LIMIT");out.write(buffer,0,n);}bytes=out.toByteArray();}BitmapFactory.Options bounds=new BitmapFactory.Options();bounds.inJustDecodeBounds=true;BitmapFactory.decodeByteArray(bytes,0,bytes.length,bounds);if(bounds.outWidth<1||bounds.outHeight<1||(long)bounds.outWidth*bounds.outHeight>24_000_000L||!("image/jpeg".equals(bounds.outMimeType)||"image/png".equals(bounds.outMimeType)||"image/webp".equals(bounds.outMimeType)))throw new IllegalArgumentException("PHOTO_FORMAT_OR_DIMENSIONS");int orientation=ExifInterface.ORIENTATION_NORMAL;try{ExifInterface exif=new ExifInterface(new ByteArrayInputStream(bytes));orientation=exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,ExifInterface.ORIENTATION_NORMAL);}catch(java.io.IOException e){if("image/jpeg".equals(bounds.outMimeType))throw new IllegalArgumentException("PHOTO_ORIENTATION");}
+        BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=1;while(Math.max(bounds.outWidth,bounds.outHeight)/options.inSampleSize>3072)options.inSampleSize*=2;options.inPreferredConfig=Bitmap.Config.ARGB_8888;Bitmap original=BitmapFactory.decodeByteArray(bytes,0,bytes.length,options);if(original==null)throw new IllegalArgumentException("PHOTO_DECODE");Bitmap transformed=null,scaled=null;try{Matrix transform=new Matrix();switch(orientation){case ExifInterface.ORIENTATION_FLIP_HORIZONTAL:transform.setScale(-1,1);break;case ExifInterface.ORIENTATION_ROTATE_180:transform.setRotate(180);break;case ExifInterface.ORIENTATION_FLIP_VERTICAL:transform.setScale(1,-1);break;case ExifInterface.ORIENTATION_TRANSPOSE:transform.setRotate(90);transform.postScale(-1,1);break;case ExifInterface.ORIENTATION_ROTATE_90:transform.setRotate(90);break;case ExifInterface.ORIENTATION_TRANSVERSE:transform.setRotate(-90);transform.postScale(-1,1);break;case ExifInterface.ORIENTATION_ROTATE_270:transform.setRotate(-90);break;default:break;}transformed=Bitmap.createBitmap(original,0,0,original.getWidth(),original.getHeight(),transform,true);double scale=Math.min(1,1536.0/Math.max(transformed.getWidth(),transformed.getHeight()));scaled=Bitmap.createScaledBitmap(transformed,Math.max(1,(int)Math.round(transformed.getWidth()*scale)),Math.max(1,(int)Math.round(transformed.getHeight()*scale)),true);byte[] jpeg=null;for(int quality:new int[]{90,80,70,60,50,40}){ByteArrayOutputStream out=new ByteArrayOutputStream();if(!scaled.compress(Bitmap.CompressFormat.JPEG,quality,out))throw new IllegalArgumentException("PHOTO_ENCODE");if(out.size()<=OUTPUT_LIMIT){jpeg=out.toByteArray();break;}}if(jpeg==null)throw new IllegalArgumentException("PHOTO_OUTPUT_LIMIT");if(!directory.exists()&&!directory.mkdirs())throw new java.io.IOException("PHOTO_DIRECTORY");File file=new File(directory,NutritionModels.uuid()+".jpg");try(java.io.FileOutputStream output=new java.io.FileOutputStream(file)){output.write(jpeg);output.getFD().sync();}return file;}finally{if(scaled!=null&&scaled!=transformed&&scaled!=original)scaled.recycle();if(transformed!=null&&transformed!=original)transformed.recycle();original.recycle();}}
+    byte[] bytes(File file)throws Exception{requireOwned(file);if(file.length()>OUTPUT_LIMIT||file.length()<=0)throw new IllegalArgumentException("PHOTO_OUTPUT_LIMIT");return Files.readAllBytes(file.toPath());}
+    void discard(File file){if(file==null)return;try{requireOwned(file);if(file.exists()&&!file.delete())throw new IllegalStateException("PHOTO_CLEANUP_FAILED");}catch(java.io.IOException e){throw new IllegalStateException("PHOTO_CLEANUP_FAILED");}}
+    void cleanup(){File[] files=directory.listFiles();if(files==null)return;long before=System.currentTimeMillis()-24L*60*60*1000;for(File file:files)if(file.isFile()&&file.getName().matches("[0-9a-f-]{36}\\.jpg")&&file.lastModified()<before)discard(file);}
+    private void requireOwned(File file)throws java.io.IOException{if(!file.getCanonicalFile().getParentFile().equals(directory.getCanonicalFile())||!file.getName().matches("[0-9a-f-]{36}\\.jpg"))throw new IllegalArgumentException("PHOTO_TEMP_OWNERSHIP");}
+}

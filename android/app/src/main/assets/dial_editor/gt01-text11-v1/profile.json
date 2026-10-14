@@ -1,0 +1,152 @@
+{
+  "format": "gtdial-runtime-profile",
+  "schemaVersion": 1,
+  "id": "gt01-text11-v1",
+  "deviceProfile": "GT01-466",
+  "donorSha256": "71c6c18f914f8b0caee64faf9f3cad26faddd059a2308846e3431a6265713326",
+  "appSha256": "ab29e2c90444c809014bdc8de95a2465f5dc254b84f0070507d3692138207f3c",
+  "mainSourceSha256": "d3e27227823cda1bfe5909a1dee247546f8ed327f35d30bfefb5b9c92aea5089",
+  "mainTemplateSha256": "93129836ba3a2b6e700e7096c680a46d50a9120d739f3c8f7c06ae9267621afb",
+  "selectedIdsMarker": "[\"__GT_EDITOR_SELECTED_IDS__\"]",
+  "maxPackageBytes": 1048576,
+  "fields": [
+    {
+      "id": "TIME_M_D",
+      "fontPixels": 19,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 68,
+      "rect": [
+        145,
+        105,
+        72,
+        34
+      ]
+    },
+    {
+      "id": "TIME_W",
+      "fontPixels": 19,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 65,
+      "rect": [
+        225,
+        105,
+        59,
+        34
+      ]
+    },
+    {
+      "id": "HOUR",
+      "fontPixels": 30,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 66,
+      "rect": [
+        313,
+        163,
+        55,
+        47
+      ]
+    },
+    {
+      "id": "MIN",
+      "fontPixels": 30,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 65,
+      "rect": [
+        313,
+        276,
+        55,
+        47
+      ]
+    },
+    {
+      "id": "TIME_S",
+      "fontPixels": 16,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 68,
+      "rect": [
+        367,
+        281,
+        31,
+        30
+      ]
+    },
+    {
+      "id": "AM_PM",
+      "fontPixels": 14,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 68,
+      "rect": [
+        362,
+        175,
+        35,
+        21
+      ]
+    },
+    {
+      "id": "STEPS",
+      "fontPixels": 21,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 65,
+      "rect": [
+        79,
+        270,
+        101,
+        34
+      ]
+    },
+    {
+      "id": "KCAL",
+      "fontPixels": 21,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 65,
+      "rect": [
+        88,
+        166,
+        66,
+        34
+      ]
+    },
+    {
+      "id": "HEART",
+      "fontPixels": 19,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 68,
+      "rect": [
+        88,
+        218,
+        46,
+        32
+      ]
+    },
+    {
+      "id": "BATTERY",
+      "fontPixels": 19,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 66,
+      "rect": [
+        88,
+        335,
+        60,
+        29
+      ]
+    },
+    {
+      "id": "DISTAN",
+      "fontPixels": 19,
+      "fontPath": "/system/fonts/defaultFont",
+      "align": 65,
+      "rect": [
+        190,
+        344,
+        59,
+        29
+      ]
+    }
+  ],
+  "mutableResources": [
+    34,
+    37,
+    44,
+    60
+  ]
+}

@@ -1,0 +1,71 @@
+package app.gtdial.lab;
+
+import android.content.Context;
+import android.os.SystemClock;
+import org.json.JSONObject;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+/** Mutations are submitted by the UI to the store's serial executor and committed atomically. */
+final class StrengthDiary {
+    private final Context context;
+    private final ExpansionStore store;
+    StrengthDiary(Context context,ExpansionStore store){this.context=context.getApplicationContext();this.store=store;}
+    List<JSONObject> catalog(){List<JSONObject> rows=new ArrayList<>(StrengthCatalog.list());rows.addAll(store.list("custom_exercises"));return rows;}
+    JSONObject addCustomExercise(String name,String group,String equipment,String loadMode,String illustration){
+        String title=text(name,120);if(title.trim().isEmpty()||!StrengthCatalog.loadMode(loadMode))throw new IllegalArgumentException("EXERCISE_FIELDS");
+        if(store.list("custom_exercises").size()>=500)throw new IllegalStateException("EXERCISE_LIMIT");
+        if(!java.util.Arrays.asList("bench","row","squat","pull","press","curl","plank","raise").contains(illustration))throw new IllegalArgumentException("EXERCISE_ILLUSTRATION");
+        JSONObject row=record();put(row,"name",title.trim());put(row,"familyId",row.optString("id"));put(row,"group",text(group,80));put(row,"equipment",text(equipment,120));put(row,"loadMode",loadMode);put(row,"illustration",illustration);store.save("custom_exercises",row,System.currentTimeMillis(),"LOCAL");return row;
+    }
+    List<JSONObject> entries(String workoutId){List<JSONObject> rows=store.diaryRows("strength_entries",workoutId);rows.removeIf(row->row.optBoolean("removed"));return rows;}
+    /** Removing an accidental exercise is reversible; its sets remain available for undo. */
+    JSONObject removeExercise(String id,long expected){JSONObject[] out=new JSONObject[1];store.transaction(()->{
+        JSONObject entry=require("strength_entries",id),workout=workout(entry.optString("workoutId"),true);revision(entry,expected);
+        put(entry,"removed",true);touch(entry);store.diaryWrite("strength_entries",entry.optString("workoutId"),entry,expected);
+        if(id.equals(workout.optString("strengthFocusEntryId"))){List<JSONObject> remaining=entries(entry.optString("workoutId"));put(workout,"strengthFocusEntryId",remaining.isEmpty()?"":remaining.get(0).optString("id"));clearRest(workout);saveWorkout(workout);}out[0]=entry;
+    });return out[0];}
+    JSONObject restoreExercise(String id,long expected){JSONObject[] out=new JSONObject[1];store.transaction(()->{
+        JSONObject entry=require("strength_entries",id),workout=workout(entry.optString("workoutId"),true);revision(entry,expected);
+        if(!entry.optBoolean("removed"))throw new IllegalStateException("DIARY_REVISION_CHANGED");put(entry,"removed",false);touch(entry);store.diaryWrite("strength_entries",entry.optString("workoutId"),entry,expected);put(workout,"strengthFocusEntryId",id);saveWorkout(workout);out[0]=entry;
+    });return out[0];}
+    List<JSONObject> sets(String entryId){return store.diaryRows("strength_sets",entryId);}
+    JSONObject addExercise(String workoutId,String variantId){JSONObject[] result=new JSONObject[1];store.transaction(()->{
+        JSONObject workout=workout(workoutId,true),variant=StrengthCatalog.find(variantId);if(variant==null)variant=store.find("custom_exercises",variantId);if(variant==null)throw new IllegalArgumentException("EXERCISE_MISSING");
+        List<JSONObject> current=entries(workoutId);if(current.size()>=100)throw new IllegalStateException("WORKOUT_EXERCISE_LIMIT");
+        JSONObject entry=record();put(entry,"workoutId",workoutId);put(entry,"variantId",variantId);put(entry,"nameSnapshot",variant.optString("name"));for(String key:new String[]{"group","illustration","loadMode","equipment"})put(entry,key,variant.optString(key));put(entry,"equipmentProfileId","");put(entry,"repConvention","REPS_AS_ENTERED");put(entry,"position",store.diaryRows("strength_entries",workoutId).stream().mapToInt(row->row.optInt("position")).max().orElse(-1)+1);put(entry,"revision",0);put(entry,"note","");store.diaryWrite("strength_entries",workoutId,entry,-1);draft(entry,null);
+        put(workout,"strengthFocusEntryId",entry.optString("id"));saveWorkout(workout);result[0]=entry;
+    });return result[0];}
+    JSONObject saveDraft(String setId,String loadText,String repsText,String note,long expectedRevision){return updateSet(setId,loadText,repsText,note,expectedRevision,false);}
+    JSONObject editSet(String setId,String loadText,String repsText,String note,long expectedRevision){return updateSet(setId,loadText,repsText,note,expectedRevision,true);}
+    private JSONObject updateSet(String id,String load,String reps,String note,long expected,boolean done){JSONObject[] out=new JSONObject[1];store.transaction(()->{JSONObject set=require("strength_sets",id),entry=require("strength_entries",set.optString("entryId"));workout(entry.optString("workoutId"),!done);revision(set,expected);if(!(done?"DONE":"DRAFT").equals(set.optString("state")))throw new IllegalStateException("SET_STATE");put(set,"loadInput",text(load,32));put(set,"repsInput",text(reps,16));put(set,"note",text(note,500));if(done)validateDone(set,entry);else{put(set,"loadGrams",null);put(set,"reps",null);}touch(set);store.diaryWrite("strength_sets",entry.optString("id"),set,expected);out[0]=set;});return out[0];}
+    JSONObject completeSet(String id,long expected){JSONObject[] out=new JSONObject[1];store.transaction(()->{
+        JSONObject set=require("strength_sets",id),entry=require("strength_entries",set.optString("entryId")),workout=workout(entry.optString("workoutId"),false);JSONObject next=null;
+        // The completed revision is a terminal identity. Replayed taps never start another rest.
+        if("DONE".equals(set.optString("state"))){String nextId=set.optString("nextDraftId");if(!nextId.isEmpty())next=store.diaryFind("strength_sets",nextId);out[0]=completion(set,next,workout);return;}
+        if(!"RUNNING".equals(workout.optString("status")))throw new IllegalStateException("SET_REQUIRES_RUNNING");revision(set,expected);validateDone(set,entry);if(sets(entry.optString("id")).size()>=500)throw new IllegalStateException("ENTRY_SET_LIMIT");
+        put(set,"state","DONE");put(set,"completedAt",System.currentTimeMillis());touch(set);next=draft(entry,set);put(set,"nextDraftId",next.optString("id"));store.diaryWrite("strength_sets",entry.optString("id"),set,expected);
+        int rest=workout.optInt("restSeconds",90);put(workout,"restSeconds",rest);put(workout,"restState",rest>0?"ACTIVE":"IDLE");put(workout,"restDeadlineElapsed",SystemClock.elapsedRealtime()+rest*1000L);put(workout,"restBootIdentity",WorkoutRecorder.bootIdentity(context));put(workout,"strengthFocusEntryId",entry.optString("id"));saveWorkout(workout);out[0]=completion(set,next,workout);
+    });return out[0];}
+    JSONObject setKind(String id,String kind,long expected){if(!"WORK".equals(kind)&&!"WARMUP".equals(kind))throw new IllegalArgumentException("SET_KIND");JSONObject[] out=new JSONObject[1];store.transaction(()->{JSONObject set=require("strength_sets",id),entry=require("strength_entries",set.optString("entryId"));workout(entry.optString("workoutId"),false);revision(set,expected);put(set,"setKind",kind);touch(set);store.diaryWrite("strength_sets",entry.optString("id"),set,expected);out[0]=set;});return out[0];}
+    JSONObject setEquipmentProfile(String id,String profile,long expected){JSONObject[] out=new JSONObject[1];store.transaction(()->{JSONObject entry=require("strength_entries",id);workout(entry.optString("workoutId"),false);revision(entry,expected);String value=text(profile,120).trim();if(!"MACHINE".equals(entry.optString("loadMode"))&&!"ASSISTANCE".equals(entry.optString("loadMode")))throw new IllegalArgumentException("EQUIPMENT_PROFILE_MODE");if(!sets(id).stream().allMatch(s->!"DONE".equals(s.optString("state"))))throw new IllegalStateException("EQUIPMENT_PROFILE_LOCKED");put(entry,"equipmentProfileId",value);touch(entry);store.diaryWrite("strength_entries",entry.optString("workoutId"),entry,expected);out[0]=entry;});return out[0];}
+    JSONObject entryNote(String id,String note,long expected){JSONObject[] out=new JSONObject[1];store.transaction(()->{JSONObject entry=require("strength_entries",id);workout(entry.optString("workoutId"),false);revision(entry,expected);put(entry,"note",text(note,1000));touch(entry);store.diaryWrite("strength_entries",entry.optString("workoutId"),entry,expected);out[0]=entry;});return out[0];}
+    JSONObject focus(String workoutId,String entryId){JSONObject[] out=new JSONObject[1];store.transaction(()->{JSONObject workout=workout(workoutId,true),entry=require("strength_entries",entryId);if(!workoutId.equals(entry.optString("workoutId")))throw new IllegalArgumentException("ENTRY_WORKOUT");put(workout,"strengthFocusEntryId",entryId);saveWorkout(workout);out[0]=workout;});return out[0];}
+    JSONObject settings(String workoutId,int restSeconds){if(restSeconds<0||restSeconds>3600)throw new IllegalArgumentException("REST_SECONDS");JSONObject[] out=new JSONObject[1];store.transaction(()->{JSONObject workout=workout(workoutId,true);put(workout,"restSeconds",restSeconds);saveWorkout(workout);out[0]=workout;});return out[0];}
+    JSONObject cancelRest(String workoutId){JSONObject[] out=new JSONObject[1];store.transaction(()->{JSONObject workout=workout(workoutId,false);clearRest(workout);saveWorkout(workout);out[0]=workout;});return out[0];}
+    long restRemainingMillis(JSONObject workout){if(!"ACTIVE".equals(workout.optString("restState"))||!"RUNNING".equals(workout.optString("status"))||!WorkoutRecorder.bootIdentity(context).equals(workout.optString("restBootIdentity")))return 0;long left=workout.optLong("restDeadlineElapsed")-SystemClock.elapsedRealtime();return left>3600000?0:Math.max(0,left);}
+    static void clearRest(JSONObject workout){put(workout,"restState","IDLE");put(workout,"restDeadlineElapsed",0);put(workout,"restBootIdentity","");}
+    static void interruptRest(JSONObject workout){if("ACTIVE".equals(workout.optString("restState"))){clearRest(workout);put(workout,"restState","INTERRUPTED");}}
+    private JSONObject draft(JSONObject entry,JSONObject previous){List<JSONObject> rows=sets(entry.optString("id"));if(rows.size()>=500)throw new IllegalStateException("ENTRY_SET_LIMIT");JSONObject set=record();put(set,"entryId",entry.optString("id"));put(set,"position",rows.size());put(set,"revision",0);put(set,"state","DRAFT");put(set,"setKind","WORK");put(set,"loadInput",previous==null?"":previous.optString("loadInput"));put(set,"repsInput",previous==null?"":previous.optString("repsInput"));put(set,"loadGrams",null);put(set,"reps",null);put(set,"note","");put(set,"completedAt",null);put(set,"updatedAt",System.currentTimeMillis());store.diaryWrite("strength_sets",entry.optString("id"),set,-1);return set;}
+    private static void validateDone(JSONObject set,JSONObject entry){String reps=set.optString("repsInput").trim();if(!reps.matches("[0-9]{1,4}"))throw new IllegalArgumentException("SET_REPS");int count=Integer.parseInt(reps);if(count<1||count>1000)throw new IllegalArgumentException("SET_REPS");put(set,"reps",count);if("BODYWEIGHT".equals(entry.optString("loadMode"))){put(set,"loadGrams",null);put(set,"loadInput","");return;}String load=set.optString("loadInput").trim().replace(',','.');if(!load.matches("[0-9]{1,4}(\\.[0-9]{1,3})?"))throw new IllegalArgumentException("SET_WEIGHT");BigDecimal kg=new BigDecimal(load);if(kg.compareTo(new BigDecimal("2000"))>0)throw new IllegalArgumentException("SET_WEIGHT");put(set,"loadGrams",kg.movePointRight(3).longValueExact());}
+    private JSONObject workout(String id,boolean active){JSONObject r=store.find("workouts",id);if(r==null||!ExpansionModels.PHONE.equals(r.optString("source"))||!"strength".equals(r.optString("typeId")))throw new IllegalArgumentException("STRENGTH_WORKOUT");if(active&&!WorkoutRecorder.isActive(r))throw new IllegalStateException("WORKOUT_TERMINAL");return r;}
+    private void saveWorkout(JSONObject workout){store.save("workouts",workout,workout.optLong("startedAt"),workout.optString("status"));}
+    private JSONObject require(String table,String id){JSONObject r=store.diaryFind(table,id);if(r==null)throw new IllegalArgumentException("DIARY_MISSING");return r;}
+    private static void revision(JSONObject row,long expected){if(row.optLong("revision")!=expected)throw new IllegalStateException("DIARY_REVISION_CHANGED");}
+    private static void touch(JSONObject row){put(row,"revision",row.optLong("revision")+1);put(row,"updatedAt",System.currentTimeMillis());}
+    private static JSONObject completion(JSONObject set,JSONObject draft,JSONObject workout){JSONObject row=new JSONObject();put(row,"set",set);put(row,"nextDraft",draft);put(row,"workout",workout);return row;}
+    private static JSONObject record(){JSONObject row=new JSONObject();put(row,"id",java.util.UUID.randomUUID().toString());return row;}
+    private static String text(String value,int max){String s=value==null?"":value;if(s.length()>max)throw new IllegalArgumentException("DIARY_TEXT_LIMIT");return s;}
+    private static void put(JSONObject row,String key,Object value){ExpansionModels.put(row,key,value);}
+}

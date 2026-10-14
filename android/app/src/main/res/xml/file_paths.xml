@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <files-path name="personal_reports" path="reports/" />
+    <files-path name="health_evidence" path="health-evidence/" />
+    <files-path
+        name="diagnostic_logs"
+        path="logs/" />
+    <files-path
+        name="watch_backups"
+        path="backups/" />
+</paths>
