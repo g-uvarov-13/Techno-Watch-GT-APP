@@ -62,6 +62,10 @@ final class TsdbReadProtocol {
     private final int maxFrameBytes; private int packetId,index,pages,total,saveGeneration; private boolean awaitingSave; private long latestTimestamp; private int usable; private final java.util.Set<String> seenRecords=new java.util.HashSet<>(),seenPages=new java.util.HashSet<>();
     private final Handler handler=new Handler(Looper.myLooper()==null?Looper.getMainLooper():Looper.myLooper());
     private final ByteArrayOutputStream buffer=new ByteArrayOutputStream();
+    private int ignoredFrames,ignoredBytes;
+    private byte[] expectedFrame;
+    private boolean responseDelivered,acknowledgementReceived;
+    private Runnable savedContinuation;
     private final Runnable timeout=()->fail("timeout; no retry");
     private final Runnable persistTimeout=()->{if(this.running&&awaitingSave)fail("local page save/import timeout; completed pages preserved; no retry");};
     private boolean running,used;
@@ -88,7 +92,7 @@ final class TsdbReadProtocol {
         sendPage();
     }
     private void sendPage(){
-        buffer.reset();raw=new byte[0];request=new byte[0];
+        buffer.reset();raw=new byte[0];request=new byte[0];expectedFrame=null;responseDelivered=false;acknowledgementReceived=false;ignoredFrames=0;ignoredBytes=0;savedContinuation=null;
         try{
             Map<String,Object> args=new LinkedHashMap<>();args.put("path",profile.path);args.put("from",from);args.put("to",to);args.put("index",(long)index);args.put("count",(long)profile.count);args.put("_eventId",eventId);args.put("_module","tsdb_query");
             request=UbjsonCodec.encode(args);
@@ -104,26 +108,43 @@ final class TsdbReadProtocol {
     void cancel(String reason){fail(reason);}
     void onChunk(byte[] bytes){
         if(!running)return;
-        if(awaitingSave){describeRejectedFrame(bytes,"AWAITING_SAVE",bytes==null?0:bytes.length);fail("late/duplicate frame while saving page");return;}
         if(bytes==null||bytes.length==0){fail("empty RX chunk");return;}
-        if(buffer.size()+bytes.length>UbjsonCodec.MAX_BYTES+13){fail("response exceeds 32 KiB");return;}
-        buffer.write(bytes,0,bytes.length);byte[] frame=buffer.toByteArray();
-        if((frame[0]&255)!=0xFC){fail("MCF prefix");return;}
-        if(frame.length<3)return;
-        int length=((frame[1]&255)<<8)|(frame[2]&255);
-        if(length<13||length>UbjsonCodec.MAX_BYTES+13){fail("MCF length bounds");return;}
-        if(frame.length<length)return;
-        if(frame.length!=length){fail("extra/duplicate MCF frame");return;}
-        if((frame[length-1]&255)!=0xCF||crc16(frame,1,length-4)!=(((frame[length-3]&255)<<8)|(frame[length-2]&255))){describeRejectedFrame(frame,"WAIT_RX",bytes.length);fail("MCF CRC/terminator");return;}
-        if(frame[4]!=0||frame[5]!=1||frame[6]!=1||frame[7]!=0||(frame[8]&255)!=packetId||(frame[9]&255)!=0x40){describeRejectedFrame(frame,"WAIT_RX",bytes.length);fail("MCF addressing/id/type/flags");return;}
-        raw=Arrays.copyOfRange(frame,10,length-3);
+        // One maximum response plus the separate, bounded ignored-frame budget may coalesce.
+        if(buffer.size()+bytes.length>2*(UbjsonCodec.MAX_BYTES+13)){fail("MCF stream exceeds bounded capacity");return;}
+        buffer.write(bytes,0,bytes.length);byte[] stream=buffer.toByteArray();int offset=0;
+        while(offset<stream.length){
+            if((stream[offset]&255)!=0xFC){fail("MCF prefix");return;}
+            if(stream.length-offset<3)break;
+            int length=((stream[offset+1]&255)<<8)|(stream[offset+2]&255);
+            if(length<13||length>UbjsonCodec.MAX_BYTES+13){fail("MCF length bounds");return;}
+            if(stream.length-offset<length)break;
+            byte[] frame=Arrays.copyOfRange(stream,offset,offset+length);offset+=length;
+            if((frame[length-1]&255)!=0xCF||crc16(frame,1,length-4)!=(((frame[length-3]&255)<<8)|(frame[length-2]&255))){describeRejectedFrame(frame,"WAIT_RX",bytes.length);fail("MCF CRC/terminator");return;}
+            int attrs=frame[9]&255,type=attrs>>>6,id=frame[8]&255;
+            if(frame[4]!=0||frame[5]!=1||frame[6]!=1||frame[7]!=0||(attrs&3)!=0){describeRejectedFrame(frame,"WAIT_RX",bytes.length);fail("MCF addressing/type/flags");return;}
+            if(type==0||(type==1||type==2)&&id!=packetId){
+                if(++ignoredFrames>16||ignoredBytes+length>UbjsonCodec.MAX_BYTES+13){fail("unrelated MCF budget exceeded");return;}
+                ignoredBytes+=length;transport.log("TSDB_RX ignored validated type="+type+" id="+id+" expectedId="+packetId+" bytes="+length);continue;
+            }
+            if(id!=packetId||attrs!=0x40){fail("MCF addressing/id/type/flags");return;}
+            if(expectedFrame!=null||responseDelivered||awaitingSave){fail("duplicate expected MCF response");return;}
+            expectedFrame=frame;
+        }
+        buffer.reset();if(offset<stream.length)buffer.write(stream,offset,stream.length-offset);
+        // Classify the whole available stream, including any fragmented tail, before delivery.
+        if(buffer.size()!=0)return;
+        if(savedContinuation!=null){Runnable continuation=savedContinuation;savedContinuation=null;continuation.run();return;}
+        if(expectedFrame!=null&&!responseDelivered&&!awaitingSave){responseDelivered=true;deliverResponse(expectedFrame);}
+    }
+    private void deliverResponse(byte[] frame){
+        raw=Arrays.copyOfRange(frame,10,frame.length-3);
         try{
             HealthHistoryParser.Page page=HealthHistoryParser.parse(raw,profile);
             String detail=page.records.isEmpty()?"No records returned for this range":"One page received; sleep d remains uninterpreted";
             if(profile==Profile.SPO2_PAGE)detail=page.records.isEmpty()?"No SpO2 records returned for this range":page.partial?"Partial SpO2 page received; raw observations retained":"Bounded SpO2 page received; raw observations retained";
             if(profile==Profile.HEART_LAST)detail=page.records.isEmpty()||!page.records.get(0).heartRateAvailable()?"Latest heart-rate observation unavailable":"Latest stored heart-rate observation received";
             if(profile==Profile.SPORTS_PAGE)detail=page.records.isEmpty()?"No completed workout records returned":"One bounded workout page received; source values retained";
-            Result result=new Result(profile,page.partial?"PARTIAL":"COMPLETE",detail,device,eventId,from,to,page.records,raw,request,buffer.toByteArray(),null,System.currentTimeMillis());
+            Result result=new Result(profile,page.partial?"PARTIAL":"COMPLETE",detail,device,eventId,from,to,page.records,raw,request,frame,null,System.currentTimeMillis());
             if(profile==Profile.SPO2_PAGE)for(HealthHistoryRecord record:page.records)if(record.ts<from||record.ts>to)throw new IllegalArgumentException("SpO2 record outside requested range");
             if(profile!=Profile.SLEEP_PAGE){finish(result);return;}
             if(page.records.isEmpty()&&page.partial)throw new IllegalArgumentException("full buffer with zero records");
@@ -135,16 +156,22 @@ final class TsdbReadProtocol {
             final int pendingSave=++saveGeneration;handler.postDelayed(persistTimeout,10_000L);
             final boolean more=page.partial,cap=pages+1>=8||total+page.records.size()>=40;
             transport.persist(result,saved->handler.post(()->{
-                if(!running||!awaitingSave||pendingSave!=saveGeneration)return;handler.removeCallbacks(persistTimeout);awaitingSave=false;
+                if(!running||!awaitingSave||pendingSave!=saveGeneration||acknowledgementReceived)return;
+                acknowledgementReceived=true;
                 if(saved==null||"FAILED".equals(saved.state)){fail("page save/import failed; completed pages preserved");return;}
+                Runnable continuation=()->{
+                if(!running||!awaitingSave||pendingSave!=saveGeneration)return;handler.removeCallbacks(persistTimeout);awaitingSave=false;
                 pages++;total+=page.records.size();for(HealthHistoryRecord record:page.records){latestTimestamp=Math.max(latestTimestamp,record.ts);try{if(HealthDatasetParser.parse("sleep",record.rawDataUbjson()).validity.startsWith("VALID"))usable++;}catch(RuntimeException ignored){/* Raw page remains retained; unusable observations are not charted. */}}
                 if(!more||cap){transport.log("SLEEP summary pages="+pages+" records="+total+" cap="+(more&&cap));finish(saved.withSleepSummary(new SleepSummary(pages,total,usable,latestTimestamp,!more)).described("Sleep pages="+pages+" records="+total+" usable="+usable+" latestUnix="+latestTimestamp+(more&&cap?"; limit reached; partial history":"; bounded history complete")));return;}
                 index+=page.records.size();eventId=UUID.randomUUID().toString();
                 try{packetId=transport.nextPacketId();sendPage();}catch(RuntimeException e){fail("continuation rejected; completed pages preserved");}
+                };
+                // A partial tail must drain within the original save deadline before next-page TX.
+                if(buffer.size()!=0)savedContinuation=continuation;else continuation.run();
             }));
         }catch(RuntimeException e){fail("response rejected: "+e.getMessage());}
     }
-    /** Metadata only: an unsolicited request may require a response, so this never changes fail-stop. */
+    /** Metadata only for rejected frames; their payload never changes the failure decision. */
     private void describeRejectedFrame(byte[] frame,String phase,int chunkBytes){
         int size=frame==null?0:frame.length,declared=size>=3?((frame[1]&255)<<8)|(frame[2]&255):-1;
         boolean bounded=declared>=13&&declared<=UbjsonCodec.MAX_BYTES+13;

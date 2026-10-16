@@ -1,8 +1,78 @@
 [
   {
     "path": ".gitignore",
-    "size": 161,
-    "sha256": "c16b69a413c1624727fc63e0a5342673f9bad3228a54cb00e0ded578dd9b9d5a"
+    "size": 147,
+    "sha256": "1e30a21d907001ff0e7424ebf49f4fc69f842cb2bcbb2978b178f9018cc1668f"
+  },
+  {
+    "path": "ASSET_MANIFEST.json",
+    "size": 36745,
+    "sha256": "d68280589982d203a80e795555ea3b95490b073ae3efc58e4a4f2e111f800822"
+  },
+  {
+    "path": "BUILDING.md",
+    "size": 13783,
+    "sha256": "98bbf98e06a438dc72d71824274b20fc04e0aff4c7af9b607ebc630c2eda2d6e"
+  },
+  {
+    "path": "CHANGELOG.md",
+    "size": 3889,
+    "sha256": "755966e7c0352d61bf0d53b2db4fe4683341ee614c4f717020d62ff559ddbd6d"
+  },
+  {
+    "path": "CONTRIBUTING.md",
+    "size": 7810,
+    "sha256": "c533e592f4850089b360891351a7fd5516b6b1ddcba4f7c068d5ce715337386d"
+  },
+  {
+    "path": "DEVELOPER_GUIDE.md",
+    "size": 35131,
+    "sha256": "cef1a2b27e35435486e4aae65346ad0d4179f77e5b139756cfbe76de1e36abee"
+  },
+  {
+    "path": "KNOWN_LIMITATIONS.md",
+    "size": 8578,
+    "sha256": "21ecbbec54d45673825dcc2bc87d67467331ad4e0d7465750e8a25f313a989e7"
+  },
+  {
+    "path": "LICENSE",
+    "size": 4563,
+    "sha256": "c0ea4a896d2c8c394b29f9427589996db826cd501c512279ff0ed3ef48fabbe5"
+  },
+  {
+    "path": "NOTICE",
+    "size": 309,
+    "sha256": "e7174b9379640af63db035b63acc5a4667534601484ef5342a4e86663f6b8ee0"
+  },
+  {
+    "path": "PRIVACY.md",
+    "size": 12962,
+    "sha256": "022edb4de0a5ed2ef90c0becb6a91f5cb6808d93cbedbf9d123c908322abbd19"
+  },
+  {
+    "path": "README.md",
+    "size": 8260,
+    "sha256": "386988d6c21efb6d5a88abef40fcaf1eec86250b0afd5f9bc30dbbd2348bb418"
+  },
+  {
+    "path": "SOURCE_ASSETS_MANIFEST.json",
+    "size": 52729,
+    "sha256": "fc8bc3fe238917f34bf9199cf86bd43db4b9dc16b6f907189149de7bac838867"
+  },
+  {
+    "path": "THIRD_PARTY_NOTICES.md",
+    "size": 3097,
+    "sha256": "cb1a650dc904f9037e492edecd97a8f5cc834cf6186b4aa04408670054270f8f"
+  },
+  {
+    "path": "USER_GUIDE.md",
+    "size": 28342,
+    "sha256": "70fbc600ba7cf6b9dc1acf7dea0b72c2887d4b67b6d0d93eba650bbc1016ead8"
+  },
+  {
+    "path": "WATCHFACE_AUTHORING.md",
+    "size": 17550,
+    "sha256": "e8cbd007ad2f6fd65f99cdffd5b75cb5e0da67361aceaaeaea8ed6a7f34464aa"
   },
   {
     "path": "android/.gitignore",
@@ -10,14 +80,19 @@
     "sha256": "97ab2f0d30478a4c78a8b28d7f9a702156fc9b6a2d0ade0d5bf57960e6239a09"
   },
   {
+    "path": "android/README.md",
+    "size": 287,
+    "sha256": "0ae739c51e6fb9cf589d627bc4046c3b36c3aa88f63297c881148d42b7b70256"
+  },
+  {
     "path": "android/app/build.gradle.kts",
-    "size": 2356,
-    "sha256": "d7f064bb018b4281d74400aa762025f3f0efa04cf248542774a0578f649afb8a"
+    "size": 2280,
+    "sha256": "e1ea4146eb6481507237a0c218d3e4a43ea98e05b45487ec27dd498f7500cda4"
   },
   {
     "path": "android/app/src/main/AndroidManifest.xml",
-    "size": 3236,
-    "sha256": "e22659b8526d55a146361a807f0857304528a14ea4698f43fb2da29d881cd224"
+    "size": 3178,
+    "sha256": "b1162890ed51ca76539dc93fa93550bb7ee213f453249929269f1bb4e008e201"
   },
   {
     "path": "android/app/src/main/assets/dial_editor/backgrounds/eclipse-v1.png",
@@ -56,8 +131,8 @@
   },
   {
     "path": "android/app/src/main/assets/dynamic_dials/base3000/render-spec.json",
-    "size": 530,
-    "sha256": "5c3e2fd809afb3361e48114a78fa4eb42c9557ab4a8b66994488237257b44dc4"
+    "size": 529,
+    "sha256": "dad9c53205693f97a5bd1c8a94ea2e3b2d7e386b67e33da37f3a38ae65084be7"
   },
   {
     "path": "android/app/src/main/assets/dynamic_dials/bitax/amber/face.dial",
@@ -156,8 +231,8 @@
   },
   {
     "path": "android/app/src/main/assets/dynamic_dials/dial3000/render-spec.json",
-    "size": 530,
-    "sha256": "3c7f28035e8347677220f4989b106f7c264d66a53824df2e9e35199908552a34"
+    "size": 529,
+    "sha256": "349d7e30512dd51218fd271637f8c2dfba320eb0e847a2b440bbd0606b03e91a"
   },
   {
     "path": "android/app/src/main/assets/dynamic_dials/dial3000/violet/face.dial",
@@ -246,8 +321,8 @@
   },
   {
     "path": "android/app/src/main/assets/dynamic_dials/offline-package-registry.json",
-    "size": 29236,
-    "sha256": "19ed85dad6c61446edd617c46811bb3b2599da8bfe6a3faba7984e77c3b26a0a"
+    "size": 28513,
+    "sha256": "b2b9896e624934e8d6ecd5ba033ad5504c47970a8904adf0e00bbf484c5d3826"
   },
   {
     "path": "android/app/src/main/assets/dynamic_dials/pipauto/amber/face.dial",
@@ -815,36 +890,6 @@
     "sha256": "1b0afd5f2b17cd5fdd829acb8056847402b860b4d89da0d4a1bc5eef68fa90ac"
   },
   {
-    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/amber.dial",
-    "size": 807091,
-    "sha256": "9eafc80385262a8bfbf49ae6aa68c9f3a8f550791a096ccb4b8536c0756d52b3"
-  },
-  {
-    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/cyan.dial",
-    "size": 807091,
-    "sha256": "e86b6f75a61aaac187cfa4349034acc6169fe108ad4a082c1c3e734b5b999c56"
-  },
-  {
-    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/phosphor.dial",
-    "size": 807083,
-    "sha256": "6d519314696b31d2714886ec5ee8271f9ebf82c131d0670112e3f71514f0d58d"
-  },
-  {
-    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/red.dial",
-    "size": 807083,
-    "sha256": "57d1f13a952424679897752df0cf21a1dce57f6b1b683ebe138d3ae0b58625c3"
-  },
-  {
-    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/violet.dial",
-    "size": 807091,
-    "sha256": "d995e7534a6ac5dd32e6e0bb1cb3270da87b90aff6d440824c1c424bcb61fec1"
-  },
-  {
-    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/white.dial",
-    "size": 807107,
-    "sha256": "00bd83d81b40983e0cd5d52622213813b2cbd7b0c7869e14c701811442d02a52"
-  },
-  {
     "path": "android/app/src/main/assets/dynamic_dials/previous-v10/dial3000walk/amber.dial",
     "size": 547676,
     "sha256": "be46f8fb6036b3b8af97b9b193f3fa7a00ac651e5ffcb6260144d7dec27064d9"
@@ -1100,6 +1145,36 @@
     "sha256": "faf90680a713de06d4851d33af461829cb609eb18cf570ac80745a1cde23785e"
   },
   {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/amber.dial",
+    "size": 807091,
+    "sha256": "9eafc80385262a8bfbf49ae6aa68c9f3a8f550791a096ccb4b8536c0756d52b3"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/cyan.dial",
+    "size": 807091,
+    "sha256": "e86b6f75a61aaac187cfa4349034acc6169fe108ad4a082c1c3e734b5b999c56"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/phosphor.dial",
+    "size": 807083,
+    "sha256": "6d519314696b31d2714886ec5ee8271f9ebf82c131d0670112e3f71514f0d58d"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/red.dial",
+    "size": 807083,
+    "sha256": "57d1f13a952424679897752df0cf21a1dce57f6b1b683ebe138d3ae0b58625c3"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/violet.dial",
+    "size": 807091,
+    "sha256": "d995e7534a6ac5dd32e6e0bb1cb3270da87b90aff6d440824c1c424bcb61fec1"
+  },
+  {
+    "path": "android/app/src/main/assets/dynamic_dials/previous/pipboy3000/white.dial",
+    "size": 807107,
+    "sha256": "00bd83d81b40983e0cd5d52622213813b2cbd7b0c7869e14c701811442d02a52"
+  },
+  {
     "path": "android/app/src/main/assets/dynamic_dials/shared-base-coordinate-map.json",
     "size": 53611,
     "sha256": "426704a20a68e3973cd02f0f3aa748679a54447756c2090208a4efbae68d8bf7"
@@ -1131,13 +1206,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ActivityHistoryEntry.java",
-    "size": 724,
-    "sha256": "01cd93d9596b9924236d64c4b714ede87f7e54de5584961ef5530616a10aa537"
+    "size": 710,
+    "sha256": "779a18a3ae2efc112b81cc186aa26e5f6a83dc87215ba8afa4034baa007a8c56"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ActivityHistoryStore.java",
-    "size": 7595,
-    "sha256": "8f1842f781f0b659fdc056c9692982e764b4db60268717f9dea7ed4f9048f1b9"
+    "size": 7536,
+    "sha256": "c27c94501a6a762ae85417a1b4578a628783a70ec2e28145cdcaecc1d8649a06"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ActivityPollController.java",
@@ -1151,18 +1226,18 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AlarmEditorUi.java",
-    "size": 8388,
-    "sha256": "6afb1c6bc23ec36e4fff635e056d774278f57a8d8bc9f77e16982203589179ba"
+    "size": 8317,
+    "sha256": "fd7398d5700e8c852376277d10a2f71eb5ec284f48c818574085946efb739600"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AlarmProtocol.java",
-    "size": 24988,
-    "sha256": "bcf4d01fafc19ae7469080c8649d4e9a1c1a22f5a369fe624f2cdb1530c263ef"
+    "size": 24847,
+    "sha256": "0a7f510d12e7c203a80b454eceba87f8b0723613ead043f698fad71c605c2bc8"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AlarmTransferPlan.java",
-    "size": 9321,
-    "sha256": "ca758e22f3df55b661a4d94089011495372bd51242238496d15d3aa33e861ca8"
+    "size": 9220,
+    "sha256": "e2b5c2113e1e052d490698c3410f7242f81190a23e781374a5674b90a01f1a25"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AlbumConfiguration.java",
@@ -1176,38 +1251,38 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AlbumStageProtocol.java",
-    "size": 99575,
-    "sha256": "7acdb54d5667f39bf2a7aaaa67f3f4068104fc79156d8ac0c66d89521294ee71"
+    "size": 98526,
+    "sha256": "a15346d76e00df1d491f41b0820a4b765bc8d884a67871c49efe7d816d834c8f"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AnalysisController.java",
-    "size": 4823,
-    "sha256": "44fb1126c843cf62b52a47b3d892f36e34daf4d619f2ccdba599321b9ba1118b"
+    "size": 4821,
+    "sha256": "34766dded44efbe794d43ab25842473c4aa57cd1aa2ca654f52c97e3abf07ed6"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AnalysisHealthSummary.java",
-    "size": 18304,
-    "sha256": "f69d7874c61e310d888b55e4d00d1c38a47e362c26e7fd9c7b760363bbe04e3f"
+    "size": 18302,
+    "sha256": "5dcbd975a6aa67fc344f36654e1f3ec5ef9d7d1532ad02835782f8734a6608ab"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AnalysisResponseValidator.java",
-    "size": 9254,
-    "sha256": "b03720ca28cfa7500788faadb226fd2c6d6d1c7a6d376cfc73c1767c3a65ce82"
+    "size": 9227,
+    "sha256": "7bfb2ca3050175b0424bcf779e13e4e84f345facead22b5d891d380424b04e66"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AnalysisSnapshot.java",
-    "size": 32233,
-    "sha256": "34921c80cea171e2ae68705b9556c710439bd4ea0e7be66fe719e1e7b640532f"
+    "size": 32130,
+    "sha256": "6ccbee5993b07ed4dcfb574b61538d03796eb8dbcec41ae821be684421a61f4d"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AnalysisStrengthSummary.java",
-    "size": 9934,
-    "sha256": "fe99277c46d1961014ded17ab547c9345f064216f1489198a09091fb809e8707"
+    "size": 9933,
+    "sha256": "ebf09272ded0885788678b2a6b079d3f69d374f72b304e811b637d56f73ffd78"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AnalysisUiController.java",
-    "size": 50252,
-    "sha256": "f8bf667c66c4249298ee6cebae237da034428f27a436a2bbe1c91abcfa0a8bf7"
+    "size": 50074,
+    "sha256": "67b834140eb3a47b9f10a7b29f812898b1c133fc33623d563989f37492b478b1"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AndroidAlarmBridge.java",
@@ -1216,13 +1291,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/AppPreferences.java",
-    "size": 5111,
-    "sha256": "9baa925947ecccd30f7e13abb706f28bf52aeab27852410f7fadfb4d9c39aafd"
+    "size": 5068,
+    "sha256": "09df141dfc4f491adda4d384c8b694f36286d55714b4b0a79c3fb794696305dc"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/BleWatchSession.java",
-    "size": 146095,
-    "sha256": "e709ee401f6ff9dfee322f04f68d444b30caaaaf938dcb21b451001bcd936f85"
+    "size": 151670,
+    "sha256": "11dbb105a6c650b1d183597b2e31dc692f79d54c2f52c163289d4d9062784f96"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/BundledDynamicDial.java",
@@ -1231,8 +1306,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/BundledDynamicDialRepository.java",
-    "size": 49721,
-    "sha256": "9ac6a569db55eb5c1aec6f26d8b843a2616364d96347f74b22ff868b5c5079c6"
+    "size": 49421,
+    "sha256": "9879b6726500f5a2a131a3743100a2577bc02e3e52bef1b9ffe2a135d5386e82"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/CompiledDialArtifactStore.java",
@@ -1276,8 +1351,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialEditorController.java",
-    "size": 36138,
-    "sha256": "95211505b2124052d53fc0ebd44656c8ef16c9cea2f96f33509928c4c19520d5"
+    "size": 35703,
+    "sha256": "84ee1fe965ec0f53f910a702f4856413b1b568d2c8823a50d03bf9167ddd300f"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialEditorGeometry.java",
@@ -1286,8 +1361,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialEditorView.java",
-    "size": 6244,
-    "sha256": "88fddd30606e795244f5c6ec08ade9561410fadffddf489f8bb6597e90aa4f3e"
+    "size": 6139,
+    "sha256": "eee677418172e73b7e681b86e9163cff83ce20876ebbc07d396433190edd8d5a"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialImageNormalizer.java",
@@ -1296,13 +1371,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialInstallJournal.java",
-    "size": 10803,
-    "sha256": "73bd1be3cf79c7fd4769e890462f585915d150acc791fb917b25a6851ceadda8"
+    "size": 10689,
+    "sha256": "424c2ddf918d4c86261655c9fa792382e79621ed27aed6d97669cb981881c895"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialInstallProgress.java",
-    "size": 14848,
-    "sha256": "a683ef9285e7269c37e20707f82d5379a285016f394bce6664ab46992316902c"
+    "size": 14802,
+    "sha256": "5bef269abc545daa3a7c5673eb0588c3970227d8d6eb6d7be5d604a337d0cded"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialProject.java",
@@ -1316,8 +1391,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialProjectRepository.java",
-    "size": 16065,
-    "sha256": "e1e8d84c8cca24b2b95903aa47e18d9345e7c89170daa7ad5713afa138f5240b"
+    "size": 15852,
+    "sha256": "d254602532d7532908be4c16bb22258d3947000801178caf3af34174723b84ef"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialRepository.java",
@@ -1331,13 +1406,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialAuthorization.java",
-    "size": 10274,
-    "sha256": "e7bf5c60083cf2eecce1ac09b010a2da22ec947ae94ff776968252e2f35bf9f9"
+    "size": 10163,
+    "sha256": "d32f4c49bf312644bf090d37b11ef5ac20c61c08110a428b27859546623c7ec8"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialBackupStore.java",
-    "size": 5717,
-    "sha256": "4f413c210af6148ea15dbe1be24b6ae23556ddb0b350646a533340d890214339"
+    "size": 5656,
+    "sha256": "c61349a216f6e409b253b186765cbfef1cb2118760ab64df68a38fcf387d384e"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialInstallProtocol.java",
@@ -1351,8 +1426,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialOwnershipStore.java",
-    "size": 35166,
-    "sha256": "70a22acd214189a8902587e7f741b0bfe9a5dfe0eeb0653f27c1fdd99c2e715e"
+    "size": 34844,
+    "sha256": "88bdb91e9c842259db6b286d70a431ad65c41a41860c753fb133809310f2c9c1"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DynamicDialPackage.java",
@@ -1361,8 +1436,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExerciseIllustrationView.java",
-    "size": 5311,
-    "sha256": "22eff6415ec6d7538740c783acfd0cdc17c30922cd904563fd18c4bec4b3c6bc"
+    "size": 5240,
+    "sha256": "affe6ee5597cc4e66755a52284efdb70749502fcbf5daaee377153cbdad33219"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExpansionModels.java",
@@ -1371,13 +1446,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExpansionStore.java",
-    "size": 52429,
-    "sha256": "62236b935344b3aa145c5ab1c973433a38451fabbe0faf947f34e47e21bcb59a"
+    "size": 52048,
+    "sha256": "95e7e1b86107e4c75bf44742b80ab6f0a21535c008eb5e7e7822708687ac2e79"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExpansionUiController.java",
-    "size": 97489,
-    "sha256": "605e01503208dea801825a0a5e7b89c0cc22d17c4e4333a5009f7d4834bb2d3e"
+    "size": 96798,
+    "sha256": "92d82ad79d2e6969b3fc4928e8e5dbdba470e694c5136bd3a33b0f717e03f6b8"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/FoodSearchController.java",
@@ -1411,33 +1486,33 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/HealthChartView.java",
-    "size": 13298,
-    "sha256": "9571d7417b8df8164dbf4ec6ded9e7d79605d1ecf602578707a8599519f8bb7c"
+    "size": 13122,
+    "sha256": "22000fa61b4250300ca1c543f51f311ca25aed9f6ccbdd607381fb0b2a666b01"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/HealthDatasetParser.java",
-    "size": 9457,
-    "sha256": "d638d308bcabb13f9a26d73475cb476959235516792f09b4c8e8529563c2bf7e"
+    "size": 9382,
+    "sha256": "412acd84beeacd24a18f8954e9c95045ad40ce12436d704e31340571eceb5146"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/HealthEvidenceImporter.java",
-    "size": 17436,
-    "sha256": "4e0783223e626c331d54b19ef936c6f8e5cfabe5f48b2b5c81d0e6f1af51b29f"
+    "size": 17272,
+    "sha256": "d5bc8d03b8d4544f07ed092268946cd4a9fce90bc193fa01abedbb789607e310"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/HealthHistoryParser.java",
-    "size": 3765,
-    "sha256": "0e8c0197fd193292065aeadd590ced2497b98ae9a047795b3abe0ee1b812f0bb"
+    "size": 3710,
+    "sha256": "56523e2862823acaac15dbf8194400923273ec903c93bfb487b61fe6c013a698"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/HealthHistoryRecord.java",
-    "size": 578,
-    "sha256": "4665b9f37b036f22c1b72e3cd2d837c5e5044d1fd1c694c9135fc59c464ad622"
+    "size": 566,
+    "sha256": "6426b1435098dda38d07b0320c57057310d4b65dc374181be958adbcc1bb5f19"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/InsightEngine.java",
-    "size": 8683,
-    "sha256": "0fbd1556106f3674e15d6547c038be7de2f66b247186e478546ffe4cdf80d636"
+    "size": 8626,
+    "sha256": "a2344250b4f2260285cc4475e91d9a24320236ef69923571a3e842d2085d4940"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/LauncherEnvelopeCodec.java",
@@ -1451,18 +1526,18 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/MainActivity.java",
-    "size": 200060,
-    "sha256": "d9844839a596ae57c17c5b163bd3b142a847b16113e9a665b71e5a87615e5b50"
+    "size": 202482,
+    "sha256": "a1de509b808ea5e26a7c17ae5c3dbf2eb7fe767e09464a6bad97915e49b3f6b5"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/McfProtocolProbe.java",
-    "size": 29724,
-    "sha256": "e5f90ee66be9f0f5a5e90073edb7170c5d19d3357733774cd9e34cdf19c9315f"
+    "size": 29061,
+    "sha256": "98c6ab3612fd48bd396dd92581ab588c50be42a651f6b9d65c555ebc8505b7a3"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/MetNoWeatherProvider.java",
-    "size": 14106,
-    "sha256": "2a1992a4ea858f1f418dc09a47a8ea01446dd690784214b78895fc7a818af257"
+    "size": 14021,
+    "sha256": "2a7661b0fde99167bb5c7fa0180ea7194ac3cc2408c0863e3584fb0d5b637e37"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NotificationForwardingPolicy.java",
@@ -1491,18 +1566,18 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NotificationSessionProtocol.java",
-    "size": 7422,
-    "sha256": "489f66ea27da035abb5b1137b2c9469922f98e840fbcab9c741d6123226133a1"
+    "size": 7734,
+    "sha256": "b43b720ee17d5a1cbc8cd94c33ebe0f87db3a8ecf79ad57e79204d6c390c333e"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NutritionArchive.java",
-    "size": 2806,
-    "sha256": "3bc7d72585046375533a341ac8fc66dc00ce6f5937944f48bae5ea4185d32c69"
+    "size": 2805,
+    "sha256": "c004500cb0cc9b9057263637fb8fbabc4c1795039fe648f60a6a750846c6d2b6"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NutritionDiary.java",
-    "size": 3553,
-    "sha256": "9cb4bf840b6a21a54a29e811b322f6356c28b328fff2ff44fc28739febaa68d1"
+    "size": 3532,
+    "sha256": "0dc9126a2263ed8766b3ac67bc07db944ec9c3b653c68821f4d7f08609306880"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NutritionImagePreparer.java",
@@ -1511,13 +1586,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NutritionModels.java",
-    "size": 12348,
-    "sha256": "cb0f1ecea0a94e8a172e2929faac51acbd77308d9a8cf5f9968bfc59d184c3ef"
+    "size": 12287,
+    "sha256": "fa2cbbfa02e202457175e111cd5d6f331bbc4f309fb5565b7d1d509a496f764a"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NutritionPhotoController.java",
-    "size": 4997,
-    "sha256": "5d0188c31ce32d93a5bae6aee1b328b4bb0de6bb561ee5cd3f38fa0b51b8bc51"
+    "size": 4973,
+    "sha256": "b50e80c26ee7fc70dc6f54d7305b64e157ccddb614254f01280b235cab08a2b2"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NutritionSummary.java",
@@ -1526,8 +1601,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NutritionUiController.java",
-    "size": 49324,
-    "sha256": "18409616f9940eb9d6c2bfa2f3abf6234978794cd801657047b3d29af5ed4262"
+    "size": 49087,
+    "sha256": "857cd953acf00c615d74b3e94fed263afc87321899de1513bf76f0778c7d895b"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/OpenMeteoCityResolver.java",
@@ -1541,18 +1616,18 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/OpenRouterClient.java",
-    "size": 23539,
-    "sha256": "521e2dfdab32654c0126cc57820cd56d769769e8beffa31d0be0c3d46e0e76b9"
+    "size": 23451,
+    "sha256": "af4e853550be7cf651eae507b780fa54ac02095393065c361e6e70d4d256915f"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/OpenRouterCredentialStore.java",
-    "size": 4963,
-    "sha256": "6dcabbab73ed428c23b20b5886016a41031ed82ba26506ef36051dd26f36983d"
+    "size": 4962,
+    "sha256": "c4dff733cfa0846b0f5d65bffd736d88a4fdd2fe8eafcf0c8d6b1cb0e14e4a0a"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/OpenRouterModelCatalog.java",
-    "size": 6128,
-    "sha256": "78eaf83b3d9f7560e92ff7dffbe5aaac58429e3160fb8f64e78d68d81e625f59"
+    "size": 6099,
+    "sha256": "e4f55d869177456d161c9d2cb5fcdc01f5fe259ddc986262d72cb5999aa53bf3"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/OperationJournal.java",
@@ -1561,8 +1636,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/OrdinarySyncController.java",
-    "size": 1420,
-    "sha256": "31c1e74cc7672bd79575c8e368d084fa4db3a58c3eb93a3605e97834eb162029"
+    "size": 1395,
+    "sha256": "561c72060e1d5936dd92dc0acc1e819b263bd2c093a406f78bfebf778c2575a2"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/PalettePixelMapper.java",
@@ -1576,8 +1651,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/PhoneWeatherController.java",
-    "size": 8570,
-    "sha256": "f708882f79421c0503c32f4b2719c1b8fe42dbef5da2b4e0d99449d741de81d2"
+    "size": 8471,
+    "sha256": "4209092f7b1da4148602bb850817f2afed270fed2327e70d3ecdf7613c0caf44"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/PhoneWorkoutService.java",
@@ -1596,13 +1671,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ReportExporter.java",
-    "size": 41530,
-    "sha256": "293b5b3c2493db116e8f122b314f66231f1c81f6363aaf66972d6031a0eccf2c"
+    "size": 44689,
+    "sha256": "86d5820886d8566ccf37a6831706449ffd77850095c638de4994dd913514ad87"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/SessionRecoveryPolicy.java",
-    "size": 1346,
-    "sha256": "21050e9d5d88f859ad90d7dd66392df340f26a0115e7a2d36485e6a04b808388"
+    "size": 1421,
+    "sha256": "b2b9c9fbb5197bd9d489f0554dfc67fcfb2ff8fcf8c36ec336c4d452083ef0cb"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthCatalog.java",
@@ -1611,8 +1686,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthDiary.java",
-    "size": 13402,
-    "sha256": "6cd818ab4dfd58e77902d9cad2a8f8729823e29c7f6197b57d7af5a5f3cac01f"
+    "size": 13331,
+    "sha256": "32bfe4fbf3b11d96f132211f230cf5b8fb0465b818ab7452a81333388f11504a"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthProgress.java",
@@ -1621,18 +1696,18 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthUiController.java",
-    "size": 28098,
-    "sha256": "549cd4c73edf54389b0c77b8f230b12c976c407f54423cd4836ba541e0f78241"
+    "size": 27901,
+    "sha256": "36f46573ba82ad8c171d57a606e02878d520679f3973ee1f4ba3f6c5352ce39c"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/TsdbReadProtocol.java",
-    "size": 19083,
-    "sha256": "f6e8c84ab84709e33fe5389d2f492eb8c008b9105638b188e141cce6226e4c6a"
+    "size": 20857,
+    "sha256": "e828b2b9bbc56ea7be657b90fac62da45229391c23bd17591f6f3cdca6e955e5"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/UbjsonCodec.java",
-    "size": 4833,
-    "sha256": "056c10ffdf927bcea9213cac6c67eb7fa098261165db04253aceb031d1112482"
+    "size": 4787,
+    "sha256": "65559597a93f6b93d44ac104e5cf8e2b2c4ce34089d56c2bffaa1110fe92d59f"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/UiIcons.java",
@@ -1641,13 +1716,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/UiKit.java",
-    "size": 19465,
-    "sha256": "fe6b7dc401b0be4bcea67121a75020d520dd2922fb579fbf7759a9c7f4f4c950"
+    "size": 19205,
+    "sha256": "8ce8bf13044183a5818ed6238f3c8eef0ddae8d9f0dbb0cf99f79bcad9a33c45"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/UiText.java",
-    "size": 54284,
-    "sha256": "d96308cb504d4091f7ca4b4f02404df8861ddc476780846c1a482e956a7100ff"
+    "size": 53694,
+    "sha256": "48f0108c62cdde0751ed2153f0961ab396ecd18171609efbd6f474e8be2e7bf6"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WatchBackup.java",
@@ -1661,8 +1736,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WatchSessionService.java",
-    "size": 27224,
-    "sha256": "2f9ca75e125778aa08f3200f1a4f7242fac8b8ea6f6cc189049d782ecd0dbef6"
+    "size": 26955,
+    "sha256": "a53b9384f73f75587ad91bb01e64eab054f57a19e510692df1e60021b8fecc90"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherCodeMapper.java",
@@ -1676,8 +1751,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherDeliveryController.java",
-    "size": 23207,
-    "sha256": "ac177473ab61c9487cffa113d66cf150a4027ae4e8c7634d7c9f8a30a47d4eb0"
+    "size": 23078,
+    "sha256": "664bef9f5fe7beee9877364b3b56eaee6a955aeb0e9dbae387db5a0647c4e0b9"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherFrameWriter.java",
@@ -1686,13 +1761,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherPayload.java",
-    "size": 7260,
-    "sha256": "6be595edf0dc3b4fd08ac71f1d05acc6e0edf059d77e94146360196a61535e7a"
+    "size": 7178,
+    "sha256": "3ce98f38ced4d2e59cabaadf71a3fe2316cff5a64ddb237122734fe8e6dcf210"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherReadProtocol.java",
-    "size": 10565,
-    "sha256": "46675cbb2f5a781c812be38dc13d0d416dc901431f3f3f05efbbfec4d82b902e"
+    "size": 10444,
+    "sha256": "308733cd9e345841830044a53ffea3549283327ecfda7eb4313c14d2d274391e"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherRefreshController.java",
@@ -1701,13 +1776,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherSessionProtocol.java",
-    "size": 32168,
-    "sha256": "905f50b16fcc08ff7f65a1d04c690378eb500f92201de59e75b642f54f561b7d"
+    "size": 33508,
+    "sha256": "843a7cbe1f315926bb1aa9a8a8d1cbf89fdfdd4e05d54a7c2eebf34666a91c0b"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherSnapshot.java",
-    "size": 4201,
-    "sha256": "daeb197eede04d5bd8675ba84613f6d206289f6350c12095aabcaa130e5987dd"
+    "size": 4176,
+    "sha256": "6262acbd6eba399e7b89ac9f3f6fc4fa31434e1e342c6ccdc0a3e8e4b87c11fd"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WorkoutCatalog.java",
@@ -1721,13 +1796,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WorkoutTypeDictionary.java",
-    "size": 7160,
-    "sha256": "f7cf756419aa30c5faf0323af47e41a15d00753aa5fc49396498f3ab5e076d34"
+    "size": 7022,
+    "sha256": "6265928150394514848f3fcd34ae21bcda768b537a27b5736bd47cd8d28376c5"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WttrWeatherProvider.java",
-    "size": 4649,
-    "sha256": "ea1259ae2e54b205d39525c0d88b255a6bf317be1fdfef252b2f210c6d5f7917"
+    "size": 4608,
+    "sha256": "48808ead86169779625f7176455b1220010f9cb39c8e99e8cc7f14030623a659"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/YandexWeatherProvider.java",
@@ -1760,29 +1835,29 @@
     "sha256": "2c8df542a50cd07f39ae8914e9bd80abc857d5ee8665a41f489f1ff5215b6f76"
   },
   {
+    "path": "android/app/src/main/res/values-en/strings.xml",
+    "size": 297,
+    "sha256": "9bb1aeea6bcf08ca7935a6cf63492bb354396850f079c55ff31499f80b3a0a78"
+  },
+  {
+    "path": "android/app/src/main/res/values-v31/styles.xml",
+    "size": 771,
+    "sha256": "41edbff6f0e899aba579b06d87bee472944bde0af9e869d7fcb322949ebed74e"
+  },
+  {
     "path": "android/app/src/main/res/values/brand.xml",
     "size": 685,
     "sha256": "35b19456fd09ce635541ab789c6f322528f3d0eac9b0c47a7080823a8a5c7f70"
   },
   {
     "path": "android/app/src/main/res/values/strings.xml",
-    "size": 377,
-    "sha256": "494ad43e1d7ed0560220d205f2fef79d59acafe585c6ec1be5aa8bbdc5f78d61"
+    "size": 376,
+    "sha256": "06641e75fdd1347a2d0ea95bc4e59f5f026167eb7436c0dbc2c950da0e131d6f"
   },
   {
     "path": "android/app/src/main/res/values/styles.xml",
-    "size": 2778,
-    "sha256": "51c709d26f5517c3bc2e3891ed015c5079928986a78c2127f9e0859ebc2a84fb"
-  },
-  {
-    "path": "android/app/src/main/res/values-en/strings.xml",
-    "size": 298,
-    "sha256": "004a517aab31b01f6c452d8001a11c21d12f857c3dcf1676d7c9dd774ea1f485"
-  },
-  {
-    "path": "android/app/src/main/res/values-v31/styles.xml",
-    "size": 771,
-    "sha256": "41edbff6f0e899aba579b06d87bee472944bde0af9e869d7fcb322949ebed74e"
+    "size": 2729,
+    "sha256": "3a5e8dbf50ab432faf345070dd015f2e20873fe3e8e1d65c2bc2b69d0bbf454a"
   },
   {
     "path": "android/app/src/main/res/xml/data_extraction_rules.xml",
@@ -1846,8 +1921,8 @@
   },
   {
     "path": "android/app/src/test/java/app/gtdial/lab/DynamicDialOwnershipStoreTest.java",
-    "size": 4313,
-    "sha256": "6966739d28e96e87f924d9636b4d0aa2a60e323770a5224ae323b9dd719a0c91"
+    "size": 4251,
+    "sha256": "395bd7e9bf9e694beea14b31f1b8978fc9462b69db0cfa5337f1d9bb6c213a0c"
   },
   {
     "path": "android/app/src/test/java/app/gtdial/lab/LauncherEnvelopeCodecTest.java",
@@ -1905,6 +1980,11 @@
     "sha256": "e7ac932094ff450d1010619f2d9efd06b9822779f031cabdb9c5d917a17ba02b"
   },
   {
+    "path": "android/gradle.properties",
+    "size": 84,
+    "sha256": "d1b3dd00b14cb1f730b10ee25b2e17a442edeea13364f28c3895f674ea11bed9"
+  },
+  {
     "path": "android/gradle/wrapper/gradle-wrapper.jar",
     "size": 45457,
     "sha256": "76805e32c009c0cf0dd5d206bddc9fb22ea42e84db904b764f3047de095493f3"
@@ -1915,49 +1995,19 @@
     "sha256": "6009cea91ce8dbcc62cb2ea6dec6ddd4c87b65fc326872f5abfc7e77fd24aa36"
   },
   {
-    "path": "android/gradle.properties",
-    "size": 84,
-    "sha256": "d1b3dd00b14cb1f730b10ee25b2e17a442edeea13364f28c3895f674ea11bed9"
-  },
-  {
     "path": "android/gradlew",
     "size": 8618,
     "sha256": "fb68debc1b1acf8ec55dc0d5e5495e1dedd0bd6b61f304bee61613eeb2bd9b92"
   },
   {
     "path": "android/gradlew.bat",
-    "size": 2896,
-    "sha256": "fedad02c18e266ec094995a5751b7fe1eb6e74f66bf75db64fae2e50eb22c234"
-  },
-  {
-    "path": "android/README.md",
-    "size": 287,
-    "sha256": "0ae739c51e6fb9cf589d627bc4046c3b36c3aa88f63297c881148d42b7b70256"
+    "size": 2803,
+    "sha256": "9ca26d733ada3a45f27b2151288f54e75c9f95b287d1f82ef942ec5cc2d4f006"
   },
   {
     "path": "android/settings.gradle.kts",
     "size": 330,
     "sha256": "17ba0f40c8395750ef031048675ee7ca35cca338cbbda389aca07618be55ba4d"
-  },
-  {
-    "path": "ASSET_MANIFEST.json",
-    "size": 37852,
-    "sha256": "6e5e8fda2d6562f47899cf6bc628bc4139b3ecf4ff33f57548e290b678d4bcb0"
-  },
-  {
-    "path": "BUILDING.md",
-    "size": 13547,
-    "sha256": "3d4784aa85935aa41900f0bfe9dddba376ce3ee5d8e78ecc206395ea7a1b8278"
-  },
-  {
-    "path": "CONTRIBUTING.md",
-    "size": 7810,
-    "sha256": "c533e592f4850089b360891351a7fd5516b6b1ddcba4f7c068d5ce715337386d"
-  },
-  {
-    "path": "DEVELOPER_GUIDE.md",
-    "size": 33244,
-    "sha256": "22a16bb34a73b665d7703983cb13576458248ff0a90475e5085cf6407862b7cd"
   },
   {
     "path": "docs/images/user-guide/editor-add-field.png",
@@ -1985,44 +2035,19 @@
     "sha256": "3d5fccd5b9976602afe37848e9fc3e5abc16bda112fe8585f7b373c1a2367390"
   },
   {
-    "path": "KNOWN_LIMITATIONS.md",
-    "size": 8578,
-    "sha256": "21ecbbec54d45673825dcc2bc87d67467331ad4e0d7465750e8a25f313a989e7"
-  },
-  {
-    "path": "LICENSE",
-    "size": 4563,
-    "sha256": "c0ea4a896d2c8c394b29f9427589996db826cd501c512279ff0ed3ef48fabbe5"
-  },
-  {
-    "path": "NOTICE",
-    "size": 314,
-    "sha256": "c96446d474b56a3e19d0078245e2c335cadb55a48c8458f08e10406919cce3a3"
-  },
-  {
-    "path": "PRIVACY.md",
-    "size": 12396,
-    "sha256": "462494e99f5a66429cfadacbad5660771eb43b1489e0d10886411244f5d57409"
-  },
-  {
-    "path": "README.md",
-    "size": 7755,
-    "sha256": "78d2dd44eb485bb427aceef572ff39055a2bac7734abe4971692f65baa4e8e13"
-  },
-  {
-    "path": "RELEASE_NOTES.md",
-    "size": 3831,
-    "sha256": "66111376e2ba3bcbd9089cbe8a527bd5dacd789f600b15d7f39e4a1bd4293346"
-  },
-  {
     "path": "releases/Chasovoy-1.0.0-release.apk",
     "size": 28779312,
     "sha256": "1cef119632d60a2c82522b04da9ef3d2f2399340ed2dd61c6c283a9a2d2e11f6"
   },
   {
+    "path": "releases/Chasovoy-1.0.1-release.apk",
+    "size": 28784896,
+    "sha256": "e145db3b1728b451b584e4f5b7975ab1265a8c437a5d75b2feed661a08d5a854"
+  },
+  {
     "path": "releases/SHA256SUMS.txt",
-    "size": 94,
-    "sha256": "8cef53a8a5bebc7fb1d9b06f8fe41bf1cb414bb9345072e1460234b84f9ca94b"
+    "size": 186,
+    "sha256": "c83763d29a20ec14a3bf66be6bdffd7fa9547a56b2aa8eeceda61ebc5ebcda71"
   },
   {
     "path": "source-assets/work/dial3000-animation/cadence-20261010/main.js",
@@ -2826,8 +2851,8 @@
   },
   {
     "path": "source-assets/work/face-layout-20260927/nixie-core-qc61-layout-v3.json",
-    "size": 3938,
-    "sha256": "bc109fed10699cf7f30ce1f7f7f890165c611e025531a41a81dabffe922a2859"
+    "size": 3662,
+    "sha256": "56fa6ebd3e979378998134592f56578e2a65945c7103a03d6e345734c91cf78a"
   },
   {
     "path": "source-assets/work/nixie-repair-20261013/background-empty-466.png",
@@ -2846,8 +2871,8 @@
   },
   {
     "path": "source-assets/work/nixie-repair-20261013/layout-y180.json",
-    "size": 3936,
-    "sha256": "ea6bff3316bd3169e43f49c5e1e78d1d7b11a320fa41ace35e2c1c683d356a54"
+    "size": 3661,
+    "sha256": "a728dd58b3d5da5de72e0f23e66bdd7119f95f827b81fcb9dc92db166bfc65c2"
   },
   {
     "path": "source-assets/work/pipboy-animations-20261010/sheets/auto.png",
@@ -2886,8 +2911,8 @@
   },
   {
     "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/manifest.json",
-    "size": 9610,
-    "sha256": "40785c1b1c323ed076d81a1f0600dac2f18a1ad91571b43cf164a8a6a41d2f10"
+    "size": 9376,
+    "sha256": "795b9b19e459082adcf042b74584ead9c3d0aea0e6c6c82d548d2df5e97e82e2"
   },
   {
     "path": "source-assets/work/qc61-authoring-20260923/resized-glyphs-40x80/sec_0.pgf",
@@ -3000,19 +3025,9 @@
     "sha256": "d3e27227823cda1bfe5909a1dee247546f8ed327f35d30bfefb5b9c92aea5089"
   },
   {
-    "path": "SOURCE_ASSETS_MANIFEST.json",
-    "size": 53901,
-    "sha256": "1ce671c9275c89290323df2c385eb16c9a9f88455ea647b76c2243614c0a8dd4"
-  },
-  {
-    "path": "START_HERE.md",
-    "size": 1409,
-    "sha256": "0fcdba310ab3dbd49f71d597d1ed4cc8889e4e04577214865388c905d33b1c35"
-  },
-  {
-    "path": "THIRD_PARTY_NOTICES.md",
-    "size": 3365,
-    "sha256": "4c39d8374b23f71a7a6b2f723c3698cc22dafbfb8f39d643eba775e29e643186"
+    "path": "tools/README.md",
+    "size": 1810,
+    "sha256": "e6fd3e3888715dfc0e3cf8f23ad2058a5b1c99272fffacf789b2e7ddeb0a18b2"
   },
   {
     "path": "tools/analyze_dial_features.py",
@@ -3200,11 +3215,6 @@
     "sha256": "4531a9efaf50b14ef6df5d93477c183f4857e7e003e505f0789e65e96d23aa37"
   },
   {
-    "path": "tools/README.md",
-    "size": 1819,
-    "sha256": "73d2073939cb7fd21120f0c4dcc62566e5612b472b4d886e4aed2eacd7c596b3"
-  },
-  {
     "path": "tools/rebuild_diallab_v4.py",
     "size": 3099,
     "sha256": "cb586371066e0ace3912a8e6903110245be79c279b78cfdb5cd253a9db0a6dee"
@@ -3368,15 +3378,5 @@
     "path": "tools/verify_qc61_text_colors.py",
     "size": 1584,
     "sha256": "a72dac92434b8dcaaa5dd715fa2d8d0ec7e0211c1cea62b67810dff76cff8e87"
-  },
-  {
-    "path": "USER_GUIDE.md",
-    "size": 25718,
-    "sha256": "407a5fd08c4912bdeb5d3484ad53efa065b88a0ec47889a25e4fd7079f8e89ed"
-  },
-  {
-    "path": "WATCHFACE_AUTHORING.md",
-    "size": 17550,
-    "sha256": "e8cbd007ad2f6fd65f99cdffd5b75cb5e0da67361aceaaeaea8ed6a7f34464aa"
   }
 ]

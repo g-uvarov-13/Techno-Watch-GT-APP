@@ -118,6 +118,27 @@ final class ReportExporter {
                 }
                 WeatherDeliveryController.WeeklyStatus weekly=WeatherDeliveryController.weeklyStatus(context);
                 android.content.SharedPreferences weatherPrefs=context.getSharedPreferences("gt_dial_preferences",Context.MODE_PRIVATE);
+                // Keep the raw evidence, but give the recipient a readable entry point and its limits.
+                String marker=weatherPrefs.getString("session.marker","UNKNOWN");
+                String summary="Диагностика Часового "+BuildConfig.VERSION_NAME+"\n"
+                        +"Создано: "+java.time.ZonedDateTime.now()+"\n"
+                        +"Сохранённое состояние обмена: "+marker+"\n"
+                        +("STOPPED".equals(marker)?"Команды остановлены. Отключите часы и подключите заново; старую операцию не повторять автоматически.\n":"Это сохранённая отметка, а не проверка доступности часов в момент чтения архива.\n")
+                        +("RECONNECT_WAIT".equals(marker)?"Приложение ожидает часы и продолжает попытки подключения. Верните часы к телефону; ручное «Отключить» отменяет ожидание. Незавершённые записи не повторяются.\n":"")
+                        +"Автообновление погоды: "+weekly.status+"\n"
+                        +(weekly.reason.endsWith("weatherEnable must be integer 0")?"Причина прежней паузы: часы вернули пустую погоду при включённой функции. В 1.0.1 это состояние поддерживается. После чтения часов и обновления прогноза можно вручную возобновить автопогоду.\n":"")
+                        +"Техническая причина погоды: "+weekly.reason+"\n\n"
+                        +"current-session-tail.txt — последние события текущего подключения.\n"
+                        +"connection/ — полные журналы, самые новые определяются датой в имени.\n"
+                        +"operations.jsonl — технические события операций, одна JSON-запись на строку.\n"
+                        +"phone-weather-metadata.json — источник и состояние погоды телефона.\n"
+                        +"weather-read-state.json — последнее ручное чтение часов; оно может быть старше текущего подключения.\n"
+                        +"weather-last-readback.json — последнее сохранённое чтение при передаче; смотрите receivedAt и readPhase.\n"
+                        +"manifest.json — состав архива, пропуски и контрольные суммы.\n"
+                        +"RX/TX — полученные/отправленные байты; карантин означает остановку команд приложением, а не поломку часов.\n";
+                byte[] summaryBytes=summary.getBytes(StandardCharsets.UTF_8);
+                if(summaryBytes.length>16384||remaining<summaryBytes.length)throw new IOException("DIAGNOSTIC_SUMMARY_LIMIT");
+                zip.putNextEntry(new ZipEntry("README.txt"));zip.write(summaryBytes);zip.closeEntry();remaining-=summaryBytes.length;
                 JSONObject weatherMetadata=new JSONObject().put("schemaVersion",1).put("weeklyStatus",weekly.status).put("weeklyReason",weekly.reason).put("verifiedDays",weekly.verifiedDays).put("source",weatherPrefs.getString("weather.source","")).put("fetchedAtMs",weatherPrefs.getLong("weather.fetched-at",0)).put("modelIssuedAtUnix",weatherPrefs.getLong("weather.model-issued-at",0)).put("forecastValidAtUnix",weatherPrefs.getLong("weather.forecast-valid-at",0)).put("evaluatedAtMs",weatherPrefs.getLong("weather.evaluated-at",0)).put("rangeBasis",weatherPrefs.getString("weather.range-basis","provider daily"));
                 byte[] weatherMetadataBytes=weatherMetadata.toString().getBytes(StandardCharsets.UTF_8);
                 if(weatherMetadataBytes.length>8192||remaining<weatherMetadataBytes.length)throw new IOException("WEATHER_METADATA_LIMIT");

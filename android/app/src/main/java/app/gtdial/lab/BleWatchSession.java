@@ -133,12 +133,20 @@ final class BleWatchSession {
             @Override public void log(String message){listener.onLog(message);}
             @Override public void finished(boolean success,String detail){
                 boolean safe=weatherSessionProtocol!=null&&weatherSessionProtocol.safeOutcome();
-                if(weatherFrameWriter!=null)weatherFrameWriter.close();
-                boolean localSafe=!success&&safe&&finishLocalRefusal(detail);if(success)terminalOperation(true);else if(!safe)terminalOperation(false);if(localSafe||success)weatherWriteSessionUsed=false;
+                boolean cleanupComplete;
+                if(!success&&safe&&weatherSessionProtocol.completedReadOnlyRefusal())cleanupComplete=finishCompletedWeatherReadRefusal(weatherGatt,detail);
+                else{
+                    if(weatherFrameWriter!=null)weatherFrameWriter.close();
+                    if(!success&&safe)cleanupComplete=finishLocalRefusal(detail);
+                    else{terminalOperation(success);cleanupComplete=success&&sessionIdle()&&replayReady&&!commandsQuarantined;}
+                }
+                if(cleanupComplete)weatherWriteSessionUsed=false;
                 state(success?"Эксперимент погоды завершён":"Эксперимент погоды остановлен");
-                listener.onLog("WEATHER_DELIVERY automatic="+automatic+" completed success="+success+" safe="+safe);
-                listener.onWeatherSendFinished(success,detail);
-                if(success||localSafe){activityPoll.onReady();scheduleActivityPoll(true);requestCurrentDialRefresh(0);mainHandler.post(BleWatchSession.this::maybeSendNotification);}
+                listener.onLog("WEATHER_DELIVERY automatic="+automatic+" completed success="+success+" safe="+safe+" cleanupComplete="+cleanupComplete);
+                String reportedDetail=detail;
+                if(!success&&!cleanupComplete&&detail!=null&&detail.startsWith("SAFE_PREWRITE:")){reportedDetail="SESSION_STOPPED: "+detail;listener.onLog("WEATHER_DELIVERY "+reportedDetail);}
+                listener.onWeatherSendFinished(success,reportedDetail);
+                if(cleanupComplete){activityPoll.onReady();scheduleActivityPoll(true);requestCurrentDialRefresh(0);mainHandler.post(BleWatchSession.this::maybeSendNotification);}
                 else{notificationsPending=false;NotificationForwardingService.clearPending();}
             }
         });
@@ -321,7 +329,8 @@ final class BleWatchSession {
     private int reconnectAttempt;
     private boolean closingGatt;
     private String setupPhase="idle";
-    private final long[] reconnectDelays={2_000L,5_000L,10_000L};
+    private final long[] reconnectDelays={2_000L,5_000L,10_000L,60_000L};
+    private Runnable reconnectCleanup;
     private final Runnable reconnectRunnable=this::reconnectIfIdle;
     private final Runnable reconnectTimeout=this::onReconnectTimeout;
 
@@ -355,6 +364,7 @@ final class BleWatchSession {
     private void terminalStopped(){
         if(stoppingProtocols)return;stoppingProtocols=true;
         try{
+            if(reconnectCleanup!=null){mainHandler.removeCallbacks(reconnectCleanup);reconnectCleanup=null;}
             if(localPreparation!=null)finishLocalPreparation(localPreparation,"CONNECTION_STOPPED",false);
             if(dialInstallProgress!=null&&!dialInstallProgress.terminal()&&(directInstallRequest==null||directInstallStarted))installProgress("FAILED",0,0,"DISCONNECTED",dialInstallProgress.mutationStarted);
             if(!commandsQuarantined){commandsQuarantined=true;rxEpoch++;weatherTxGeneration++;localCurrentGeneration++;}
@@ -384,36 +394,46 @@ final class BleWatchSession {
         }
         terminalStopped();return false;
     }
+    private boolean finishCompletedWeatherReadRefusal(BluetoothGatt capturedGatt,String reason){
+        String verified=sessionPreferences().getString("verified_device_address",null);
+        if(capturedGatt!=null&&capturedGatt==gatt&&actualConnected&&!manualDisconnect&&!transportCleanup&&!stoppingProtocols&&!commandsQuarantined
+                &&initialReadsComplete&&replayReady&&verified!=null&&verified.equals(replayAddress)&&verified.equals(capturedGatt.getDevice().getAddress())
+                &&!txLedgerUnreliable&&txLedger.isEmpty()&&weatherFrameWriter!=null&&!weatherFrameWriter.active()
+                &&SessionRecoveryPolicy.OPERATION.equals(sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED))&&"PROTECTED".equals(operationKind())
+                &&weatherSessionProtocol!=null&&weatherSessionProtocol.completedReadOnlyRefusal()&&!operationRunning()){
+            // Inspect the writer before close: closing must never manufacture a drained GET.
+            weatherFrameWriter.close();
+            listener.onLog("WEATHER_READ_REFUSAL proven completed GET without SET: "+reason);
+            if(terminalIdle()){ready(true);scheduleOrdinarySync();return true;}
+        }
+        terminalStopped();return false;
+    }
     private void terminalOperation(boolean success){
         listener.onLog("ORDINARY result success="+success+" classification="+operationKind()+" transportCleanup="+transportCleanup);
         if(transportCleanup||stoppingProtocols)return;
-        if(success){if(terminalIdle()&&initialReadsComplete){ready(true);scheduleOrdinarySync();}}else terminalStopped();
+        if(success){if(terminalIdle()&&initialReadsComplete){ready(true);scheduleOrdinarySync();}}else if(!queueFreshReconnect())terminalStopped();
     }
-    private void startSetupWatchdog(){setupPhase="connect";mainHandler.removeCallbacks(reconnectTimeout);if(gatt==null){logSetup("GATT creation failed",-1);state("Не удалось создать подключение Bluetooth");if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");else scheduleIdleReconnect();return;}mainHandler.postDelayed(reconnectTimeout,20_000L);logSetup("started",0);}
+    private void startSetupWatchdog(){setupPhase="connect";mainHandler.removeCallbacks(reconnectTimeout);if(gatt==null){logSetup("GATT creation failed",-1);state("Не удалось создать подключение Bluetooth");setupFailed(-1,true);return;}mainHandler.postDelayed(reconnectTimeout,20_000L);logSetup("started",0);}
     private void logSetup(String outcome,int status){listener.onLog("BLE setup phase="+setupPhase+" outcome="+outcome+" status="+status+" marker="+sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED)+" attempt="+reconnectAttempt);}
-    private void setupFailed(int status,boolean retry){logSetup("failed",status);if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");else terminalStopped();}
+    private void setupFailed(int status,boolean retry){logSetup("failed",status);if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");else if(!retry||!queueFreshReconnect()){terminalStopped();closeGatt();}}
     void recoverPersistedSession(){
         if(Looper.myLooper()!=mainHandler.getLooper()){mainHandler.post(this::recoverPersistedSession);return;}
         android.content.SharedPreferences settings=sessionPreferences();
         String address=settings.getString("verified_device_address",null);
         if(!SessionRecoveryPolicy.mayRecover(settings.getBoolean("session.userEnabled",false),address,settings.getString("session.marker",SessionRecoveryPolicy.STOPPED),settings.getString("session.operation-kind","UNKNOWN"),hasRequiredPermissions()))return;
-        reconnectAttempt=settings.getInt("session.reconnectAttempt",0);
-        if(reconnectAttempt<0||reconnectAttempt>3){reconnectAttempt=3;settings.edit().putInt("session.reconnectAttempt",3).putLong("session.reconnectNotBefore",System.currentTimeMillis()+300_000L).commit();}
-        if(!settings.edit().putString("session.marker",SessionRecoveryPolicy.IDLE).putString("session.operation-kind","NONE").commit())return;
+        reconnectAttempt=Math.max(0,Math.min(3,settings.getInt("session.reconnectAttempt",0)));
+        long remaining=Math.max(0,Math.min(60_000L,settings.getLong("session.reconnectNotBefore",0)-System.currentTimeMillis()));
+        if(!settings.edit().putString("session.marker",SessionRecoveryPolicy.RECONNECT_WAIT).putString("session.operation-kind","NONE").putInt("session.reconnectAttempt",reconnectAttempt).putLong("session.reconnectNotBefore",System.currentTimeMillis()+remaining).commit()){terminalStopped();return;}
         try{
             BluetoothManager manager=context.getSystemService(BluetoothManager.class); BluetoothAdapter adapter=manager==null?null:manager.getAdapter();
-            if(adapter==null)return;
-            foundDevice=adapter.getRemoteDevice(address); manualDisconnect=false; recoveredFromProcessStart=false;
+            foundDevice=adapter==null?null:adapter.getRemoteDevice(address); manualDisconnect=false; recoveredFromProcessStart=false;
             // Publish the same verified device used for this connection before any activity callback.
-            String recoveredName=foundDevice.getName();
-            watchFound(recoveredName==null?"TECNO Watch GT":recoveredName,foundDevice.getAddress());
-            state("Восстанавливаю подключение к выбранным часам…");
-            long notBefore=settings.getLong("session.reconnectNotBefore",0);
+            String recoveredName=foundDevice==null?null:foundDevice.getName();
+            watchFound(recoveredName==null?"TECNO Watch GT":recoveredName,address);
+            publishReconnectWait();
             mainHandler.removeCallbacks(reconnectRunnable);
-            long remaining=notBefore-System.currentTimeMillis();
-            if(notBefore<0||remaining>300_000L){remaining=300_000L;settings.edit().putLong("session.reconnectNotBefore",System.currentTimeMillis()+remaining).commit();}
-            if(notBefore==0)scheduleIdleReconnect();else mainHandler.postDelayed(reconnectRunnable,Math.max(0,remaining));
-        }catch(IllegalArgumentException|SecurityException e){state("Не удалось восстановить подключение");}
+            mainHandler.postDelayed(reconnectRunnable,remaining);
+        }catch(IllegalArgumentException|SecurityException e){terminalStopped();state("Не удалось восстановить подключение");}
     }
     /** The service keeps the session while an Activity is recreated; a new view gets this snapshot. */
     void replay(Listener target) { if(target==null)return; target.onState(replayState); if(replayName!=null)target.onWatchFound(replayName,replayAddress); target.onProbeReady(replayReady); target.onConnectionSnapshot(connectionSnapshot); }
@@ -451,7 +471,7 @@ final class BleWatchSession {
     }
     void onNotificationAvailable(){
         if(Looper.myLooper()!=mainHandler.getLooper()){mainHandler.post(this::onNotificationAvailable);return;}
-        if(SessionRecoveryPolicy.STOPPED.equals(sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED))){notificationsPending=false;NotificationForwardingService.clearPending();return;}
+        if(reconnectWaiting()||SessionRecoveryPolicy.STOPPED.equals(sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED))){notificationsPending=false;NotificationForwardingService.clearPending();return;}
         notificationsPending=true;maybeSendNotification();
     }
     private void maybeSendNotification(){
@@ -464,7 +484,7 @@ final class BleWatchSession {
         if(!settings.getBoolean("notification.forwarding.enabled",false)){notificationsPending=false;NotificationForwardingService.clearPending();return;}
         NotificationRequest next=NotificationForwardingService.drainPending();
         if(next==null){notificationsPending=false;return;}
-        if(!beginProtocolOperation()){notificationsPending=false;state("Не удалось безопасно начать уведомление");return;}
+        if(!beginProtocolOperation("NOTIFICATION")){notificationsPending=false;state("Не удалось безопасно начать уведомление");return;}
         notificationProtocol.start(next);
     }
     private void scheduleActivityPoll(boolean first){
@@ -521,18 +541,22 @@ final class BleWatchSession {
             if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");
             return;
         }
-        if(!sessionPreferences().edit().putBoolean("session.userEnabled",true).putString("session.marker",SessionRecoveryPolicy.manualReconnect()).putString("session.operation-kind","NONE").remove("verified_device_address").commit()){state("Не удалось сохранить выбранные часы");if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");return;}
+        android.content.SharedPreferences.Editor selection=sessionPreferences().edit().putBoolean("session.userEnabled",true).putString("session.marker",SessionRecoveryPolicy.manualReconnect()).putString("session.operation-kind","NONE");
+        if(!foundDevice.getAddress().equals(sessionPreferences().getString("verified_device_address",null)))selection.remove("verified_device_address");
+        if(!selection.commit()){terminalStopped();state("Не удалось сохранить выбранные часы");if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");return;}
         manualDisconnect=false; recoveredFromProcessStart=false; reconnectAttempt=Math.max(0,Math.min(3,sessionPreferences().getInt("session.reconnectAttempt",0))); mainHandler.removeCallbacks(reconnectRunnable);
+        if(reconnectCleanup!=null){mainHandler.removeCallbacks(reconnectCleanup);reconnectCleanup=null;}
         stopScan();
-        closeGatt();
+        transportCleanup=true;try{closeGatt();}finally{transportCleanup=false;}
         // Old protocol cancellation may call disconnect; reset only after it unwinds.
         manualDisconnect=false;recoveredFromProcessStart=false;
-        if(!sessionPreferences().edit().putString("session.marker",SessionRecoveryPolicy.IDLE).putString("session.operation-kind","NONE").commit()){if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");return;}
+        if(!sessionPreferences().edit().putString("session.marker",SessionRecoveryPolicy.IDLE).putString("session.operation-kind","NONE").commit()){terminalStopped();if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");return;}
         expansionRxRedacted=false;
         state("Подключаюсь…");
         listener.onLog("Connecting to " + foundDevice.getAddress());
-        gatt = foundDevice.connectGatt(context, false, gattCallback, android.bluetooth.BluetoothDevice.TRANSPORT_LE);
-        startSetupWatchdog();
+        try{gatt=foundDevice.connectGatt(context,false,gattCallback,android.bluetooth.BluetoothDevice.TRANSPORT_LE);startSetupWatchdog();}
+        catch(SecurityException e){terminalStopped();closeGatt();state("Разрешение Bluetooth отозвано");}
+        catch(RuntimeException e){setupFailed(-1,true);}
     }
 
     @SuppressLint("MissingPermission")
@@ -1066,7 +1090,8 @@ final class BleWatchSession {
         mainHandler.removeCallbacks(reconnectRunnable);mainHandler.removeCallbacks(ordinarySyncRunnable);
         stopScan();
         String marker=sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED);
-        boolean recoverable=sessionIdle()||SessionRecoveryPolicy.OPERATION.equals(marker)&&SessionRecoveryPolicy.isOrdinary(operationKind());
+        boolean recoverable=sessionIdle()||SessionRecoveryPolicy.RECONNECT_WAIT.equals(marker)||SessionRecoveryPolicy.OPERATION.equals(marker)&&SessionRecoveryPolicy.isOrdinary(operationKind());
+        if(reconnectCleanup!=null){mainHandler.removeCallbacks(reconnectCleanup);reconnectCleanup=null;}
         transportCleanup=recoverable;
         if(!recoverable)terminalStopped();
         closeGatt();transportCleanup=false;
@@ -1138,42 +1163,85 @@ final class BleWatchSession {
     }
 
     private boolean operationRunning(){return (alarmProtocol!=null&&alarmProtocol.isRunning())||(sleepHistoryProtocol!=null&&sleepHistoryProtocol.isRunning())||(protocolProbe!=null&&protocolProbe.isRunning())||(weatherReadProtocol!=null&&weatherReadProtocol.isRunning())||(weatherSessionProtocol!=null&&weatherSessionProtocol.isRunning())||(stageProtocol!=null&&stageProtocol.isRunning())||(dynamicDialProtocol!=null&&dynamicDialProtocol.isRunning())||(notificationProtocol!=null&&notificationProtocol.isRunning());}
+    private boolean reconnectWaiting(){return SessionRecoveryPolicy.RECONNECT_WAIT.equals(sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED));}
+    @SuppressLint("MissingPermission")
+    private boolean recoveryEligible(){
+        String address=sessionPreferences().getString("verified_device_address",null),marker=sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED);
+        boolean knownPush=SessionRecoveryPolicy.OPERATION.equals(marker)&&"NOTIFICATION".equals(operationKind())&&notificationProtocol!=null&&notificationProtocol.canRecoverPushTransport();
+        return !manualDisconnect&&directInstallRequest==null&&!commandsQuarantined&&!txLedgerUnreliable&&!transportCleanup&&!stoppingProtocols
+                &&sessionPreferences().getBoolean("session.userEnabled",false)&&hasRequiredPermissions()&&address!=null
+                &&(knownPush||SessionRecoveryPolicy.mayRecover(true,address,marker,operationKind(),true))
+                &&foundDevice!=null&&address.equals(replayAddress)&&address.equals(foundDevice.getAddress())&&(gatt==null||address.equals(gatt.getDevice().getAddress()));
+    }
+    private boolean persistNextReconnect(){
+        long delay=reconnectDelays[Math.max(0,Math.min(3,reconnectAttempt))];reconnectAttempt=Math.min(3,reconnectAttempt+1);
+        if(!sessionPreferences().edit().putString("session.marker",SessionRecoveryPolicy.RECONNECT_WAIT).putString("session.operation-kind","NONE")
+                .putInt("session.reconnectAttempt",reconnectAttempt).putLong("session.reconnectNotBefore",System.currentTimeMillis()+delay).commit()){terminalStopped();return false;}
+        listener.onLog("ORDINARY reconnect schedule delayMs="+delay+" attempt="+reconnectAttempt);return true;
+    }
+    private void publishReconnectWait(){state("Ожидаю часы; переподключение автоматически");connectionState(false,"Ожидаю часы; переподключение автоматически");}
+    /** Retire this transport synchronously; close it only after the protocol RX callback unwinds. */
+    @SuppressLint("MissingPermission")
+    private boolean queueFreshReconnect(){
+        if(reconnectCleanup!=null)return reconnectWaiting();
+        try{if(!recoveryEligible())return false;}catch(SecurityException e){terminalStopped();return false;}
+        final BluetoothGatt capturedGatt=gatt;final long capturedEpoch=rxEpoch;final String capturedKind=operationKind();
+        commandsQuarantined=true;rxEpoch++;ready(false);
+        mainHandler.removeCallbacks(ordinarySyncRunnable);mainHandler.removeCallbacks(activityPollRunnable);mainHandler.removeCallbacks(currentDialRefresh);
+        mainHandler.removeCallbacks(reconnectRunnable);mainHandler.removeCallbacks(reconnectTimeout);activityPoll.onDisconnected();currentDialRefreshState.onDisconnected();
+        if(!persistNextReconnect())return false;
+        notificationsPending=false;NotificationForwardingService.clearPending();
+        listener.onLog("ORDINARY fresh GATT recovery classification="+capturedKind+"; failed request is not replayed");
+        reconnectCleanup=()->{
+            reconnectCleanup=null;
+            if(gatt!=capturedGatt||rxEpoch!=capturedEpoch+1)return;
+            if(!reconnectWaiting()||manualDisconnect||directInstallRequest!=null
+                    ||!sessionPreferences().getBoolean("session.userEnabled",false)||!hasRequiredPermissions()||txLedgerUnreliable){terminalStopped();return;}
+            String address=sessionPreferences().getString("verified_device_address",null);
+            try{if(address==null||!address.equals(replayAddress)||foundDevice==null||!address.equals(foundDevice.getAddress())
+                    ||capturedGatt!=null&&!address.equals(capturedGatt.getDevice().getAddress())){terminalStopped();return;}}
+            catch(SecurityException e){terminalStopped();return;}
+            transportCleanup=true;try{closeGatt();}finally{transportCleanup=false;}
+            if(!reconnectWaiting()||manualDisconnect||directInstallRequest!=null||!sessionPreferences().getBoolean("session.userEnabled",false)){terminalStopped();return;}
+            publishReconnectWait();postReconnectDeadline();
+        };
+        mainHandler.post(reconnectCleanup);return true;
+    }
+    private void postReconnectDeadline(){
+        mainHandler.removeCallbacks(reconnectRunnable);
+        long remaining=Math.max(0,Math.min(60_000L,sessionPreferences().getLong("session.reconnectNotBefore",0)-System.currentTimeMillis()));
+        mainHandler.postDelayed(reconnectRunnable,remaining);
+    }
     @SuppressLint("MissingPermission")
     private void scheduleIdleReconnect(){
         mainHandler.removeCallbacks(reconnectRunnable);
-        if(directInstallRequest!=null)return;
-        if(manualDisconnect||!sessionIdle()||operationRunning()||foundDevice==null)return;
-        if(!hasRequiredPermissions()){terminalStopped();return;}
-        long delay=reconnectAttempt<reconnectDelays.length?reconnectDelays[reconnectAttempt++]:300_000L;
-        long notBefore=System.currentTimeMillis()+delay;
-        if(!sessionPreferences().edit().putInt("session.reconnectAttempt",reconnectAttempt).putLong("session.reconnectNotBefore",notBefore).commit()){terminalStopped();return;}
-        listener.onLog("ORDINARY reconnect schedule delayMs="+delay+" attempt="+reconnectAttempt);
-        mainHandler.postDelayed(reconnectRunnable,delay);
+        if(manualDisconnect||directInstallRequest!=null||!reconnectWaiting()||gatt!=null)return;
+        if(!hasRequiredPermissions()||commandsQuarantined||txLedgerUnreliable){terminalStopped();return;}
+        if(persistNextReconnect()){publishReconnectWait();postReconnectDeadline();}
     }
     @SuppressLint("MissingPermission")
     private void reconnectIfIdle(){
         if(directInstallRequest!=null)return;
-        if(!sessionIdle()||manualDisconnect||operationRunning()||foundDevice==null||gatt!=null)return;
+        if(!reconnectWaiting()||manualDisconnect||operationRunning()||gatt!=null||reconnectCleanup!=null)return;
         if(!hasRequiredPermissions()){terminalStopped();return;}
         String exact=sessionPreferences().getString("verified_device_address",null);
-        if(exact==null||!exact.equals(foundDevice.getAddress())||!exact.equals(replayAddress)){terminalStopped();return;}
-        BluetoothManager manager=context.getSystemService(BluetoothManager.class);BluetoothAdapter adapter=manager==null?null:manager.getAdapter();
-        if(adapter==null||!adapter.isEnabled()){scheduleIdleReconnect();return;}
-        // An in-flight attempt must retain a future deadline across process death.
-        if(!sessionPreferences().edit().putLong("session.reconnectNotBefore",System.currentTimeMillis()+300_000L).commit()){terminalStopped();return;}
-        try{state("Повторное подключение к выбранным часам…");gatt=foundDevice.connectGatt(context,false,gattCallback,android.bluetooth.BluetoothDevice.TRANSPORT_LE);startSetupWatchdog();}
-        catch(SecurityException e){terminalStopped();state("Разрешение Bluetooth отозвано");}
+        if(commandsQuarantined||txLedgerUnreliable||!sessionPreferences().getBoolean("session.userEnabled",false)||exact==null||!exact.equals(replayAddress)){terminalStopped();return;}
+        try{
+            BluetoothManager manager=context.getSystemService(BluetoothManager.class);BluetoothAdapter adapter=manager==null?null:manager.getAdapter();
+            if(adapter==null||!adapter.isEnabled()){scheduleIdleReconnect();return;}
+            if(foundDevice==null)foundDevice=adapter.getRemoteDevice(exact);
+            if(!exact.equals(foundDevice.getAddress())){terminalStopped();return;}
+            // Persist a bounded deadline for process restart during this one setup attempt.
+            if(!sessionPreferences().edit().putLong("session.reconnectNotBefore",System.currentTimeMillis()+20_000L).commit()){terminalStopped();return;}
+            state("Повторное подключение к выбранным часам…");gatt=foundDevice.connectGatt(context,false,gattCallback,android.bluetooth.BluetoothDevice.TRANSPORT_LE);startSetupWatchdog();
+        }catch(SecurityException e){terminalStopped();closeGatt();state("Разрешение Bluetooth отозвано");}
+        catch(IllegalArgumentException e){terminalStopped();closeGatt();}
+        catch(RuntimeException e){setupFailed(-1,true);}
     }
     private void ordinaryTransportLost(){
         if(directInstallRequest!=null){finishDirectInstall(false,"DISCONNECTED");closeGatt();return;}
-        String marker=sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED),kind=operationKind();
-        boolean recoverable=!manualDisconnect&&(SessionRecoveryPolicy.IDLE.equals(marker)||SessionRecoveryPolicy.OPERATION.equals(marker)&&SessionRecoveryPolicy.isOrdinary(kind));
-        listener.onLog("ORDINARY transportLoss classification="+kind+" recoverable="+recoverable);
-        // Capture classification before cancellation. Cleanup callbacks deliver failure without changing the stop gate.
-        transportCleanup=recoverable;
-        if(recoverable&&!sessionPreferences().edit().putString("session.marker",SessionRecoveryPolicy.IDLE).putString("session.operation-kind","NONE").commit()){transportCleanup=false;terminalStopped();}
-        closeGatt();transportCleanup=false;
-        if(recoverable&&sessionIdle())scheduleIdleReconnect();
+        if(reconnectCleanup!=null)return;
+        if(!queueFreshReconnect()){terminalStopped();closeGatt();}
     }
     @SuppressLint("MissingPermission")
     private void onReconnectTimeout(){
@@ -1270,11 +1338,11 @@ final class BleWatchSession {
             lastWatchRxElapsed=-1;lastAcceptedTxElapsed=-1;
             actualConnected=true;connectionState(false,commandsQuarantined?"Часы подключены; команды остановлены":"Подключено, ищу сервисы…");
             if(commandsQuarantined){listener.onLog("BLE late connected callback; setup remains quarantined");return;}
-            if(status!=BluetoothGatt.GATT_SUCCESS){state("Ошибка подключения: "+status);setupFailed(status,false);return;}
+            if(status!=BluetoothGatt.GATT_SUCCESS){state("Ошибка подключения: "+status);setupFailed(status,true);return;}
             setupPhase="discovery";logSetup("connected",status);state("Подключено, ищу сервисы…");
             if(!hasRequiredPermissions()){terminalStopped();closeGatt();state("Разрешение Bluetooth отозвано");return;}
             discoverServices(callbackGatt);
-        }else if(status!=BluetoothGatt.GATT_SUCCESS){state("Ошибка подключения: "+status);setupFailed(status,false);}
+        }else if(status!=BluetoothGatt.GATT_SUCCESS){state("Ошибка подключения: "+status);setupFailed(status,true);}
     }
 
     @SuppressLint("MissingPermission")
@@ -1302,12 +1370,13 @@ final class BleWatchSession {
             return;
         }
         listener.onLog("Verified GT01 service 0800, RX 0813 and TX 0814");
-        sessionPreferences().edit().putString("verified_device_address",callbackGatt.getDevice().getAddress()).commit();
+        String address=callbackGatt.getDevice().getAddress(),verified=sessionPreferences().getString("verified_device_address",null);
+        if(!address.equals(replayAddress)||foundDevice==null||!address.equals(foundDevice.getAddress())||verified!=null&&!address.equals(verified)) {setupFailed(-1,false);return;}
+        if(!sessionPreferences().edit().putString("verified_device_address",address).commit()){setupFailed(-1,false);return;}
         txCharacteristic = tx;
         setupPhase="mtu";logSetup("services verified",status);
         if (!requestMtu(callbackGatt, 512)) {
-            listener.onLog("MTU request could not be started; enabling RX with default MTU");
-            if(!enableRxNotifications(callbackGatt, rx))setupFailed(-1,true);
+            listener.onLog("MTU request could not be started");setupFailed(-1,true);
         }
     }
 
@@ -1325,8 +1394,9 @@ final class BleWatchSession {
     }
 
     private void handleDescriptorWrite(BluetoothGatt callbackGatt, UUID descriptorUuid, int status) {
-        if (callbackGatt != gatt || commandsQuarantined||!sessionIdle()) return;
+        if (callbackGatt != gatt || commandsQuarantined||!sessionIdle()&&!reconnectWaiting()) return;
         if (CLIENT_CONFIG.equals(descriptorUuid) && status == BluetoothGatt.GATT_SUCCESS) {
+            if(!sessionPreferences().edit().putString("session.marker",SessionRecoveryPolicy.IDLE).putString("session.operation-kind","NONE").commit()){setupFailed(-1,false);return;}
             rxSubscribed=true;
             mainHandler.removeCallbacks(reconnectTimeout);logSetup("ready",status);
             recoveredFromProcessStart=false;
@@ -1349,8 +1419,8 @@ final class BleWatchSession {
                 }
                 @Override public void currentDialFinished(boolean success,String currentJson,String infoJson){
                     if(success)directHandshakeComplete=true;
-                    terminalOperation(success); if(success){initialReadsComplete=true;reconnectAttempt=0;
-                        sessionPreferences().edit().putInt("session.reconnectAttempt",0).putLong("session.reconnectNotBefore",0).putBoolean("session.recoveryConsumed",false).commit();scheduleOrdinarySync();}CurrentDialSnapshot snapshot=resolveCurrentDial(success,currentJson,infoJson);
+                    if(success&&!sessionPreferences().edit().putInt("session.reconnectAttempt",0).putLong("session.reconnectNotBefore",0).putBoolean("session.recoveryConsumed",false).commit()){terminalStopped();return;}
+                    terminalOperation(success); if(success){initialReadsComplete=true;reconnectAttempt=0;scheduleOrdinarySync();}CurrentDialSnapshot snapshot=resolveCurrentDial(success,currentJson,infoJson);
                     currentDialSnapshot=snapshot;listener.onCurrentDialSnapshot(snapshot);
                     // Refresh on connect, after known operations or explicit user action; no perpetual handshake loop.
                     if(success){if(activityPoll.nextDelayMs()==0L)scheduleActivityPoll(true);
@@ -1399,10 +1469,10 @@ final class BleWatchSession {
     @SuppressLint("MissingPermission")
     private void discoverServices(BluetoothGatt callbackGatt) {
         if(commandsQuarantined||callbackGatt!=gatt)return;
-        if (!callbackGatt.discoverServices()) {
+        try{if (!callbackGatt.discoverServices()) {
             setupFailed(-1,true);
             state("Запуск поиска сервисов не удался");
-        }
+        }}catch(SecurityException e){setupFailed(-1,false);}
     }
 
     @SuppressLint("MissingPermission")
@@ -1452,20 +1522,22 @@ final class BleWatchSession {
 
     @SuppressLint("MissingPermission")
     private boolean requestMtu(BluetoothGatt callbackGatt, int mtu) {
-        return !commandsQuarantined&&callbackGatt==gatt&&callbackGatt.requestMtu(mtu);
+        try{return !commandsQuarantined&&callbackGatt==gatt&&callbackGatt.requestMtu(mtu);}
+        catch(SecurityException e){setupFailed(-1,false);return false;}
     }
 
     @SuppressLint("MissingPermission")
     private boolean enableRxNotifications(BluetoothGatt callbackGatt, BluetoothGattCharacteristic rx) {
         if(commandsQuarantined||callbackGatt!=gatt)return false;
         setupPhase="cccd";logSetup("subscribing",0);
+        try{
         if (!callbackGatt.setCharacteristicNotification(rx, true)) {
             return false;
         }
         BluetoothGattDescriptor descriptor = rx.getDescriptor(CLIENT_CONFIG);
         if (descriptor == null) {
             listener.onLog("RX characteristic has no CCC descriptor");
-            terminalStopped();
+            setupFailed(-1,false);
             return false;
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -1474,6 +1546,7 @@ final class BleWatchSession {
         }
         descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
         return callbackGatt.writeDescriptor(descriptor);
+        }catch(SecurityException e){setupFailed(-1,false);return false;}
     }
 
     private void logNotification(UUID uuid, byte[] value) {

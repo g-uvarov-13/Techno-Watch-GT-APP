@@ -895,7 +895,7 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         c.addView(ui.label(name,16,ui.text));connectionDetail=ui.label(connected?tr("Часы подключены","Watch connected"):tr("Часы не подключены","Watch disconnected"),13,ui.muted);c.addView(connectionDetail,ui.fillWrap(5,6));
         LinearLayout actions=new LinearLayout(this);
         Button scan=secondaryButton(tr("Найти часы","Find watch"));scan.setOnClickListener(v->{connectionUiState="Поиск часов…";updateConnectionState();pendingScan=true;if(ensurePermissions()&&watch!=null){pendingScan=false;watch.startScan();}});actions.addView(scan,ui.weighted(1));
-        connect=connected?secondaryButton(tr("Отключить","Disconnect")):primaryButton(tr("Подключить","Connect"));setEnabledState(connect,connected?watch!=null:watchFound&&watch!=null);connect.setOnClickListener(v->{if(watch==null)return;if(connected)watch.disconnect();else{connectionPending=true;connectionUiState="Подключение…";updateConnectionState();watch.connectFoundWatch();}});LinearLayout.LayoutParams connectLayout=ui.weighted(1);connectLayout.setMargins(ui.dp(8),0,0,0);actions.addView(connect,connectLayout);c.addView(actions,ui.fillWrap(3,0));
+        connect=connected||reconnectWaiting()?secondaryButton(tr("Отключить","Disconnect")):primaryButton(tr("Подключить","Connect"));setEnabledState(connect,connected||reconnectWaiting()?watch!=null:watchFound&&watch!=null);connect.setOnClickListener(v->{if(watch==null)return;if(connected||reconnectWaiting())watch.disconnect();else{connectionPending=true;connectionUiState="Подключение…";updateConnectionState();watch.connectFoundWatch();}});LinearLayout.LayoutParams connectLayout=ui.weighted(1);connectLayout.setMargins(ui.dp(8),0,0,0);actions.addView(connect,connectLayout);c.addView(actions,ui.fillWrap(3,0));
         status=ui.label(connectionUiState,12,ui.muted);status.setMaxLines(3);status.setEllipsize(android.text.TextUtils.TruncateAt.END);if(!connectionUiState.isEmpty())c.addView(status,ui.fillWrap(8,0));p.addView(c,ui.fillWrap(0,10));
         Button export=secondaryButton(tr("Экспортировать диагностику","Export diagnostics"));export.setOnClickListener(v->exportDiagnostics());p.addView(export,ui.fillWrap(0,12));
         Button clearLogs=secondaryButton(tr("Очистить логи","Clear logs"));clearLogs.setOnClickListener(v->confirmClearLogs());p.addView(clearLogs,ui.fillWrap(0,8));
@@ -1125,6 +1125,9 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         p.addView(note(tr("Версия ","Version ")+BuildConfig.VERSION_NAME));
     }
     private AlertDialog weatherSettingsDialog;
+    private AlertDialog weatherDiagnosticsDialog;
+    private LinearLayout weatherDiagnosticsContent;
+    private ScrollView weatherDiagnosticsScroll;
     private LinearLayout weatherSettingsContent;
     private ScrollView weatherSettingsScroll;
     private void showWeatherSettings(){
@@ -1197,6 +1200,20 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         diagnostics.setOnClickListener(v->showWeatherDiagnostics());p.addView(diagnostics,ui.fillWrap(6,6));
     }
     private void showWeatherDiagnostics(){
+        if(weatherDiagnosticsDialog!=null&&weatherDiagnosticsDialog.isShowing())return;
+        weatherDiagnosticsContent=new LinearLayout(ui.dialogContext());weatherDiagnosticsContent.setOrientation(LinearLayout.VERTICAL);
+        weatherDiagnosticsScroll=new ScrollView(ui.dialogContext());weatherDiagnosticsScroll.addView(weatherDiagnosticsContent);
+        weatherDiagnosticsDialog=ui.dialogBuilder().setTitle(tr("Диагностика погоды","Weather diagnostics")).setView(weatherDiagnosticsScroll).setNegativeButton(tr("Закрыть","Close"),null).create();
+        weatherDiagnosticsDialog.setOnDismissListener(d->{weatherDiagnosticsDialog=null;weatherDiagnosticsContent=null;weatherDiagnosticsScroll=null;weatherRead=null;});
+        refreshWeatherDiagnostics();weatherDiagnosticsDialog.show();
+    }
+    private void refreshWeatherDiagnostics(){
+        if(weatherDiagnosticsContent==null||destroyed)return;
+        int scrollY=weatherDiagnosticsScroll.getScrollY();
+        weatherDiagnosticsContent.removeAllViews();buildWeatherDiagnostics(weatherDiagnosticsContent);
+        weatherDiagnosticsScroll.post(()->{if(weatherDiagnosticsScroll!=null)weatherDiagnosticsScroll.scrollTo(0,scrollY);});
+    }
+    private void buildWeatherDiagnostics(LinearLayout content){
         LinearLayout weatherCard=card();android.content.SharedPreferences weatherPrefs=getSharedPreferences("gt_dial_preferences",MODE_PRIVATE);
         String city=weatherPrefs.getString("weather.city","");long fetchedAt=weatherPrefs.getLong("weather.fetched-at",0L);
         weatherRead=secondaryButton(tr("ПРОЧИТАТЬ ПОГОДУ ЧАСОВ","READ WATCH WEATHER"));
@@ -1204,6 +1221,8 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         weatherRead.setOnClickListener(v->watch.readWeatherState());
         weatherCard.addView(weatherRead,ui.fillWrap(0,6));
         weatherCard.addView(note(watchWeatherSummary()),ui.fillWrap(6,6));
+        if(!ready)weatherCard.addView(note(tr("Чтение доступно после готовности соединения. Если обмен остановлен, отключите часы и подключите заново.","Reading is available when the connection is ready. If exchange is stopped, disconnect the watch and connect again.")),ui.fillWrap(6,6));
+        if(!weatherActionFeedback.isEmpty())weatherCard.addView(note(weatherActionFeedback),ui.fillWrap(6,6));
         Button sendButton=primaryButton(tr("ОТПРАВИТЬ ПОГОДУ НА ЧАСЫ","SEND WEATHER TO WATCH"));
         WeatherDeliveryController.Hold weatherHold=WeatherDeliveryController.hold(this);
         WeatherDeliveryController.WeeklyStatus weekly=WeatherDeliveryController.weeklyStatus(this);
@@ -1256,8 +1275,9 @@ public final class MainActivity extends Activity implements BleWatchSession.List
                 .setNegativeButton(tr("ОТМЕНА","CANCEL"),null)
                 .setPositiveButton(tr("ВОССТАНОВИТЬ","RESTORE"),(d,w)->watch.restoreWeather()).show());
         weatherCard.addView(restoreButton);
-        ScrollView scroll=new ScrollView(ui.dialogContext());scroll.addView(weatherCard);
-        ui.dialogBuilder().setTitle(tr("Диагностика погоды","Weather diagnostics")).setView(scroll).setNegativeButton(tr("Закрыть","Close"),null).show();
+        Button export=secondaryButton(tr("ЭКСПОРТИРОВАТЬ ДИАГНОСТИКУ","EXPORT DIAGNOSTICS"));
+        export.setOnClickListener(v->exportDiagnostics());weatherCard.addView(export,ui.fillWrap(0,6));
+        content.addView(weatherCard);
     }
     private void chooseWeatherCity(){
         if(cityLocator!=null){cityLocator.cancel();cityLocator=null;}
@@ -1544,6 +1564,7 @@ public final class MainActivity extends Activity implements BleWatchSession.List
             String lower=s.toLowerCase(java.util.Locale.ROOT);
             boolean actionable=s.contains("Не удалось")||s.contains("не удалось")||s.contains("Ошибка")||s.contains("не прошёл")||s.contains("недоступ")||s.contains("уже выполняется")||s.contains("не начата")||s.contains("не был отправлен")||lower.contains("failed")||lower.contains("error")||lower.contains("unavailable")||lower.contains("already in progress")||lower.contains("not started")||lower.contains("not sent")||lower.contains("connect");
             if(weatherSettingsDialog!=null&&weatherSettingsDialog.isShowing()&&(actionable||s.contains("город")||s.contains("погод")||s.contains("city")||s.contains("weather"))){weatherActionFeedback=s;refreshWeatherSettings();}
+            if(weatherDiagnosticsDialog!=null&&weatherDiagnosticsDialog.isShowing()&&(actionable||lower.contains("погод")||lower.contains("weather"))){weatherActionFeedback=s;refreshWeatherDiagnostics();}
             if(actionable){visibleActionFeedback=s;if(actionFeedback!=null){actionFeedback.setText(UiText.choose("en".equals(prefs.language()),s));actionFeedback.setVisibility(View.VISIBLE);}}
         });
     }
@@ -1569,11 +1590,12 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         AlertDialog dialog=ui.dialogBuilder().setCustomTitle(title).setView(content).setNegativeButton(tr("ОТМЕНА","CANCEL"),null).setPositiveButton(tr("СОХРАНИТЬ","SAVE"),(d,w)->{prefs.notificationPackages(chosen);recordEvent("NOTIFICATION_SELECTION saved count="+chosen.size());rebuildUi();}).create();
         dialog.setOnShowListener(d->{if(dialog.getWindow()!=null)dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(ui.panel));for(int which:new int[]{AlertDialog.BUTTON_POSITIVE,AlertDialog.BUTTON_NEGATIVE}){Button button=dialog.getButton(which);button.setTextColor(ui.accentInk);button.setBackgroundColor(ui.panel);}});dialog.show();
     }
+    private boolean reconnectWaiting(){return !connected&&"Ожидаю часы; переподключение автоматически".equals(latestConnectionMessage);}
     private void updateConnectionState(){
         boolean stopped=connected&&"Часы подключены; команды остановлены".equals(latestConnectionMessage);
-        if(connectionState!=null){connectionState.setText(stopped?tr("Обмен остановлен","Exchange stopped"):connected?tr("Подключено","Connected"):tr("Не подключено","Disconnected"));connectionState.setTextColor(stopped?ui.accent:connected?ui.text:ui.muted);}
-        if(connectionDetail!=null)connectionDetail.setText(connected?(latestConnectionMessage==null||latestConnectionMessage.isEmpty()?tr("Часы подключены","Watch connected"):tx(latestConnectionMessage)):connectionUiState.isEmpty()?tr("Часы не подключены","Watch disconnected"):UiText.choose("en".equals(prefs.language()),connectionUiState));
-        if(connect!=null){connect.setText(connected?tr("Отключить","Disconnect"):tr("Подключить","Connect"));setEnabledState(connect,connected?watch!=null:watchFound&&watch!=null&&!connectionPending);}
+        if(connectionState!=null){connectionState.setText(stopped?tr("Обмен остановлен","Exchange stopped"):reconnectWaiting()?tr("Переподключение","Reconnecting"):connected?tr("Подключено","Connected"):tr("Не подключено","Disconnected"));connectionState.setTextColor(stopped?ui.accent:connected?ui.text:ui.muted);}
+        if(connectionDetail!=null)connectionDetail.setText(reconnectWaiting()?tr("Ожидаю часы. Подключение восстановится автоматически, когда они будут рядом.","Waiting for the watch. Connection will resume automatically when it is nearby."):connected?(latestConnectionMessage==null||latestConnectionMessage.isEmpty()?tr("Часы подключены","Watch connected"):tx(latestConnectionMessage)):connectionUiState.isEmpty()?tr("Часы не подключены","Watch disconnected"):UiText.choose("en".equals(prefs.language()),connectionUiState));
+        if(connect!=null){connect.setText(connected||reconnectWaiting()?tr("Отключить","Disconnect"):tr("Подключить","Connect"));setEnabledState(connect,connected||reconnectWaiting()?watch!=null:watchFound&&watch!=null&&!connectionPending);}
     }
     private boolean directInstallEligible(){
         return connected&&watch!=null&&!directInstallUiPending
@@ -1591,7 +1613,7 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         }
     }
     @Override public void onConnectionSnapshot(ConnectionSnapshot snapshot){
-        runOnUiThread(()->{if(snapshot!=null){connected=snapshot.isConnected();latestConnectionMessage=snapshot.connectionMessage();if(connected){connectionPending=false;connectionUiState=snapshot.connectionMessage();}updateConnectionState();updateDirectInstallButtons();}});
+        runOnUiThread(()->{if(snapshot!=null){connected=snapshot.isConnected();latestConnectionMessage=snapshot.connectionMessage();if(connected||reconnectWaiting()){connectionPending=false;connectionUiState=reconnectWaiting()?tr("Ожидаю часы; переподключение автоматически","Waiting for watch; automatic reconnect"):snapshot.connectionMessage();}updateConnectionState();updateDirectInstallButtons();}});
     }
     @Override public void onLog(String s){
         if(log==null||journalRefreshPending)return;
@@ -1623,6 +1645,7 @@ public final class MainActivity extends Activity implements BleWatchSession.List
             if(probe!=null)setEnabledState(probe,effective);
             if(album!=null)setEnabledState(album,effective&&watch.isAlbumConfigurationAvailable());
             if(weatherRead!=null)setEnabledState(weatherRead,effective);
+            refreshWeatherDiagnostics();
             updateDirectInstallButtons();
             if(pendingRecoveryButton!=null)setEnabledState(pendingRecoveryButton,effective&&!localInstallPreparationPending);
             if(dynamicRecovery!=null)setEnabledState(dynamicRecovery,effective);
@@ -1649,8 +1672,7 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         runOnUiThread(()->{
             if(ok&&result!=null){
                 lastWeatherState=result;
-                onState("0".equals(result.todayWeather)?tr("Погода на часах ещё не настроена; её можно настроить ручной отправкой","Watch weather is not initialized; a manual transfer can initialize it"):
-                        watchWeatherSummary());
+                onState(watchWeatherSummary());
                 onLog("WEATHER_READ saved device="+result.deviceIdentity+" sha256="+result.sha256+" todayWeatherKind="+("0".equals(result.todayWeather)?"ZERO":"OBJECT")+" unit="+result.unitTemperature+" enable="+result.weatherEnable);
             }else onState(tr("Не удалось прочитать погоду часов; отправьте журнал","Could not read watch weather; share the log"));
             if(activeTab==3)rebuildUi();
@@ -1659,18 +1681,20 @@ public final class MainActivity extends Activity implements BleWatchSession.List
     private String weeklyPauseReason(String reason){
         if(reason==null||reason.isEmpty())return tr("Передача остановлена; прочитайте погоду часов перед возобновлением.","Transfer stopped; read watch weather before resuming.");
         reason=reason.toUpperCase(Locale.ROOT);
+        if(reason.endsWith("WEATHERENABLE MUST BE INTEGER 0"))return tr("Предыдущая версия отклонила пустую погоду при включённой функции. Это состояние теперь поддерживается. Прочитайте погоду часов, обновите прогноз на телефоне и возобновите недельное обновление.","The previous version refused empty weather while the feature was enabled. This state is now supported. Read watch weather, refresh the phone forecast, then resume weekly updates.");
         if(reason.contains("SELECTION"))return tr("Изменён город или источник. Автообновление остановлено; проверьте новые настройки в диагностике погоды.","The city or source changed. Automatic updates stopped; review the new settings in weather diagnostics.");
         if(reason.contains("EXTERNAL")||reason.contains("BASELINE")||reason.contains("CAS"))return tr("Погода часов отличается от последней записи приложения. Прочитайте её и проверьте, прежде чем принимать новое состояние.","Watch weather differs from the app's last write. Read and review it before accepting the new state.");
         if(reason.contains("STORAGE")||reason.contains("INVALID"))return tr("Не удалось подтвердить сохранённое состояние обновления. Передача заблокирована.","The saved update state could not be verified. Transfer is blocked.");
         if(reason.contains("MANUAL")||reason.contains("USER")||reason.contains("EXPLICIT_PAUSE"))return tr("Обновление приостановлено вручную.","Updates were paused manually.");
         if(reason.contains("INTERRUPTED"))return tr("Предыдущая передача была прервана. Автоматический повтор отключён.","The previous transfer was interrupted. Automatic retry is disabled.");
+        if(reason.startsWith("SAFE_PREWRITE:"))return tr("Запись погоды отклонена до отправки. Прочитайте погоду часов и экспортируйте диагностику. Автообновление остаётся на паузе.","Weather write refused before sending. Read watch weather and export diagnostics. Automatic updates remain paused.");
         return tr("Операция остановлена после ошибки или изменения соединения. Прочитайте погоду часов; подробности сохранены в журнале.","The operation stopped after an error or connection change. Read watch weather; details are saved in the journal.");
     }
     private String watchWeatherSummary(){
         WeatherReadProtocol.Result result=lastWeatherState;
         if(result==null||!java.util.Objects.equals(result.deviceIdentity,prefs.savedDevice()))return tr("Погода часов ещё не прочитана в этом сеансе.","Watch weather has not been read in this session.");
         try{
-            if("0".equals(result.todayWeather))return tr("Погода часов не настроена.","Watch weather is not initialized.");
+            if("0".equals(result.todayWeather))return "1".equals(result.weatherEnable)?tr("Погода на часах включена, но текущие данные пусты. Обновите прогноз на телефоне; затем можно отправить погоду или возобновить недельное обновление.","Watch weather is enabled but current data is empty. Refresh the phone forecast; then send weather or resume weekly updates."):tr("Погода часов не настроена.","Watch weather is not initialized.");
             org.json.JSONObject today=new org.json.JSONObject(result.todayWeather);
             int days=result.futureDayWeather.startsWith("[")?new org.json.JSONArray(result.futureDayWeather).length():0;
             String updated=new SimpleDateFormat("dd.MM HH:mm",Locale.getDefault()).format(new Date(today.getLong("updateTime")*1000L));
@@ -1687,6 +1711,7 @@ public final class MainActivity extends Activity implements BleWatchSession.List
     }
     private String weatherFailureLabel(String detail){
         if(detail!=null&&detail.startsWith("SAFE_PREWRITE:")){
+            if(detail.endsWith("weatherEnable must be integer 0"))return weeklyPauseReason(detail);
             if(detail.contains("HOLD")||detail.contains("held"))return tr("Передача приостановлена для проверки прогноза: примите результат или восстановите сохранённую погоду.","Transfer is paused for the forecast check: accept the result or restore saved weather.");
             if(detail.contains("DUPLICATE"))return tr("Передача этих данных уже запускалась. Для новой попытки сначала обновите погоду.","A transfer of this snapshot was already attempted. Refresh weather before another attempt.");
             if(detail.contains("busy"))return tr("Передача не начата: часы выполняют другую операцию.","Transfer did not start: another watch operation is running.");
@@ -1854,6 +1879,7 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         if(localInstallDialog!=null)localInstallDialog.dismiss();
         cancelLocalInstallConfirmation();
         if(weatherSettingsDialog!=null)weatherSettingsDialog.dismiss();
+        if(weatherDiagnosticsDialog!=null)weatherDiagnosticsDialog.dismiss();
         if(expansion!=null)expansion.destroy();
         if(sessionBinder!=null)sessionBinder.detach(this);
         if(cityLocator!=null){cityLocator.cancel();cityLocator=null;}

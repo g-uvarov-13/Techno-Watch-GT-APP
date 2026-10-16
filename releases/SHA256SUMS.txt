@@ -1,1 +1,2 @@
 1cef119632d60a2c82522b04da9ef3d2f2399340ed2dd61c6c283a9a2d2e11f6  Chasovoy-1.0.0-release.apk
+e145db3b1728b451b584e4f5b7975ab1265a8c437a5d75b2feed661a08d5a854  Chasovoy-1.0.1-release.apk

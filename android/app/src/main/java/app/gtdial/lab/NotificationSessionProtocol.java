@@ -21,10 +21,10 @@ final class NotificationSessionProtocol {
     private final Scheduler scheduler;
     private final int maxFrameBytes;
     private final ByteArrayOutputStream incoming=new ByteArrayOutputStream();
-    private final Runnable timeout=()->fail("timeout");
+    private final Runnable timeout=()->fail("timeout",true);
     private Step step=Step.IDLE;
     private NotificationRequest notice;
-    private boolean configured;
+    private boolean configured,recoverablePushFailure;
     private int packetId=1,frameId=1,expectedId=-1;
     private int priorValue=-1;
 
@@ -34,6 +34,7 @@ final class NotificationSessionProtocol {
     }
     boolean isRunning(){return step!=Step.IDLE&&step!=Step.FAILED;}
     boolean isFailed(){return step==Step.FAILED;}
+    boolean canRecoverPushTransport(){return step==Step.PUSH&&configured||step==Step.FAILED&&recoverablePushFailure;}
     int priorValue(){return priorValue;}
     byte[] start(NotificationRequest request){
         if(step!=Step.IDLE||request==null)throw new IllegalStateException("notification unavailable");
@@ -100,11 +101,13 @@ final class NotificationSessionProtocol {
         byte[] d2d=new byte[5+rpc.length];d2d[0]=1;d2d[2]=1;d2d[3]=(byte)expectedId;d2d[4]=0x10;System.arraycopy(rpc,0,d2d,5,rpc.length);
         int length=d2d.length+8;byte[] frame=new byte[length];frame[0]=(byte)0xfc;frame[1]=(byte)(length>>>8);frame[2]=(byte)length;frame[3]=(byte)(frameId++);System.arraycopy(d2d,0,frame,5,d2d.length);int crc=crc(frame,1,length-4);frame[length-3]=(byte)(crc>>>8);frame[length-2]=(byte)crc;frame[length-1]=(byte)0xcf;
         if(length>maxFrameBytes){fail("notification frame exceeds MTU");return frame;}
-        if(!write.test(frame))fail("Android rejected notification TX");else scheduler.schedule(timeout,timeoutMs);
+        if(!write.test(frame))fail("Android rejected notification TX",true);else scheduler.schedule(timeout,timeoutMs);
         return frame;
     }
-    private void fail(String reason){
+    private void fail(String reason){fail(reason,false);}
+    private void fail(String reason,boolean transportFailure){
         if(step==Step.FAILED)return;
+        recoverablePushFailure=transportFailure&&step==Step.PUSH&&configured;
         scheduler.cancel(timeout);step=Step.FAILED;notice=null;configured=false;incoming.reset();
         log.accept("NOTIFICATION stopped: "+reason+"; no automatic retry; prior notificationEnable="+priorValue);
         terminal.accept(false);
