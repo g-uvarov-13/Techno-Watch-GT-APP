@@ -6,18 +6,18 @@
   },
   {
     "path": "ASSET_MANIFEST.json",
-    "size": 36745,
-    "sha256": "d68280589982d203a80e795555ea3b95490b073ae3efc58e4a4f2e111f800822"
+    "size": 37237,
+    "sha256": "360e2debc53c61a2c7632cf484ade6d1bdfc82cd415ba39b4efb2bd610f6dec7"
   },
   {
     "path": "BUILDING.md",
-    "size": 13783,
-    "sha256": "98bbf98e06a438dc72d71824274b20fc04e0aff4c7af9b607ebc630c2eda2d6e"
+    "size": 13826,
+    "sha256": "4f7ebb6cca37e5b099308c112ae0abaa3d04cc594d3f144e406fc28ae2b19040"
   },
   {
     "path": "CHANGELOG.md",
-    "size": 3889,
-    "sha256": "755966e7c0352d61bf0d53b2db4fe4683341ee614c4f717020d62ff559ddbd6d"
+    "size": 7075,
+    "sha256": "9b7af85decfc53cfc86bfe313b0cdcd26d68182095984a441816ffdb565eafca"
   },
   {
     "path": "CONTRIBUTING.md",
@@ -31,8 +31,8 @@
   },
   {
     "path": "KNOWN_LIMITATIONS.md",
-    "size": 8578,
-    "sha256": "21ecbbec54d45673825dcc2bc87d67467331ad4e0d7465750e8a25f313a989e7"
+    "size": 9458,
+    "sha256": "bc28cf23c7365b3542aa02edae46ee5d4073180d6863bfba37baf437546ce815"
   },
   {
     "path": "LICENSE",
@@ -46,13 +46,13 @@
   },
   {
     "path": "PRIVACY.md",
-    "size": 12962,
-    "sha256": "022edb4de0a5ed2ef90c0becb6a91f5cb6808d93cbedbf9d123c908322abbd19"
+    "size": 14381,
+    "sha256": "386479bdfd898ae16c9f1a9d4dc318193235002866191a1489112d0e36251069"
   },
   {
     "path": "README.md",
-    "size": 8260,
-    "sha256": "386988d6c21efb6d5a88abef40fcaf1eec86250b0afd5f9bc30dbbd2348bb418"
+    "size": 8308,
+    "sha256": "918c10f7340d689158626883ef0e8b9521d8964e2208898adc7966043b7e3448"
   },
   {
     "path": "SOURCE_ASSETS_MANIFEST.json",
@@ -61,13 +61,13 @@
   },
   {
     "path": "THIRD_PARTY_NOTICES.md",
-    "size": 3097,
-    "sha256": "cb1a650dc904f9037e492edecd97a8f5cc834cf6186b4aa04408670054270f8f"
+    "size": 3578,
+    "sha256": "6f47c136f41d0b3b25de813540098b4b41a5466a59019bd1f601bc8743227172"
   },
   {
     "path": "USER_GUIDE.md",
-    "size": 28342,
-    "sha256": "70fbc600ba7cf6b9dc1acf7dea0b72c2887d4b67b6d0d93eba650bbc1016ead8"
+    "size": 29861,
+    "sha256": "ff1625975951f39d97585a1c498482d5b6831c38f63e3a90a0d39ded1f3efd17"
   },
   {
     "path": "WATCHFACE_AUTHORING.md",
@@ -87,12 +87,12 @@
   {
     "path": "android/app/build.gradle.kts",
     "size": 2280,
-    "sha256": "e1ea4146eb6481507237a0c218d3e4a43ea98e05b45487ec27dd498f7500cda4"
+    "sha256": "5de1e96067d9490480a755d5ea3b4a8ef21018983ac650843788ba16e71a5eed"
   },
   {
     "path": "android/app/src/main/AndroidManifest.xml",
-    "size": 3178,
-    "sha256": "b1162890ed51ca76539dc93fa93550bb7ee213f453249929269f1bb4e008e201"
+    "size": 3260,
+    "sha256": "bd882d00696af8fb624baaa699107ea446710a0d550b4e3c6d1730e47e57e949"
   },
   {
     "path": "android/app/src/main/assets/dial_editor/backgrounds/eclipse-v1.png",
@@ -1200,6 +1200,21 @@
     "sha256": "9981c74ed6dfe73cd5e61d6408307ee5da70c4dd21c7673787ce2c765680b1d4"
   },
   {
+    "path": "android/app/src/main/assets/exercise_illustrations/atlas-4.png",
+    "size": 2013025,
+    "sha256": "de753395f78cf93cca1d3ae150af3dfc57106d4383f7170bcc6832f4e591b861"
+  },
+  {
+    "path": "android/app/src/main/assets/exercise_illustrations/atlas-5.png",
+    "size": 1834688,
+    "sha256": "83b9ec019770d496c387a7b3d3d69c5a29e891d66eb1fd798e085c4dfbc56599"
+  },
+  {
+    "path": "android/app/src/main/assets/exercise_illustrations/muscle-groups-v1.png",
+    "size": 1825031,
+    "sha256": "306fd78243df6662dc1fe3dce45039eff93ce8fbf67d6445b5c77fc863f14b86"
+  },
+  {
     "path": "android/app/src/main/java/app/gtdial/lab/ActivityHistoryChartView.java",
     "size": 4449,
     "sha256": "a475110df1fd971d65915ff27a2a78243af15f52e170723c86f58de0d06fbefd"
@@ -1296,8 +1311,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/BleWatchSession.java",
-    "size": 151670,
-    "sha256": "11dbb105a6c650b1d183597b2e31dc692f79d54c2f52c163289d4d9062784f96"
+    "size": 152136,
+    "sha256": "8d3970c8087da75fbc98f82f41413794434b08b5bd9c8b2928d2ee6066d44ba1"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/BundledDynamicDial.java",
@@ -1336,13 +1351,18 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DiagnosticFiles.java",
-    "size": 2026,
-    "sha256": "031674c1296a856e220b3ee573dd5e0f476a069ea1450d66eae25f9670e091a8"
+    "size": 2753,
+    "sha256": "bd91085632ca6c1e87f00c9815f157a72fd0b086e6c81eb472e5086cd0218f5f"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DiagnosticLog.java",
-    "size": 5488,
-    "sha256": "d3c00579a31cdd1849a754e5ff6b5bf487b3bee2e27c3939018ca70afa35fbbd"
+    "size": 6166,
+    "sha256": "ece4ea37e2f9ece6c37dbb76b8f1d1f6b3d2914ba052713bc274a19443a37d00"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/DiagnosticRetention.java",
+    "size": 4262,
+    "sha256": "35a1d906ff29aff3f989a732c5fca502d8c446f9854e3ac2876dd9fafedbf6d1"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/DialCanvasTransform.java",
@@ -1436,8 +1456,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExerciseIllustrationView.java",
-    "size": 5240,
-    "sha256": "affe6ee5597cc4e66755a52284efdb70749502fcbf5daaee377153cbdad33219"
+    "size": 5897,
+    "sha256": "892a0ffa961c45eae963cf51d1129d09858d8ba42d906f4ac907a8c52f4b4c43"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExpansionModels.java",
@@ -1446,13 +1466,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExpansionStore.java",
-    "size": 52048,
-    "sha256": "95e7e1b86107e4c75bf44742b80ab6f0a21535c008eb5e7e7822708687ac2e79"
+    "size": 53877,
+    "sha256": "7e6c9e2e093f16f8c6579b7eb3b6139b71f9a3b79cee811ea58aefd7ff6bda4b"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExpansionUiController.java",
-    "size": 96798,
-    "sha256": "92d82ad79d2e6969b3fc4928e8e5dbdba470e694c5136bd3a33b0f717e03f6b8"
+    "size": 105375,
+    "sha256": "7138b4f8006b5e9967d90e3d777270dafac222df94bc81ca4827770babe8b0e3"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/FoodSearchController.java",
@@ -1526,8 +1546,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/MainActivity.java",
-    "size": 202482,
-    "sha256": "a1de509b808ea5e26a7c17ae5c3dbf2eb7fe767e09464a6bad97915e49b3f6b5"
+    "size": 203409,
+    "sha256": "a14ff56744ac5e057cb669082c6469366d108e45627cb50f04cfdc2045723dfc"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/McfProtocolProbe.java",
@@ -1538,6 +1558,11 @@
     "path": "android/app/src/main/java/app/gtdial/lab/MetNoWeatherProvider.java",
     "size": 14021,
     "sha256": "2a7661b0fde99167bb5c7fa0180ea7194ac3cc2408c0863e3584fb0d5b637e37"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/MuscleGroupIllustrationView.java",
+    "size": 2832,
+    "sha256": "f727a01efca52546d03d631a0bec1164776585d7279290a149938b49c1f7b580"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/NotificationForwardingPolicy.java",
@@ -1631,8 +1656,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/OperationJournal.java",
-    "size": 10964,
-    "sha256": "b65dd0a04a73a8f82e6b9e6f108c63e1dc3d4e39f04e735cc00a0b3b4592853e"
+    "size": 16219,
+    "sha256": "24e389f41c95e827e11328d2398c53d882accfa9a2d5ce4de3f2e3558662a73e"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/OrdinarySyncController.java",
@@ -1671,8 +1696,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ReportExporter.java",
-    "size": 44689,
-    "sha256": "86d5820886d8566ccf37a6831706449ffd77850095c638de4994dd913514ad87"
+    "size": 52235,
+    "sha256": "9a10ba43616851e51fcc3b0059bb63ec3afeb2a5c7ed60a33c10c610e88cc625"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/SessionRecoveryPolicy.java",
@@ -1681,13 +1706,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthCatalog.java",
-    "size": 5715,
-    "sha256": "4c186927a0104e65a9cb93ffda934a0da8079a261da2a11df0c244a78373a9af"
+    "size": 10085,
+    "sha256": "2501880b734f6ed6c02d4b930c2c884c10fbba94b8ed79e4e604ec7c31de2181"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthDiary.java",
-    "size": 13331,
-    "sha256": "32bfe4fbf3b11d96f132211f230cf5b8fb0465b818ab7452a81333388f11504a"
+    "size": 22573,
+    "sha256": "18e34d82e46280edaf3efc8b17b5f1af3f3659c98163206d2dd1a75dd1b5c3cb"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthProgress.java",
@@ -1696,8 +1721,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthUiController.java",
-    "size": 27901,
-    "sha256": "36f46573ba82ad8c171d57a606e02878d520679f3973ee1f4ba3f6c5352ce39c"
+    "size": 37463,
+    "sha256": "eca0d7161137e56fb3cbfc566a26aca74bb173b46663f168fbaee7577a3e2dd2"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/TsdbReadProtocol.java",
@@ -1721,8 +1746,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/UiText.java",
-    "size": 53694,
-    "sha256": "48f0108c62cdde0751ed2153f0961ab396ecd18171609efbd6f474e8be2e7bf6"
+    "size": 60776,
+    "sha256": "a3bc8f5847dec23debcb273bfef9b0ed87520d211ccfc08e16f048bc86a53f23"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WatchBackup.java",
@@ -1736,8 +1761,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WatchSessionService.java",
-    "size": 26955,
-    "sha256": "a53b9384f73f75587ad91bb01e64eab054f57a19e510692df1e60021b8fecc90"
+    "size": 27254,
+    "sha256": "c7e8c17a5df435302d72926d6d0638c5ba455c06feedfa129297be1d7f690713"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherCodeMapper.java",
@@ -1790,9 +1815,19 @@
     "sha256": "8d7d9570e9af71560d8e2b079e6af04044e4ea101dbea42155ab6b704472f2b5"
   },
   {
+    "path": "android/app/src/main/java/app/gtdial/lab/WorkoutIdleReceiver.java",
+    "size": 862,
+    "sha256": "2ce51bafb0c035a4c7d8e3afbfd42bb7042af74291296e1e6ae60629aa3f0680"
+  },
+  {
+    "path": "android/app/src/main/java/app/gtdial/lab/WorkoutInactivityController.java",
+    "size": 3914,
+    "sha256": "a4ec9880d61c415a91e97d731de3405778df97d5eacbdb262f97c7650c36a3b1"
+  },
+  {
     "path": "android/app/src/main/java/app/gtdial/lab/WorkoutRecorder.java",
-    "size": 24625,
-    "sha256": "3635c71d08ed0ed9fbfb6df4f32d058e336af20045bec9dbdab136c759864c5f"
+    "size": 37076,
+    "sha256": "4fb222c7ab95fbd5c19d2cf70afaf846e793c9df8526431988cbf5e343a99f94"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WorkoutTypeDictionary.java",
@@ -2045,9 +2080,14 @@
     "sha256": "e145db3b1728b451b584e4f5b7975ab1265a8c437a5d75b2feed661a08d5a854"
   },
   {
+    "path": "releases/Chasovoy-1.0.2-release.apk",
+    "size": 34488982,
+    "sha256": "a8de381b3d5e64ddcc84c56151f06f470fd9cae41a6ea70ad96d0a0115b064d4"
+  },
+  {
     "path": "releases/SHA256SUMS.txt",
-    "size": 186,
-    "sha256": "c83763d29a20ec14a3bf66be6bdffd7fa9547a56b2aa8eeceda61ebc5ebcda71"
+    "size": 279,
+    "sha256": "1d5307b4ddeb4d0033f20d44152f098a1606baf8f2c9ec4c8835de877099c247"
   },
   {
     "path": "source-assets/work/dial3000-animation/cadence-20261010/main.js",

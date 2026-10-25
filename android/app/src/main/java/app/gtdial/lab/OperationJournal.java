@@ -24,6 +24,9 @@ final class OperationJournal {
     private static final long MAX_FILE=2L*1024*1024;
     private final Handler writer;
     private final File file;
+    private final android.content.SharedPreferences retentionPrefs;
+    private long fileStartedAt;
+    private JSONObject connectionSummary=new JSONObject();
     private final ArrayDeque<JSONObject> tail=new ArrayDeque<>();
     private long seq,dropped;
     private final String sessionId=UUID.randomUUID().toString();
@@ -33,8 +36,21 @@ final class OperationJournal {
     private OperationJournal(Context context) {
         File directory=new File(context.getFilesDir(),"logs");boolean available=directory.isDirectory()||directory.mkdirs();
         file=available?new File(directory,"operations-v1.jsonl"):null;
+        retentionPrefs=context.getSharedPreferences("diagnostic_retention",Context.MODE_PRIVATE);fileStartedAt=retentionPrefs.getLong("operationFileStartedAt",file!=null&&file.exists()?file.lastModified():System.currentTimeMillis());retentionPrefs.edit().putLong("operationFileStartedAt",fileStartedAt).apply();
         HandlerThread thread=new HandlerThread("chasovoy-operations");thread.start();writer=new Handler(thread.getLooper());
     }
+    private String episodeId="",attemptId="";
+    private long episodeStartedElapsed=-1,attemptStartedElapsed=-1,lastReadyElapsed=-1;
+    private boolean episodeOpen,attemptFailed;
+    synchronized JSONObject connectionSummary(){JSONObject out=ExpansionModels.copy(connectionSummary);if(episodeOpen)ExpansionModels.put(out,"unavailableMillis",Math.max(0,SystemClock.elapsedRealtime()-episodeStartedElapsed));return out;}
+    /** Connection metadata only; these hooks never schedule work or alter transport state. */
+    private void openConnectionEpisode(String cause){if(episodeOpen)return;episodeOpen=true;episodeId=UUID.randomUUID().toString();episodeStartedElapsed=SystemClock.elapsedRealtime();connectionSummary=new JSONObject();ExpansionModels.put(connectionSummary,"episodeId",episodeId);ExpansionModels.put(connectionSummary,"startedAt",System.currentTimeMillis());ExpansionModels.put(connectionSummary,"state","UNAVAILABLE");ExpansionModels.put(connectionSummary,"cause",token(cause,48));ExpansionModels.put(connectionSummary,"processLocal",true);ExpansionModels.put(connectionSummary,"attemptCount",0);ExpansionModels.put(connectionSummary,"setupFailureCount",0);}
+    synchronized void connectionUnavailable(){openConnectionEpisode("TRANSPORT_RECOVERY");}
+    synchronized void connectionAttempt(){openConnectionEpisode("CONNECT");attemptId=UUID.randomUUID().toString();attemptStartedElapsed=SystemClock.elapsedRealtime();attemptFailed=false;ExpansionModels.put(connectionSummary,"attemptCount",connectionSummary.optLong("attemptCount")+1);event(attemptId,episodeId,"ble_episode","connect","REQUESTED","PENDING","","","",0,0,0,"phase","connect");}
+    synchronized void connectionFailure(String phase,int status,boolean wasReady){openConnectionEpisode(wasReady?"READY_CONNECTION_LOST":"SETUP_FAILED");if(!wasReady&&attemptFailed)return;attemptFailed=true;ExpansionModels.put(connectionSummary,"lastFailurePhase",token(phase,48));ExpansionModels.put(connectionSummary,"lastStatus",status);ExpansionModels.put(connectionSummary,"lastFailureAt",System.currentTimeMillis());if(!wasReady)ExpansionModels.put(connectionSummary,"setupFailureCount",connectionSummary.optLong("setupFailureCount")+1);if(wasReady&&lastReadyElapsed>=0)ExpansionModels.put(connectionSummary,"previousReadyMillis",Math.max(0,SystemClock.elapsedRealtime()-lastReadyElapsed));event(attemptId,episodeId,"ble_episode",wasReady?"ready_loss":"setup_failure","FAILED","FAILED","GATT_"+status,"","",1,0,attemptStartedElapsed<0?0:SystemClock.elapsedRealtime()-attemptStartedElapsed,"phase",phase);}
+    synchronized void connectionReady(){if(!episodeOpen){if(lastReadyElapsed<0)lastReadyElapsed=SystemClock.elapsedRealtime();return;}long now=SystemClock.elapsedRealtime();ExpansionModels.put(connectionSummary,"state","RECOVERED");ExpansionModels.put(connectionSummary,"readyAt",System.currentTimeMillis());ExpansionModels.put(connectionSummary,"unavailableMillis",Math.max(0,now-episodeStartedElapsed));ExpansionModels.put(connectionSummary,"attemptToReadyMillis",attemptStartedElapsed<0?0:Math.max(0,now-attemptStartedElapsed));event(attemptId,episodeId,"ble_episode","ready","COMPLETE","SUCCESS","","","",connectionSummary.optLong("attemptCount"),0,now-episodeStartedElapsed,"phase","ready");episodeOpen=false;lastReadyElapsed=now;}
+    synchronized void connectionStopped(){if(!episodeOpen)return;ExpansionModels.put(connectionSummary,"state","USER_STOPPED");ExpansionModels.put(connectionSummary,"unavailableMillis",Math.max(0,SystemClock.elapsedRealtime()-episodeStartedElapsed));event(attemptId,episodeId,"ble_episode","stop","COMPLETE","CANCELLED","USER_STOPPED","","",0,0,SystemClock.elapsedRealtime()-episodeStartedElapsed,"phase","user");episodeOpen=false;}
+    void maintainRetention(java.util.function.Consumer<Boolean> finished){writer.post(()->{boolean success=true;try{if(file!=null&&file.exists()&&System.currentTimeMillis()-fileStartedAt>=DiagnosticRetention.WEEK&&!DiagnosticRetention.leased())rotate();}catch(Exception e){diskFailed=true;success=false;}finally{finished.accept(success);}});}
     String begin(String component,String action,String profile,String device) {
         String id=UUID.randomUUID().toString();event(id,"",component,action,"REQUESTED","PENDING","",profile,device,0,0,0,"","");return id;
     }
@@ -84,6 +100,9 @@ final class OperationJournal {
         if(error[0]!=null)throw error[0];return removed[0];
     }
     File export() throws Exception {
+        try(DiagnosticRetention.Lease lease=DiagnosticRetention.exportLease()){return exportLeased();}
+    }
+    private File exportLeased() throws Exception {
         if(LooperCheck.main())throw new IllegalStateException("JOURNAL_EXPORT_ON_UI");
         CountDownLatch drained=new CountDownLatch(1);File[] output=new File[1];Exception[] error=new Exception[1];
         // Snapshot on the same writer prevents a rotation or append between flush and copy.
@@ -106,17 +125,20 @@ final class OperationJournal {
             if(file==null)return;
             long omitted; synchronized(this){omitted=dropped;}
             byte[] line=(o.toString()+"\n").getBytes(StandardCharsets.UTF_8);
-            if(file.length()+line.length>MAX_FILE){mark("FILE_ROTATED",omitted);rotate();}
+            if(file.length()+line.length>MAX_FILE||System.currentTimeMillis()-fileStartedAt>=DiagnosticRetention.WEEK){if(DiagnosticRetention.leased()){synchronized(this){dropped++;}return;}mark("FILE_ROTATED",omitted);if(!rotate()){synchronized(this){dropped++;}return;}}
             try(FileOutputStream out=new FileOutputStream(file,true)){out.write(line);}
             if(omitted>0){mark("LINES_OMITTED",omitted);synchronized(this){dropped=Math.max(0,dropped-omitted);}}
         }catch(Exception e){diskFailed=true;}finally{synchronized(this){pending--;}}
     }
-    private void rotate()throws Exception {
+    private boolean rotate()throws java.io.IOException {return DiagnosticRetention.whileUnleased(this::rotateUnleased);}
+    private void rotateUnleased()throws java.io.IOException {
+        DiagnosticFiles.matching(file.getParentFile(),"operations-v1[.]jsonl([.][123])?");
         // Only the four exact app-owned journal files participate in bounded runtime retention.
         File oldest=new File(file.getParentFile(),file.getName()+".3");
         if(oldest.exists()&&!oldest.delete())throw new IllegalStateException("JOURNAL_ARCHIVE_RETENTION");
         for(int index=2;index>=1;index--){File from=new File(file.getParentFile(),file.getName()+"."+index);File to=new File(file.getParentFile(),file.getName()+"."+(index+1));if(from.exists()&&!from.renameTo(to))throw new IllegalStateException("JOURNAL_ARCHIVE_ROTATE");}
         if(!file.renameTo(new File(file.getParentFile(),file.getName()+".1")))throw new IllegalStateException("JOURNAL_ROTATE");
+        fileStartedAt=System.currentTimeMillis();retentionPrefs.edit().putLong("operationFileStartedAt",fileStartedAt).apply();
     }
     private void mark(String code,long count)throws Exception {
         JSONObject o=new JSONObject();ExpansionModels.put(o,"schemaVersion",1);ExpansionModels.put(o,"stage",code);ExpansionModels.put(o,"omitted",count);

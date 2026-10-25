@@ -77,7 +77,7 @@ final class ExpansionUiController {
     private boolean focusHealthWindow;private boolean destroyed,resumed,loading,reloadQueued,queuedScan;private String failure="",device="";
     private String pendingSport,pendingPlan;private Integer pendingGoal;private boolean pendingFinish;
     private TextView activeTimer;private int ticks;private String readFeedback="";private boolean readInProgress,deletingMeasurements;
-    private final Runnable ticker=new Runnable(){@Override public void run(){if(!resumed||destroyed)return;if(activeTimer!=null&&data.current!=null)activeTimer.setText(WorkoutRecorder.duration(recorder.activeMillis(data.current)));strengthUi.tick();if(++ticks%30==0&&data.current!=null){String id=data.current.optString("id");store.execute(()->{try{recorder.checkpoint(id);}catch(RuntimeException e){logFailure("checkpoint",e);}});}main.postDelayed(this,1000);}};
+    private final Runnable ticker=new Runnable(){@Override public void run(){if(!resumed||destroyed)return;if(activeTimer!=null&&data.current!=null)activeTimer.setText(WorkoutRecorder.duration(recorder.activeMillis(data.current)));strengthUi.tick();if(++ticks%30==0&&data.current!=null){String id=data.current.optString("id");store.execute(()->{try{recorder.checkpoint(id);}catch(RuntimeException e){logFailure("checkpoint",e);}main.post(()->refresh(false));});}main.postDelayed(this,1000);}};
     ExpansionUiController(Activity activity,AppPreferences prefs,Host host){
         this.activity=activity;this.prefs=prefs;this.host=host;store=ExpansionStore.get(activity);activityStore=new ActivityHistoryStore(activity);
         recorder=new WorkoutRecorder(activity,store);importer=new HealthEvidenceImporter(activity,store);journal=OperationJournal.get(activity);
@@ -106,7 +106,7 @@ final class ExpansionUiController {
     void resume(){resumed=true;main.removeCallbacks(ticker);main.post(ticker);refresh(false);}
     void pause(){resumed=false;main.removeCallbacks(ticker);strengthUi.pause();nutritionUi.pause();analysisUi.pause();if(data.current!=null){String id=data.current.optString("id");store.execute(()->{try{recorder.checkpoint(id);}catch(RuntimeException e){logFailure("checkpoint",e);}});}}
     void destroy(){destroyed=true;pause();strengthUi.destroy();nutritionUi.destroy();analysisUi.destroy();store.execute(activityStore::close);}
-    void intent(Intent intent){if(intent==null)return;if(intent.getBooleanExtra("phoneWorkout",false)||intent.getBooleanExtra("phoneWorkoutFinish",false)){pendingFinish=intent.getBooleanExtra("phoneWorkoutFinish",false);stack(5).clear();stack(5).add(new Route("active",""));intent.removeExtra("phoneWorkout");intent.removeExtra("phoneWorkoutFinish");host.tab(5);refresh(false);}}
+    void intent(Intent intent){if(intent==null)return;if(intent.hasExtra("strengthWorkoutId")){String id=intent.getStringExtra("strengthWorkoutId");intent.removeExtra("strengthWorkoutId");store.submit(()->store.find("workouts",id),(record,error)->{if(destroyed||record==null||!error.isEmpty())return;stack(5).clear();go(5,WorkoutRecorder.isActive(record)?"active":"workout",WorkoutRecorder.isActive(record)?"":id);host.tab(5);refresh(false);});}if(intent.getBooleanExtra("phoneWorkout",false)||intent.getBooleanExtra("phoneWorkoutFinish",false)){pendingFinish=intent.getBooleanExtra("phoneWorkoutFinish",false);stack(5).clear();stack(5).add(new Route("active",""));intent.removeExtra("phoneWorkout");intent.removeExtra("phoneWorkoutFinish");host.tab(5);refresh(false);}}
     boolean back(int tab){ArrayDeque<Route> s=stack(tab);Route route=s.peekLast();if(route!=null&&Arrays.asList("nutrition","nutrition_editor","food_search").contains(route.screen))nutritionUi.leave();if(route!=null&&Arrays.asList("analysis","analysis_history","openrouter").contains(route.screen))analysisUi.pause();if(tab==5&&route!=null&&"active".equals(route.screen)&&data.current!=null&&"strength".equals(data.current.optString("typeId"))&&strengthUi.back())return true;if(s.isEmpty())return false;s.removeLast();host.redraw();return true;}
     void refresh(boolean scan){
         if(destroyed)return;if(loading){reloadQueued=true;queuedScan|=scan;return;}loading=true;final int generation=++loadGeneration;
@@ -116,7 +116,7 @@ final class ExpansionUiController {
         store.submit(()->{if(scan)importer.scan();Data next=new Data();Set<String> sources=new java.util.LinkedHashSet<>(store.devices());sources.addAll(activityStore.devices());next.devices=new ArrayList<>(sources);next.suppressed=store.healthImportSuppressed();String exact=source;if(exact.isEmpty()&&next.devices.size()==1)exact=next.devices.get(0);next.selectedDevice=exact;
             if(!exact.isEmpty()){ArrayList<ActivityHistoryEntry> daily=new ArrayList<>();for(String day:activityStore.observedDays(exact)){ActivityHistoryEntry r=activityStore.latestByDay(exact,day);if(r!=null)daily.add(r);}next.days=daily;next.points=activityStore.observationsForDay(exact,selected.toString());next.todayPoints=selected.equals(LocalDate.now())?next.points:activityStore.observationsForDay(exact,LocalDate.now().toString());if(!daily.isEmpty())next.latestPoints=activityStore.observationsForDay(exact,daily.get(0).phoneDay);
                 for(String dataset:new String[]{"heart","sleep","spo2","sports","sports_graph","sports_spo2","sports_pace","sports_section_run","sports_section_swim"}){List<ExpansionModels.HealthRecord> range=store.health(exact,dataset,selectedFrom,selectedTo);Set<String> ids=new HashSet<>();for(ExpansionModels.HealthRecord record:range)ids.add(record.id);for(ExpansionModels.HealthRecord record:store.health(exact,dataset,0,253402300799L,256,0))if(ids.add(record.id))range.add(record);range.sort(java.util.Comparator.comparingLong(r->r.tsSeconds));next.health.put(dataset,range);}next.watchAlarms=AlarmProtocol.savedSnapshot(activity,exact);}
-            next.workouts=store.list("workouts");next.manual=store.list("manual_entries");next.alarms=store.list("alarm_drafts");next.alarmTransfers=store.alarmTransferStates();next.current=recorder.current();
+            next.current=recorder.current();next.workouts=store.list("workouts");next.manual=store.list("manual_entries");next.alarms=store.list("alarm_drafts");next.alarmTransfers=store.alarmTransferStates();
             Set<String> workoutIds=new HashSet<>();if(next.current!=null)workoutIds.add(next.current.optString("id"));if(!detailWorkout.isEmpty())workoutIds.add(detailWorkout);
             for(String workoutId:workoutIds){List<JSONObject> entries=strengthDiary.entries(workoutId);next.strengthEntries.put(workoutId,entries);for(JSONObject entry:entries)next.strengthSets.put(entry.optString("id"),strengthDiary.sets(entry.optString("id")));next.workoutObservations.put(workoutId,store.diaryRows("workout_observations",workoutId));}
             if(loadStrengthMonth)next.strengthMonth=new StrengthProgress(store).month(java.time.YearMonth.from(selected).toString(),ZoneId.systemDefault().getId());
@@ -433,6 +433,11 @@ final class ExpansionUiController {
         Button pause=button(running?tx("Пауза"):tx("Продолжить"),()->strengthUi.flush(()->run(running?"pause":"resume",()->running?recorder.pause(id):recorder.resume(id),result->{if(result.optBoolean("gpsRequested")){if(running)stopGps();else gps(result,PhoneWorkoutService.START);}refresh(false);})));controls.addView(pause,ui.weighted(1));
         Button stop=button(tx("Завершить"),()->finishDialog(r));stop.setTextColor(ui.accentInk);LinearLayout.LayoutParams stopParams=ui.weighted(1);stopParams.setMargins(ui.dp(8),0,0,0);controls.addView(stop,stopParams);p.addView(controls,ui.fillWrap(4,16));
         if(running&&!"strength".equals(r.optString("typeId")))quiet(p,tx("Отметить круг"),()->run("lap",()->recorder.lap(id),result->refresh(false)));
+        if("strength".equals(r.optString("typeId"))){
+            String idle=r.optString("inactivityState");
+            if("REMINDER".equals(idle)){LinearLayout reminder=card(p);note(reminder,tx("Давно нет новых записей. Через час без действий тренировка завершится временем последней записи."));primary(reminder,tx("Я ещё тренируюсь"),()->strengthUi.flush(()->run("workout_keep_active",()->recorder.keepActive(id),ignored->refresh(false))));}
+            if("TIME_UNCERTAIN".equals(idle))note(p,tx("Время последнего действия неизвестно. Продолжите запись или завершите тренировку вручную."));
+        }
         if("strength".equals(r.optString("typeId")))strengthUi.build(p,ui,r,data.strengthEntries.getOrDefault(id,Collections.emptyList()),data.strengthSets);
     }
     private String workoutState(JSONObject workout){return "RUNNING".equals(workout.optString("status"))?tx("Запись телефоном"):"PAUSED".equals(workout.optString("status"))?tx("На паузе"):"SAVED".equals(workout.optString("status"))?tx("Сохранено на телефоне"):tx("Запись прервана");}
@@ -459,6 +464,10 @@ final class ExpansionUiController {
         heading(p,tx(WorkoutCatalog.name(r)));note(p,shortTime(r.optLong("startedAt"))+tx(" · запись телефоном"));
         TextView duration=ui.label(WorkoutRecorder.duration(r.optLong("elapsedActiveMillis")),36,ui.text);duration.setTypeface(Typeface.DEFAULT,Typeface.BOLD);p.addView(duration,ui.fillWrap(14,4));note(p,tx("Время занятия"));
         if(r.optLong("accumulatedPauseMillis")>0)note(p,tx("На паузе: ")+WorkoutRecorder.duration(r.optLong("accumulatedPauseMillis")));
+        if(r.optString("finishReason").contains("INACTIVITY"))note(p,tx("Завершено автоматически после часа без записей. Время окончания — последнее действие в дневнике."));
+        if(r.optLong("endedAt")>0)note(p,tx("Окончание: ")+shortTime(r.optLong("endedAt")));
+        if("USER_ESTIMATE".equals(r.optString("durationQuality")))note(p,tx("Активное время уточнено вручную."));
+        if(ExpansionModels.PHONE.equals(r.optString("source"))&&"SAVED".equals(r.optString("status")))quiet(p,tx("Исправить время завершения"),()->correctFinishDialog(r));
         workoutMetrics(p,r);
         if("strength".equals(r.optString("typeId")))strengthUi.history(p,ui,data.strengthEntries.getOrDefault(id,Collections.emptyList()),data.strengthSets);
         workoutHeartChart(p,r,data.workoutObservations.getOrDefault(id,Collections.emptyList()));
@@ -482,7 +491,7 @@ final class ExpansionUiController {
     }
     private void workoutHeartChart(LinearLayout p,JSONObject workout,List<JSONObject> observations){
         List<HealthChartView.Point> points=new ArrayList<>();String lastSegment="";
-        for(JSONObject row:observations){if(!"HEART".equals(row.optString("kind"))||!"VALID".equals(row.optString("quality")))continue;long at=row.optLong("measuredAt");double value=row.optDouble("value",Double.NaN);if(at<=0||!Double.isFinite(value))continue;String segment=row.optString("segmentId");points.add(new HealthChartView.Point(at,at,value,clockTime(at)+" · "+format(value)+tx(" уд/мин"),0,!lastSegment.isEmpty()&&!lastSegment.equals(segment)));lastSegment=segment;}
+        for(JSONObject row:observations){if(!"HEART".equals(row.optString("kind"))||!"VALID".equals(row.optString("quality")))continue;long at=row.optLong("measuredAt");double value=row.optDouble("value",Double.NaN);if(at<=0||!Double.isFinite(value)||at<workout.optLong("startedAt")||at>workout.optLong("effectiveMetricsEndAt",Long.MAX_VALUE))continue;String segment=row.optString("segmentId");points.add(new HealthChartView.Point(at,at,value,clockTime(at)+" · "+format(value)+tx(" уд/мин"),0,!lastSegment.isEmpty()&&!lastSegment.equals(segment)));lastSegment=segment;}
         points.sort(java.util.Comparator.comparingLong(point->point.time));if(points.isEmpty())return;
         LinearLayout panel=card(p);panel.addView(ui.section(tx("Пульс во время занятия")));
         HealthChartView chart=new HealthChartView(activity,ui,HealthChartView.Style.POINTS,workout.optLong("startedAt"),Math.max(workout.optLong("endedAt"),points.get(points.size()-1).time+1),tx("уд/мин"),points);panel.addView(chart,new LinearLayout.LayoutParams(-1,ui.dp(210)));note(panel,tx("Каждая точка — сохранённое измерение. Между точками данные не восстанавливаются."));
@@ -525,8 +534,35 @@ final class ExpansionUiController {
             prefs.profileName(n);prefs.stepsGoal(stepGoal);prefs.sleepGoalMinutes(sleepGoal);prefs.sleepSchedule(bedtime);prefs.distanceUnit(miles.isChecked()?"mi":"km");event("profile_save");android.widget.Toast.makeText(activity,tr("Профиль сохранён","Profile saved"),android.widget.Toast.LENGTH_SHORT).show();
         });
     }
+    private void exportDiary(){
+        LinearLayout form=column();note(form,tx("В файл JSON попадёт вся история тренировок, подходы, ходьба и каталог своих упражнений. Точные маршруты не включаются."));
+        CheckBox notes=check(form,tx("Включить заметки тренировок, упражнений и подходов"),false);
+        ui.dialogBuilder().setTitle(tx("Экспорт дневника")).setView(ui.scrollForm(form)).setNegativeButton(tx("Отмена"),null).setPositiveButton(tx("Создать файл"),(dialog,which)->{boolean includeNotes=notes.isChecked();strengthUi.flush(()->run("full_diary_export",()->new ReportExporter(activity,store,activityStore).fullDiary(includeNotes),file->host.share(file,"application/json")));}).show();
+    }
+    private void correctFinishDialog(JSONObject record){
+        LinearLayout form=column();ZoneId zone=ZoneId.systemDefault();long[] end={record.optLong("endedAt",System.currentTimeMillis())};
+        note(form,tx("Подходы и заметки сохранятся. Окончание не может быть раньше записанного подхода или завершённой ходьбы."));
+        Button[] dateButton={null},timeButton={null};
+        Runnable labels=()->{java.time.ZonedDateTime value=Instant.ofEpochMilli(end[0]).atZone(zone);dateButton[0].setText(tx("Дата: ")+value.toLocalDate());timeButton[0].setText(tx("Время: ")+value.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm")));};
+        dateButton[0]=action(form,tx("Дата"),()->{java.time.ZonedDateTime value=Instant.ofEpochMilli(end[0]).atZone(zone);new DatePickerDialog(activity,(picker,y,m,d)->{end[0]=LocalDate.of(y,m+1,d).atTime(Instant.ofEpochMilli(end[0]).atZone(zone).toLocalTime()).atZone(zone).toInstant().toEpochMilli();labels.run();},value.getYear(),value.getMonthValue()-1,value.getDayOfMonth()).show();});
+        timeButton[0]=action(form,tx("Время"),()->{java.time.ZonedDateTime value=Instant.ofEpochMilli(end[0]).atZone(zone);new android.app.TimePickerDialog(activity,(picker,h,m)->{end[0]=Instant.ofEpochMilli(end[0]).atZone(zone).toLocalDate().atTime(h,m).atZone(zone).toInstant().toEpochMilli();labels.run();},value.getHour(),value.getMinute(),true).show();});labels.run();
+        CheckBox manual=check(form,tx("Указать активное время вручную"),!record.optBoolean("timerTimelineComplete"));
+        note(form,tx("Для старых занятий без точной истории пауз укажите активное время. Оно будет отмечено как введённое вручную."));
+        LinearLayout duration=new LinearLayout(activity);duration.setBaselineAligned(false);long seconds=record.optLong("elapsedActiveMillis")/1000;
+        EditText[] fields=new EditText[3];String[] names={"Часы","Минуты","Секунды"};long[] values={seconds/3600,seconds/60%60,seconds%60};
+        for(int i=0;i<3;i++){LinearLayout cell=column();cell.setPadding(ui.dp(3),0,ui.dp(3),0);fields[i]=field(cell,tx(names[i]),"0",Long.toString(values[i]));fields[i].setInputType(InputType.TYPE_CLASS_NUMBER);duration.addView(cell,ui.weighted(1));}
+        form.addView(duration,ui.fillWrap(4,8));duration.setVisibility(manual.isChecked()?View.VISIBLE:View.GONE);manual.setOnCheckedChangeListener((v,checked)->duration.setVisibility(checked?View.VISIBLE:View.GONE));
+        TextView failure=ui.label("",14,ui.accent);form.addView(failure);AlertDialog dialog=ui.dialogBuilder().setTitle(tx("Время завершения")).setView(ui.scrollForm(form)).setNegativeButton(tx("Отмена"),null).setPositiveButton(tx("Сохранить"),null).create();
+        dialog.setOnShowListener(ignored->dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view->{
+            Long active=null;try{if(manual.isChecked()){long h=Long.parseLong(fields[0].getText().toString()),m=Long.parseLong(fields[1].getText().toString()),sec=Long.parseLong(fields[2].getText().toString());if(h<0||h>100000||m<0||m>59||sec<0||sec>59)throw new IllegalArgumentException();active=Math.addExact(Math.multiplyExact(h,3600000L),m*60000L+sec*1000L);}}catch(RuntimeException e){failure.setText(tx("Проверьте часы, минуты и секунды."));return;}
+            if(end[0]<record.optLong("startedAt")||end[0]>System.currentTimeMillis()){failure.setText(tx("Выберите окончание между началом тренировки и текущим временем."));return;}
+            Long explicit=active;dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);store.submit(()->recorder.correctFinish(record.optString("id"),end[0],explicit,record.optLong("timeRevision")),(saved,error)->{if(destroyed)return;dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);if(!error.isEmpty()){failure.setText(tx("Не удалось изменить время. Проверьте, что оно не раньше последнего подхода или ходьбы; для старой записи укажите активное время вручную."));return;}analysisUi.invalidate();dialog.dismiss();refresh(false);});
+        }));dialog.show();ui.dialog(dialog);
+    }
     private void privacy(LinearLayout p){
         heading(p,tx("Данные и приватность"));note(p,tx("Показатели хранятся на телефоне. Экспорт создаёт файл, которым вы можете поделиться."));
+        primary(p,tx("Экспортировать дневник тренировок"),this::exportDiary);
+        note(p,tx("Все тренировки, подходы и свои упражнения. Заметки включаются по вашему выбору."));
         primary(p,tx("Экспортировать показатели"),()->run("measurements_export",()->new ReportExporter(activity,store,activityStore).measurements(),file->host.share(file,"application/json")));
         Button remove=action(p,deletingMeasurements?tx("Удаление…"):tx("Удалить все показатели"),()->{
             if(measurementsBusy())return;
@@ -573,7 +609,8 @@ final class ExpansionUiController {
             throw new IllegalArgumentException("ALARM_ACTION_UI");
         },plan->confirm(tx("Передать изменение на часы?"),plan.preview(),()->host.writeAlarm(plan)));
     }
-    private void journal(LinearLayout p){heading(p,tx("Диагностика"));primary(p,tx("Экспортировать диагностику"),host::exportDiagnostics);}
+    private String connectionEpisodeLabel(String state){return tx(switch(state){case "RECOVERED"->"Связь восстановлена";case "USER_STOPPED"->"Остановлено пользователем";default->"Часы недоступны";});}
+    private void journal(LinearLayout p){heading(p,tx("Диагностика"));JSONObject episode=journal.connectionSummary();if(!episode.optString("episodeId").isEmpty()){note(p,tx("Последний эпизод связи: ")+connectionEpisodeLabel(episode.optString("state")));note(p,tx("Длительность: ")+WorkoutRecorder.duration(episode.optLong("unavailableMillis"))+tx(" · попыток: ")+episode.optInt("attemptCount")+tx(" · отказов: ")+episode.optInt("setupFailureCount"));}note(p,tx("Старые диагностические файлы очищаются автоматически раз в неделю. Сохраняются последние 7 дней в пределах лимита хранения."));primary(p,tx("Экспортировать диагностику"),host::exportDiagnostics);}
     void documentResult(int request,Intent result){documentResult(request,Activity.RESULT_OK,result);}
     void documentResult(int request,int result,Intent intent){if(request==ANALYSIS_EXPORT)analysisUi.documentResult(request,result,intent);else nutritionUi.documentResult(request,result,intent);}
     void activityFinished(boolean explicit,boolean ok){if(explicit){readFeedback=ok?tx("Активность обновлена."):tx("Не удалось обновить. Сохранённые данные доступны.");readInProgress=false;}refresh(false);}

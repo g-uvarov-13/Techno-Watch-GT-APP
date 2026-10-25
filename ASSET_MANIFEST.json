@@ -1103,5 +1103,20 @@
     "path": "exercise_illustrations/atlas-3.png",
     "size": 1564605,
     "sha256": "9981c74ed6dfe73cd5e61d6408307ee5da70c4dd21c7673787ce2c765680b1d4"
+  },
+  {
+    "path": "exercise_illustrations/atlas-4.png",
+    "size": 2013025,
+    "sha256": "de753395f78cf93cca1d3ae150af3dfc57106d4383f7170bcc6832f4e591b861"
+  },
+  {
+    "path": "exercise_illustrations/atlas-5.png",
+    "size": 1834688,
+    "sha256": "83b9ec019770d496c387a7b3d3d69c5a29e891d66eb1fd798e085c4dfbc56599"
+  },
+  {
+    "path": "exercise_illustrations/muscle-groups-v1.png",
+    "size": 1825031,
+    "sha256": "306fd78243df6662dc1fe3dce45039eff93ce8fbf67d6445b5c77fc863f14b86"
   }
 ]

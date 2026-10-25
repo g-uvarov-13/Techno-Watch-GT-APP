@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.SystemClock;
 import android.provider.Settings;
 import org.json.JSONObject;
+import org.json.JSONArray;
 import java.util.List;
 
 /** Persistent monotonic timer; an unknown reboot interval is never counted as exercise. */
@@ -15,9 +16,10 @@ final class WorkoutRecorder {
     private final OperationJournal journal;
     WorkoutRecorder(Context context,ExpansionStore store){this.context=context.getApplicationContext();this.store=store;journal=OperationJournal.get(context);}
     JSONObject current() {
-        for(JSONObject record:store.list("workouts"))if(isActive(record)){
+        for(JSONObject original:store.list("workouts"))if(isActive(original)){
+            final JSONObject record=original;
             boolean metricRecovery=!PROCESS_ID.equals(record.optString("metricProcessId"))||!boot().equals(record.optString("bootIdentity"));
-            if(metricRecovery)store.transaction(()->{closeSegment(record,"PROCESS_OR_BOOT_GAP",false);resetBaseline(record);if(!boot().equals(record.optString("bootIdentity")))StrengthDiary.interruptRest(record);ExpansionModels.put(record,"metricProcessId",PROCESS_ID);ExpansionModels.put(record,"metricState","PARTIAL_PROCESS_GAP");save(record);});
+            if(metricRecovery)store.transaction(()->{closeSegment(record,"PROCESS_OR_BOOT_GAP",false);resetBaseline(record);new StrengthDiary(context,store).closeWalks(record.optString("id"),"PROCESS_OR_BOOT_GAP");ExpansionModels.put(record,"activeTimedWalk",false);if(!boot().equals(record.optString("bootIdentity")))StrengthDiary.interruptRest(record);ExpansionModels.put(record,"metricProcessId",PROCESS_ID);ExpansionModels.put(record,"metricState","PARTIAL_PROCESS_GAP");save(record);});
             boolean sameProcess=PROCESS_ID.equals(record.optString("gpsProcessId"));
             if(record.optBoolean("gpsRequested")&&(!sameProcess||!PhoneWorkoutService.owns(record.optString("id")))&&!(sameProcess&&"WAITING_PERMISSION_OR_PROVIDER".equals(record.optString("gpsState")))&&!(record.optString("gpsState").startsWith("PARTIAL_")||"NOT_REQUESTED".equals(record.optString("gpsState")))){ExpansionModels.put(record,"gpsState","PARTIAL_PROCESS_GAP");save(record);log("gps_recovery","PARTIAL","PROCESS_OR_SERVICE_GAP");}
             if(!boot().equals(record.optString("bootIdentity"))||record.optLong("elapsedRealtimeAnchor")>SystemClock.elapsedRealtime()) {
@@ -27,8 +29,10 @@ final class WorkoutRecorder {
                     save(record);log("recovery","BLOCKED","BOOT_OR_ANCHOR_CHANGED");
                 }
             }else if(metricRecovery&&"RUNNING".equals(record.optString("status")))store.transaction(()->{openSegment(record,System.currentTimeMillis(),SystemClock.elapsedRealtime());save(record);});
-            return record;
-        }return null;
+            // Reconciliation persists reminder fields; return its latest revision, never resave a stale snapshot.
+            if("AUTO_FINISHED".equals(inactivityStatus(record)))return null;
+            JSONObject latest=require(record.optString("id"));WorkoutInactivityController.schedule(context,latest);return latest;
+        }WorkoutInactivityController.cancel(context);return null;
     }
     JSONObject start(String typeId,Integer durationMinutes,boolean gps,String planId) {
         if(WorkoutCatalog.find(typeId)==null||"rest".equals(typeId))throw new IllegalArgumentException("WORKOUT_TYPE");
@@ -45,21 +49,21 @@ final class WorkoutRecorder {
         ExpansionModels.put(r,"zoneIdAtStart",java.time.ZoneId.systemDefault().getId());ExpansionModels.put(r,"localDateAtStart",ExpansionModels.date(r.optLong("startedAt"),r.optString("zoneIdAtStart")));
         ExpansionModels.put(r,"stepsObserved",null);ExpansionModels.put(r,"stepsCoverageMillis",0);ExpansionModels.put(r,"heartSampleCount",0);ExpansionModels.put(r,"heartAverage",null);ExpansionModels.put(r,"heartMax",null);ExpansionModels.put(r,"heartLast",null);ExpansionModels.put(r,"heartLastMeasuredAt",null);
         ExpansionModels.put(r,"metricState","NO_OBSERVATIONS");ExpansionModels.put(r,"metricDevice","");ExpansionModels.put(r,"metricProcessId",PROCESS_ID);ExpansionModels.put(r,"metricObservationCount",0);ExpansionModels.put(r,"restSeconds",90);StrengthDiary.clearRest(r);
-        store.transaction(()->{save(r);openSegment(r,r.optLong("startedAt"),now);save(r);});log("start","SUCCESS","");return r;
+        store.transaction(()->{ExpansionModels.put(r,"timerSpans",new JSONArray());ExpansionModels.put(r,"timerTimelineComplete",true);ExpansionModels.put(r,"durationQuality","MONOTONIC");ExpansionModels.put(r,"timeRevision",0);openTimer(r);strengthAction(r);save(r);openSegment(r,r.optLong("startedAt"),now);save(r);});WorkoutInactivityController.schedule(context,r);log("start","SUCCESS","");return r;
     }
     JSONObject pause(String id) {
-        JSONObject r=require(id);if("PAUSED".equals(r.optString("status")))return r;
+        current();JSONObject r=require(id);if("PAUSED".equals(r.optString("status")))return r;
         if(!"RUNNING".equals(r.optString("status")))throw new IllegalStateException("WORKOUT_NOT_RUNNING");ensureBoot(r);
-        checkpoint(r);store.transaction(()->{closeSegment(r,"PAUSE",true);resetBaseline(r);StrengthDiary.clearRest(r);ExpansionModels.put(r,"status","PAUSED");ExpansionModels.put(r,"pauseAnchor",SystemClock.elapsedRealtime());save(r);});log("pause","SUCCESS","");return r;
+        checkpoint(r);store.transaction(()->{closeTimer(r,System.currentTimeMillis(),SystemClock.elapsedRealtime(),true);new StrengthDiary(context,store).closeWalks(id,"PARENT_PAUSE");ExpansionModels.put(r,"activeTimedWalk",false);closeSegment(r,"PAUSE",true);resetBaseline(r);StrengthDiary.clearRest(r);ExpansionModels.put(r,"status","PAUSED");ExpansionModels.put(r,"pauseAnchor",SystemClock.elapsedRealtime());strengthAction(r);save(r);});log("pause","SUCCESS","");return r;
     }
     JSONObject resume(String id) {
-        JSONObject r=require(id);if("RUNNING".equals(r.optString("status")))return r;
+        current();JSONObject r=require(id);if("RUNNING".equals(r.optString("status")))return keepActive(id);
         boolean recovering="RECOVERY_REQUIRED".equals(r.optString("status"));
         if(!recovering&&!"PAUSED".equals(r.optString("status")))throw new IllegalStateException("WORKOUT_NOT_PAUSED");
         long now=SystemClock.elapsedRealtime();
         if(!recovering){ensureBoot(r);ExpansionModels.put(r,"accumulatedPauseMillis",r.optLong("accumulatedPauseMillis")+Math.max(0,now-r.optLong("pauseAnchor",now)));}
         else {ExpansionModels.put(r,"recoveryGapUnknown",true);ExpansionModels.put(r,"gpsState",r.optBoolean("gpsRequested")?"RECOVERY_ROUTE_GAP":"NOT_REQUESTED");}
-        store.transaction(()->{closeSegment(r,"RESUME_BOUNDARY",false);resetBaseline(r);StrengthDiary.clearRest(r);ExpansionModels.put(r,"metricProcessId",PROCESS_ID);ExpansionModels.put(r,"bootIdentity",boot());ExpansionModels.put(r,"elapsedRealtimeAnchor",now);ExpansionModels.put(r,"status","RUNNING");openSegment(r,System.currentTimeMillis(),now);save(r);});log("resume","SUCCESS",recovering?"UNKNOWN_INTERVAL_EXCLUDED":"");return r;
+        store.transaction(()->{if(recovering){closeTimer(r,System.currentTimeMillis(),now,false);new StrengthDiary(context,store).closeWalks(id,"REBOOT");ExpansionModels.put(r,"timerTimelineComplete",false);}closeSegment(r,"RESUME_BOUNDARY",false);resetBaseline(r);StrengthDiary.clearRest(r);ExpansionModels.put(r,"metricProcessId",PROCESS_ID);ExpansionModels.put(r,"bootIdentity",boot());ExpansionModels.put(r,"elapsedRealtimeAnchor",now);ExpansionModels.put(r,"status","RUNNING");openTimer(r);strengthAction(r);openSegment(r,System.currentTimeMillis(),now);save(r);});log("resume","SUCCESS",recovering?"UNKNOWN_INTERVAL_EXCLUDED":"");return r;
     }
     JSONObject lap(String id) {
         JSONObject r=require(id);ensureBoot(r);if(!"RUNNING".equals(r.optString("status")))throw new IllegalStateException("LAP_REQUIRES_RUNNING");
@@ -71,7 +75,7 @@ final class WorkoutRecorder {
         store.transaction(()->{save(r);store.child("workout_laps",id,lap,lap.optLong("activeMillis"));});log("lap","SUCCESS","");return r;
     }
     JSONObject finish(String id,String note) {
-        JSONObject r=require(id);if("SAVED".equals(r.optString("status")))return r;
+        current();JSONObject r=require(id);if("SAVED".equals(r.optString("status")))return r;
         if(!isActive(r))throw new IllegalStateException("WORKOUT_TERMINAL");
         boolean reliable=boot().equals(r.optString("bootIdentity"))&&r.optLong("elapsedRealtimeAnchor")<=SystemClock.elapsedRealtime();
         if("RUNNING".equals(r.optString("status"))&&reliable)checkpoint(r);
@@ -80,7 +84,7 @@ final class WorkoutRecorder {
         ExpansionModels.put(r,"status","SAVED");ExpansionModels.put(r,"endedAt",System.currentTimeMillis());ExpansionModels.put(r,"note",ExpansionModels.text(note,2000));
         if(r.optBoolean("gpsRequested"))ExpansionModels.put(r,"gpsState",r.optInt("gpsAccepted")>0?"PARTIAL_ROUTE":"NO_VALID_FIX");
         store.transaction(()->{
-            closeSegment(r,"FINISH",reliable&&PROCESS_ID.equals(r.optString("metricProcessId")));resetBaseline(r);StrengthDiary.clearRest(r);
+            closeTimer(r,r.optLong("endedAt"),SystemClock.elapsedRealtime(),reliable);new StrengthDiary(context,store).closeWalks(id,"PARENT_FINISH");ExpansionModels.put(r,"activeTimedWalk",false);ExpansionModels.put(r,"finishReason","USER");closeSegment(r,"FINISH",reliable&&PROCESS_ID.equals(r.optString("metricProcessId")));resetBaseline(r);StrengthDiary.clearRest(r);
             save(r);Object rawPlan=r.opt("planId");String plan=rawPlan instanceof String?(String)rawPlan:"";if(!plan.isEmpty()){
                 JSONObject p=store.find("plans",plan);if(p!=null){ExpansionModels.put(p,"status","DONE");ExpansionModels.put(p,"workoutId",id);store.save("plans",p,p.optLong("sortMillis"),"DONE");}
             }
@@ -98,6 +102,39 @@ final class WorkoutRecorder {
         if(distanceIncrement!=null){double previous=r.isNull("distanceMeters")?0:r.optDouble("distanceMeters");ExpansionModels.put(r,"distanceMeters",previous+distanceIncrement);}
         checkpoint(r);store.transaction(()->{save(r);store.child("workout_locations",id,fix,fix.optLong("elapsedRealtime"));});
         if(accepted==1||accepted%20==0)log("gps_accepted","SUCCESS","");
+    }
+    /** UI keep-going is an explicit meaningful action even when already RUNNING. */
+    JSONObject keepActive(String id){current();JSONObject[] out=new JSONObject[1];store.transaction(()->{JSONObject r=require(id);if(!isActive(r))throw new IllegalStateException("WORKOUT_TERMINAL");ensureBoot(r);strengthAction(r);save(r);out[0]=r;});return out[0];}
+    void strengthAction(JSONObject r){ExpansionModels.put(r,"activeTimedWalk",hasActiveWalk(r.optString("id")));if(!"strength".equals(r.optString("typeId"))||!isActive(r))return;long now=SystemClock.elapsedRealtime();ExpansionModels.put(r,"lastStrengthActionAt",System.currentTimeMillis());ExpansionModels.put(r,"lastStrengthActionElapsed",now);ExpansionModels.put(r,"lastStrengthActionBootIdentity",boot());ExpansionModels.put(r,"activeMillisAtLastStrengthAction",activeMillis(r));ExpansionModels.put(r,"strengthActionToken",java.util.UUID.randomUUID().toString());ExpansionModels.put(r,"reminderForAction","");ExpansionModels.put(r,"inactivityState","NONE");WorkoutInactivityController.schedule(context,r);}
+    String inactivityStatus(JSONObject snapshot){if(snapshot==null||!"strength".equals(snapshot.optString("typeId"))||!isActive(snapshot))return "NONE";String[] result={"NONE"};store.transaction(()->{
+        JSONObject r=require(snapshot.optString("id"));if(!isActive(r))return;
+        if(hasActiveWalk(r.optString("id"))){ExpansionModels.put(r,"activeTimedWalk",true);ExpansionModels.put(r,"inactivityState","WALKING");save(r);return;}ExpansionModels.put(r,"activeTimedWalk",false);
+        long elapsed=SystemClock.elapsedRealtime(),anchor=r.optLong("lastStrengthActionElapsed",-1),wall=r.optLong("lastStrengthActionAt");
+        if(anchor<0||wall<r.optLong("startedAt")||wall>System.currentTimeMillis()||!boot().equals(r.optString("lastStrengthActionBootIdentity"))||elapsed<anchor||"RECOVERY_REQUIRED".equals(r.optString("status"))){result[0]="TIME_UNCERTAIN";ExpansionModels.put(r,"inactivityState",result[0]);save(r);return;}
+        long idle=elapsed-anchor;String token=r.optString("strengthActionToken");
+        if(idle>=3600000){
+            // The committed action anchor, not delayed alarm delivery, defines the cutoff.
+            closeTimer(r,wall,anchor,true);closeSegment(r,"INACTIVITY_LAST_ACTION",false);resetBaseline(r);StrengthDiary.clearRest(r);
+            ExpansionModels.put(r,"status","SAVED");ExpansionModels.put(r,"endedAt",wall);ExpansionModels.put(r,"elapsedActiveMillis",r.optLong("activeMillisAtLastStrengthAction"));ExpansionModels.put(r,"finishReason","INACTIVITY_LAST_ACTION");ExpansionModels.put(r,"autoFinishedAt",System.currentTimeMillis());ExpansionModels.put(r,"durationQuality","LAST_ACTION_MONOTONIC");ExpansionModels.put(r,"timeRevision",r.optLong("timeRevision")+1);ExpansionModels.put(r,"inactivityState","AUTO_FINISHED");effectiveMetrics(r,wall);completePlan(r);save(r);result[0]="AUTO_FINISHED";
+            WorkoutInactivityController.cancel(context);WorkoutInactivityController.notifyStatus(context,r,result[0]);
+        }else if(idle>=3000000){result[0]="REMINDER";ExpansionModels.put(r,"inactivityState","REMINDER");if(!token.equals(r.optString("reminderForAction"))){ExpansionModels.put(r,"reminderForAction",token);save(r);WorkoutInactivityController.notifyStatus(context,r,"REMINDER");}}
+        else if(!"NONE".equals(r.optString("inactivityState","NONE"))){ExpansionModels.put(r,"inactivityState","NONE");save(r);}
+    });return result[0];}
+    private boolean hasActiveWalk(String id){for(JSONObject e:store.diaryRows("strength_entries",id))if(!e.optBoolean("removed")&&"RUNNING".equals(e.optString("timedState")))return true;return false;}
+    private void completePlan(JSONObject r){String plan=r.optString("planId","");if(plan.isEmpty()||"null".equals(plan))return;JSONObject p=store.find("plans",plan);if(p!=null){ExpansionModels.put(p,"status","DONE");ExpansionModels.put(p,"workoutId",r.optString("id"));store.save("plans",p,p.optLong("sortMillis"),"DONE");}}
+    private void openTimer(JSONObject r){JSONArray spans=r.optJSONArray("timerSpans");if(spans==null){spans=new JSONArray();ExpansionModels.put(r,"timerTimelineComplete",false);}if(spans.length()>=128){ExpansionModels.put(r,"timerTimelineComplete",false);return;}JSONObject span=new JSONObject();ExpansionModels.put(span,"startAt",System.currentTimeMillis());ExpansionModels.put(span,"startElapsed",SystemClock.elapsedRealtime());ExpansionModels.put(span,"bootIdentity",boot());ExpansionModels.put(span,"endAt",null);ExpansionModels.put(span,"endElapsed",null);spans.put(span);ExpansionModels.put(r,"timerSpans",spans);}
+    private void closeTimer(JSONObject r,long endAt,long endElapsed,boolean reliable){JSONArray spans=r.optJSONArray("timerSpans");if(spans==null||spans.length()==0){ExpansionModels.put(r,"timerTimelineComplete",false);return;}JSONObject span=spans.optJSONObject(spans.length()-1);if(span==null||!span.isNull("endAt"))return;boolean known=reliable&&boot().equals(span.optString("bootIdentity"))&&endElapsed>=span.optLong("startElapsed")&&endAt>=span.optLong("startAt");ExpansionModels.put(span,"endAt",known?endAt:span.optLong("startAt"));ExpansionModels.put(span,"endElapsed",known?endElapsed:span.optLong("startElapsed"));ExpansionModels.put(span,"activeMillis",known?endElapsed-span.optLong("startElapsed"):0);ExpansionModels.put(span,"quality",known?"MONOTONIC":"UNKNOWN_GAP");if(!known)ExpansionModels.put(r,"timerTimelineComplete",false);}
+    JSONObject correctFinish(String id,long endedAt,Long explicitActiveMillis,long expectedTimeRevision){JSONObject[] out=new JSONObject[1];store.transaction(()->{
+        JSONObject r=require(id);long start=r.optLong("startedAt");if(!"SAVED".equals(r.optString("status"))||r.optLong("timeRevision")!=expectedTimeRevision)throw new IllegalStateException("WORKOUT_TIME_REVISION_CHANGED");if(endedAt<start||endedAt>System.currentTimeMillis())throw new IllegalArgumentException("WORKOUT_END_TIME");
+        for(JSONObject e:store.diaryRows("strength_entries",id)){for(JSONObject set:store.diaryRows("strength_sets",e.optString("id")))if("DONE".equals(set.optString("state"))&&set.optLong("completedAt")>endedAt)throw new IllegalArgumentException("END_BEFORE_COMPLETED_SET");JSONArray walk=e.optJSONArray("walkSpans");if(walk!=null)for(int i=0;i<walk.length();i++)if(walk.optJSONObject(i)!=null&&walk.optJSONObject(i).optLong("endAt")>endedAt)throw new IllegalArgumentException("END_BEFORE_COMPLETED_WALK");}
+        Long derived=timerDuration(r,endedAt);long duration;if(derived!=null&&explicitActiveMillis==null){duration=derived;ExpansionModels.put(r,"durationQuality","DERIVED_TIMER_SPANS");}else{if(explicitActiveMillis==null)throw new IllegalArgumentException("EXPLICIT_ACTIVE_DURATION_REQUIRED");duration=explicitActiveMillis;ExpansionModels.put(r,"durationQuality","USER_ESTIMATE");}if(duration<0||duration>endedAt-start)throw new IllegalArgumentException("WORKOUT_ACTIVE_DURATION");
+        if(!r.has("originalEndedAt")){ExpansionModels.put(r,"originalEndedAt",r.opt("endedAt"));ExpansionModels.put(r,"originalElapsedActiveMillis",r.optLong("elapsedActiveMillis"));ExpansionModels.put(r,"originalDistanceMeters",r.opt("distanceMeters"));ExpansionModels.put(r,"originalGpsState",r.optString("gpsState"));}
+        JSONArray corrections=r.optJSONArray("timeCorrections");if(corrections==null)corrections=new JSONArray();if(corrections.length()>=128)throw new IllegalStateException("TIME_CORRECTION_LIMIT");JSONObject c=new JSONObject();ExpansionModels.put(c,"revision",expectedTimeRevision+1);ExpansionModels.put(c,"previousEndedAt",r.optLong("endedAt"));ExpansionModels.put(c,"endedAt",endedAt);ExpansionModels.put(c,"previousActiveMillis",r.optLong("elapsedActiveMillis"));ExpansionModels.put(c,"activeMillis",duration);ExpansionModels.put(c,"quality",r.optString("durationQuality"));ExpansionModels.put(c,"correctedAt",System.currentTimeMillis());corrections.put(c);ExpansionModels.put(r,"timeCorrections",corrections);ExpansionModels.put(r,"endedAt",endedAt);ExpansionModels.put(r,"elapsedActiveMillis",duration);ExpansionModels.put(r,"accumulatedPauseMillis",endedAt-start-duration);ExpansionModels.put(r,"timeRevision",expectedTimeRevision+1);ExpansionModels.put(r,"timeCorrectedAt",System.currentTimeMillis());effectiveMetrics(r,endedAt);save(r);out[0]=r;
+    });return out[0];}
+    private Long timerDuration(JSONObject r,long cutoff){JSONArray spans=r.optJSONArray("timerSpans");if(!r.optBoolean("timerTimelineComplete")||spans==null||spans.length()==0||cutoff>r.optLong("originalEndedAt",r.optLong("endedAt")))return null;long total=0;for(int i=0;i<spans.length();i++){JSONObject s=spans.optJSONObject(i);if(s==null||s.isNull("endAt")||!"MONOTONIC".equals(s.optString("quality")))return null;long from=s.optLong("startAt"),to=s.optLong("endAt"),active=s.optLong("activeMillis");if(to<from||Math.abs(to-from-active)>120000)return null;if(cutoff>=to)total+=active;else if(cutoff>from)total+=Math.min(active,cutoff-from);}return total;}
+    private void effectiveMetrics(JSONObject r,long cutoff){long steps=0,coverage=0;int count=0;double sum=0,max=0,last=0;long lastAt=0;for(JSONObject row:store.diaryRows("workout_observations",r.optString("id"))){if("ACTIVITY".equals(row.optString("kind"))&&"DELTA".equals(row.optString("state"))&&row.has("intervalStartAt")&&row.optLong("intervalStartAt")>=r.optLong("startedAt")&&row.optLong("receivedAt")<=cutoff){steps+=row.optLong("stepsDelta");coverage+=row.optLong("coverageMillis");}if("HEART".equals(row.optString("kind"))&&"ACCEPTED".equals(row.optString("state"))&&row.optLong("measuredAt")>=r.optLong("startedAt")&&row.optLong("measuredAt")<=cutoff){double v=row.optDouble("value");if(Double.isFinite(v)){count++;sum+=v;max=Math.max(max,v);if(row.optLong("measuredAt")>=lastAt){lastAt=row.optLong("measuredAt");last=v;}}}}
+        ExpansionModels.put(r,"stepsObserved",coverage>0?steps:null);ExpansionModels.put(r,"stepsCoverageMillis",coverage);ExpansionModels.put(r,"heartSampleCount",count);ExpansionModels.put(r,"heartAverage",count>0?sum/count:null);ExpansionModels.put(r,"heartMax",count>0?max:null);ExpansionModels.put(r,"heartLast",count>0?last:null);ExpansionModels.put(r,"heartLastMeasuredAt",count>0?lastAt:null);ExpansionModels.put(r,"metricState","EFFECTIVE_END_FILTERED_PARTIAL");ExpansionModels.put(r,"effectiveMetricsEndAt",cutoff);
+        if(r.optBoolean("gpsRequested")&&cutoff<r.optLong("originalEndedAt",System.currentTimeMillis())){if(!r.has("originalDistanceMeters")){ExpansionModels.put(r,"originalDistanceMeters",r.opt("distanceMeters"));ExpansionModels.put(r,"originalGpsState",r.optString("gpsState"));}ExpansionModels.put(r,"distanceMeters",null);ExpansionModels.put(r,"gpsState","EFFECTIVE_DISTANCE_UNKNOWN_TRIMMED");}
     }
     static boolean isActive(JSONObject r){String status=r.optString("status");return "RUNNING".equals(status)||"PAUSED".equals(status)||"RECOVERY_REQUIRED".equals(status);}
     private JSONObject require(String id){JSONObject r=store.find("workouts",id);if(r==null)throw new IllegalArgumentException("WORKOUT_MISSING");if(!ExpansionModels.PHONE.equals(r.optString("source")))throw new IllegalStateException("PHONE_WORKOUT_REQUIRED");return r;}
@@ -121,7 +158,7 @@ final class WorkoutRecorder {
                 if(interval>0&&interval<=600000&&snapshot.steps>=old.optLong("stepsCumulative")){delta=snapshot.steps-old.optLong("stepsCumulative");coverage=interval;state="DELTA";}
                 else state=snapshot.steps<old.optLong("stepsCumulative")?"COUNTER_RESET":"INTERVAL_GAP";
             }
-            ExpansionModels.put(row,"stepsDelta",delta);ExpansionModels.put(row,"coverageMillis",coverage);ExpansionModels.put(row,"state",state);
+            if(delta!=null){ExpansionModels.put(row,"intervalStartAt",old.optLong("receivedAt"));ExpansionModels.put(row,"intervalStartElapsed",old.optLong("receivedElapsed"));}ExpansionModels.put(row,"stepsDelta",delta);ExpansionModels.put(row,"coverageMillis",coverage);ExpansionModels.put(row,"state",state);
             if(!writeObservation(workout,row))return;
             if(delta!=null){ExpansionModels.put(workout,"stepsObserved",(workout.isNull("stepsObserved")?0:workout.optLong("stepsObserved"))+delta);ExpansionModels.put(workout,"stepsCoverageMillis",workout.optLong("stepsCoverageMillis")+coverage);}
             ExpansionModels.put(workout,"stepsBaseline",row);ExpansionModels.put(workout,"metricState","PARTIAL_OBSERVATIONS");touchSegment(segment,snapshot.receivedAt,receivedElapsed);save(workout);

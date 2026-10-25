@@ -29,8 +29,8 @@ android {
         applicationId = "app.gtdial.lab"
         minSdk = 26
         targetSdk = 36
-        versionCode = 102
-        versionName = "1.0.1"
+        versionCode = 104
+        versionName = "1.0.2"
     }
 
     androidResources {

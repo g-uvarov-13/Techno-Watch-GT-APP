@@ -296,6 +296,20 @@ final class ExpansionStore extends SQLiteOpenHelper {
         ArrayList<ExpansionModels.HealthRecord> values=new ArrayList<>();for(ExpansionModels.HealthRecord record:measurementsForExport())if(device.equals(record.device)&&dataset.equals(record.dataset))values.add(record);
         List<ExpansionModels.HealthRecord> latest=revisions(values);latest.removeIf(r->"sleep".equals(dataset)&&r.data.has("enter")?!(r.data.optLong("enter")<toSeconds&&r.data.optLong("exit")>fromSeconds):r.tsSeconds<fromSeconds||r.tsSeconds>=toSeconds);return latest;
     }
+    /** Dedicated namespace: arbitrary setting keys cannot be written by diary callers. */
+    synchronized JSONObject templateNote(String variantId){
+        validateVariantId(variantId);String saved=setting("strength_template_note_"+variantId);
+        if(!saved.isEmpty())return parse(saved);
+        JSONObject row=new JSONObject();ExpansionModels.put(row,"variantId",variantId);ExpansionModels.put(row,"note","");ExpansionModels.put(row,"revision",0);ExpansionModels.put(row,"updatedAt",0);return row;
+    }
+    synchronized JSONObject saveTemplateNote(String variantId,String note,long expected){
+        validateVariantId(variantId);String text=ExpansionModels.text(note,2000);JSONObject[] result=new JSONObject[1];transaction(()->{
+            JSONObject row=templateNote(variantId);if(row.optLong("revision")!=expected)throw new IllegalStateException("DIARY_REVISION_CHANGED");
+            if(!text.equals(row.optString("note"))){ExpansionModels.put(row,"note",text);ExpansionModels.put(row,"revision",expected+1);ExpansionModels.put(row,"updatedAt",System.currentTimeMillis());setSetting("strength_template_note_"+variantId,row.toString());}result[0]=row;
+        });return result[0];
+    }
+    synchronized List<JSONObject> templateNotes(){ArrayList<JSONObject> rows=new ArrayList<>();try(Cursor c=getReadableDatabase().query("local_settings",new String[]{"value"},"id LIKE ?",new String[]{"strength_template_note_%"},null,null,"id ASC")){while(c.moveToNext()){if(rows.size()>=50000)throw new IllegalStateException("REPORT_RECORD_LIMIT");rows.add(parse(c.getString(0)));}}return rows;}
+    private void validateVariantId(String id){if(id==null||id.length()>120||!id.matches("[A-Za-z0-9_-]+")||(StrengthCatalog.find(id)==null&&find("custom_exercises",id)==null))throw new IllegalArgumentException("EXERCISE_MISSING");}
     private String setting(String id){try(Cursor c=getReadableDatabase().query("local_settings",new String[]{"value"},"id=?",new String[]{id},null,null,null,"1")){return c.moveToFirst()?c.getString(0):"";}}
     private void setSetting(String id,String value){ContentValues row=new ContentValues();row.put("id",id);row.put("value",value);if(getWritableDatabase().insertWithOnConflict("local_settings",null,row,SQLiteDatabase.CONFLICT_REPLACE)==-1)throw new IllegalStateException("SETTING_SAVE_FAILED");}
     synchronized java.util.Set<String> importedFileNames(){java.util.Set<String> names=new java.util.HashSet<>();try(Cursor c=getReadableDatabase().query("imports",new String[]{"file_name"},null,null,null,null,null,"20000")){while(c.moveToNext())names.add(c.getString(0));}return names;}

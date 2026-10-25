@@ -96,6 +96,7 @@ public final class WatchSessionService extends Service implements BleWatchSessio
     private ConnectionSnapshot latestConnection=ConnectionSnapshot.notReady("Готово к поиску");
     private String lastNotification=""; private long lastNotificationAt;
 
+    private final Runnable strengthIdleTick=new Runnable(){public void run(){WorkoutInactivityController.reconcile(WatchSessionService.this);DiagnosticRetention.request(WatchSessionService.this);ui.postDelayed(this,30000);}};
     private final Runnable notificationSignal=()->{if(session!=null)session.onNotificationAvailable();};
     @Override public void onCreate() {
         super.onCreate();
@@ -114,10 +115,11 @@ public final class WatchSessionService extends Service implements BleWatchSessio
         });
         updateWeatherUsage();
         session.recoverPersistedSession();
+        ui.post(strengthIdleTick);
     }
     @Override public IBinder onBind(Intent intent) { return binder; }
     @Override public int onStartCommand(Intent intent, int flags, int startId) { if(intent!=null&&ACTION_DISCONNECT.equals(intent.getAction()))session.disconnect(); return START_STICKY; }
-    @Override public void onDestroy() { if(weatherDelivery!=null)weatherDelivery.close();if(phoneWeather!=null)phoneWeather.close(); NotificationSessionBridge.clear(notificationSignal); if (session != null) session.close(); session = null; listeners.clear(); synchronized(historyLifecycle){historyStopping=true;historyExecutor.execute(activityHistory::close);historyExecutor.shutdown();} if(journal!=null)journal.close();super.onDestroy(); }
+    @Override public void onDestroy() { ui.removeCallbacks(strengthIdleTick); if(weatherDelivery!=null)weatherDelivery.close();if(phoneWeather!=null)phoneWeather.close(); NotificationSessionBridge.clear(notificationSignal); if (session != null) session.close(); session = null; listeners.clear(); synchronized(historyLifecycle){historyStopping=true;historyExecutor.execute(activityHistory::close);historyExecutor.shutdown();} if(journal!=null)journal.close();super.onDestroy(); }
     private void createChannel(){if(Build.VERSION.SDK_INT>=26)((NotificationManager)getSystemService(NOTIFICATION_SERVICE)).createNotificationChannel(new NotificationChannel(CHANNEL,"Часовой — часы",NotificationManager.IMPORTANCE_LOW));}
     private Notification notification(String text){Intent i=new Intent(this,WatchSessionService.class).setAction(ACTION_DISCONNECT);PendingIntent p=PendingIntent.getService(this,1,i,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);return new Notification.Builder(this,CHANNEL).setSmallIcon(android.R.drawable.stat_sys_data_bluetooth).setContentTitle("Часовой").setContentText(text).addAction(new Notification.Action.Builder(null,"Disconnect",p).build()).build();}
     private void each(java.util.function.Consumer<BleWatchSession.Listener> e){ui.post(()->{for(BleWatchSession.Listener l:listeners)e.accept(l);});}

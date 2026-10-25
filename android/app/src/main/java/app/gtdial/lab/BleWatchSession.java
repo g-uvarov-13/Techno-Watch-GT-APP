@@ -415,7 +415,7 @@ final class BleWatchSession {
     }
     private void startSetupWatchdog(){setupPhase="connect";mainHandler.removeCallbacks(reconnectTimeout);if(gatt==null){logSetup("GATT creation failed",-1);state("Не удалось создать подключение Bluetooth");setupFailed(-1,true);return;}mainHandler.postDelayed(reconnectTimeout,20_000L);logSetup("started",0);}
     private void logSetup(String outcome,int status){listener.onLog("BLE setup phase="+setupPhase+" outcome="+outcome+" status="+status+" marker="+sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED)+" attempt="+reconnectAttempt);}
-    private void setupFailed(int status,boolean retry){logSetup("failed",status);if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");else if(!retry||!queueFreshReconnect()){terminalStopped();closeGatt();}}
+    private void setupFailed(int status,boolean retry){OperationJournal.get(context).connectionFailure(setupPhase,status,false);logSetup("failed",status);if(directInstallRequest!=null)finishDirectInstall(false,"CONNECTION_NOT_READY");else if(!retry||!queueFreshReconnect()){terminalStopped();closeGatt();}}
     void recoverPersistedSession(){
         if(Looper.myLooper()!=mainHandler.getLooper()){mainHandler.post(this::recoverPersistedSession);return;}
         android.content.SharedPreferences settings=sessionPreferences();
@@ -438,7 +438,7 @@ final class BleWatchSession {
     /** The service keeps the session while an Activity is recreated; a new view gets this snapshot. */
     void replay(Listener target) { if(target==null)return; target.onState(replayState); if(replayName!=null)target.onWatchFound(replayName,replayAddress); target.onProbeReady(replayReady); target.onConnectionSnapshot(connectionSnapshot); }
     private void state(String value){replayState=value;connectionSnapshot=connectionSnapshot.withOperationMessage(value);listener.onState(value);listener.onConnectionSnapshot(connectionSnapshot);}
-    private void ready(boolean value){value=value&&actualConnected&&!commandsQuarantined;replayReady=value;connectionSnapshot=connectionSnapshot.withReady(value);listener.onProbeReady(value);listener.onConnectionSnapshot(connectionSnapshot);}
+    private void ready(boolean value){value=value&&actualConnected&&!commandsQuarantined;if(value&&!replayReady)OperationJournal.get(context).connectionReady();replayReady=value;connectionSnapshot=connectionSnapshot.withReady(value);listener.onProbeReady(value);listener.onConnectionSnapshot(connectionSnapshot);}
     private void watchFound(String name,String address){replayName=name;replayAddress=address;listener.onWatchFound(name,address);}
     private void connectionState(boolean ready,String message){connectionSnapshot=actualConnected?(ready&&!commandsQuarantined?ConnectionSnapshot.ready(message):ConnectionSnapshot.connected(message)):ConnectionSnapshot.notReady(message);listener.onConnectionSnapshot(connectionSnapshot);}
     private void requestCurrentDialRefresh(long delayMs){if(!sessionIdle())return;currentDialRefreshState.request();mainHandler.removeCallbacks(currentDialRefresh);mainHandler.postDelayed(currentDialRefresh,delayMs);}
@@ -554,7 +554,7 @@ final class BleWatchSession {
         expansionRxRedacted=false;
         state("Подключаюсь…");
         listener.onLog("Connecting to " + foundDevice.getAddress());
-        try{gatt=foundDevice.connectGatt(context,false,gattCallback,android.bluetooth.BluetoothDevice.TRANSPORT_LE);startSetupWatchdog();}
+        try{OperationJournal.get(context).connectionAttempt();gatt=foundDevice.connectGatt(context,false,gattCallback,android.bluetooth.BluetoothDevice.TRANSPORT_LE);startSetupWatchdog();}
         catch(SecurityException e){terminalStopped();closeGatt();state("Разрешение Bluetooth отозвано");}
         catch(RuntimeException e){setupFailed(-1,true);}
     }
@@ -564,7 +564,7 @@ final class BleWatchSession {
         if(Looper.myLooper()!=mainHandler.getLooper()){mainHandler.post(this::disconnect);return;}
         if(directInstallRequest!=null)finishDirectInstall(false,"DISCONNECTED");
         listener.onLog("BLE disconnect requested locally; operationActive="+operationRunning()+" marker="+sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED));
-        connectionEvent("local_disconnect","REQUESTED","PENDING","",operationRunning());
+        connectionEvent("local_disconnect","REQUESTED","PENDING","",operationRunning());OperationJournal.get(context).connectionStopped();
         manualDisconnect=true;sessionPreferences().edit().putBoolean("session.userEnabled",false).commit(); terminalStopped(); mainHandler.removeCallbacks(reconnectRunnable);
         activityPoll.onDisconnected(); mainHandler.removeCallbacks(activityPollRunnable);mainHandler.removeCallbacks(ordinarySyncRunnable);
         mainHandler.removeCallbacks(currentDialRefresh);
@@ -1185,6 +1185,7 @@ final class BleWatchSession {
     private boolean queueFreshReconnect(){
         if(reconnectCleanup!=null)return reconnectWaiting();
         try{if(!recoveryEligible())return false;}catch(SecurityException e){terminalStopped();return false;}
+        OperationJournal.get(context).connectionUnavailable();
         final BluetoothGatt capturedGatt=gatt;final long capturedEpoch=rxEpoch;final String capturedKind=operationKind();
         commandsQuarantined=true;rxEpoch++;ready(false);
         mainHandler.removeCallbacks(ordinarySyncRunnable);mainHandler.removeCallbacks(activityPollRunnable);mainHandler.removeCallbacks(currentDialRefresh);
@@ -1233,7 +1234,7 @@ final class BleWatchSession {
             if(!exact.equals(foundDevice.getAddress())){terminalStopped();return;}
             // Persist a bounded deadline for process restart during this one setup attempt.
             if(!sessionPreferences().edit().putLong("session.reconnectNotBefore",System.currentTimeMillis()+20_000L).commit()){terminalStopped();return;}
-            state("Повторное подключение к выбранным часам…");gatt=foundDevice.connectGatt(context,false,gattCallback,android.bluetooth.BluetoothDevice.TRANSPORT_LE);startSetupWatchdog();
+            state("Повторное подключение к выбранным часам…");OperationJournal.get(context).connectionAttempt();gatt=foundDevice.connectGatt(context,false,gattCallback,android.bluetooth.BluetoothDevice.TRANSPORT_LE);startSetupWatchdog();
         }catch(SecurityException e){terminalStopped();closeGatt();state("Разрешение Bluetooth отозвано");}
         catch(IllegalArgumentException e){terminalStopped();closeGatt();}
         catch(RuntimeException e){setupFailed(-1,true);}
@@ -1330,7 +1331,7 @@ final class BleWatchSession {
         logSetup("connection callback",status);
         if(newState==BluetoothProfile.STATE_DISCONNECTED){
             long now=android.os.SystemClock.elapsedRealtime();listener.onLog("BLE_LOSS status="+status+" marker="+sessionPreferences().getString("session.marker","UNKNOWN")+" kind="+operationKind()+" operationRunning="+operationRunning()+" commandsQuarantined="+commandsQuarantined+" txLedgerSize="+txLedger.size()+" rxAgeMs="+(lastWatchRxElapsed<0?"UNKNOWN":Long.toString(Math.max(0,now-lastWatchRxElapsed)))+" txAgeMs="+(lastAcceptedTxElapsed<0?"UNKNOWN":Long.toString(Math.max(0,now-lastAcceptedTxElapsed))));
-            boolean wasOperating=operationRunning();actualConnected=false;
+            boolean wasOperating=operationRunning();if(!manualDisconnect)OperationJournal.get(context).connectionFailure(setupPhase,status,initialReadsComplete);actualConnected=false;
             connectionEvent("unexpected_loss","FAILED","FAILED","GATT_DISCONNECTED_"+status,wasOperating);
             state("Часы отключились");connectionState(false,"Часы отключились");ordinaryTransportLost();return;
         }

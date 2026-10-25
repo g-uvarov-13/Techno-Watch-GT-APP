@@ -44,10 +44,53 @@ final class StrengthCatalog {
         {"triceps_db","triceps","Разгибание рук с гантелью","Руки","Гантели","DUMBBELL_EACH","press"},
         {"dip","dip","Отжимания на брусьях","Руки","Брусья","BODYWEIGHT","press"},
         {"crunch","crunch","Скручивания","Корпус","Свой вес","BODYWEIGHT","plank"},
-        {"leg_raise","leg_raise","Подъём ног в висе","Корпус","Турник","BODYWEIGHT","raise"}
+        {"leg_raise","leg_raise","Подъём ног в висе","Корпус","Турник","BODYWEIGHT","raise"},
+        {"shoulder_machine","press","Жим на плечи в тренажёре","Плечи","Тренажёр","MACHINE","press"},
+        {"lateral_cable","raise","Разведение в стороны на плечи в тренажёре","Плечи","Регулируемые блоки","MACHINE","raise"},
+        {"hip_adduction","hip_adduction","Сведение ног в тренажёре","Ноги","Тренажёр","MACHINE","raise"},
+        {"hip_abduction","hip_abduction","Разведение ног в тренажёре","Ноги","Тренажёр","MACHINE","raise"},
+        {"overhead_db","triceps","Гантель за голову","Руки","Гантель: вес одной","DUMBBELL_EACH","press"},
+        {"curl_machine","curl","Сгибание рук в тренажёре на бицепс","Руки","Тренажёр","MACHINE","curl"},
+        {"dip_chest","dip_chest","Брусья на грудь","Грудь","Собственный вес","BODYWEIGHT","press"},
+        {"french_press","triceps","Французский жим","Руки","Штанга","BARBELL_TOTAL","press"},
+        {"back_extension","back_extension","Гиперэкстензия","Спина","Собственный вес","BODYWEIGHT","row"},
+        {"pullover_machine","pullover","Пуловер на спину в тренажёре","Спина","Тренажёр","MACHINE","pull"},
+        {"row_machine","row_supported","Тяга штанги на спину в тренажёре","Спина","Тренажёр с упором грудью","BARBELL_TOTAL","row"},
+        {"walk_timed","walking","Шагаю с тренировки или на тренировку","Ходьба","Время, шаги и пульс","TIMED","walking"}
     };
-    static List<JSONObject> list(){List<JSONObject> result=new ArrayList<>();for(String[] row:ROWS){JSONObject j=new JSONObject();String[] keys={"id","familyId","name","group","equipment","loadMode","illustration"};for(int i=0;i<keys.length;i++)ExpansionModels.put(j,keys[i],row[i]);result.add(j);}return result;}
+    static List<JSONObject> list(){List<JSONObject> result=new ArrayList<>();for(String[] row:ROWS){JSONObject j=new JSONObject();String[] keys={"id","familyId","name","group","equipment","loadMode","illustration"};for(int i=0;i<keys.length;i++)ExpansionModels.put(j,keys[i],row[i]);if("walk_timed".equals(row[0]))ExpansionModels.put(j,"entryKind","TIMED_WALK");result.add(j);}return result;}
     static JSONObject find(String id){for(JSONObject row:list())if(id.equals(row.optString("id")))return row;return null;}
     static boolean loadMode(String mode){return "BARBELL_TOTAL".equals(mode)||"DUMBBELL_EACH".equals(mode)||"MACHINE".equals(mode)||"BODYWEIGHT".equals(mode)||"BODYWEIGHT_ADDED".equals(mode)||"ASSISTANCE".equals(mode);}
+    /** Only explicit user-provided names are aliases; historical entries keep their IDs and load semantics. */
+    static String migrationTarget(String originalName){
+        String name=originalName==null?"":originalName.trim().toLowerCase(java.util.Locale.ROOT).replace('ё','е').replaceAll("\\s+"," ");
+        switch(name){
+            case "жим на плечи в тренажере":return "shoulder_machine";
+            case "разведение в стороны на плече в диковинном тренажере":
+            case "разведение в стороны на плечи в диковинном тренажере":return "lateral_cable";
+            case "сведение ног в тренажерк":return "hip_abduction";
+            case "сведение ног в тренажере":return "hip_adduction";
+            case "гантеля затголову":case "гантеля за голову":return "overhead_db";
+            case "сгибание рук в тренажере на бицепс":return "curl_machine";
+            case "брусья на грудь":return "dip_chest";
+            case "французский жим":return "french_press";
+            case "гиперэкстензия":return "back_extension";
+            case "пуловер на спину в тренажере":return "pullover_machine";
+            case "тяга штанги на спину в тренажере":return "row_machine";
+            case "шагаю с тренировки/или на тренировку":return "walk_timed";
+            default:return "";
+        }
+    }
+    static String navigationGroup(JSONObject exercise){
+        if("TIMED_WALK".equals(exercise.optString("entryKind")))return "Ходьба";
+        String group=exercise.optString("group").trim().toLowerCase(java.util.Locale.ROOT).replace('ё','е');
+        switch(group){case "грудь":case "грудные":return "Грудь";
+            case "спина":case "спину":return "Спина";
+            case "ноги":case "ягодицы":case "икры":return "Ноги";
+            case "плечи":case "плече":case "дельты":return "Плечи";
+            case "руки":case "бицепс":case "трицепс":case "предплечья":return "Руки";
+            case "корпус":case "пресс":return "Корпус";
+            case "ходьба":return "Ходьба";default:return "Другие";}
+    }
     private StrengthCatalog(){}
 }

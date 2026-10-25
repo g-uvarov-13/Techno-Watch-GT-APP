@@ -34,7 +34,7 @@ final class ReportExporter {
     static final class Options {
         LocalDate from=LocalDate.now().minusDays(6),to=LocalDate.now().plusDays(1);
         ZoneId zone=ZoneId.systemDefault();String device="";
-        boolean activity=true,health=true,workouts=true,plans=true,manual=false,notes=false,routes=false;
+        boolean activity=true,health=true,workouts=true,plans=true,manual=false,notes=false,routes=false,fullDiary=false;
         void validate(){if(from==null||to==null||!to.isAfter(from)||java.time.temporal.ChronoUnit.DAYS.between(from,to)>366)throw new IllegalArgumentException("REPORT_PERIOD");}
     }
     static final class Report {
@@ -44,6 +44,37 @@ final class ReportExporter {
     }
     private final Context context;private final ExpansionStore store;private final ActivityHistoryStore activity;
     ReportExporter(Context context,ExpansionStore store,ActivityHistoryStore activity){this.context=context.getApplicationContext();this.store=store;this.activity=activity;}
+    /** Full PHONE diary, including terminal and in-progress records; never exports coordinates. */
+    File fullDiary(boolean includeNotes)throws Exception{
+        JSONObject json=new JSONObject();JSONArray watchWorkouts=new JSONArray(),workouts=new JSONArray(),entries=new JSONArray(),sets=new JSONArray(),observations=new JSONArray(),segments=new JSONArray(),custom=new JSONArray(),catalog=new JSONArray(),templates=new JSONArray();
+        ExpansionModels.put(json,"schemaVersion",3);ExpansionModels.put(json,"exportKind","FULL_DIARY");ExpansionModels.put(json,"createdAtMillis",System.currentTimeMillis());ExpansionModels.put(json,"notesIncluded",includeNotes);ExpansionModels.put(json,"routesIncluded",false);
+        Options options=new Options();options.notes=includeNotes;options.fullDiary=true;
+        // One read transaction prevents a workout edit from splitting its exported revisions.
+        store.transaction(()->{
+            for(JSONObject r:store.reportRows("workouts")){if(!ExpansionModels.PHONE.equals(r.optString("source")))continue;
+                JSONObject out=select(r,new String[]{"id","source","typeId","status","startedAt","endedAt","zoneIdAtImport","zoneIdAtStart","localDateAtStart","elapsedActiveMillis","accumulatedPauseMillis","goalMinutes","planId","lapCount","distanceMeters","gpsRequested","gpsState","gpsAccepted","gpsRejected","recoveryGapUnknown","stepsObserved","stepsCoverageMillis","heartSampleCount","heartAverage","heartMax","heartLast","heartLastMeasuredAt","metricState","metricProcessId","metricGapReason","effectiveMetricsEndAt","originalDistanceMeters","originalGpsState","originalEndedAt","originalElapsedActiveMillis","timeRevision","timeCorrectedAt","durationQuality","timerTimelineComplete","lastStrengthActionAt","lastStrengthActionElapsed","lastStrengthActionBootIdentity","activeMillisAtLastStrengthAction","reminderForAction","finishReason","autoFinishedAt","inactivityState"});
+                ExpansionModels.put(out,"elapsedActiveMillis",new WorkoutRecorder(context,store).activeMillis(r));ExpansionModels.put(out,"durationSnapshotAt",System.currentTimeMillis());ExpansionModels.put(out,"metricDeviceKey",OperationJournal.deviceKey(r.optString("metricDevice")));if(includeNotes)ExpansionModels.put(out,"note",r.optString("note"));
+                ExpansionModels.put(out,"timerSpans",selectedArray(r.optJSONArray("timerSpans"),new String[]{"startAt","startElapsed","endAt","endElapsed","bootIdentity","activeMillis","quality"}));
+                ExpansionModels.put(out,"timeCorrections",selectedArray(r.optJSONArray("timeCorrections"),new String[]{"revision","previousEndedAt","endedAt","previousActiveMillis","activeMillis","quality","correctedAt"}));
+                JSONArray laps=new JSONArray();for(JSONObject lap:store.children("workout_laps",r.optString("id")))append(laps,select(lap,new String[]{"id","source","number","activeMillis","recordedAt","intervalMillis"}));ExpansionModels.put(out,"laps",laps);append(workouts,out);
+                collectDiary(options,r,entries,sets,observations,segments,new ArrayList<>());
+            }
+            for(JSONObject r:store.reportRows("custom_exercises")){JSONObject out=select(r,new String[]{"id","familyId","name","group","equipment","loadMode","illustration","createdAt","updatedAt","revision","migratedToVariantId","migrationVersion","migratedAt"});if(includeNotes&&r.has("note"))ExpansionModels.put(out,"note",r.optString("note"));append(custom,out);}
+            for(JSONObject r:StrengthCatalog.list())append(catalog,select(r,new String[]{"id","familyId","name","group","equipment","loadMode","illustration","entryKind"}));
+            for(ExpansionModels.HealthRecord r:store.measurementsForExport())if(java.util.Arrays.asList("sports","sports_graph","sports_spo2","sports_pace","sports_section_run","sports_section_swim").contains(r.dataset)){JSONObject out=normalizedHealth(r);ExpansionModels.put(out,"deviceKey",OperationJournal.deviceKey(r.device));ExpansionModels.put(out,"data",watchWorkoutData(r));append(watchWorkouts,out);}
+            for(JSONObject r:store.templateNotes()){JSONObject out=select(r,new String[]{"variantId","revision","updatedAt"});if(includeNotes)ExpansionModels.put(out,"note",r.optString("note"));append(templates,out);}
+        });
+        ExpansionModels.put(json,"workouts",workouts);ExpansionModels.put(json,"watchWorkouts",watchWorkouts);ExpansionModels.put(json,"watchWorkoutDataPolicy","KNOWN_SESSION_AND_NUMERIC_DETAIL_FIELDS_NO_ROUTES_OR_RAW_FIELDS");ExpansionModels.put(json,"strengthEntries",entries);ExpansionModels.put(json,"strengthSets",sets);ExpansionModels.put(json,"workoutObservations",observations);ExpansionModels.put(json,"workoutSegments",segments);ExpansionModels.put(json,"customExercises",custom);ExpansionModels.put(json,"builtInCatalog",catalog);ExpansionModels.put(json,"templateNotes",templates);
+        return export(new Report(json,Collections.emptyList()),"json");
+    }
+    private static JSONObject watchWorkoutData(ExpansionModels.HealthRecord r){
+        JSONObject out=select(r.data,"sports".equals(r.dataset)?new String[]{"recordId","workoutType","status","startTime","endTime","timestampUnit","method","zoneProvenance"}:new String[]{"parentRecordId","parentRawSha256","method","zoneProvenance"});
+        // Raw optional watch fields have no route/privacy schema; only known numeric measurements enter.
+        if("sports_graph".equals(r.dataset)){JSONArray columns=r.data.optJSONArray("columns");ExpansionModels.put(out,"columns",selectedArray(columns,new String[]{"graphId","value","name"}));}
+        else if(!"sports".equals(r.dataset)){JSONObject reported=r.data.optJSONObject("reportedFields"),fields=new JSONObject();if(reported!=null)for(String key:new String[]{"currentSportTime","value","index","unit","pace","distanceTail","time","distance","heartRate","cadence","stepLength","maxSpeed","avgSpeed","swimType","swimPullTimes","avgSwolf"}){Object value=reported.opt(key);if(value instanceof Number&&Double.isFinite(((Number)value).doubleValue()))ExpansionModels.put(fields,key,value);}ExpansionModels.put(out,"reportedFields",fields);}
+        return out;
+    }
+    private static JSONArray selectedArray(JSONArray source,String[] keys){JSONArray out=new JSONArray();if(source!=null)for(int i=0;i<source.length();i++){JSONObject row=source.optJSONObject(i);if(row==null)throw new IllegalStateException("REPORT_INVALID_RECORD");append(out,select(row,keys));}return out;}
     File measurements()throws Exception{
         JSONObject json=new JSONObject();ExpansionModels.put(json,"schemaVersion",1);ExpansionModels.put(json,"createdAtMillis",System.currentTimeMillis());
         ExpansionModels.put(json,"sourceDescription","Показатели часов, сохранённые телефоном; прежние ручные показатели отмечены отдельно");
@@ -84,9 +115,12 @@ final class ReportExporter {
 
     /** One bounded archive combines the operation snapshot with existing connection logs and an explicit manifest. */
     static File diagnostics(Context context,DiagnosticLog diagnostic,boolean flushed)throws Exception{
+        try(DiagnosticRetention.Lease lease=DiagnosticRetention.exportLease()){return diagnosticsLeased(context,diagnostic,flushed);}
+    }
+    private static File diagnosticsLeased(Context context,DiagnosticLog diagnostic,boolean flushed)throws Exception{
         File directory=new File(context.getFilesDir(),"reports");if(!directory.isDirectory()&&!directory.mkdirs())throw new IOException("DIAGNOSTIC_DIRECTORY");
         File logs=new File(context.getFilesDir(),"logs").getCanonicalFile();File output=new File(directory,"diagnostics-"+UUID.randomUUID()+".zip");
-        JSONObject manifest=new JSONObject();ExpansionModels.put(manifest,"schemaVersion",1);ExpansionModels.put(manifest,"createdAtMillis",System.currentTimeMillis());ExpansionModels.put(manifest,"diagnosticQueueFlushed",flushed);ExpansionModels.put(manifest,"operationStorageState",OperationJournal.get(context).storageState());
+        JSONObject manifest=new JSONObject();ExpansionModels.put(manifest,"schemaVersion",1);ExpansionModels.put(manifest,"createdAtMillis",System.currentTimeMillis());ExpansionModels.put(manifest,"diagnosticQueueFlushed",flushed);ExpansionModels.put(manifest,"operationStorageState",OperationJournal.get(context).storageState());ExpansionModels.put(manifest,"connectionEpisode",OperationJournal.get(context).connectionSummary());
         JSONArray sources=new JSONArray();int omitted=0;long remaining=24L*1024*1024;
         List<LocalDiagnosticEntry> localEntries=localDiagnostics(context,manifest,sources);
         File operations=null;
@@ -299,8 +333,11 @@ final class ReportExporter {
     private void collectDiary(Options options,JSONObject workout,JSONArray entries,JSONArray sets,JSONArray observations,JSONArray segments,List<String> lines){
         String workoutId=workout.optString("id");
         for(JSONObject entry:store.diaryRows("strength_entries",workoutId)){
-            JSONObject exported=select(entry,new String[]{"id","workoutId","variantId","nameSnapshot","group","illustration","loadMode","equipment","equipmentProfileId","repConvention","position","revision","updatedAt"});
-            if(options.notes)ExpansionModels.put(exported,"note",entry.optString("note"));append(entries,exported);
+            if(entry.optBoolean("removed")&&!options.fullDiary)continue;
+            JSONObject exported=select(entry,new String[]{"id","workoutId","variantId","nameSnapshot","group","illustration","loadMode","equipment","equipmentProfileId","repConvention","position","revision","updatedAt","removed","entryKind","timedState","templateVariantId"});
+            ExpansionModels.put(exported,"walkSpans",selectedArray(entry.optJSONArray("walkSpans"),new String[]{"startAt","startElapsed","endAt","endElapsed","bootIdentity","durationMillis","quality","endReason"}));
+            if("TIMED_WALK".equals(entry.optString("entryKind")))ExpansionModels.put(exported,"timedSummary",new StrengthDiary(context,store).timedSummary(entry.optString("id")));
+            if(options.notes){ExpansionModels.put(exported,"note",entry.optString("note"));if(entry.has("templateNoteSnapshot"))ExpansionModels.put(exported,"templateNoteSnapshot",entry.optString("templateNoteSnapshot"));}append(entries,exported);
             lines.add(entry.optString("nameSnapshot")+" · "+loadDescription(entry.optString("loadMode"))+(entry.optString("equipmentProfileId").isEmpty()?"":" · оборудование: "+entry.optString("equipmentProfileId")));
             if(options.notes&&!entry.optString("note").isEmpty())lines.add("Заметка упражнения: "+entry.optString("note"));
             for(JSONObject set:store.diaryRows("strength_sets",entry.optString("id"))){
@@ -312,7 +349,7 @@ final class ReportExporter {
             }
         }
         for(JSONObject row:store.diaryRows("workout_observations",workoutId)){
-            JSONObject exported=select(row,new String[]{"id","workoutId","segmentId","kind","state","quality","revision","receivedAt","receivedElapsed","processId","bootIdentity","phoneDay","zoneId","stepsCumulative","stepsDelta","coverageMillis","calorieRaw","distanceRaw","measuredAt","value","unit","rawSha256","evidenceId","healthRecordId"});ExpansionModels.put(exported,"deviceKey",OperationJournal.deviceKey(row.optString("device")));append(observations,exported);
+            JSONObject exported=select(row,new String[]{"id","workoutId","segmentId","kind","state","quality","revision","receivedAt","receivedElapsed","processId","bootIdentity","phoneDay","zoneId","stepsCumulative","stepsDelta","coverageMillis","intervalStartAt","intervalStartElapsed","calorieRaw","distanceRaw","measuredAt","value","unit","rawSha256","evidenceId","healthRecordId"});ExpansionModels.put(exported,"deviceKey",OperationJournal.deviceKey(row.optString("device")));append(observations,exported);
         }
         for(JSONObject row:store.diaryRows("workout_segments",workoutId))append(segments,select(row,new String[]{"id","workoutId","state","revision","startAt","startElapsed","lastAt","lastElapsed","endAt","endElapsed","endReason","unknownGapAfter","bootIdentity","processId"}));
     }

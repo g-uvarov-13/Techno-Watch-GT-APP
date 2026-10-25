@@ -899,7 +899,12 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         status=ui.label(connectionUiState,12,ui.muted);status.setMaxLines(3);status.setEllipsize(android.text.TextUtils.TruncateAt.END);if(!connectionUiState.isEmpty())c.addView(status,ui.fillWrap(8,0));p.addView(c,ui.fillWrap(0,10));
         Button export=secondaryButton(tr("Экспортировать диагностику","Export diagnostics"));export.setOnClickListener(v->exportDiagnostics());p.addView(export,ui.fillWrap(0,12));
         Button clearLogs=secondaryButton(tr("Очистить логи","Clear logs"));clearLogs.setOnClickListener(v->confirmClearLogs());p.addView(clearLogs,ui.fillWrap(0,8));
-        p.addView(note(tr("Хранятся четыре последних журнала подключения. Данные установки и резервные копии сохраняются отдельно.","The four latest connection logs are retained. Installation evidence and backups are stored separately.")),ui.fillWrap(0,8));
+        org.json.JSONObject episode=OperationJournal.get(this).connectionSummary();
+        if(!episode.optString("episodeId").isEmpty()){
+            String outcome=switch(episode.optString("state")){case "RECOVERED"->tr("Связь восстановлена","Connection recovered");case "USER_STOPPED"->tr("Остановлено пользователем","Stopped by user");default->tr("Часы недоступны","Watch unavailable");};
+            p.addView(note(outcome+" · "+WorkoutRecorder.duration(episode.optLong("unavailableMillis"))+"\n"+tr("Попыток: ","Attempts: ")+episode.optInt("attemptCount")+tr(" · отказов подключения: "," · setup failures: ")+episode.optInt("setupFailureCount")),ui.fillWrap(0,8));
+        }
+        p.addView(note(tr("Старые логи очищаются автоматически раз в неделю. Хранятся до четырёх журналов подключения за последние 7 дней. Данные установки и резервные копии сохраняются отдельно.","Old logs are cleaned weekly. Up to four connection logs from the last 7 days are retained. Installation evidence and backups are stored separately.")),ui.fillWrap(0,8));
     }
     private boolean diagnosticsBusy;
     private void confirmClearLogs(){

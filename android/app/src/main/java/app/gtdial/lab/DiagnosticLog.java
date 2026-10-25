@@ -18,7 +18,8 @@ final class DiagnosticLog {
     private static final DateTimeFormatter FILE_TIME = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
     private static final DateTimeFormatter LINE_TIME = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
-    private final File file;
+    private volatile File file;
+    private long fileStartedAt=System.currentTimeMillis();
     private final Handler writer;
     private final HandlerThread thread;
     private final StringBuilder tail=new StringBuilder(MAX_TAIL);
@@ -31,6 +32,7 @@ final class DiagnosticLog {
         file = ready
                 ? new File(directory, "gt-dial-lab-" + LocalDateTime.now().format(FILE_TIME) + ".txt")
                 : null;
+        DiagnosticRetention.protect(file);
         thread=new HandlerThread("gt-dial-journal");
         thread.start();
         writer=new Handler(thread.getLooper());
@@ -52,7 +54,7 @@ final class DiagnosticLog {
     synchronized String tail(){return tail.toString();}
 
     /** Only the owner closes this journal; quitSafely drains already queued lines. */
-    synchronized void close(){if(closed)return;closed=true;thread.quitSafely();}
+    synchronized void close(){if(closed)return;closed=true;writer.post(()->DiagnosticRetention.release(file));thread.quitSafely();}
 
     boolean isAvailable() {
         return file != null && file.isFile() && file.canRead();
@@ -89,6 +91,10 @@ final class DiagnosticLog {
     private synchronized void appendTail(String line){tail.append(line);if(tail.length()>MAX_TAIL)tail.delete(0,tail.length()-MAX_TAIL);}
     private void markOverflow(){if(!overflowMarked){overflowMarked=true;appendTail("--- Journal writer queue overflow; lines omitted. ---"+System.lineSeparator());}}
     private void write(byte[] bytes) {
+        if(System.currentTimeMillis()-fileStartedAt>=DiagnosticRetention.WEEK&&!DiagnosticRetention.leased()){
+            File previous=file,next=new File(previous.getParentFile(),"gt-dial-lab-"+LocalDateTime.now().format(FILE_TIME)+".txt");
+            if(!next.equals(previous)){DiagnosticRetention.protect(next);file=next;fileStartedAt=System.currentTimeMillis();synchronized(this){limitReached=false;}DiagnosticRetention.release(previous);try{DiagnosticFiles.retainText(next);}catch(IOException ignored){}}
+        }
         boolean writeLimit=false;
         synchronized(this){
             if(!limitReached&&file.length()+bytes.length>MAX_BYTES){limitReached=true;writeLimit=true;}
