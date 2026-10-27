@@ -1,8 +1,8 @@
 [
   {
     "path": ".gitignore",
-    "size": 147,
-    "sha256": "1e30a21d907001ff0e7424ebf49f4fc69f842cb2bcbb2978b178f9018cc1668f"
+    "size": 359,
+    "sha256": "7ab7381899a1ce365f7e2372a65061b6ce1317589a178dbcf43ef36beeb2b48e"
   },
   {
     "path": "ASSET_MANIFEST.json",
@@ -21,13 +21,13 @@
   },
   {
     "path": "CONTRIBUTING.md",
-    "size": 7810,
-    "sha256": "c533e592f4850089b360891351a7fd5516b6b1ddcba4f7c068d5ce715337386d"
+    "size": 8672,
+    "sha256": "8a5f2cb514b884e714925f65d1d319c08d7257346e860103c3d011d9e2488140"
   },
   {
     "path": "DEVELOPER_GUIDE.md",
-    "size": 35131,
-    "sha256": "cef1a2b27e35435486e4aae65346ad0d4179f77e5b139756cfbe76de1e36abee"
+    "size": 35680,
+    "sha256": "48a8974e8452d6b0ea541ef5e6f5ae826c79c5ed9eee832bc061ec2b589261c1"
   },
   {
     "path": "KNOWN_LIMITATIONS.md",
@@ -51,8 +51,8 @@
   },
   {
     "path": "README.md",
-    "size": 8308,
-    "sha256": "918c10f7340d689158626883ef0e8b9521d8964e2208898adc7966043b7e3448"
+    "size": 8360,
+    "sha256": "752e9c2621e1f681c0208ebd9725d1eb7a793a5fe972ef9f1ebaaec5392fff77"
   },
   {
     "path": "SOURCE_ASSETS_MANIFEST.json",

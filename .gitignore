@@ -12,3 +12,15 @@
 *.log
 diagnostics*/
 .env*
+
+# Private AI/agent working materials: never publish
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.codex/
+.agents/
+.claude/
+.playwright-mcp/
+docs/tasks/
+docs/project-orchestration.md
+**/telemetry_*.md
