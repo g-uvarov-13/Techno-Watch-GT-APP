@@ -31,7 +31,9 @@ public final class MainActivity extends Activity implements BleWatchSession.List
     private final java.util.ArrayList<Button> localDirectInstallButtons=new java.util.ArrayList<>();
     private final Map<Button,TextView> directInstallReasons=new HashMap<>();
     private TextView actionFeedback;
-    private String visibleActionFeedback="",weatherActionFeedback="";
+    private String visibleActionFeedback="",weatherActionFeedback="",phoneTimeFeedback="";
+    private boolean phoneTimeBusy;
+    private AlertDialog phoneTimeDialog;
     DiagnosticLog journal;
     private DiagnosticLog temporaryJournal;
     DialRepository repo;
@@ -897,6 +899,12 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         Button scan=secondaryButton(tr("Найти часы","Find watch"));scan.setOnClickListener(v->{connectionUiState="Поиск часов…";updateConnectionState();pendingScan=true;if(ensurePermissions()&&watch!=null){pendingScan=false;watch.startScan();}});actions.addView(scan,ui.weighted(1));
         connect=connected||reconnectWaiting()?secondaryButton(tr("Отключить","Disconnect")):primaryButton(tr("Подключить","Connect"));setEnabledState(connect,connected||reconnectWaiting()?watch!=null:watchFound&&watch!=null);connect.setOnClickListener(v->{if(watch==null)return;if(connected||reconnectWaiting())watch.disconnect();else{connectionPending=true;connectionUiState="Подключение…";updateConnectionState();watch.connectFoundWatch();}});LinearLayout.LayoutParams connectLayout=ui.weighted(1);connectLayout.setMargins(ui.dp(8),0,0,0);actions.addView(connect,connectLayout);c.addView(actions,ui.fillWrap(3,0));
         status=ui.label(connectionUiState,12,ui.muted);status.setMaxLines(3);status.setEllipsize(android.text.TextUtils.TruncateAt.END);if(!connectionUiState.isEmpty())c.addView(status,ui.fillWrap(8,0));p.addView(c,ui.fillWrap(0,10));
+        p.addView(ui.section(tr("Дата и время часов","Watch date and time")),ui.fillWrap(8,6));
+        p.addView(note(tr("Передать текущее время и часовой пояс телефона. После передачи проверьте показание на часах.","Send the phone's current time and time zone. Check the watch display afterwards.")),ui.fillWrap(0,6));
+        Button syncTime=secondaryButton(tr("Синхронизировать время","Sync time"));
+        setEnabledState(syncTime,ready&&sessionBinder!=null&&!phoneTimeBusy);
+        syncTime.setOnClickListener(v->preparePhoneTimeSync());p.addView(syncTime,ui.fillWrap(0,6));
+        if(!phoneTimeFeedback.isEmpty())p.addView(note(phoneTimeFeedback),ui.fillWrap(0,8));
         Button export=secondaryButton(tr("Экспортировать диагностику","Export diagnostics"));export.setOnClickListener(v->exportDiagnostics());p.addView(export,ui.fillWrap(0,12));
         Button clearLogs=secondaryButton(tr("Очистить логи","Clear logs"));clearLogs.setOnClickListener(v->confirmClearLogs());p.addView(clearLogs,ui.fillWrap(0,8));
         org.json.JSONObject episode=OperationJournal.get(this).connectionSummary();
@@ -905,6 +913,38 @@ public final class MainActivity extends Activity implements BleWatchSession.List
             p.addView(note(outcome+" · "+WorkoutRecorder.duration(episode.optLong("unavailableMillis"))+"\n"+tr("Попыток: ","Attempts: ")+episode.optInt("attemptCount")+tr(" · отказов подключения: "," · setup failures: ")+episode.optInt("setupFailureCount")),ui.fillWrap(0,8));
         }
         p.addView(note(tr("Старые логи очищаются автоматически раз в неделю. Хранятся до четырёх журналов подключения за последние 7 дней. Данные установки и резервные копии сохраняются отдельно.","Old logs are cleaned weekly. Up to four connection logs from the last 7 days are retained. Installation evidence and backups are stored separately.")),ui.fillWrap(0,8));
+    }
+    private void preparePhoneTimeSync(){
+        if(phoneTimeBusy||sessionBinder==null)return;
+        final WatchSessionService.LocalBinder owner=sessionBinder;
+        phoneTimeBusy=true;phoneTimeFeedback=tr("Подготавливаю синхронизацию…","Preparing time sync…");requestBackgroundRedraw();
+        owner.preparePhoneTimeSync(prepared->{
+            if(destroyed||sessionBinder!=owner){owner.cancelPhoneTimeSync(prepared);phoneTimeBusy=false;return;}
+            java.time.ZoneId zone=java.time.ZoneId.of(prepared.zoneId);
+            String target=java.time.Instant.ofEpochMilli(prepared.phoneTimeMillis).atZone(zone).format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss XXX",Locale.getDefault()));
+            final boolean[] submitted={false};
+            phoneTimeDialog=ui.dialogBuilder().setTitle(tr("Установить время на часах?","Set watch time?"))
+                .setMessage(tr("Время телефона: ","Phone time: ")+target+"\n"+prepared.zoneId+"\n\n"+tr("На часы будет передано актуальное время в момент отправки. Запишите прежнее показание часов. После передачи сравните дату и время с телефоном. Автоматического повторения не будет.","The current time at the moment of sending will be sent to the watch. Note the watch's previous reading. Compare its date and time with the phone afterwards. There is no automatic retry."))
+                .setNegativeButton(tr("Отмена","Cancel"),null)
+                .setPositiveButton(tr("Передать время","Send time"),(dialog,which)->{
+                    submitted[0]=true;
+                    if(sessionBinder!=owner){owner.cancelPhoneTimeSync(prepared);phoneTimeBusy=false;phoneTimeFeedback=phoneTimeError("CONFIRMATION_CHANGED");requestBackgroundRedraw();return;}
+                    phoneTimeFeedback=tr("Передаю время…","Sending time…");requestBackgroundRedraw();owner.confirmPhoneTimeSync(prepared);
+                }).create();
+            phoneTimeDialog.setOnDismissListener(dialog->{phoneTimeDialog=null;if(!submitted[0]){owner.cancelPhoneTimeSync(prepared);phoneTimeBusy=false;phoneTimeFeedback="";if(!destroyed)requestBackgroundRedraw();}});
+            phoneTimeDialog.show();
+        },reason->{if(destroyed)return;phoneTimeBusy=false;phoneTimeFeedback=phoneTimeError(reason);requestBackgroundRedraw();});
+    }
+    private String phoneTimeError(String reason){
+        if("BACKEND_UNSUPPORTED".equals(reason))return tr("Синхронизация недоступна для этой версии системы часов.","Time sync is unavailable for this watch system version.");
+        if("CONFIRMATION_EXPIRED".equals(reason)||"CONFIRMATION_CHANGED".equals(reason))return tr("Подтверждение устарело: соединение или время телефона изменилось. Откройте синхронизацию заново.","Confirmation is no longer valid: the connection or phone time changed. Open time sync again.");
+        if(reason!=null&&reason.startsWith("SESSION_STOPPED"))return tr("Передача времени остановлена после ошибки. Проверьте показание часов. Для нового запроса отключите часы и подключите заново.","Time transfer stopped after an error. Check the watch display. Disconnect and reconnect before a new request.");
+        return tr("Синхронизация недоступна. Дождитесь готовности соединения и завершения других операций.","Time sync is unavailable. Wait for the connection to be ready and other operations to finish.");
+    }
+    @Override public void onPhoneTimeSyncFinished(boolean success,String detail){
+        if(destroyed)return;phoneTimeBusy=false;
+        phoneTimeFeedback=success?tr("Команда принята. Проверьте время на часах.","Command acknowledged. Check the time on the watch."):phoneTimeError(detail);
+        requestBackgroundRedraw();
     }
     private boolean diagnosticsBusy;
     private void confirmClearLogs(){
@@ -1200,9 +1240,31 @@ public final class MainActivity extends Activity implements BleWatchSession.List
             "PAUSED".equals(weekly.status)?weeklyPauseReason(weekly.reason):"IN_FLIGHT".equals(weekly.status)?tr("Обновляю прогноз и проверяю запись…","Updating forecast and verifying storage…"):
             !ready?tr("Ожидаю готовности часов.","Waiting for the watch to be ready."):phoneSnapshot==null||!new WeatherPayload(phoneSnapshot.snapshot).readyForWeekly()?tr("Ожидаю полный прогноз на неделю.","Waiting for a full weekly forecast."):tr("Автообновление: сегодня и шесть будущих дней.","Automatic updates: today and six future days.");
         weatherCard.addView(note(mode),ui.fillWrap(6,6));
+        if(weekly.enabled&&"PAUSED".equals(weekly.status)){
+            weatherCard.addView(note(tr("Передача на часы приостановлена. ","Watch delivery is paused. ")+weeklyPauseReason(weekly.reason)),ui.fillWrap(6,6));
+            Button resume=primaryButton(tr("Возобновить передачу прогноза","Resume forecast delivery"));
+            setEnabledState(resume,ready&&sessionBinder!=null);
+            resume.setOnClickListener(v->confirmWeeklyWeather(WeatherDeliveryController.hold(this)));
+            weatherCard.addView(resume,ui.fillWrap(0,6));
+            if(!ready)weatherCard.addView(note(tr("Для возобновления дождитесь готовности соединения. Если обмен остановлен после ошибки, отключите часы и подключите заново.","Wait for the connection to be ready before resuming. If exchange stopped after an error, disconnect and reconnect.")),ui.fillWrap(6,6));
+        }
         p.addView(weatherCard,ui.fillWrap(6,12));
         Button diagnostics=secondaryButton(tr("ДИАГНОСТИКА ПОГОДЫ","WEATHER DIAGNOSTICS"));
         diagnostics.setOnClickListener(v->showWeatherDiagnostics());p.addView(diagnostics,ui.fillWrap(6,6));
+    }
+    private void confirmWeeklyWeather(WeatherDeliveryController.Hold expected){
+        if(sessionBinder==null)return;
+        final WatchSessionService.LocalBinder owner=sessionBinder;
+        final String selection=WeatherDeliveryController.selectionIdentity(getSharedPreferences("gt_dial_preferences",MODE_PRIVATE));
+        final String watchAddress=prefs.savedDevice();
+        ui.dialogBuilder().setTitle(tr("Возобновить передачу прогноза?","Resume forecast delivery?"))
+            .setMessage(tr("Приложение заново прочитает текущую погоду этих часов и сохранит её перед новой передачей. После записи сегодняшней погоды и шести будущих дней результат будет проверен чтением. При ошибке передача остановится. Прежняя неудачная попытка повторяться не будет.","The app will read this watch's current weather again and save it before a new transfer. Today's weather and six future days will be verified by readback after writing. Transfer stops on error. The previous failed attempt is not retried."))
+            .setNegativeButton(tr("Отмена","Cancel"),null).setPositiveButton(tr("Возобновить","Resume"),(dialog,which)->{
+                if(sessionBinder!=owner||!watchAddress.equals(prefs.savedDevice())||!selection.equals(WeatherDeliveryController.selectionIdentity(getSharedPreferences("gt_dial_preferences",MODE_PRIVATE)))){
+                    weatherActionFeedback=tr("Часы или город изменились. Откройте возобновление заново.","The watch or city changed. Open the resume action again.");refreshWeatherSettings();refreshWeatherDiagnostics();return;
+                }
+                owner.enableWeeklyWeather(expected,ok->{if(destroyed)return;weatherActionFeedback=ok?tr("Передача прогноза включена; ожидаю полный свежий прогноз.","Forecast delivery enabled; waiting for a complete fresh forecast."):tr("Передача не включена. Проверьте готовность соединения и выбранный город.","Delivery was not enabled. Check connection readiness and the selected city.");refreshWeatherSettings();refreshWeatherDiagnostics();});
+            }).show();
     }
     private void showWeatherDiagnostics(){
         if(weatherDiagnosticsDialog!=null&&weatherDiagnosticsDialog.isShowing())return;
@@ -1246,11 +1308,9 @@ public final class MainActivity extends Activity implements BleWatchSession.List
             weatherCard.addView(weeklyDisable,ui.fillWrap(0,6));
         }
         if(!weekly.enabled||"PAUSED".equals(weekly.status)){
-            Button weeklyEnable=primaryButton(weekly.enabled?tr("ВОЗОБНОВИТЬ НЕДЕЛЬНОЕ ОБНОВЛЕНИЕ","RESUME WEEKLY UPDATES"):tr("ВКЛЮЧИТЬ НЕДЕЛЬНОЕ АВТООБНОВЛЕНИЕ","ENABLE WEEKLY AUTOMATIC UPDATES"));
+            Button weeklyEnable=primaryButton(weekly.enabled?tr("ВОЗОБНОВИТЬ ПЕРЕДАЧУ ПРОГНОЗА","RESUME FORECAST DELIVERY"):tr("ВКЛЮЧИТЬ НЕДЕЛЬНОЕ АВТООБНОВЛЕНИЕ","ENABLE WEEKLY AUTOMATIC UPDATES"));
             setEnabledState(weeklyEnable,ready&&sessionBinder!=null);
-            weeklyEnable.setOnClickListener(v->ui.dialogBuilder().setTitle(tr("Обновлять неделю автоматически?","Update the week automatically?"))
-                    .setMessage(tr("Приложение будет отправлять текущую погоду и 6 будущих дней на эти часы. Текущие данные часов станут исходной точкой; последующие подтверждённые обновления будут заменять резервную копию предыдущей погоды. Если данные изменит MyHealth или произойдёт ошибка, обновление остановится. При возобновлении вы принимаете текущее состояние часов заново.","The app will send current weather and 6 future days to this watch. Current watch data becomes the baseline; subsequent verified updates replace the backup of previous weather. Updates stop if MyHealth changes the data or an error occurs. Resuming accepts the current watch state again."))
-                    .setNegativeButton(tr("ОТМЕНА","CANCEL"),null).setPositiveButton(tr("ВКЛЮЧИТЬ","ENABLE"),(d,w)->{if(sessionBinder!=null)sessionBinder.enableWeeklyWeather(weatherHold,ok->{onState(ok?tr("Недельное автообновление включено; ожидаю полный прогноз","Weekly updates enabled; waiting for the full forecast"):tr("Не удалось включить: дождитесь свободного соединения и повторите","Could not enable: wait for an idle connection and try again"));if(activeTab==3)rebuildUi();});}).show());
+            weeklyEnable.setOnClickListener(v->confirmWeeklyWeather(weatherHold));
             weatherCard.addView(weeklyEnable,ui.fillWrap(0,6));
         }else{
             Button weeklyPause=secondaryButton(tr("ПРИОСТАНОВИТЬ НЕДЕЛЬНОЕ ОБНОВЛЕНИЕ","PAUSE WEEKLY UPDATES"));
@@ -1883,6 +1943,7 @@ public final class MainActivity extends Activity implements BleWatchSession.List
         dismissDialProgress();journalUiHandler.removeCallbacks(dialProgressTick);
         if(localInstallDialog!=null)localInstallDialog.dismiss();
         cancelLocalInstallConfirmation();
+        if(phoneTimeDialog!=null)phoneTimeDialog.dismiss();
         if(weatherSettingsDialog!=null)weatherSettingsDialog.dismiss();
         if(weatherDiagnosticsDialog!=null)weatherDiagnosticsDialog.dismiss();
         if(expansion!=null)expansion.destroy();

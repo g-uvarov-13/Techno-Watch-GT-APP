@@ -45,6 +45,7 @@ final class BleWatchSession {
         default void onWeatherReadFinished(boolean success, WeatherReadProtocol.Result result) { }
         default void onPhoneWeatherChanged(boolean busy,String message) { }
         default void onWeatherSendFinished(boolean success, String detail) { }
+        default void onPhoneTimeSyncFinished(boolean success,String detail) { }
         default void onDynamicDialFinished(boolean success) { }
         default void onDialInstallProgress(DialInstallProgress progress) { }
         default void onLocalDialPrepared(DynamicDialAuthorization.PreparedLocal prepared) { }
@@ -91,7 +92,7 @@ final class BleWatchSession {
             startWeatherSession(delivery.snapshot,delivery.city,false,delivery,true,true);accepted.accept(true);
         });
     }
-    private boolean weatherDeliveryReady(){String verified=sessionPreferences().getString("verified_device_address",null);return directInstallRequest==null&&!commandsQuarantined&&actualConnected&&!txLedgerUnreliable&&sessionIdle()&&initialReadsComplete&&replayReady&&gatt!=null&&txCharacteristic!=null&&protocolProbe!=null&&!operationRunning()&&verified!=null&&verified.equals(replayAddress)&&verified.equals(gatt.getDevice().getAddress());}
+    private boolean weatherDeliveryReady(){String verified=sessionPreferences().getString("verified_device_address",null);return pendingPhoneTime==null&&directInstallRequest==null&&!commandsQuarantined&&actualConnected&&!txLedgerUnreliable&&sessionIdle()&&initialReadsComplete&&replayReady&&gatt!=null&&txCharacteristic!=null&&protocolProbe!=null&&!operationRunning()&&verified!=null&&verified.equals(replayAddress)&&verified.equals(gatt.getDevice().getAddress());}
     private void startWeatherSession(WeatherSnapshot snapshot,String city,boolean restore,boolean includeForecast){
         if(Looper.myLooper()!=mainHandler.getLooper()){mainHandler.post(()->startWeatherSession(snapshot,city,restore,includeForecast));return;}
         if(!restore&&(WeatherDeliveryController.hold(context)!=null||WeatherDeliveryController.weeklyStatus(context).enabled)){listener.onWeatherSendFinished(false,"SAFE_PREWRITE: FULL_EXPERIMENT_HOLD is active");return;}
@@ -119,7 +120,7 @@ final class BleWatchSession {
         }
         if(!beginProtocolOperation()){if(weeklyOwner!=null)WeatherDeliveryController.pauseWeekly(context,weeklyOwner.owner,"OPERATION_MARKER_SAVE_FAILED");listener.onWeatherSendFinished(false,"SAFE_PREWRITE: operation marker save failed");return;}
         weatherWriteSessionUsed=true;activityPoll.onExclusiveStart();mainHandler.removeCallbacks(activityPollRunnable);
-        final BluetoothGatt weatherGatt=gatt;
+        final BluetoothGatt weatherGatt=gatt;final long weatherEpoch=rxEpoch;
         weatherFrameWriter=new WeatherFrameWriter(mainHandler,negotiatedMtu,new WeatherFrameWriter.Transport(){
             public boolean ledgerEmpty(){return txLedger.isEmpty();}public long nextGeneration(){return ++weatherTxGeneration;}
             public boolean write(long generation,int chunk,byte[] bytes){return weatherGatt==gatt&&weatherSessionProtocol!=null&&weatherSessionProtocol.allowFrameChunk()&&writeTx(weatherGatt,bytes,generation,chunk);}
@@ -138,7 +139,10 @@ final class BleWatchSession {
                 else{
                     if(weatherFrameWriter!=null)weatherFrameWriter.close();
                     if(!success&&safe)cleanupComplete=finishLocalRefusal(detail);
-                    else{terminalOperation(success);cleanupComplete=success&&sessionIdle()&&replayReady&&!commandsQuarantined;}
+                    else if(!success&&weatherSessionProtocol!=null&&weatherSessionProtocol.failureEvidence()==WeatherSessionProtocol.FailureEvidence.INITIAL_READ_PRIOR_NO_SET){
+                        boolean recovering=weatherGatt==gatt&&weatherEpoch==rxEpoch&&queueFreshReconnect(true);
+                        if(!recovering)terminalStopped();cleanupComplete=false;
+                    }else{terminalOperation(success);cleanupComplete=success&&sessionIdle()&&replayReady&&!commandsQuarantined;}
                 }
                 if(cleanupComplete)weatherWriteSessionUsed=false;
                 state(success?"Эксперимент погоды завершён":"Эксперимент погоды остановлен");
@@ -227,6 +231,51 @@ final class BleWatchSession {
             public void finished(TsdbReadProtocol.Result result){sleepHistoryProtocol=null;terminalOperation("COMPLETE".equals(result.state)||"PARTIAL".equals(result.state));listener.onSportsPageFinished(result);}
         });sleepHistoryProtocol.start();}catch(RuntimeException e){sleepHistoryProtocol=null;finishLocalRefusal("Local sports request rejected");state("Местные условия спорта отклонены: "+e.getClass().getSimpleName());String op=OperationJournal.get(context).begin("sports_transport","start","SPORTS_PAGE",exact);OperationJournal.get(context).stage(op,"sports_transport","start","FAILED","FAILED","LOCAL_VALIDATION",0,0,0);}
     }
+    void preparePhoneTimeSync(java.util.function.Consumer<PhoneTimeSyncProtocol.Prepared> readyCallback,java.util.function.Consumer<String> refused){
+        mainHandler.post(()->{
+            pendingPhoneTime=null;phoneTimeGatt=null;mainHandler.removeCallbacks(phoneTimePreparationExpiry);
+            final String address;
+            try{
+                if(!hasRequiredPermissions()){terminalStopped();refused.accept("LOCAL_GATE");return;}
+                if(!weatherDeliveryReady()||!txLedger.isEmpty()||manualDisconnect){refused.accept("LOCAL_GATE");return;}
+                if(!"2.4.5".equals(protocolProbe.backendVersion())){refused.accept("BACKEND_UNSUPPORTED");return;}
+                address=gatt.getDevice().getAddress();
+            }catch(SecurityException error){terminalStopped();refused.accept("LOCAL_GATE");return;}
+            pendingPhoneTime=new PhoneTimeSyncProtocol.Prepared(address);phoneTimeGatt=gatt;phoneTimeEpoch=rxEpoch;
+            mainHandler.removeCallbacks(ordinarySyncRunnable);mainHandler.removeCallbacks(currentDialRefresh);mainHandler.removeCallbacks(phoneTimePreparationExpiry);mainHandler.postDelayed(phoneTimePreparationExpiry,120000);readyCallback.accept(pendingPhoneTime);
+        });
+    }
+    void cancelPhoneTimeSync(PhoneTimeSyncProtocol.Prepared prepared){mainHandler.post(()->{if(pendingPhoneTime==prepared){pendingPhoneTime=null;phoneTimeGatt=null;mainHandler.removeCallbacks(phoneTimePreparationExpiry);resumeAfterTimePreparation();}});}
+    void confirmPhoneTimeSync(PhoneTimeSyncProtocol.Prepared prepared){
+        mainHandler.post(()->{
+            boolean bound=prepared!=null&&prepared==pendingPhoneTime&&gatt==phoneTimeGatt&&rxEpoch==phoneTimeEpoch;
+            pendingPhoneTime=null;phoneTimeGatt=null;mainHandler.removeCallbacks(phoneTimePreparationExpiry); // Consume even a refused confirmation.
+            try{if(!hasRequiredPermissions()){terminalStopped();listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");return;}}
+            catch(SecurityException error){terminalStopped();listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");return;}
+            String refusal=prepared==null?"CONFIRMATION_CHANGED":prepared.refusal();
+            if(!bound||!refusal.isEmpty()){listener.onPhoneTimeSyncFinished(false,refusal.isEmpty()?"CONFIRMATION_CHANGED":refusal);resumeAfterTimePreparation();return;}
+            try{
+                if(!hasRequiredPermissions()){terminalStopped();listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");return;}
+                if(!weatherDeliveryReady()||!txLedger.isEmpty()||manualDisconnect||!prepared.deviceAddress.equals(gatt.getDevice().getAddress())){listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");resumeAfterTimePreparation();return;}
+                if(!"2.4.5".equals(protocolProbe.backendVersion())){listener.onPhoneTimeSyncFinished(false,"BACKEND_UNSUPPORTED");resumeAfterTimePreparation();return;}
+            }catch(SecurityException error){terminalStopped();listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");return;}
+            final BluetoothGatt active=gatt;final long epoch=rxEpoch;final McfProtocolProbe probe=protocolProbe;
+            try{phoneTimeSyncProtocol=new PhoneTimeSyncProtocol(mainHandler,probe.reservePacketId(),negotiatedMtu-3,new PhoneTimeSyncProtocol.Transport(){
+                public boolean write(byte[] frame){return active==gatt&&epoch==rxEpoch&&probe==protocolProbe&&prepared.refusal().isEmpty()&&writeTx(active,frame);}
+                public void finished(boolean success,String detail){
+                    phoneTimeSyncProtocol=null;
+                    if(success)terminalOperation(true);else terminalStopped();
+                    listener.onLog("PHONE_TIME_SYNC terminal success="+success+" detail="+detail);
+                    listener.onPhoneTimeSyncFinished(success,detail);
+                }
+            });}catch(IllegalArgumentException error){phoneTimeSyncProtocol=null;listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");resumeAfterTimePreparation();return;}
+            try{
+                if(!hasRequiredPermissions()){phoneTimeSyncProtocol=null;terminalStopped();listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");return;}
+                if(!beginProtocolOperation("PHONE_TIME_SYNC")){phoneTimeSyncProtocol=null;listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");resumeAfterTimePreparation();return;}
+            }catch(SecurityException error){phoneTimeSyncProtocol=null;terminalStopped();listener.onPhoneTimeSyncFinished(false,"LOCAL_GATE");return;}
+            beginExpansionExclusive();phoneTimeSyncProtocol.start();
+        });
+    }
     void runAlarmRead(){startAlarm(null);}
     void runAlarmWrite(AlarmTransferPlan plan){if(plan==null){state("Точный план изменения будильника отсутствует");return;}startAlarm(plan);}
     private void startAlarm(AlarmTransferPlan plan){
@@ -263,6 +312,12 @@ final class BleWatchSession {
     private WeatherReadProtocol weatherReadProtocol;
     private TsdbReadProtocol sleepHistoryProtocol;
     private AlarmProtocol alarmProtocol;
+    private PhoneTimeSyncProtocol phoneTimeSyncProtocol;
+    private PhoneTimeSyncProtocol.Prepared pendingPhoneTime;
+    private BluetoothGatt phoneTimeGatt;
+    private long phoneTimeEpoch;
+    private final Runnable phoneTimePreparationExpiry=()->{pendingPhoneTime=null;phoneTimeGatt=null;resumeAfterTimePreparation();};
+    private void resumeAfterTimePreparation(){scheduleOrdinarySync();if(currentDialRefreshState.isPending())mainHandler.post(currentDialRefresh);mainHandler.post(this::maybeSendNotification);}
     private boolean expansionRxRedacted;
     private boolean initialReadsComplete;
     private boolean rxSubscribed,directHandshakeComplete;
@@ -292,7 +347,7 @@ final class BleWatchSession {
     private void pollActivityIfIdle(){ scheduleOrdinarySync(); }
     private void scheduleOrdinarySync(){
         mainHandler.removeCallbacks(ordinarySyncRunnable);
-        if(directInstallRequest!=null)return;
+        if(directInstallRequest!=null||pendingPhoneTime!=null)return;
         if(!sessionIdle()||!initialReadsComplete||!replayReady||gatt==null)return;
         String address=sessionPreferences().getString("verified_device_address",null);
         if(address==null||!address.equals(replayAddress))return;
@@ -301,7 +356,7 @@ final class BleWatchSession {
         mainHandler.postDelayed(ordinarySyncRunnable,Math.max(250L,delay));
     }
     private void runOrdinarySync(){
-        if(directInstallRequest!=null)return;
+        if(directInstallRequest!=null||pendingPhoneTime!=null)return;
         if(!sessionIdle()||!initialReadsComplete||!replayReady||gatt==null||operationRunning()){scheduleOrdinarySync();return;}
         if(!hasRequiredPermissions()){terminalStopped();closeGatt();return;}
         String address=sessionPreferences().getString("verified_device_address",null);
@@ -379,6 +434,8 @@ final class BleWatchSession {
             if(notificationProtocol!=null&&notificationProtocol.isRunning())notificationProtocol.cancel("Session quarantined");
             if(sleepHistoryProtocol!=null&&sleepHistoryProtocol.isRunning())sleepHistoryProtocol.cancel("Session quarantined");
             if(alarmProtocol!=null&&alarmProtocol.isRunning())alarmProtocol.cancel("Session quarantined");
+            pendingPhoneTime=null;phoneTimeGatt=null;mainHandler.removeCallbacks(phoneTimePreparationExpiry);
+            if(phoneTimeSyncProtocol!=null&&phoneTimeSyncProtocol.isRunning())phoneTimeSyncProtocol.cancel("Session quarantined");
             if(protocolProbe!=null&&protocolProbe.isRunning())protocolProbe.cancel("Session quarantined");
             if(weatherReadProtocol!=null&&weatherReadProtocol.isRunning())weatherReadProtocol.cancel("Session quarantined");
             if(weatherSessionProtocol!=null&&weatherSessionProtocol.isRunning())weatherSessionProtocol.cancel("Session quarantined");
@@ -461,7 +518,7 @@ final class BleWatchSession {
         events.event(id,"","ble_connection",action,stage,outcome,error,"KNOWN_COMMANDS",replayAddress,0,0,0,metadata);
     }
     private void refreshCurrentDialIfIdle(){
-        if(directInstallRequest!=null)return;
+        if(directInstallRequest!=null||pendingPhoneTime!=null)return;
         if(!sessionIdle())return;
         if(protocolProbe==null||gatt==null||txCharacteristic==null){currentDialRefreshState.onDisconnected();return;}
         if(protocolProbe.isRunning()||weatherReadProtocol!=null&&weatherReadProtocol.isRunning()||weatherSessionProtocol!=null&&weatherSessionProtocol.isRunning()||stageProtocol!=null||dynamicDialProtocol!=null||(notificationProtocol!=null&&notificationProtocol.isRunning()))return;
@@ -475,7 +532,7 @@ final class BleWatchSession {
         notificationsPending=true;maybeSendNotification();
     }
     private void maybeSendNotification(){
-        if(directInstallRequest!=null)return;
+        if(directInstallRequest!=null||pendingPhoneTime!=null)return;
         if(!sessionIdle())return;
         if(!notificationsPending||notificationProtocol==null||notificationProtocol.isFailed()||notificationProtocol.isRunning())return;
         if(gatt==null||txCharacteristic==null||protocolProbe==null){notificationsPending=false;NotificationForwardingService.clearPending();return;}
@@ -1149,6 +1206,8 @@ final class BleWatchSession {
         weatherReadProtocol=null;
         if (weatherSessionProtocol != null&&weatherSessionProtocol.isRunning()) weatherSessionProtocol.cancel("BLE connection closed");
         weatherSessionProtocol=null;
+        pendingPhoneTime=null;phoneTimeGatt=null;mainHandler.removeCallbacks(phoneTimePreparationExpiry);
+        if(phoneTimeSyncProtocol!=null&&phoneTimeSyncProtocol.isRunning())phoneTimeSyncProtocol.cancel("BLE connection closed");phoneTimeSyncProtocol=null;
         if (stageProtocol != null&&stageProtocol.isRunning()) stageProtocol.cancel("BLE connection closed");
         if (dynamicDialProtocol != null&&dynamicDialProtocol.isRunning()) dynamicDialProtocol.cancel("BLE connection closed");
         dynamicDialProtocol = null;
@@ -1162,15 +1221,15 @@ final class BleWatchSession {
         commandsQuarantined=false;txLedgerUnreliable=false;closingGatt=false;
     }
 
-    private boolean operationRunning(){return (alarmProtocol!=null&&alarmProtocol.isRunning())||(sleepHistoryProtocol!=null&&sleepHistoryProtocol.isRunning())||(protocolProbe!=null&&protocolProbe.isRunning())||(weatherReadProtocol!=null&&weatherReadProtocol.isRunning())||(weatherSessionProtocol!=null&&weatherSessionProtocol.isRunning())||(stageProtocol!=null&&stageProtocol.isRunning())||(dynamicDialProtocol!=null&&dynamicDialProtocol.isRunning())||(notificationProtocol!=null&&notificationProtocol.isRunning());}
+    private boolean operationRunning(){return (phoneTimeSyncProtocol!=null&&phoneTimeSyncProtocol.isRunning())||(alarmProtocol!=null&&alarmProtocol.isRunning())||(sleepHistoryProtocol!=null&&sleepHistoryProtocol.isRunning())||(protocolProbe!=null&&protocolProbe.isRunning())||(weatherReadProtocol!=null&&weatherReadProtocol.isRunning())||(weatherSessionProtocol!=null&&weatherSessionProtocol.isRunning())||(stageProtocol!=null&&stageProtocol.isRunning())||(dynamicDialProtocol!=null&&dynamicDialProtocol.isRunning())||(notificationProtocol!=null&&notificationProtocol.isRunning());}
     private boolean reconnectWaiting(){return SessionRecoveryPolicy.RECONNECT_WAIT.equals(sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED));}
     @SuppressLint("MissingPermission")
-    private boolean recoveryEligible(){
+    private boolean recoveryEligible(boolean initialWeatherReadFailure){
         String address=sessionPreferences().getString("verified_device_address",null),marker=sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED);
         boolean knownPush=SessionRecoveryPolicy.OPERATION.equals(marker)&&"NOTIFICATION".equals(operationKind())&&notificationProtocol!=null&&notificationProtocol.canRecoverPushTransport();
         return !manualDisconnect&&directInstallRequest==null&&!commandsQuarantined&&!txLedgerUnreliable&&!transportCleanup&&!stoppingProtocols
                 &&sessionPreferences().getBoolean("session.userEnabled",false)&&hasRequiredPermissions()&&address!=null
-                &&(knownPush||SessionRecoveryPolicy.mayRecover(true,address,marker,operationKind(),true))
+                &&(initialWeatherReadFailure||knownPush||SessionRecoveryPolicy.mayRecover(true,address,marker,operationKind(),true))
                 &&foundDevice!=null&&address.equals(replayAddress)&&address.equals(foundDevice.getAddress())&&(gatt==null||address.equals(gatt.getDevice().getAddress()));
     }
     private boolean persistNextReconnect(){
@@ -1182,9 +1241,11 @@ final class BleWatchSession {
     private void publishReconnectWait(){state("Ожидаю часы; переподключение автоматически");connectionState(false,"Ожидаю часы; переподключение автоматически");}
     /** Retire this transport synchronously; close it only after the protocol RX callback unwinds. */
     @SuppressLint("MissingPermission")
-    private boolean queueFreshReconnect(){
+    private boolean queueFreshReconnect(){return queueFreshReconnect(false);}
+    private boolean queueFreshReconnect(boolean initialWeatherReadFailure){
+        if(initialWeatherReadFailure&&(weatherSessionProtocol==null||weatherSessionProtocol.failureEvidence()!=WeatherSessionProtocol.FailureEvidence.INITIAL_READ_PRIOR_NO_SET||operationRunning()||!"PROTECTED".equals(operationKind())||!SessionRecoveryPolicy.OPERATION.equals(sessionPreferences().getString("session.marker",SessionRecoveryPolicy.STOPPED))))return false;
         if(reconnectCleanup!=null)return reconnectWaiting();
-        try{if(!recoveryEligible())return false;}catch(SecurityException e){terminalStopped();return false;}
+        try{if(!recoveryEligible(initialWeatherReadFailure))return false;}catch(SecurityException e){terminalStopped();return false;}
         OperationJournal.get(context).connectionUnavailable();
         final BluetoothGatt capturedGatt=gatt;final long capturedEpoch=rxEpoch;final String capturedKind=operationKind();
         commandsQuarantined=true;rxEpoch++;ready(false);
@@ -1242,6 +1303,10 @@ final class BleWatchSession {
     private void ordinaryTransportLost(){
         if(directInstallRequest!=null){finishDirectInstall(false,"DISCONNECTED");closeGatt();return;}
         if(reconnectCleanup!=null)return;
+        if(weatherSessionProtocol!=null&&weatherSessionProtocol.isRunning()){
+            weatherSessionProtocol.cancel("BLE disconnected");
+            if(reconnectCleanup!=null)return;
+        }
         if(!queueFreshReconnect()){terminalStopped();closeGatt();}
     }
     @SuppressLint("MissingPermission")
@@ -1501,6 +1566,7 @@ final class BleWatchSession {
         if(callbackGatt!=gatt||commandsQuarantined||txLedgerUnreliable)return;PendingTx pending=txLedger.peekFirst();
         if(pending==null||pending.gatt!=callbackGatt||!pending.uuid.equals(uuid)){markTxLedgerUnreliable("unexpected Android TX callback ownership");return;}
         txLedger.removeFirst();
+        if(phoneTimeSyncProtocol!=null&&phoneTimeSyncProtocol.isRunning()){phoneTimeSyncProtocol.onWritten(status);return;}
         if(pending.weatherGeneration<0&&status!=BluetoothGatt.GATT_SUCCESS&&dynamicDialProtocol!=null&&(dynamicDialProtocol.isLocalOperation()||dynamicDialProtocol.isDirectInstall())&&dynamicDialProtocol.isRunning()){dynamicDialProtocol.cancel("ANDROID_TX_FAILED");return;}
         if(pending.weatherGeneration>=0){if(weatherFrameWriter!=null)weatherFrameWriter.written(pending.weatherGeneration,pending.chunk,status);else if(weatherSessionProtocol!=null&&weatherSessionProtocol.isRunning())weatherSessionProtocol.cancel("missing weather callback owner");}
         else if(weatherFrameWriter!=null&&weatherFrameWriter.active()){if(status!=BluetoothGatt.GATT_SUCCESS)weatherFrameWriter.unexpected();else weatherFrameWriter.ledgerDrained();}
@@ -1555,6 +1621,7 @@ final class BleWatchSession {
             return;
         }
         byte[] copy = value == null ? null : value.clone();
+        if(phoneTimeSyncProtocol!=null&&phoneTimeSyncProtocol.isRunning()){listener.onLog("RX bounded clock response "+(copy==null?0:copy.length)+" B");phoneTimeSyncProtocol.onChunk(copy);return;}
         if(alarmProtocol!=null&&alarmProtocol.isRunning()){listener.onLog("RX bounded alarm response "+(copy==null?0:copy.length)+" B");alarmProtocol.onChunk(copy);return;}
         if(sleepHistoryProtocol!=null&&sleepHistoryProtocol.isRunning()){
             listener.onLog("RX bounded health response "+(copy==null?0:copy.length)+" B");

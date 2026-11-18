@@ -56,7 +56,7 @@ final class ExpansionUiController {
         final String screen,arg;Route(String screen,String arg){this.screen=screen;this.arg=arg;}
     }
     private static final class Data {
-        String selectedDevice="";
+        String selectedDevice="",detailWorkoutId="";
         List<String> devices=Collections.emptyList();
         List<ActivityHistoryEntry> days=Collections.emptyList(),points=Collections.emptyList(),todayPoints=Collections.emptyList(),latestPoints=Collections.emptyList();
         Map<String,List<ExpansionModels.HealthRecord>> health=new HashMap<>();
@@ -75,6 +75,7 @@ final class ExpansionUiController {
     private final Map<Integer,ArrayDeque<Route>> routes=new HashMap<>();
     private Data data=new Data();private UiKit ui;private LocalDate date=LocalDate.now();private int period=1,loadGeneration;
     private boolean focusHealthWindow;private boolean destroyed,resumed,loading,reloadQueued,queuedScan;private String failure="",device="";
+    private String detailLoadingId="",detailErrorId="",detailError="";
     private String pendingSport,pendingPlan;private Integer pendingGoal;private boolean pendingFinish;
     private TextView activeTimer;private int ticks;private String readFeedback="";private boolean readInProgress,deletingMeasurements;
     private final Runnable ticker=new Runnable(){@Override public void run(){if(!resumed||destroyed)return;if(activeTimer!=null&&data.current!=null)activeTimer.setText(WorkoutRecorder.duration(recorder.activeMillis(data.current)));strengthUi.tick();if(++ticks%30==0&&data.current!=null){String id=data.current.optString("id");store.execute(()->{try{recorder.checkpoint(id);}catch(RuntimeException e){logFailure("checkpoint",e);}main.post(()->refresh(false));});}main.postDelayed(this,1000);}};
@@ -107,13 +108,14 @@ final class ExpansionUiController {
     void pause(){resumed=false;main.removeCallbacks(ticker);strengthUi.pause();nutritionUi.pause();analysisUi.pause();if(data.current!=null){String id=data.current.optString("id");store.execute(()->{try{recorder.checkpoint(id);}catch(RuntimeException e){logFailure("checkpoint",e);}});}}
     void destroy(){destroyed=true;pause();strengthUi.destroy();nutritionUi.destroy();analysisUi.destroy();store.execute(activityStore::close);}
     void intent(Intent intent){if(intent==null)return;if(intent.hasExtra("strengthWorkoutId")){String id=intent.getStringExtra("strengthWorkoutId");intent.removeExtra("strengthWorkoutId");store.submit(()->store.find("workouts",id),(record,error)->{if(destroyed||record==null||!error.isEmpty())return;stack(5).clear();go(5,WorkoutRecorder.isActive(record)?"active":"workout",WorkoutRecorder.isActive(record)?"":id);host.tab(5);refresh(false);});}if(intent.getBooleanExtra("phoneWorkout",false)||intent.getBooleanExtra("phoneWorkoutFinish",false)){pendingFinish=intent.getBooleanExtra("phoneWorkoutFinish",false);stack(5).clear();stack(5).add(new Route("active",""));intent.removeExtra("phoneWorkout");intent.removeExtra("phoneWorkoutFinish");host.tab(5);refresh(false);}}
-    boolean back(int tab){ArrayDeque<Route> s=stack(tab);Route route=s.peekLast();if(route!=null&&Arrays.asList("nutrition","nutrition_editor","food_search").contains(route.screen))nutritionUi.leave();if(route!=null&&Arrays.asList("analysis","analysis_history","openrouter").contains(route.screen))analysisUi.pause();if(tab==5&&route!=null&&"active".equals(route.screen)&&data.current!=null&&"strength".equals(data.current.optString("typeId"))&&strengthUi.back())return true;if(s.isEmpty())return false;s.removeLast();host.redraw();return true;}
+    boolean back(int tab){ArrayDeque<Route> s=stack(tab);Route route=s.peekLast();if(route!=null&&Arrays.asList("nutrition","nutrition_editor","food_search").contains(route.screen))nutritionUi.leave();if(route!=null&&Arrays.asList("analysis","analysis_history","openrouter").contains(route.screen))analysisUi.pause();if(tab==5&&route!=null&&"active".equals(route.screen)&&data.current!=null&&"strength".equals(data.current.optString("typeId"))&&strengthUi.back())return true;if(s.isEmpty())return false;s.removeLast();Route revealed=s.peekLast();if(tab==5&&revealed!=null&&"workout".equals(revealed.screen))refresh(false);host.redraw();return true;}
     void refresh(boolean scan){
         if(destroyed)return;if(loading){reloadQueued=true;queuedScan|=scan;return;}loading=true;final int generation=++loadGeneration;
         String chosen=host.device().isEmpty()?device:host.device();if(chosen.isEmpty())chosen=prefs.savedDevice();final String source=chosen;final LocalDate selected=date;final long selectedFrom=ExpansionModels.start(periodStart(),ZoneId.systemDefault())/1000,selectedTo=ExpansionModels.start(periodEnd(),ZoneId.systemDefault())/1000;
         Route workoutRoute=stack(5).peekLast();final String detailWorkout=workoutRoute!=null&&"workout".equals(workoutRoute.screen)?workoutRoute.arg:"";
+        detailLoadingId=detailWorkout;detailErrorId="";detailError="";
         final boolean loadStrengthMonth=workoutRoute!=null&&"strength_progress".equals(workoutRoute.screen);
-        store.submit(()->{if(scan)importer.scan();Data next=new Data();Set<String> sources=new java.util.LinkedHashSet<>(store.devices());sources.addAll(activityStore.devices());next.devices=new ArrayList<>(sources);next.suppressed=store.healthImportSuppressed();String exact=source;if(exact.isEmpty()&&next.devices.size()==1)exact=next.devices.get(0);next.selectedDevice=exact;
+        store.submit(()->{if(scan)importer.scan();Data next=new Data();next.detailWorkoutId=detailWorkout;Set<String> sources=new java.util.LinkedHashSet<>(store.devices());sources.addAll(activityStore.devices());next.devices=new ArrayList<>(sources);next.suppressed=store.healthImportSuppressed();String exact=source;if(exact.isEmpty()&&next.devices.size()==1)exact=next.devices.get(0);next.selectedDevice=exact;
             if(!exact.isEmpty()){ArrayList<ActivityHistoryEntry> daily=new ArrayList<>();for(String day:activityStore.observedDays(exact)){ActivityHistoryEntry r=activityStore.latestByDay(exact,day);if(r!=null)daily.add(r);}next.days=daily;next.points=activityStore.observationsForDay(exact,selected.toString());next.todayPoints=selected.equals(LocalDate.now())?next.points:activityStore.observationsForDay(exact,LocalDate.now().toString());if(!daily.isEmpty())next.latestPoints=activityStore.observationsForDay(exact,daily.get(0).phoneDay);
                 for(String dataset:new String[]{"heart","sleep","spo2","sports","sports_graph","sports_spo2","sports_pace","sports_section_run","sports_section_swim"}){List<ExpansionModels.HealthRecord> range=store.health(exact,dataset,selectedFrom,selectedTo);Set<String> ids=new HashSet<>();for(ExpansionModels.HealthRecord record:range)ids.add(record.id);for(ExpansionModels.HealthRecord record:store.health(exact,dataset,0,253402300799L,256,0))if(ids.add(record.id))range.add(record);range.sort(java.util.Comparator.comparingLong(r->r.tsSeconds));next.health.put(dataset,range);}next.watchAlarms=AlarmProtocol.savedSnapshot(activity,exact);}
             next.current=recorder.current();next.workouts=store.list("workouts");next.manual=store.list("manual_entries");next.alarms=store.list("alarm_drafts");next.alarmTransfers=store.alarmTransferStates();
@@ -121,7 +123,7 @@ final class ExpansionUiController {
             for(String workoutId:workoutIds){List<JSONObject> entries=strengthDiary.entries(workoutId);next.strengthEntries.put(workoutId,entries);for(JSONObject entry:entries)next.strengthSets.put(entry.optString("id"),strengthDiary.sets(entry.optString("id")));next.workoutObservations.put(workoutId,store.diaryRows("workout_observations",workoutId));}
             if(loadStrengthMonth)next.strengthMonth=new StrengthProgress(store).month(java.time.YearMonth.from(selected).toString(),ZoneId.systemDefault().getId());
             return next;
-        },(next,error)->{if(destroyed)return;loading=false;if(generation!=loadGeneration)return;if(reloadQueued){reloadQueued=false;boolean needed=queuedScan;queuedScan=false;refresh(needed);return;}failure=error;
+        },(next,error)->{if(destroyed)return;loading=false;if(generation!=loadGeneration)return;if(reloadQueued){reloadQueued=false;boolean needed=queuedScan;queuedScan=false;refresh(needed);return;}failure=error;detailLoadingId="";if(!error.isEmpty()){detailErrorId=detailWorkout;detailError=error;}
             if(next!=null){if(!device.equals(next.selectedDevice))analysisUi.invalidate();data=next;device=next.selectedDevice;if(!device.isEmpty())prefs.evidenceDevice(device);}host.redraw();if(pendingFinish&&data.current!=null){pendingFinish=false;finishDialog(data.current);}});
     }
     void buildActivity(LinearLayout page,UiKit kit){ui=kit;build(page,2);}
@@ -180,7 +182,7 @@ final class ExpansionUiController {
     String screenKey(int tab){Route route=stack(tab).peekLast();return route==null?"home":route.screen+":"+route.arg;}
     private void go(int tab,String screen,String arg){
         Route previous=stack(tab).peekLast();if(previous!=null&&Arrays.asList("nutrition_editor","food_search").contains(previous.screen)&&(!previous.screen.equals(screen)||!previous.arg.equals(arg)))nutritionUi.leave();if(previous!=null&&Arrays.asList("analysis","analysis_history","openrouter").contains(previous.screen)&&!previous.screen.equals(screen))analysisUi.pause();ArrayDeque<Route> s=stack(tab);if(s.size()>=20)s.removeFirst();s.add(new Route(screen,arg));
-        if("analysis_history".equals(screen))analysisUi.openHistory(arg);String op=journal.begin("ui","screen_open",screen,device);journal.stage(op,"ui","screen_open","COMPLETE","SUCCESS","",0,0,0);host.tab(tab);
+        if("analysis_history".equals(screen))analysisUi.openHistory(arg);String op=journal.begin("ui","screen_open",screen,device);journal.stage(op,"ui","screen_open","COMPLETE","SUCCESS","",0,0,0);if("workout".equals(screen))refresh(false);host.tab(tab);
     }
     private static final class CardReading {
         String value="—",unit="",caption="";
@@ -435,7 +437,7 @@ final class ExpansionUiController {
         if(running&&!"strength".equals(r.optString("typeId")))quiet(p,tx("Отметить круг"),()->run("lap",()->recorder.lap(id),result->refresh(false)));
         if("strength".equals(r.optString("typeId"))){
             String idle=r.optString("inactivityState");
-            if("REMINDER".equals(idle)){LinearLayout reminder=card(p);note(reminder,tx("Давно нет новых записей. Через час без действий тренировка завершится временем последней записи."));primary(reminder,tx("Я ещё тренируюсь"),()->strengthUi.flush(()->run("workout_keep_active",()->recorder.keepActive(id),ignored->refresh(false))));}
+            if("REMINDER".equals(idle)){LinearLayout reminder=card(p);note(reminder,tx("Давно нет новых записей. Через 10 минут без действий тренировка завершится временем последней записи."));primary(reminder,tx("Я ещё тренируюсь"),()->strengthUi.flush(()->run("workout_keep_active",()->recorder.keepActive(id),ignored->refresh(false))));}
             if("TIME_UNCERTAIN".equals(idle))note(p,tx("Время последнего действия неизвестно. Продолжите запись или завершите тренировку вручную."));
         }
         if("strength".equals(r.optString("typeId")))strengthUi.build(p,ui,r,data.strengthEntries.getOrDefault(id,Collections.emptyList()),data.strengthSets);
@@ -460,6 +462,8 @@ final class ExpansionUiController {
         if(!"PHONE".equals(selection)){if(DeviceFeatureGate.sportsAllowed())action(p,tx("Обновить историю часов"),host::readSports);else note(p,tx("Получение новых тренировок с часов пока недоступно."));}
     }
     private void workoutDetail(LinearLayout p,String id){
+        if(id.equals(detailErrorId)&&!detailError.isEmpty()){note(p,tx("Не удалось загрузить запись тренировки."));quiet(p,tx("Повторить загрузку"),()->{refresh(false);host.redraw();});return;}
+        if(id.equals(detailLoadingId)||!id.equals(data.detailWorkoutId)){note(p,tx("Загрузка записи тренировки…"));return;}
         JSONObject r=find(data.workouts,id);if(r==null){note(p,tx("Запись не найдена."));return;}
         heading(p,tx(WorkoutCatalog.name(r)));note(p,shortTime(r.optLong("startedAt"))+tx(" · запись телефоном"));
         TextView duration=ui.label(WorkoutRecorder.duration(r.optLong("elapsedActiveMillis")),36,ui.text);duration.setTypeface(Typeface.DEFAULT,Typeface.BOLD);p.addView(duration,ui.fillWrap(14,4));note(p,tx("Время занятия"));

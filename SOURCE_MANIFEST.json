@@ -11,13 +11,13 @@
   },
   {
     "path": "BUILDING.md",
-    "size": 13826,
-    "sha256": "4f7ebb6cca37e5b099308c112ae0abaa3d04cc594d3f144e406fc28ae2b19040"
+    "size": 13867,
+    "sha256": "bf79e8a966ad47afa8fa8427473f127d7caf0e44f3e5ed264fd9eee265ecd1e2"
   },
   {
     "path": "CHANGELOG.md",
-    "size": 7075,
-    "sha256": "9b7af85decfc53cfc86bfe313b0cdcd26d68182095984a441816ffdb565eafca"
+    "size": 8171,
+    "sha256": "7ece1d9a7e16508a64be0148f62e188aa9e1c350f1fcb03d21b117578676fdc7"
   },
   {
     "path": "CONTRIBUTING.md",
@@ -51,8 +51,8 @@
   },
   {
     "path": "README.md",
-    "size": 8360,
-    "sha256": "752e9c2621e1f681c0208ebd9725d1eb7a793a5fe972ef9f1ebaaec5392fff77"
+    "size": 8688,
+    "sha256": "3323fc8d96bf3033be31dce0d37b249ce9adabe0471b81ff38de00c860b20707"
   },
   {
     "path": "SOURCE_ASSETS_MANIFEST.json",
@@ -86,8 +86,8 @@
   },
   {
     "path": "android/app/build.gradle.kts",
-    "size": 2280,
-    "sha256": "5de1e96067d9490480a755d5ea3b4a8ef21018983ac650843788ba16e71a5eed"
+    "size": 2290,
+    "sha256": "7a533fea9a98d53a1310d41c24745450c365a02c3b2ddbfdd0da030905828213"
   },
   {
     "path": "android/app/src/main/AndroidManifest.xml",
@@ -1311,8 +1311,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/BleWatchSession.java",
-    "size": 152136,
-    "sha256": "8d3970c8087da75fbc98f82f41413794434b08b5bd9c8b2928d2ee6066d44ba1"
+    "size": 159519,
+    "sha256": "dbe46e2e0c34e077564aea9967ef7a56f97030d8c89896997b18d46b69533235"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/BundledDynamicDial.java",
@@ -1471,8 +1471,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/ExpansionUiController.java",
-    "size": 105375,
-    "sha256": "7138b4f8006b5e9967d90e3d777270dafac222df94bc81ca4827770babe8b0e3"
+    "size": 106207,
+    "sha256": "7d8b03f735221293a4cb2c00a6c441141b3fe0a925d74cfcd38f0e71b153cc30"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/FoodSearchController.java",
@@ -1546,13 +1546,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/MainActivity.java",
-    "size": 203409,
-    "sha256": "a14ff56744ac5e057cb669082c6469366d108e45627cb50f04cfdc2045723dfc"
+    "size": 210463,
+    "sha256": "566dcfa3d81b06ca5d333bde10cb290ba7bb4b00d6c4ae45c636bb3b4852a09f"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/McfProtocolProbe.java",
-    "size": 29061,
-    "sha256": "98c6ab3612fd48bd396dd92581ab588c50be42a651f6b9d65c555ebc8505b7a3"
+    "size": 30119,
+    "sha256": "80d939349ce04f165fb95cb1935420b67f88bfc8d4ccd59114dfe4ef5585e3ed"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/MetNoWeatherProvider.java",
@@ -1675,6 +1675,11 @@
     "sha256": "09cb1622b41054186c962b8d56b2d18d6cc3b3e8235574e11b28a2df3eb4bf2a"
   },
   {
+    "path": "android/app/src/main/java/app/gtdial/lab/PhoneTimeSyncProtocol.java",
+    "size": 6378,
+    "sha256": "5df540f95a53a3d9314541e774e44dc2dc0bb71a889c348c280189ae5ed7b2a1"
+  },
+  {
     "path": "android/app/src/main/java/app/gtdial/lab/PhoneWeatherController.java",
     "size": 8471,
     "sha256": "4209092f7b1da4148602bb850817f2afed270fed2327e70d3ecdf7613c0caf44"
@@ -1721,8 +1726,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/StrengthUiController.java",
-    "size": 37463,
-    "sha256": "eca0d7161137e56fb3cbfc566a26aca74bb173b46663f168fbaee7577a3e2dd2"
+    "size": 37586,
+    "sha256": "09aa17c2cd000c894dd09280ce83bb3889c5d256be21d045418e241d17d26e8d"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/TsdbReadProtocol.java",
@@ -1761,8 +1766,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WatchSessionService.java",
-    "size": 27254,
-    "sha256": "c7e8c17a5df435302d72926d6d0638c5ba455c06feedfa129297be1d7f690713"
+    "size": 28253,
+    "sha256": "d4541ab3dff8aa721a372b282e3d9d7ca8d8545acd5696ba9ad17bebee526823"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherCodeMapper.java",
@@ -1801,8 +1806,8 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherSessionProtocol.java",
-    "size": 33508,
-    "sha256": "843a7cbe1f315926bb1aa9a8a8d1cbf89fdfdd4e05d54a7c2eebf34666a91c0b"
+    "size": 34014,
+    "sha256": "4befaf6d97ed5e228c741c549b311f4e7551090d8b3d9e158abcad8a136430c6"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WeatherSnapshot.java",
@@ -1821,13 +1826,13 @@
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WorkoutInactivityController.java",
-    "size": 3914,
-    "sha256": "a4ec9880d61c415a91e97d731de3405778df97d5eacbdb262f97c7650c36a3b1"
+    "size": 3983,
+    "sha256": "8c9e7b4b7c765727433834c4a2098280019fee69cda45508e8a3c0f1fac74928"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WorkoutRecorder.java",
-    "size": 37076,
-    "sha256": "4fb222c7ab95fbd5c19d2cf70afaf846e793c9df8526431988cbf5e343a99f94"
+    "size": 37767,
+    "sha256": "b8cacf3a07f04b3bb156389e7a893c9a27ec5721696df1c71f80f67f7e01fadf"
   },
   {
     "path": "android/app/src/main/java/app/gtdial/lab/WorkoutTypeDictionary.java",

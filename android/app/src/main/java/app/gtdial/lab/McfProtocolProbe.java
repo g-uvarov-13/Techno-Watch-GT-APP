@@ -79,6 +79,18 @@ final class McfProtocolProbe {
     private boolean activityMode;
     private boolean currentDialMode;
     private String currentDialJson, dialInfoJson;
+    private String backendVersion="";
+    String backendVersion(){return backendVersion;}
+    /** Captured _dev_info FFI result: U32 count followed by the editable 32-byte U8 buffer. */
+    private static String parseBackendVersion(byte[] payload){
+        if(payload==null||payload.length!=40||payload[0]!=4||(payload[5]&255)!=0xc1||payload[6]!=32||payload[7]!=0)return "";
+        long count=(payload[1]&255L)|((payload[2]&255L)<<8)|((payload[3]&255L)<<16)|((payload[4]&255L)<<24);
+        if(count<=0||count>=32||payload[8+(int)count]!=0)return "";
+        for(int index=8;index<8+(int)count;index++){int value=payload[index]&255;if(value<0x20||value>0x7e)return "";}
+        // Bytes after the counted string and its NUL are uninitialized capacity, not version data.
+        String version=new String(payload,8,(int)count,StandardCharsets.US_ASCII);
+        return version.matches("[0-9]+\\.[0-9]+\\.[0-9]+")?version:"";
+    }
     private AlbumState albumState = AlbumState.IDLE;
     private String albumSessionId;
 
@@ -256,6 +268,7 @@ final class McfProtocolProbe {
         if (pending == Pending.INITIAL) {
             String completed=STEPS[step];
             describeStepResult(completed, payload);
+            if("udbd.ver".equals(completed))backendVersion=parseBackendVersion(payload);
             if(currentDialMode){if("svc_dial_get_current".equals(completed))currentDialJson=new String(payload,StandardCharsets.UTF_8).trim();if("svc_dial_info".equals(completed))dialInfoJson=new String(payload,StandardCharsets.UTF_8).trim();}
             step++;
             if (step >= STEPS.length) {
@@ -340,6 +353,7 @@ final class McfProtocolProbe {
     }
 
     private void sendCurrentStep() {
+        if(step==0)backendVersion="";
         String name = STEPS[step];
         byte[] rpc;
         if ("_link_up".equals(name)) {
